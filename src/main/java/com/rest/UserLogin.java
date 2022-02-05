@@ -20,6 +20,6 @@ public class UserLogin {
 	@Produces("text/plain")
 	public String get() {
 		System.out.print("get post");
-		return "Hello Work111";
+		return "Hello Work";
 	}
 }
