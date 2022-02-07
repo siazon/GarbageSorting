@@ -29,7 +29,7 @@ public class UserLogin {
 	@Produces("text/plain")
 	public String get() {
 		System.out.print("get post");
-		return "Hello Work"+selectUser("23@ait.ie");
+		return "Hello Word"+selectUser("23@ait.ie");
 	}
 	
 	
