@@ -38,12 +38,14 @@
     <groupId>com.sun.jersey</groupId>
     <artifactId>jersey-core</artifactId>
     <version>1.9.1</version>
-</dependency><!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-core -->
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-json -->
 <dependency>
     <groupId>com.sun.jersey</groupId>
-    <artifactId>jersey-core</artifactId>
+    <artifactId>jersey-json</artifactId>
     <version>1.9.1</version>
 </dependency>
+
 <!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-server -->
 <dependency>
     <groupId>com.sun.jersey</groupId>
@@ -60,6 +62,13 @@
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>8.0.28</version>
+</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.2</version>
+    <scope>test</scope>
 </dependency>
 		
 	</dependencies>
