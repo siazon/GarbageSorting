@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>    
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>registration page </title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/a3common.css" rel="stylesheet">    
+    <link rel="stylesheet" href="css/font_43459_lbtux0zjkr6yldi.css">
+	<link rel="stylesheet" href="css/register.css">
+</head>
+
+ 
+<body>
+
+
+   <div id="main" class="main-warp">
+    <div class="main-content">
+        <div class="formDiv">
+                
+                    <h2 class="title text-center"><b>Registration</b></h2>
+                
+                
+
+                <div class="switch">
+                    <a id="switch" current="normal" href="javascript:;" class="link">
+                            
+                    </a>
+                </div>
+
+                <form id="registerForm" role="form" class="form-horizontal " action="" method="post">
+                    <div class="form-item">
+                        <div class="input-warp">
+                            <span class="input-icon iconfont icon-yonghu1"></span><input id="userName" name="userName" placeholder="User name" type="text" class="inputs" value=""/>
+                        </div>
+                        <p id="userNameErr" class="errMsg"></p>
+                    </div>
+                    
+                        <p id="kaptchaErr" class="errMsg"></p>
+                    </div>
+
+                    <div class="form-item">
+                        <div class="input-warp">
+                            <span class="input-icon iconfont icon-baomi"></span>
+                            <input id="pwd" type="password" placeholder="At least 6 letters or numbers" maxlength="20" name="password" value=""
+                                   class="inputs"/>
+                        </div>
+                        <p id="passwordErr" class="errMsg"></p>
+                    </div>
+                    
+                    <div class="form-item">
+                        <div class="input-warp">
+                            <span class="input-icon iconfont icon-youxiangbangding"></span><input id="email" name="email" placeholder=" E-mail Address" type="text" class="inputs" value=""/>
+                        </div>
+                        <p id="emailErr" class="errMsg"></p>
+                    </div>
+                    <div class="btn-warp">
+                        <div class="text-center">
+                            <button type="button" id="btnSubmit"  class="btn lgbtn blue btn-block">register</button>
+                            <input id="appName" name="appName" type="hidden" value="jsform"/> 
+                        </div>
+                    </div>
+                    <div class="agreement gap">
+                        <div class="text-right">
+                            <div class="pull-left"> Existing account，<a href="index.html" class="link">Log in</a></div>
+                        </div>
+                    </div>
+                </form>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

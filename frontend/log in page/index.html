@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>    
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Log in page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/a3common.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/font_43459_lbtux0zjkr6yldi.css">
+</head>
+ 
+<body>
+
+
+    <div id="main" class="main-warp">
+        <div class="main-content">
+            <div class="formDiv">
+                
+                    <h2 class="text-center"><b>Log in</b></h2>
+                
+                
+                <form id="loginForm" method="post">
+                    <div class="dataform" >
+                        <div class="input-warp gap">
+                            <span class="input-icon iconfont icon-yonghu1"></span>
+                            <input id="userName" name="username" type="text" class="inputs" placeholder="E-mail" maxlength="64">
+                        </div>
+                        <div class="error-content">
+                            <span id="userNameErr" class="errMsg"></span>
+                        </div>
+
+                        <div class="input-warp gap">
+                            <span class="input-icon iconfont icon-baomi"></span>
+                            <input class="inputs" type="password" name="password" placeholder="Password" id="pwd" maxlength="20">
+                        </div>
+                        <div class="error-content">
+                            <span id="passwordErr" class="errMsg"></span>
+                        </div>
+
+                        <div class="btn-warp gap">
+                            <div class="text-center">                               
+                                <input type="hidden" value="jsform" id="_app"/>
+                                <button type="submit" id="btnLogin" class="btn btn-block lgbtn blue">Log in</button>
+                            </div>
+                        </div>
+                        <div class="gap">
+                            
+                                <div class="pull-right" style="margin-top: 6px"><a href="javascript:;" class="link">Lost Password</a><span class="split-space">|</span><a href="register.html" class="link"> Registration</a></div>
+                            
+                            <div class="pretty-box">
+                                <input type="checkbox" value="1" name="REMEMBER" id="remember" class="">
+                                <label for="remember" style="font-weight: normal" >Remember Me</label>
+                            </div>
+                        
+                        
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
