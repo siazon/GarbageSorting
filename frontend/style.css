@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d4f0fe;
+}
+
+body div {
+    background-image: url("background.png");
+    background-position: bottom center;
+    background-size: cover;
+}

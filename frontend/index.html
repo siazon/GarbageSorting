@@ -1,0 +1,150 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="bg">
+        <div id="game"></div>
+    </div>
+
+    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+    <script>
+        Crafty.init(1000, 614, document.getElementById("game"));
+        var assets = {
+            audio: {
+                beep: ["12780.wav"],
+            },
+        };
+        Crafty.load(
+            assets // preload assets
+        );
+
+        //Crafty.background("#ffffff url(background.png) no-repeat center bottom");
+        Crafty.e("2D, Canvas, Color, Twoway,Collision, Gravity,player")
+            .attr({
+                x: 0,
+                y: 0,
+                w: 50,
+                h: 50,
+            })
+            .onHit("flower", function(hitDatas) {
+                for (var i = 0, l = hitDatas.length; i < l; ++i) {
+                    hitDatas[i].obj.destroy();
+                    this.health -= 25;
+                    if (this.health <= 0) this.destroy();
+                }
+            })
+            .color("#F00")
+            .twoway(200)
+            .bind("KeyDown", function() {
+                Crafty.audio.play("beep");
+            })
+            .gravity("Floor");
+        // Crafty.e("Floor, 2D, Canvas, Color")
+        //     .attr({
+        //         x: 0,
+        //         y: 550,
+        //         w: window.innerWidth - 30,
+        //         h: 10,
+        //     })
+        //     .color("green");
+        Crafty.sprite("good.png", {
+            good: [0, 0, 800, 800],
+        });
+        Crafty.sprite("bad.png", {
+            bad: [0, 0, 800, 800],
+        });
+        Crafty.sprite("wait.png", {
+            wait: [0, 0, 800, 800],
+        });
+        Crafty.sprite("green.png", {
+            flower: [0, 0, 800, 800],
+        });
+        Crafty.sprite("yellow.png", {
+            yellowf: [0, 0, 800, 800],
+        });
+        Crafty.sprite("brown.png", {
+            brownf: [0, 0, 800, 800],
+        });
+        Crafty.sprite("gray.png", {
+            grayf: [0, 0, 800, 800],
+        });
+        var fy = 340;
+        var fx = 400;
+        var fw = 150;
+        var fh = (fw * 630) / 500 - 30;
+
+        var flower_entity = Crafty.e("2D, DOM, flower").attr({
+            x: fx,
+            y: fy,
+            w: fw,
+            h: fh,
+        });
+        var flower_entity = Crafty.e("2D, DOM, good").attr({
+            x: fx + 20,
+            y: fy + 0,
+            w: fw + 150,
+            h: fh + 150,
+        });
+        var flowerf_entity = Crafty.e("2D, DOM, yellowf").attr({
+            x: fx + fw / 1.5,
+            y: fy,
+            w: fw,
+            h: fh,
+        });
+        var flower_entity = Crafty.e("2D, DOM, bad").attr({
+            x: fx + 20 + fw / 1.5,
+            y: fy + 0,
+            w: fw + 150,
+            h: fh + 150,
+        });
+        var flowerf_entity = Crafty.e("2D, DOM, brownf").attr({
+            x: fx + (fw / 1.5) * 2,
+            y: fy,
+            w: fw,
+            h: fh,
+        });
+        var flower_entity = Crafty.e("2D, DOM, wait").attr({
+            x: fx + 20 + (fw / 1.5) * 2,
+            y: fy + 0,
+            w: fw + 150,
+            h: fh + 150,
+        });
+        var flowerf_entity = Crafty.e("2D, DOM, grayf").attr({
+            x: fx + (fw / 1.5) * 3,
+            y: fy,
+            w: fw,
+            h: fh,
+        });
+        var flower_entity = Crafty.e("2D, DOM, good").attr({
+            x: fx + 20 + (fw / 1.5) * 3,
+            y: fy + 0,
+            w: fw + 150,
+            h: fh + 150,
+        });
+
+        Crafty.sprite("./img/yh/1.png", {
+            garbagedemo: [0, 0, 120, 120],
+        });
+        var flowity = Crafty.e("2D, DOM, garbagedemo").attr({
+            x: fx + 20 + (fw / 1.5) * 3,
+            y: fy + 150,
+            w: 80,
+            h: 80,
+        });
+        Crafty.sprite("./img/yh/4.png", {
+            garbagedemo: [0, 0, 120, 120],
+        });
+        var flowity = Crafty.e("2D, DOM, garbagedemo").attr({
+            x: fx + 20 + (fw / 1.5) * 2,
+            y: fy + 150,
+            w: 80,
+            h: 80,
+        });
+        for (let i = 0; i < 14; i++) {}
+    </script>
+</body>
+
+</html>
