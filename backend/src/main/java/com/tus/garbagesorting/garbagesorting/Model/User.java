@@ -1,9 +1,10 @@
 package com.tus.garbagesorting.garbagesorting.Model;
 
+
 import java.io.Serializable;
 
-public class tb_user implements Serializable {
-    public tb_user(String user_email, String user_name, String user_phone, String user_password, String user_role, String user_status) {
+public class User implements Serializable {
+    public User (String user_email, String user_name, String user_phone, String user_password, String user_role, String user_status) {
         this.user_email = user_email;
         this.user_name = user_name;
         this.user_phone = user_phone;

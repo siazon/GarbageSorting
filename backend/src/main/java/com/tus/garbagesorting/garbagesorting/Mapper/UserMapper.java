@@ -1,17 +1,17 @@
 package com.tus.garbagesorting.garbagesorting.Mapper;
 
-import com.tus.garbagesorting.garbagesorting.Model.tb_user;
+import com.tus.garbagesorting.garbagesorting.Model.User;
 
 import java.util.List;
 
 
 
 public interface UserMapper {
-    int insert(tb_user user);
+    int insert(User user);
 
-    int update(tb_user user);
+    int update(User user);
 
     int deleteById(int id);
 
-    List<tb_user> findAll();
+    List<User> findAll();
 }
