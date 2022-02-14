@@ -11,10 +11,14 @@
 .formDiv h2 {
     padding: 10px 0 20px;
     font-weight: 500;
-    background-image: linear-gradient(to right, rgba(255, 166, 0, 0.863), rgb(128, 0, 128));
+    /* background-image: linear-gradient(to right, rgba(255, 166, 0, 0.863), rgb(128, 0, 128)); */
     -webkit-background-clip: text;
-    color: transparent;
+    /* color: transparent; */
     font-size: 40px;
+    /* font-family: "UnpackW00-Fast"; */
+    color: #f17eb2;
+    letter-spacing: 3px;
+
     
 }
 

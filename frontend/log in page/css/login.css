@@ -8,14 +8,17 @@
     display: none !important
 }
 
+
 .formDiv h2 {
     padding: -10px 0 0px;
     font-size: 40px;
-     color: #93b338;background-image: linear-gradient(to right, rgba(255, 166, 0, 0.863), rgb(128, 0, 128));
-     -webkit-background-clip: text;
-     color: transparent;
-    
+    color: #f17eb2;
+    letter-spacing: 3px;
+    -webkit-background-clip: text;
+
 }
+    
+
 .formDiv{
     padding: 10px;
     
