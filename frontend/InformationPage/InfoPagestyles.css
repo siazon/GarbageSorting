@@ -1,16 +1,19 @@
-body {
+html, body {
 	min-height: 100%;
+	width: 100%;
 	background-image: url(infoBack.jpg); /*replace image.jpg with path to your image*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+
+
 }
 
 
 #container {
 	width: 100%;
 	background-color: #fff;
-
+	height: 60px;
 }
 
 header {
@@ -19,8 +22,10 @@ header {
 }
 
 .headerDiv {
-	
+
 	float: left;
+	height: 50px;
+
 }
 
 
@@ -65,13 +70,13 @@ nav ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	
+
 }
 
 nav li {
 	display: inline-block;
 	margin-left: 50px;
-	padding-top: 30px;
+	padding-top: 10px;
 	position: relative;
 }
 
@@ -79,7 +84,7 @@ nav a {
 	color: #135658;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 25px;
+	font-size: 18px;
 	font-family: "UnpackW00-Fast";
 }
 
@@ -103,20 +108,20 @@ nav a:hover::before {
 }
 
 .button {
-	background-color: #7ec479; /* Green */
+	background-color: #7ec479;
 	border: none;
-	border-radius: 12px;
+	border-radius: 15px;
 	color: white;
-	padding: 15px 52px;
+	padding: 5px 38px;
 	text-align: center;
 	text-decoration: none;
-	font-size: 26px;
+	font-size: 22px;
 	font-family: "UnpackW00-Fast";
 }
 
 .buttonDiv {
-	
-	margin: 30px 150px;
+
+	margin: 12px 0px;
 	display: inline-block;
 }
 
@@ -147,27 +152,19 @@ nav a:hover::before {
 	display: inline-block;
 }
 
-.footer {
-	position: relative;
-	color: #fff;
-	text-align: center;
-}
-
 .text-xxs {
 	font-size: 1.2rem;
 }
 
-.footer-dark {
-	padding: 50px 0;
-	color: #f0f9ff;
-	background-color: #282d32;
-}
+
+
 
 .footer-dark h3 {
 	margin-top: 0;
 	margin-bottom: 12px;
 	font-weight: bold;
 	font-size: 16px;
+
 }
 
 .footer-dark ul {
@@ -250,10 +247,9 @@ nav a:hover::before {
 
 .headerLogo {
 	font-family: "UnpackW00-Fast";
-	font-size: 40px;
-	height: 50px;
+	font-size: 32px;
 	float: left;
-	margin: 30px 100px;
+	margin: 10px 71px;
 	letter-spacing: -3px;
 	text-shadow: 2px 2px #000000;
 }
@@ -268,11 +264,23 @@ nav a:hover::before {
 
 .a_logo {
 	display:inline-block;
-	
+
 }
 
 .navigationDiv {
-    
-    margin: 15px 0px;
+
+	margin: 6px 90px;
 	display: inline-block;
+	float: left;
 }
+
+
+.footer-dark {
+	padding: 50px 0;
+	color: #f0f9ff;
+	background-color: #282d32;
+	width: 100%;
+	position: absolute;
+	bottom: -244px;
+}
+

@@ -1,5 +1,5 @@
 html, body {
-	min-height: 80%;
+	min-height: 100%;
 	width: 100%;
 	background-image: url(background.jpg); /*replace image.jpg with path to your image*/
 	background-size: cover;
@@ -281,6 +281,6 @@ nav a:hover::before {
 	background-color: #282d32;
 	width: 100%;
 	position: absolute;
-	bottom: -244px;
+	bottom: -301px;
 }
 
