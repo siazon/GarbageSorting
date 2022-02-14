@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         Crafty.init(1000, 614, document.getElementById("game"));
         var assets = {
             audio: {
-                beep: ["12780.wav"],
+                beep: ["./music/12780.wav"],
             },
         };
         Crafty.load(
@@ -56,27 +56,27 @@
             .color();
 
         //create face
-        Crafty.sprite("good.png", {
+        Crafty.sprite("./img/good.png", {
             good: [0, 0, 800, 800],
         });
-        Crafty.sprite("bad.png", {
+        Crafty.sprite("./img/bad.png", {
             bad: [0, 0, 800, 800],
         });
-        Crafty.sprite("wait.png", {
+        Crafty.sprite("./img/wait.png", {
             wait: [0, 0, 800, 800],
         });
 
         // create bin
-        Crafty.sprite("green.png", {
+        Crafty.sprite("./img/green.png", {
             greenbin: [0, 0, 800, 800],
         });
-        Crafty.sprite("yellow.png", {
+        Crafty.sprite("./img/yellow.png", {
             yellowbin: [0, 0, 800, 800],
         });
-        Crafty.sprite("brown.png", {
+        Crafty.sprite("./img/brown.png", {
             brownbin: [0, 0, 800, 800],
         });
-        Crafty.sprite("gray.png", {
+        Crafty.sprite("./img/gray.png", {
             graybin: [0, 0, 800, 800],
         });
         var fy = 340;

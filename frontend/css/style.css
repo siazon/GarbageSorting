@@ -6,7 +6,7 @@ body {
 }
 
 body div {
-    background-image: url("background.png");
+    background-image: url("../img/background.png");
     background-position: bottom center;
     background-size: cover;
 }
