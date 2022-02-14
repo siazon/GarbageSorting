@@ -1,7 +1,7 @@
 html, body {
 	min-height: 100%;
 	width: 100%;
-	background-image: url(background.jpg); /*replace image.jpg with path to your image*/
+	background-image: url(infoBack.jpg); /*replace image.jpg with path to your image*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -70,7 +70,7 @@ nav ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	
+
 }
 
 nav li {
@@ -264,12 +264,12 @@ nav a:hover::before {
 
 .a_logo {
 	display:inline-block;
-	
+
 }
 
 .navigationDiv {
 
-    margin: 6px 90px;
+	margin: 6px 90px;
 	display: inline-block;
 	float: left;
 }
@@ -281,6 +281,6 @@ nav a:hover::before {
 	background-color: #282d32;
 	width: 100%;
 	position: absolute;
-	bottom: -301px;
+	bottom: -244px;
 }
 
