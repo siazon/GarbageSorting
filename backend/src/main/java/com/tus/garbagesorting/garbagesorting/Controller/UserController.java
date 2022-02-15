@@ -3,12 +3,15 @@ package com.tus.garbagesorting.garbagesorting.Controller;
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 public class UserController {
@@ -21,20 +24,20 @@ public class UserController {
     private UserMapper userMapper;
 
     @RequestMapping("/AllUsers")
-    public Object findAll() {
+    public ResponseEntity<List<User>> findAll() {
         List<User> list = userMapper.findAll();
-        return list;
+        return new ResponseEntity<List<User>>(list, HttpStatus.OK);
     }
 
     @RequestMapping("/InsertUser")
-    public Object insert(@RequestBody User user) {
+    public ResponseEntity<String> insert(@RequestBody User user) {
 
         int res = userMapper.insert(user);
-        return "Account successfully created";
+        return new ResponseEntity<>("Account successfully created", HttpStatus.OK);
     }
 
     @RequestMapping("/Login")
-    public Object login(@RequestParam String email, String password) {
+    public ResponseEntity<String> login(@RequestParam String email, String password) {
 
         List<User> list = userMapper.findAll();
 
@@ -43,19 +46,18 @@ public class UserController {
 
         String userEmail;
         String userPassword;
-
+        boolean isExist = false;//user exist tag
         for (int i = 0; i < list.size(); i++) {
             userEmail = list.get(i).getUser_email();
             userPassword = list.get(i).getUser_password();
-
             if (email.equalsIgnoreCase(userEmail) && password.equalsIgnoreCase(userPassword)) {
-                return "Successful login";
-
-            } else {
-                return "Incorrect username or password";
+                isExist = true;
             }
         }
-        return -1;
+        if (isExist)
+            return new ResponseEntity<>("Successful login", HttpStatus.OK);
+        else
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
     }
 
     // Create Api to check if email is already in use
