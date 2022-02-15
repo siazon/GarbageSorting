@@ -1,1 +1,4 @@
 .idea/
+target/classes/com/rest/MysqlUtil.class
+target/classes/com/rest/User.class
+target/classes/com/rest/UserLogin.class

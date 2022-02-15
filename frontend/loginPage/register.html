@@ -9,8 +9,31 @@
     <link href="css/a3common.css" rel="stylesheet">    
     <link rel="stylesheet" href="css/font_43459_lbtux0zjkr6yldi.css">
 	<link rel="stylesheet" href="css/register.css">
-    <link href="//db.onlinewebfonts.com/c/31d6999b03b69180254d0999127e1bc8?family=UnpackW00-Fast"
-          rel="stylesheet" type="text/css" />
+
+    <script>
+window.onload = function(){
+    // document.getElementById("form").onsubmit = function(){
+    //     return checkUsername() && checkPassword() && checkEmail();
+    //         };
+   //document.getElementById("username").onclick = checkUsername;
+    document.getElementById("pwd").onblur = checkUsername;
+        };
+      
+function checkUsername(){
+  var username = document.getElementById("pwd").value;
+  var reg_username = /^[0-9a-zA-Z_]{1,}$/;
+  var flag = reg_username.test(username);
+  var pwderr = document.getElementById("passwordErr");
+  if(flag){
+    pwderr.innerHTML ="";
+  }else {
+    pwderr.innerHTML = "Password is incorrect";
+  }  return flag;
+  }
+   
+
+
+    </script>
 </head>
 
  
@@ -34,17 +57,20 @@
                 <form id="registerForm" role="form" class="form-horizontal " action="" method="post">
                     <div class="form-item">
                         <div class="input-warp">
-                            <span class="input-icon iconfont icon-yonghu1"></span><input id="userName" name="userName" placeholder="User name" type="text" class="inputs" value=""/>
+                            <span class="input-icon iconfont icon-yonghu1"></span>
+                            <input id="userName" name="userName" placeholder="User name" type="text" class="inputs" value=""/>
+                            
+                        
                         </div>
                         <p id="userNameErr" class="errMsg"></p>
                     </div>
                     
-                        <p id="kaptchaErr" class="errMsg"></p>
+                        
                     </div>
 
                     <div class="form-item">
                         <div class="input-warp">
-                            <span class="input-icon iconfont icon-baomi"></span>
+                            <span  class="input-icon iconfont icon-baomi"></span>
                             <input id="pwd" type="password" placeholder="At least 6 letters or numbers" maxlength="20" name="password" value=""
                                    class="inputs"/>
                         </div>

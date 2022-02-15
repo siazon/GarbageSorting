@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 #loginDiv {
     display: none !important
 }
@@ -10,15 +11,16 @@
 .formDiv h2 {
     padding: -10px 0 0px;
     font-size: 40px;
-    color: #f17eb2;
-    letter-spacing: 3px;
-    -webkit-background-clip: text;
+     color: #93b338;background-image: linear-gradient(to right, rgba(255, 166, 0, 0.863), rgb(128, 0, 128));
+     -webkit-background-clip: text;
+     color: transparent;
+    
 }
-
-.formDiv {
+.formDiv{
     padding: 10px;
+    
+    
 }
-
 .errMsg {
     color: rgba(253, 66, 56, .8);
     display: none
@@ -62,8 +64,7 @@
     color: #545454
 }
 
-html,
-body {
+html, body {
     height: 100%;
     padding: 0;
     background: #fff
@@ -74,7 +75,7 @@ body {
     left: 0;
     right: 0;
     overflow: auto;
-    background: #fff url("../images/loginback1.png") no-repeat;
+    background: #fff url("../images/loginback.png") no-repeat;
     background-size: cover
 }
 
@@ -109,6 +110,7 @@ body {
     .main-warp {
         background-image: none
     }
+
     .main-content {
         width: 500px;
         margin-top: 100px;
@@ -116,6 +118,7 @@ body {
         border-radius: 4px;
         box-shadow: 0 0 4px rgba(0, 0, 0, .2)
     }
+
     body {
         background-image: none
     }
@@ -125,6 +128,7 @@ body {
     .main-warp {
         background-image: none
     }
+
     .main-content {
         width: 100%;
         margin-top: 0;
@@ -137,8 +141,9 @@ body {
     margin-right: auto;
     background: rgba(0, 0, 255, 0);
     margin-bottom: 200px;
-    border-style: dashed;
-    border-color: #93b338;
+    border-style: dashed ;
+    border-color:  #93b338;
+ 
 }
 
 .input-warp {

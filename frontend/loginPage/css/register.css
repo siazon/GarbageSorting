@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 #loginDiv {
     display: none !important
 }
@@ -10,13 +11,11 @@
 .formDiv h2 {
     padding: 10px 0 20px;
     font-weight: 500;
-    /* background-image: linear-gradient(to right, rgba(255, 166, 0, 0.863), rgb(128, 0, 128)); */
+    background-image: linear-gradient(to right, rgba(255, 166, 0, 0.863), rgb(128, 0, 128));
     -webkit-background-clip: text;
-    /* color: transparent; */
+    color: transparent;
     font-size: 40px;
-    /* font-family: "UnpackW00-Fast"; */
-    color: #f17eb2;
-    letter-spacing: 3px;
+    
 }
 
 .title {
@@ -58,8 +57,7 @@
     animation-duration: .5s
 }
 
-html,
-body {
+html, body {
     height: 100%;
     padding: 0;
     background: #fff;
@@ -94,7 +92,7 @@ body {
     left: 0;
     right: 0;
     overflow: auto;
-    background: #fff url("../images/loginback1.png") no-repeat;
+    background: #fff url("../images/loginback.png") no-repeat;
     background-size: cover
 }
 
@@ -108,16 +106,19 @@ body {
     .input-icon {
         padding: 0 18px
     }
+
     .inputs {
         width: 70%
     }
+
     .input-warp.s {
         width: 70%
     }
+
     .main-content {
         width: 500px;
         margin-top: 100px;
-        padding: 10px 10px 30px 20px;
+        padding: 10px 10px 30px 20px ;
         border-radius: 4px;
         background: rgba(0, 0, 255, 0);
     }
@@ -127,15 +128,19 @@ body {
     .input-icon {
         padding: 0 18px
     }
+
     .inputs {
         width: 70%
     }
+
     .input-warp.s {
         width: 70%
     }
+
     .main-warp {
         background-image: none
     }
+
     .main-content {
         width: 500px;
         margin-top: 70px;
@@ -143,6 +148,7 @@ body {
         border-radius: 4px;
         box-shadow: 0 0 4px rgba(0, 0, 0, .2)
     }
+
     body {
         background-image: none
     }
@@ -152,17 +158,21 @@ body {
     .input-icon {
         padding: 0 8px
     }
+
     .main-warp {
         background-image: none
     }
+
     .main-content {
         width: 100%;
         margin-top: 0;
         padding: 20px 20px
     }
+
     .input-warp.s {
         width: 65%
     }
+
     .input-warp.s .inputs {
         width: 60%
     }
@@ -172,9 +182,12 @@ body {
     margin-left: auto;
     margin-right: auto;
     background: rgba(0, 0, 255, 0);
+   
     margin-bottom: 150px;
-    border-style: dashed;
-    border-color: #93b338;
+    border-style: dashed ;
+    border-color:  #93b338;
+    
+ 
 }
 
 .input-icon {
@@ -224,4 +237,5 @@ a.link:hover {
 .agreement {
     font-size: 13px;
     color: #999;
+    
 }
