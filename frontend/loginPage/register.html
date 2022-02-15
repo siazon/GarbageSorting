@@ -16,13 +16,26 @@ window.onload = function(){
     //     return checkUsername() && checkPassword() && checkEmail();
     //         };
    //document.getElementById("username").onclick = checkUsername;
-    document.getElementById("pwd").onblur = checkUsername;
+    document.getElementById("userName").onblur = checkUsername;
+    document.getElementById("pwd").onblur = checkPassword;
+    document.getElementById("email").onblur = checkEmail;
         };
       
 function checkUsername(){
-  var username = document.getElementById("pwd").value;
-  var reg_username = /^[0-9a-zA-Z_]{1,}$/;
+  var username = document.getElementById("userName").value;
+  var reg_username = /^[A-Za-z0-9]+$/;
   var flag = reg_username.test(username);
+  var usernameErr = document.getElementById("userNameErr");
+  if(flag){
+    usernameErr.innerHTML ="";
+  }else {
+    usernameErr.innerHTML = "Username is incorrect";
+  }  return flag;
+  }
+  function checkPassword(){
+  var password = document.getElementById("pwd").value;
+  var reg_password = /^[0-9a-zA-Z_]{1,}$/;
+  var flag = reg_password.test(password);
   var pwderr = document.getElementById("passwordErr");
   if(flag){
     pwderr.innerHTML ="";
@@ -30,8 +43,17 @@ function checkUsername(){
     pwderr.innerHTML = "Password is incorrect";
   }  return flag;
   }
-   
-
+  function checkEmail(){
+  var email = document.getElementById("email").value;
+  var reg_email = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+  var flag = reg_email.test(email);
+  var emailErr = document.getElementById("emailErr");
+  if(flag){
+    emailErr.innerHTML ="";
+  }else {
+    emailErr.innerHTML = "Email is incorrect";
+  }  return flag;
+  }
 
     </script>
 </head>
