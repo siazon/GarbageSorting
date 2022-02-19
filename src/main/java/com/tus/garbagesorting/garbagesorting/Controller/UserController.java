@@ -50,7 +50,7 @@ public class UserController {
             userEmail = list.get(i).getUser_email();
             userPassword = list.get(i).getUser_password();
             if (email.equalsIgnoreCase(userEmail) && password.equalsIgnoreCase(userPassword)) {
-                //isExist = true;
+                isExist = true;
             }
         }
         if (isExist)
