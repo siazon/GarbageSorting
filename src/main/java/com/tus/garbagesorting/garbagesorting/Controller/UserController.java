@@ -58,6 +58,5 @@ public class UserController {
         else
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
     }
-
     // Create Api to check if email is already in use
 }
