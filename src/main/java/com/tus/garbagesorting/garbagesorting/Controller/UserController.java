@@ -43,7 +43,6 @@ public class UserController {
 
         // Validate user email and password.
         // Check if email and password stored in database matches email and password provided.
-
         String userEmail;
         String userPassword;
         boolean isExist = false;//user exist tag
