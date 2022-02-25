@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,20 +20,36 @@ public class UserController {
 //    @Qualifier("UserService")              // Test JdbcTemplate
     private UserMapper userMapper;
 
-    @RequestMapping("/AllUsers")
+    @GetMapping("/AllUsers")
     public ResponseEntity<List<User>> findAll() {
         List<User> list = userMapper.findAll();
         return new ResponseEntity<List<User>>(list, HttpStatus.OK);
     }
 
-    @RequestMapping("/InsertUser")
+    @PostMapping("/InsertUser")
     public ResponseEntity<String> insert(@RequestBody User user) {
+        // Check if user email is already in use
+        List<User> list = userMapper.findAll();
+        String userEmail;
 
-        int res = userMapper.insert(user);
-        return new ResponseEntity<>("Account successfully created", HttpStatus.OK);
+        boolean isExist = false;
+        for (int i = 0; i < list.size(); i++) {
+            userEmail = list.get(i).getUser_email();
+            if (user.getUser_email().equalsIgnoreCase(userEmail)) {
+                isExist = true;
+            }
+        }
+        if (!isExist) {
+            // if email doesn't already exist, add user
+            int res = userMapper.insert(user);
+            return new ResponseEntity<>("Account successfully created", HttpStatus.OK);
+        }
+
+        else
+            return new ResponseEntity<>("Email already taken", HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping("/Login")
+    @PostMapping("/Login")
     public ResponseEntity<String> login(@RequestParam String email, String password) {
 
         List<User> list = userMapper.findAll();
@@ -50,15 +63,23 @@ public class UserController {
         for (int i = 0; i < list.size(); i++) {
             userEmail = list.get(i).getUser_email();
             userPassword = list.get(i).getUser_password();
-            if (email.equalsIgnoreCase(userEmail) && password.equalsIgnoreCase(userPassword)) {
-                //isExist = true;
+            if (email.equalsIgnoreCase(userEmail) && password.equals(userPassword)) {
+                isExist = true;
             }
         }
         if (isExist)
             return new ResponseEntity<>("Successful login", HttpStatus.OK);
         else
-            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Incorrect username or password", HttpStatus.NOT_FOUND);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable int id) {
+        userMapper.deleteById(id);
+            return new ResponseEntity<>("User with id " + id + " deleted", HttpStatus.OK);
+
+    }
+
 
     // Create Api to check if email is already in use
 }
