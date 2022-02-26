@@ -1,6 +1,5 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;

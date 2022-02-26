@@ -1,6 +1,7 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
 import com.tus.garbagesorting.garbagesorting.Model.User;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,7 @@ class UserControllerTest {
     private TestRestTemplate template;
 
 
+    @Disabled
     @Test
     public void findAll() throws Exception {
         ResponseEntity<String> response = template.getForEntity("/AllUsers", String.class);
