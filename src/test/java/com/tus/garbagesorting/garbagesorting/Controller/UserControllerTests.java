@@ -41,7 +41,7 @@ class UserControllerTests {
 
         Mockito.when(userMapper.findAll()).thenReturn(users);
 
-        mockMvc.performq(MockMvcRequestBuilders
+        mockMvc.perform(MockMvcRequestBuilders
                         .get("/AllUsers")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
