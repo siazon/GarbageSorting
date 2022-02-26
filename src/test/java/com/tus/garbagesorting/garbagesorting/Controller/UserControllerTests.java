@@ -1,5 +1,6 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.junit.jupiter.api.Disabled;
@@ -25,6 +26,9 @@ class UserControllerTests {
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    ObjectMapper mapper;
+
     @MockBean
     UserMapper userMapper;
 
@@ -32,12 +36,12 @@ class UserControllerTests {
     User pete = new User(2, "pete@gmail.com", "pete", "135654", "reghbr", "unregistered", "test");
 
     @Test
-    public void findsAllUsersSuccessfully() throws Exception {
+    public void getAllUsersSuccessfully() throws Exception {
         List<User> users = new ArrayList<>(Arrays.asList(john, pete));
 
         Mockito.when(userMapper.findAll()).thenReturn(users);
 
-        mockMvc.perform(MockMvcRequestBuilders
+        mockMvc.performq(MockMvcRequestBuilders
                         .get("/AllUsers")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
