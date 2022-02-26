@@ -5,7 +5,6 @@ import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,10 +13,6 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    @Autowired
-//    @Qualifier("UserService")              // Test JdbcTemplate
     private UserMapper userMapper;
 
     @GetMapping("/AllUsers")
@@ -75,6 +70,9 @@ public class UserController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable int id) {
+//        if (userMapper.findById(id).isEmpty()) {
+//            throw new NotFoundException("Patient with ID " + patientId + " does not exist.");
+//        }
         userMapper.deleteById(id);
             return new ResponseEntity<>("User with id " + id + " deleted", HttpStatus.OK);
 

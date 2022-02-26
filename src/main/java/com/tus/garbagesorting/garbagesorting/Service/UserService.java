@@ -35,6 +35,13 @@ public class UserService implements UserMapper {
         return jdbcTemplate.update("DELETE FROM tb_user WHERE id=?", id);
     }
 
+//    @Override
+//    public int findById(int id) {
+//        return jdbcTemplate.query("SELECT * FROM tb_user WHERE id=?", id);
+//    }
+
+
+
     @Override
     public List<User> findAll() {
         return jdbcTemplate.query(
