@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/InsertUser")
-    public ResponseEntity<String> insert(@RequestBody User user) {
+    public Object insert(@RequestBody User user) {
         // Check if user email is already in use
         List<User> list = userMapper.findAll();
         String userEmail;
@@ -36,8 +36,9 @@ public class UserController {
         }
         if (!isExist) {
             // if email doesn't already exist, add user
-            int res = userMapper.insert(user);
-            return new ResponseEntity<>("Account successfully created", HttpStatus.OK);
+            userMapper.insert(user);
+          //  return new ResponseEntity<>("Account successfully created", HttpStatus.OK);
+            return user;
         }
 
         else

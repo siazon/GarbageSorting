@@ -11,16 +11,22 @@ import java.util.List;
 
 @Repository
 public class UserService implements UserMapper {
+
+    public User user;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public int insert(User user) {
-        return jdbcTemplate.update(
+    public User insert(User user) {
+         jdbcTemplate.update(
                 "insert into tb_user (user_name, user_email, user_phone, user_password, user_role, user_status) " +
                         "values(?,?,?,?,?,?)",
                 user.getUser_name(), user.getUser_email(), user.getUser_phone(), user.getUser_password(),
                 user.getUser_role(), user.getUser_status());
+
+        return user;
+
     }
 
     @Override
@@ -37,7 +43,8 @@ public class UserService implements UserMapper {
 
 //    @Override
 //    public int findById(int id) {
-//        return jdbcTemplate.query("SELECT * FROM tb_user WHERE id=?", id);
+//        var rowMapper = BeanPropertyRowMapper.newInstance(User.class);
+//
 //    }
 
 

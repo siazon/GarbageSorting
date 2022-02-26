@@ -1,5 +1,6 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
@@ -50,9 +52,23 @@ class UserControllerTests {
                // .andExpect(jsonPath("$[1].user_name").value("pete"));
     }
 
-    @Disabled
+
     @Test
-    void insert() {
+    void createdUserSuccessfully() throws Exception {
+        User terry = new User(2, "terry@gmail.com", "terry", "49838294", "fhrhhd", "registered", "test");
+
+        Mockito.when(userMapper.insert(terry)).thenReturn(terry);
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/InsertUser")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.mapper.writeValueAsString(terry));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.user_name", is("terry")));
+
     }
 
     @Disabled
