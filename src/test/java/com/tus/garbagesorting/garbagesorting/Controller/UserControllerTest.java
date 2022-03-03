@@ -17,7 +17,5 @@ class UserControllerTest {
     void insert() {
     }
 
-    @Test
-    void login() {
-    }
+  
 }
