@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <title>Table Data Addition</title>
+    <meta charset="utf-8" />
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        .input-space {
+            padding-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>User Edit</h2>
+
+    <form id="formSubmit">
+        <div class="form-group">
+            <label for="user_email">Email address</label>
+            <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Email" />
+        </div>
+        <div class="form-group">
+            <label for="user_password">Password</label>
+            <input type="password" class="form-control" id="user_password" name="user_password" placeholder="Password" />
+        </div>
+        <div class="form-group">
+            <label for="user_name">Name</label>
+            <input type="text" class="form-control" id="user_name" name="user_name" placeholder="UserName" />
+        </div>
+        <div class="form-group">
+            <label for="user_phone">Phone</label>
+            <input type="text" class="form-control" id="user_phone" name="user_phone" placeholder="Phone" />
+        </div>
+        <div class="form-group">
+            <label for="user_role">user_role</label>
+            <input type="text" class="form-control" id="user_role" name="user_role" placeholder="user_role" />
+        </div>
+        <div class="form-group">
+            <label for="user_status">user_status</label>
+            <input type="text" class="form-control" id="user_status" name="user_status" placeholder="user_status" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <button class="btn btn-default" onclick="goBack()">Cancel</button>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        $("#user_name").val(urlParams.get("user_name"));
+        $("#user_email").val(urlParams.get("user_email"));
+        $("#user_phone").val(urlParams.get("user_phone"));
+        $("#user_password").val(urlParams.get("user_password"));
+        $("#user_role").val(urlParams.get("user_role"));
+        $("#user_status").val(urlParams.get("user_status"));
+        let isEdit = false;
+        if (urlParams.get("user_email") == null) isEdit = true;
+        console.log("edit:", isEdit);
+        //form submit
+        $("#formSubmit").submit(function(event) {
+            var $form = $("#formSubmit");
+            var formData = getFormData($form);
+            console.log(formData);
+            fetch("http://127.0.0.1:8082/InsertUser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+                body: JSON.stringify(formData),
+            }).then((json) => {
+                if (json.status == 200) {
+                    alert("Done");
+                    window.location.href = "userList.html";
+                } else {
+                    alert(json.status);
+                }
+            });
+            return false;
+        });
+        //convert formdata to Json
+        function getFormData($form) {
+            var unindexed_array = $form.serializeArray();
+            var indexed_array = {};
+
+            $.map(unindexed_array, function(n, i) {
+                indexed_array[n["name"]] = n["value"];
+            });
+
+            return indexed_array;
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

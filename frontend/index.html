@@ -57,7 +57,7 @@
         <a class="btn btn-outline-primary" href="#" onclick="login()">Sign up</a>
     </div>
     <section class="select">
-        <iframe id="centerFrame" class="container" style="height: 100%" width="100%" src="home.html" frameborder="0"></iframe>
+        <iframe id="centerFrame" class="container" style="height: 100%" width="100%" src="userList.html" frameborder="0"></iframe>
     </section>
     <!-- <iframe class="container" style="height: 100%" width="100%" src="game.html" frameborder="0"></iframe> -->
 
@@ -71,7 +71,12 @@
     }
 
     function displayGame() {
-        document.getElementById("centerFrame").src = "game1.html";
+        fetch("https://api.github.com/users/ruanyf")
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+            .catch((err) => console.log("Request Failed", err));
+
+        //document.getElementById("centerFrame").src = "game1.html";
     }
 
     function Repository() {
