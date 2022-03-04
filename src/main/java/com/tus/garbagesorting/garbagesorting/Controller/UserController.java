@@ -4,6 +4,7 @@ package com.tus.garbagesorting.garbagesorting.Controller;
 
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +27,14 @@ public class UserController {
     }
 
     @GetMapping("/GetUser/{id}")
-    public User getUserById(@PathVariable int id) {
+    public User getUserById(@PathVariable int id) throws NotFoundException {
+        return userMapper.findById(id);
+//                if (userMapper.findById(id) != null) {
+//                    throw new NotFoundException("User with Id " + id + " does not exist.");
 
-       return userMapper.findById(id);
+
     }
+
 
     @PostMapping("/InsertUser")
     public Object insert(@RequestBody User user) {
@@ -45,7 +50,7 @@ public class UserController {
             }
 
             // Every admin should have an email which ends with "garbagesorting.com".
-            if(user.getUser_email().contains("garbagesorting.com")) {
+            if (user.getUser_email().contains("garbagesorting.com")) {
                 user.setUser_role("admin");
             }
         }
@@ -54,19 +59,18 @@ public class UserController {
             userMapper.insert(user);
             //  return new ResponseEntity<>("Account successfully created", HttpStatus.OK);
             return user;
-        }
-
-        else
+        } else
             return new ResponseEntity<>("Email already taken", HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/Login")
-    public ResponseEntity<String> login(@RequestParam String email, String password) {
+  //  public ResponseEntity<String> login(@RequestParam String email, String password) {
+    public ResponseEntity<String> login(@RequestBody LoginUserData userData) {
 
         List<User> list = userMapper.findAll();
 
-        // Validate user email and password.
-        // Check if email and password stored in database matches email and password provided.
+        // Validate user email and password by checking if email and password stored in database matches email and
+        // password provided.
 
         String userEmail;
         String userPassword;
@@ -74,7 +78,7 @@ public class UserController {
         for (int i = 0; i < list.size(); i++) {
             userEmail = list.get(i).getUser_email();
             userPassword = list.get(i).getUser_password();
-            if (email.equalsIgnoreCase(userEmail) && password.equals(userPassword)) {
+            if (userData.getEmail().equalsIgnoreCase(userEmail) && userData.getPassword().equals(userPassword)) {
                 isExist = true;
             }
         }
