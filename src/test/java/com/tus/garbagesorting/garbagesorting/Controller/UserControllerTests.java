@@ -33,8 +33,8 @@ class UserControllerTests {
     @MockBean
     UserMapper userMapper;
 
-    User john = new User(1, "john@gmail.com", "john", "123654", "reredf", "registered", "test");
-    User pete = new User(2, "pete@gmail.com", "pete", "135654", "reghbr", "unregistered", "test");
+    User john = new User(1, "john@gmail.com", "john", "123654", "reredf", "player");
+    User pete = new User(2, "pete@gmail.com", "pete", "135654", "reghbr", "admin");
 
     @Test
     public void getAllUsersSuccessfully() throws Exception {
@@ -54,7 +54,7 @@ class UserControllerTests {
 
     @Test
     void createdUserSuccessfully() throws Exception {
-        User terry = new User(2, "terry@gmail.com", "terry", "49838294", "fhrhhd", "registered", "test");
+        User terry = new User(2, "terry@gmail.com", "terry", "49838294", "fhrhhd", "admin");
 
         Mockito.when(userMapper.insert(terry)).thenReturn(terry);
 
