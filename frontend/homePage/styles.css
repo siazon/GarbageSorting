@@ -13,7 +13,7 @@ html, body {
 #container {
 	width: 100%;
 	background-color: #fff;
-	height: 60px;
+	height: 70px;
 }
 
 header {
@@ -23,9 +23,10 @@ header {
 
 .headerDiv {
 
-	float: left;
-	height: 50px;
 
+	float: left;
+	margin: 3px 200px;
+	height: 50px;
 }
 
 
@@ -119,13 +120,59 @@ nav a:hover::before {
 	font-family: "UnpackW00-Fast";
 }
 
+.button2 {
+	background-color: #282d32;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	padding: 4px 50px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 35px;
+	font-family: "UnpackW00-Fast";
+}
+
+.button3 {
+	background-color: #282d32;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	padding: 4px 50px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 35px;
+	font-family: "UnpackW00-Fast";
+}
+
 .buttonDiv {
 
-	margin: 12px 0px;
+	margin: 20px -300px;
+	display: inline-block;
+}
+
+.buttonDiv2 {
+
+	margin: 20px 22%;
+	display: inline-block;
+}
+
+.buttonDiv3 {
+	width: 100%;
+	margin: 20px 48%;
 	display: inline-block;
 }
 
 .button:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.button2:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.button3:hover {
 	text-decoration: none;
 	color: white;
 }
@@ -254,6 +301,7 @@ nav a:hover::before {
 	text-shadow: 2px 2px #000000;
 }
 
+
 .a_logo:hover {
 	text-decoration: none;
 	-webkit-transform: scale(1.1);
@@ -269,7 +317,7 @@ nav a:hover::before {
 
 .navigationDiv {
 
-    margin: 6px 90px;
+	margin: -40px 33%;
 	display: inline-block;
 	float: left;
 }
@@ -284,3 +332,70 @@ nav a:hover::before {
 	bottom: -287px;
 }
 
+.gameAccess {
+	position: fixed;
+	margin: 12% 25%;
+
+	height: 300px;
+	width: 300px;
+
+}
+
+.gameAccessImg {
+	border-radius: 50px;
+	width: 350px;
+	height: 350px;
+	animation: shake 3.5s;
+	animation-iteration-count: infinite;
+
+}
+
+.gameAccessImg:hover {
+	animation: shake 0.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+.gameLogo {
+	position: fixed;
+
+	margin: 6% 28%;
+	font-size: 30px;
+
+}
+
+.educationLogo {
+	position: fixed;
+
+	margin: 6% 65%;
+	width: 200px;
+	font-size: 30px;
+
+}
+
+.educationAccess {
+	position: fixed;
+	margin: 12% 56%;
+	height: 300px;
+	width: 300px;
+}
+
+.educationAccessImg {
+
+	height: 350px;
+
+}
