@@ -1,169 +1,415 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <title>weste sorting</title>
+    <script src="./JS/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="bg">
-        <div id="game"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="gameover" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Game Over</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+                </div>
+                <div class="modal-body">
+                    <p id="msgscore" class="lead text-muted">Your Score is</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="nextgame()">
+              Paly Again
+            </button>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
-    <script>
-        Crafty.init(1000, 614, document.getElementById("game"));
-        var assets = {
-            audio: {
-                beep: ["./music/12780.wav"],
-            },
-        };
-        Crafty.load(
-            assets // preload assets
-        );
-        Crafty.sprite("./img/xx2.png", {
-            bag: [0, 0, 120, 120],
-        });
-        //Crafty.background("#ffffff url(background.png) no-repeat center bottom");
-        Crafty.e("2D, DOM,bag, Twoway,Collision, Gravity,player")
-            .attr({
-                x: 0,
-                y: 0,
-                w: 50,
-                h: 50,
-            })
-            .onHit("flower", function(hitDatas) {
-                for (var i = 0, l = hitDatas.length; i < l; ++i) {
-                    hitDatas[i].obj.destroy();
-                    this.health -= 25;
-                    if (this.health <= 0) this.destroy();
-                }
-            })
-            .twoway(200)
-            .bind("KeyDown", function() {
-                this.z = 4;
-                // Crafty.audio.play("beep");
-            })
-            .gravity("Floor");
-
-        //create floor
-        Crafty.e("Floor, 2D, Canvas, Color")
-            .attr({
-                x: 0,
-                y: 470,
-                w: window.innerWidth - 0,
-                h: 10,
-            })
-            .color();
-
-        //create face
-        Crafty.sprite("./img/good.png", {
-            good: [0, 0, 800, 800],
-        });
-        Crafty.sprite("./img/bad.png", {
-            bad: [0, 0, 800, 800],
-        });
-        Crafty.sprite("./img/wait.png", {
-            wait: [0, 0, 800, 800],
-        });
-
-        // create bin
-        Crafty.sprite("./img/green.png", {
-            greenbin: [0, 0, 800, 800],
-        });
-        Crafty.sprite("./img/yellow.png", {
-            yellowbin: [0, 0, 800, 800],
-        });
-        Crafty.sprite("./img/brown.png", {
-            brownbin: [0, 0, 800, 800],
-        });
-        Crafty.sprite("./img/gray.png", {
-            graybin: [0, 0, 800, 800],
-        });
-        var fy = 340;
-        var fx = 400;
-        var fw = 150;
-        var fh = (fw * 630) / 500 - 30;
-
-        var flower_entity = Crafty.e("2D, DOM, greenbin").attr({
-            x: fx,
-            y: fy,
-            w: fw,
-            h: fh,
-        });
-        var flower_entity = Crafty.e("2D, DOM, good").attr({
-            x: fx + 20,
-            y: fy + 0,
-            w: fw + 150,
-            h: fh + 150,
-        });
-        var flowerf_entity = Crafty.e("2D, DOM, yellowbin").attr({
-            x: fx + fw / 1.5,
-            y: fy,
-            w: fw,
-            h: fh,
-        });
-        flowerf_entity.z = 0;
-        var flower_entity = Crafty.e("2D, DOM, bad").attr({
-            x: fx + 20 + fw / 1.5,
-            y: fy + 0,
-            w: fw + 150,
-            h: fh + 150,
-        });
-        var flowerf_entity = Crafty.e("2D, DOM, brownbin").attr({
-            x: fx + (fw / 1.5) * 2,
-            y: fy,
-            w: fw,
-            h: fh,
-        });
-        var flower_entity = Crafty.e("2D, DOM, wait").attr({
-            x: fx + 20 + (fw / 1.5) * 2,
-            y: fy + 0,
-            w: fw + 150,
-            h: fh + 150,
-        });
-        var flowerf_entity = Crafty.e("2D, DOM, graybin").attr({
-            x: fx + (fw / 1.5) * 3,
-            y: fy,
-            w: fw,
-            h: fh,
-        });
-        var flower_entity = Crafty.e("2D, DOM, good").attr({
-            x: fx + 20 + (fw / 1.5) * 3,
-            y: fy + 0,
-            w: fw + 150,
-            h: fh + 150,
-        });
-
-        let keyValue = {};
-        for (let i = 1; i < 15; i++) {
-            createGarbage("yh", i, 30, 500);
+    <script type="text/javascript">
+        var isMobile = navigator.userAgent.indexOf("Mobile");
+        if (isMobile == -1) {
+            isMobile = navigator.userAgent.indexOf("Tablet");
         }
-        for (let i = 1; i < 30; i++) {
-            createGarbage("cy", i, 0, 550);
+        if (isMobile == -1) {
+            var config = {
+                type: Phaser.AUTO,
+                width: 1000,
+                height: 680,
+                parent: "phaser-game",
+                // scale: {
+                //     mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
+                // },
+                physics: {
+                    default: "arcade",
+                    arcade: {
+                        gravity: {
+                            y: 500,
+                        },
+                        debug: false,
+                    },
+                },
+                scene: {
+                    preload: preload,
+                    create: create,
+                    update: update,
+                },
+            };
+        } else {
+            var config = {
+                type: Phaser.AUTO,
+                width: window.innerWidth,
+                height: window.innerHeight,
+                parent: "phaser-game",
+                physics: {
+                    default: "arcade",
+                    arcade: {
+                        gravity: {
+                            y: 300,
+                        },
+                        debug: true,
+                    },
+                },
+                scene: {
+                    preload: preload,
+                    create: create,
+                    update: update,
+                },
+            };
         }
 
-        function createGarbage(type, i, x, y) {
-            keyValue[type + i] = [0, 0, 150, 150];
-            Crafty.sprite("./img/" + type + "/" + i + ".png", keyValue);
-            let name = Object.getOwnPropertyNames(keyValue)[0].toString();
+        var stars;
+        var bombs;
+        var platforms;
+        var bin;
+        var cursors;
+        var score = 0;
+        var gameOver = false;
+        var scoreText;
+        var wasteGroup;
+        var hitTimer;
+        var selectBin;
+        var gamatimer = 60;
+        // var greenbinface;
+        // var greenbinwaitfeed;
 
-            var hBox = Crafty.e("2D, DOM," + name + ", Draggable")
-                .attr({
-                    x: x + 50 * i,
-                    y: y,
-                    w: 50,
-                    h: 50,
-                })
-                .dragDirection()
-                .bind("Dragging", function(evt) {
-                    this.z = 999;
-                })
-                .bind("StopDrag", function(evt) {
-                    this.z = 0;
+        var game = new Phaser.Game(config, Phaser.CANVAS);
+
+        function preload() {
+            this.load.image("ground", "img/ground.png");
+            this.load.image("background", "img/backgroundy.png");
+            this.load.image("sgreenbin", "img/green.png");
+            this.load.image("sgraybin", "img/gray.png");
+            this.load.image("sbrownbin", "img/brown.png");
+            this.load.image("goodface", "img/good.png");
+            this.load.image("waitfeed", "img/waitfeed.png");
+            this.load.spritesheet("eat", "img/eat.png", {
+                frameWidth: 60,
+                frameHeight: 32,
+            });
+            for (let i = 1; i <= 8; i++) {
+                this.load.image("img_khs" + i, "img/khs/" + i + ".png");
+            }
+            for (let i = 1; i <= 14; i++) {
+                this.load.image("img_yh" + i, "img/yh/" + i + ".png");
+            }
+            for (let i = 1; i <= 31; i++) {
+                this.load.image("img_cy" + i, "img/cy/" + i + ".png");
+            }
+        }
+
+        function create() {
+            //  A simple background for our game
+            var background = this.add.image(400, 300, "background");
+            //background.anchor.set(0.5);
+            //  The platforms group contains the ground and the 2 ledges we can jump on
+            platforms = this.physics.add.staticGroup();
+            //  Here we create the ground.
+            //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+            platforms.create(400, 410, "ground").setScale(2).refreshBody();
+            platforms.create(400, 430, "ground").setScale(2).refreshBody();
+            platforms.create(600, 450, "ground").setScale(2).refreshBody();
+
+            platforms.create(600, 480, "ground").setScale(2).refreshBody();
+            platforms.create(600, 500, "ground").setScale(2).refreshBody();
+            platforms.create(600, 550, "ground").setScale(2).refreshBody();
+            platforms.create(600, 580, "ground").setScale(2).refreshBody();
+            platforms.create(600, 610, "ground").setScale(2).refreshBody();
+            platforms.create(600, 660, "ground").setScale(2).refreshBody();
+
+            bin = this.physics.add.group({
+                immovable: true,
+                allowGravity: false,
+            });
+            //Now let's create some Bins
+            var binWidth = 125;
+            sgreenbin = bin.create(170, 250, "sgreenbin");
+            sgreenbin.setDisplaySize(120, 150);
+
+            scoretext = this.add.text(230, 32, "", {
+                font: "20px Arial Black",
+                fill: "black",
+            });
+            scoretext.setStroke("#fff", 6);
+            text = this.add.text(32, 30, "", {
+                font: "20px Arial Black",
+                fill: "red",
+            });
+            text.setStroke("#fff", 6);
+
+            timedEvent = this.time.addEvent({
+                delay: 1000,
+                callback: onEvent,
+                callbackScope: this,
+                loop: true,
+            });
+
+            sgraybin = bin.create(170 + binWidth, 250, "sgraybin");
+            sgraybin.setDisplaySize(120, 150);
+
+            sbrownbin = bin.create(170 + binWidth * 2, 250, "sbrownbin");
+            sbrownbin.setDisplaySize(120, 150);
+
+            //this.add.image(0, 0, "eat", "__BASE").setOrigin(0, 0);
+            // var animo = this.anims.create({
+            //     key: "eat",
+            //     frames: this.anims.generateFrameNumbers("eat", {
+            //         frames: [4, 3, 2],
+            //     }),
+            //     frameRate: 5,
+            //     repeat: -1,
+            // });
+            // var greenbinface = this.add.sprite(167, 240).play("eat");
+            // var greenbinwaitfeed = this.add.image(170, 240, "waitfeed");
+            // greenbinwaitfeed.setVisible(false);
+
+            var ginfo = loadFace(this, 170, 240);
+            var greenbinface = ginfo.face;
+            var greenbinwaitfeed = ginfo.mouth;
+
+            var rinfo = loadFace(this, 295, 240);
+            var graybinface = rinfo.face;
+            var graybinwaitfeed = rinfo.mouth;
+
+            var binfo = loadFace(this, 420, 240);
+            var brownbinface = binfo.face;
+            var brownbinwaitfeed = binfo.mouth;
+
+            // var face = this.add.image(300, 220, "goodface");
+            // face.setDisplaySize(90, 90);
+            // var waitfeed = this.add.image(300, 240, "waitfeed");
+
+            let sps = new Array();
+            this.wasteGroup = this.physics.add.group({
+                //allowGravity: false,
+            });
+            for (let i = 1; i <= 8; i++) {
+                let temp = this.wasteGroup
+                    .create(60 * i, 390, "img_khs" + i)
+                    .setInteractive({
+                        cursor: "url(img/grab.png), pointer",
+                    });
+                temp.setData("gType", "green");
+                sps.push(temp);
+            }
+            for (let i = 1; i <= 14; i++) {
+                let temp = this.wasteGroup
+                    .create(60 * i, 390, "img_yh" + i)
+                    .setInteractive({
+                        cursor: "url(img/grab.png), pointer",
+                    });
+                temp.setData("gType", "gray");
+                sps.push(temp);
+            }
+            for (let i = 1; i <= 30; i++) {
+                let temp = this.wasteGroup
+                    .create(60 * i, 690, "img_cy" + i)
+                    .setInteractive({
+                        cursor: "url(img/grab.png), pointer",
+                    });
+                temp.setData("gType", "brown");
+                sps.push(temp);
+            }
+
+            for (let i = 0; i < sps.length; i++) {
+                let xindex = i;
+                if (i % 16 == 0) xindex = 0;
+                let x = 60 + 60 * (i % 16);
+                let y = 390 + ((i / 16) | 0) * 70;
+
+                let temp = sps[i]; //this.wasteGroup.create(60 * i, 590, "img_yh" + i);
+
+                temp.setScale(0.5);
+                temp.x = x;
+                temp.y = y;
+                // temp.body.setAllowGravity(false);
+                temp.setBounceY(Phaser.Math.FloatBetween(0.1, 0.4));
+                temp.setCollideWorldBounds(true);
+                this.input.setDraggable(temp.setInteractive());
+
+                this.input.on("drag", function(pointer, gameObject, dragX, dragY) {
+                    gameObject.x = dragX;
+                    gameObject.y = dragY;
+                    gameObject.setData("isDrag", "true");
+                    gameObject.setDepth(1); //set z index to top
+                    gameObject.setBounceY(0);
+                    gameObject.body.setAllowGravity(false);
+                    greenbinface.setVisible(false);
+                    greenbinwaitfeed.setVisible(true);
+                    graybinface.setVisible(false);
+                    graybinwaitfeed.setVisible(true);
+                    brownbinface.setVisible(false);
+                    brownbinwaitfeed.setVisible(true);
                 });
+
+                this.input.on("dragend", function(pointer, gameObject) {
+                    gameObject.setDepth(0); //set z index back
+                    gameObject.setData("isDrag", "false");
+                    greenbinface.setVisible(true);
+                    greenbinwaitfeed.setVisible(false);
+                    graybinface.setVisible(true);
+                    graybinwaitfeed.setVisible(false);
+                    brownbinface.setVisible(true);
+                    brownbinwaitfeed.setVisible(false);
+                    //console.log("dragend selectBin:", pointer);
+                    console.log(selectBin);
+                    if (
+                        selectBin == "sgreenbin" &&
+                        gameObject.getData("gType") == "green"
+                    ) {
+                        gameObject.disableBody(true, true);
+                        score++;
+                    } else if (
+                        selectBin == "sgraybin" &&
+                        gameObject.getData("gType") == "gray"
+                    ) {
+                        gameObject.disableBody(true, true);
+                        score++;
+                    } else if (
+                        selectBin == "sbrownbin" &&
+                        gameObject.getData("gType") == "brown"
+                    ) {
+                        gameObject.disableBody(true, true);
+                        score++;
+                    } else {
+                        //fall to the ground
+                        gameObject.body.setAllowGravity(true);
+                        gameObject.setBounceY(Phaser.Math.FloatBetween(0.2, 0.3));
+                    }
+                    selectBin = "";
+                });
+                bindingBin(sgreenbin);
+                bindingBin(sgraybin);
+                bindingBin(sbrownbin);
+
+                this.physics.add.overlap(temp, sgreenbin, spriteHitBin);
+                this.physics.add.overlap(temp, sgraybin, spriteHitBin);
+                this.physics.add.overlap(temp, sbrownbin, spriteHitBin);
+
+                this.physics.add.collider(temp, platforms);
+            }
+        }
+
+        function loadFace(_this, x, y) {
+            var face = _this.add.image(x, y - 20, "goodface");
+            face.setDisplaySize(90, 90);
+            var animo = _this.anims.create({
+                key: "eat",
+                frames: _this.anims.generateFrameNumbers("eat", {
+                    frames: [4, 3, 2],
+                }),
+                frameRate: 5,
+                repeat: -1,
+            });
+            var greenbinface = _this.add.sprite(x - 3, y).play("eat");
+            var greenbinwaitfeed = _this.add.image(x, y, "waitfeed");
+            greenbinwaitfeed.setVisible(false);
+            var info = {
+                face: greenbinface,
+                mouth: greenbinwaitfeed,
+            };
+            return info;
+        }
+
+        function spriteHitBin(sprite, bin) {
+            if (sprite.getData("isDrag") == "true") {
+                if (selectBin == "") {
+                    selectBin = bin.texture.key;
+                } else if (bin.texture.key != selectBin) {
+                    selectBin = bin.texture.key;
+                }
+            }
+        }
+
+        function bindingBin(bin) {
+            bin.on("overlapstart", function() {
+                //console.log("overlapstart:", bin.texture.key);
+                selectBin = bin.texture.key;
+            });
+            bin.on("overlapend", function() {
+                selectBin = "";
+            });
+        }
+
+        function update(e) {
+            scoretext.setText("Score: " + score);
+            text.setText("Time Left: " + gamatimer);
+            updateLapendEvent(sgreenbin);
+            updateLapendEvent(sgraybin);
+            if (gameOver) {
+                return;
+            }
+        }
+
+        function onEvent() {
+            gamatimer--;
+            if (gamatimer === 0) {
+                timedEvent.remove(false);
+                showGameOver();
+            }
+        }
+
+        function updateLapendEvent(bin) {
+            var touching = !bin.body.touching.none;
+            var wasTouching = !bin.body.wasTouching.none;
+
+            // If you want 'touching or embedded' then use:
+            // var touching = !block.body.touching.none || block.body.embedded;
+
+            if (touching && !wasTouching) bin.emit("overlapstart");
+            else if (!touching && wasTouching) bin.emit("overlapend");
+        }
+
+        function hitBomb(player, bomb) {
+            this.physics.pause();
+
+            player.setTint(0xff0000);
+
+            player.anims.play("turn");
+
+            gameOver = true;
+        }
+
+        function showGameOver() {
+            $("#msgscore").append(" ");
+            $("#msgscore").append(score);
+            $("#gameover").modal("show");
+        }
+
+        function nextgame() {
+            window.location.href = "home.html";
         }
     </script>
 </body>
