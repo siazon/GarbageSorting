@@ -67,10 +67,14 @@ public class UserController {
     @PostMapping("/Login")
     public ResponseEntity<String> login(@RequestBody LoginUserData userData) {
 
+        // Validate email and password
+        if (userData.getEmail() == "" || userData.getPassword() == "") {
+            return new ResponseEntity<>("username or password cannot be empty", HttpStatus.NOT_FOUND);
+        }
+
         List<User> list = userMapper.findAll();
 
-        // Validate user email and password by checking if email and password stored in database matches email and
-        // password provided.
+        // Check if email and password stored in database matches with email and password provided.
         String userEmail;
         String userPassword;
         boolean isExist = false;//user exist tag
