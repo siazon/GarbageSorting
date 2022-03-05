@@ -1,6 +1,6 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
-// This class is for the data provided in the request body during user login
+// This class is created for the data provided in the request body during when a user logs in
 public class LoginUserData {
 
     private String email;
