@@ -30,7 +30,7 @@ public class UserController {
     @RequestMapping("/InsertUser")
     public ResponseEntity<String> insert(@RequestBody User user) {
 
-        int res = userMapper.insert(user);
+        User res = userMapper.insert(user);
         return new ResponseEntity<String>("Account successfully created", HttpStatus.OK);
     }
 

@@ -4,13 +4,27 @@ package com.tus.garbagesorting.garbagesorting.Model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    public User (String user_email, String user_name, String user_phone, String user_password, String user_role, String user_status) {
+
+    private int id;
+    private String user_email;
+    private String user_name;
+    private String user_phone;
+    private String user_password;
+    private String user_role;
+    private String user_status;
+
+    public User (int id, String user_email, String user_name, String user_phone, String user_password, String user_role, String user_status) {
+        this.id = id;
         this.user_email = user_email;
         this.user_name = user_name;
         this.user_phone = user_phone;
         this.user_password = user_password;
         this.user_role = user_role;
         this.user_status = user_status;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getUser_email() {
@@ -61,10 +75,5 @@ public class User implements Serializable {
         this.user_status = user_status;
     }
 
-    private String user_email;
-    private String user_name;
-    private String user_phone;
-    private String user_password;
-    private String user_role;
-    private String user_status;
+
 }
