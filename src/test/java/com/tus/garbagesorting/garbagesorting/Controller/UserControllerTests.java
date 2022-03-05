@@ -5,6 +5,7 @@ import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,6 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -48,9 +50,20 @@ class UserControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[1].user_name", is("pete")));
-               // .andExpect(jsonPath("$[1].user_name").value("pete"));
+        // .andExpect(jsonPath("$[1].user_name").value("pete"));
     }
 
+    @Test
+    void getUserByIdSuccessfully() throws Exception {
+        Mockito.when(userMapper.findById(pete.getId())).thenReturn((pete));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/GetUser/2")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.user_name", is("pete")));
+
+    }
 
     @Test
     void createdUserSuccessfully() throws Exception {
@@ -70,13 +83,16 @@ class UserControllerTests {
 
     }
 
-    @Disabled
+
     @Test
-    void login() {
+    void deleteUserSuccessfully() throws Exception {
+        Mockito.when(userMapper.findById(pete.getId())).thenReturn((pete));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/delete/2")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
     }
 
-    @Disabled
-    @Test
-    void deleteUser() {
-    }
 }

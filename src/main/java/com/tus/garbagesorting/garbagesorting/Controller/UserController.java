@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// A test suite to test the API endpoint performing CRUD functionalities.
+
 @CrossOrigin
 @RestController
 public class UserController {
@@ -57,21 +59,18 @@ public class UserController {
         if (!isExist) {
             // if email doesn't already exist, add user
             userMapper.insert(user);
-            //  return new ResponseEntity<>("Account successfully created", HttpStatus.OK);
             return user;
         } else
             return new ResponseEntity<>("Email already taken", HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/Login")
-  //  public ResponseEntity<String> login(@RequestParam String email, String password) {
     public ResponseEntity<String> login(@RequestBody LoginUserData userData) {
 
         List<User> list = userMapper.findAll();
 
         // Validate user email and password by checking if email and password stored in database matches email and
         // password provided.
-
         String userEmail;
         String userPassword;
         boolean isExist = false;//user exist tag
@@ -98,7 +97,5 @@ public class UserController {
 
     }
 
-
-    // Create Api to check if email is already in use
 }
 
