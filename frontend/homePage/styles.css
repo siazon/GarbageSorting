@@ -151,15 +151,16 @@ nav a:hover::before {
 }
 
 .buttonDiv2 {
-
-	margin: 20px 22%;
-	display: inline-block;
+	position: absolute;
+	margin: 0px 29%;
+	bottom: 0;
 }
 
 .buttonDiv3 {
 	width: 100%;
-	margin: 20px 48%;
-	display: inline-block;
+	margin: 0 55%;
+	position: absolute;
+	bottom: 0;
 }
 
 .button:hover {
@@ -381,7 +382,7 @@ nav a:hover::before {
 .educationLogo {
 	position: fixed;
 
-	margin: 6% 65%;
+	margin: 6% 55%;
 	width: 200px;
 	font-size: 30px;
 
@@ -389,13 +390,23 @@ nav a:hover::before {
 
 .educationAccess {
 	position: fixed;
-	margin: 12% 56%;
-	height: 300px;
-	width: 300px;
+	margin: 15% 55%;
+	height: 500px;
+	width: 400px;
+
+
 }
 
 .educationAccessImg {
-
+	width: 350px;
+	margin: -35px -50px;
 	height: 350px;
 
+}
+
+.containerAccess{
+	position: fixed;
+
+	width: 100%;
+	height: 72%;
 }
