@@ -4,9 +4,3 @@ body {
     align-items: center;
     background-color: #d4f0fe;
 }
-
-body div {
-    background-image: url("../img/background.png");
-    background-position: bottom center;
-    background-size: cover;
-}

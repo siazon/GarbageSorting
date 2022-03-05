@@ -71,12 +71,7 @@
     }
 
     function displayGame() {
-        fetch("https://api.github.com/users/ruanyf")
-            .then((response) => response.json())
-            .then((json) => console.log(json))
-            .catch((err) => console.log("Request Failed", err));
-
-        //document.getElementById("centerFrame").src = "game1.html";
+        document.getElementById("centerFrame").src = "gamewelcome.html";
     }
 
     function Repository() {
