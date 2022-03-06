@@ -51,9 +51,12 @@ public class UserController {
                 isExist = true;
             }
 
+            // Create User Roles
             // Every admin should have an email which ends with "garbagesorting.com".
             if (user.getUser_email().contains("garbagesorting.com")) {
                 user.setUser_role("admin");
+            } else {
+                user.setUser_role("player");
             }
         }
         if (!isExist) {
