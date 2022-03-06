@@ -11,6 +11,7 @@ html, body {
 
 
 #container {
+	z-index: 5;
 	width: 100%;
 	background-color: #fff;
 	height: 70px;
@@ -152,13 +153,13 @@ nav a:hover::before {
 
 .buttonDiv2 {
 	position: absolute;
-	margin: 0px 29%;
+	margin-left: 17%;
 	bottom: 0;
 }
 
 .buttonDiv3 {
 	width: 100%;
-	margin: 0 55%;
+	margin-left: 63%;
 	position: absolute;
 	bottom: 0;
 }
@@ -334,13 +335,11 @@ nav a:hover::before {
 }
 
 .gameAccess {
-	position: fixed;
-	margin: 12% 25%;
-
-	height: 300px;
-	width: 300px;
+	position: absolute;
+	margin: 18% 9%;
 
 }
+
 
 .gameAccessImg {
 	border-radius: 50px;
@@ -348,6 +347,7 @@ nav a:hover::before {
 	height: 350px;
 	animation: shake 3.5s;
 	animation-iteration-count: infinite;
+	position: absolute;
 
 }
 
@@ -371,42 +371,54 @@ nav a:hover::before {
 }
 
 
-.gameLogo {
-	position: fixed;
 
-	margin: 6% 28%;
-	font-size: 30px;
 
-}
 
-.educationLogo {
-	position: fixed;
-
-	margin: 6% 55%;
-	width: 200px;
-	font-size: 30px;
-
-}
 
 .educationAccess {
-	position: fixed;
+	position: absolute;
 	margin: 15% 55%;
-	height: 500px;
-	width: 400px;
+
 
 
 }
 
 .educationAccessImg {
 	width: 350px;
-	margin: -35px -50px;
+	margin: 57px 38px;
 	height: 350px;
+	position: absolute;
 
 }
 
 .containerAccess{
-	position: fixed;
+	position: absolute;
+	width: 900px;
+	height: 71%;
+	margin: 4% 19%;
 
-	width: 100%;
-	height: 72%;
+
+}
+
+.accessLogoGame {
+	font-size: 60px;
+	letter-spacing: -3px;
+	text-shadow: 3px 3px #000000;
+	position: absolute;
+	font-family: "UnpackW00-Fast";
+	margin: 5% 15%;
+
+}
+
+
+.accessLogoEducation {
+	font-size: 60px;
+	letter-spacing: -3px;
+	text-shadow: 3px 3px #000000;
+	position: absolute;
+	width: 300px;
+	font-family: "UnpackW00-Fast";
+	margin: 5% 60%;
+
+
 }
