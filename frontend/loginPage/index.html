@@ -1,68 +1,523 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>    
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>Log in page</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/a3common.css" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Log in</title>
+
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/font_43459_lbtux0zjkr6yldi.css">
-    <link href="//db.onlinewebfonts.com/c/31d6999b03b69180254d0999127e1bc8?family=UnpackW00-Fast"
-            rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/sign-up-login.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/inputEffect.css" />
+    <link rel="stylesheet" href="css/tooltips.css" />
+    <link rel="stylesheet" href="css/spop.min.css" />
+
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <!-- <script src="js/snow.js"></script> -->
+    <script src="js/jquery.pure.tooltips.js"></script>
+    <script src="js/spop.min.js"></script>
+    <script>
+        (function () {
+
+            if (!String.prototype.trim) {
+                (function () {
+
+                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                    String.prototype.trim = function () {
+                        return this.replace(rtrim, '');
+                    };
+                })();
+            }
+
+            [].slice.call(document.querySelectorAll('input.input__field')).forEach(function (inputEl) {
+
+                if (inputEl.value.trim() !== '') {
+                    classie.add(inputEl.parentNode, 'input--filled');
+                }
+
+
+                inputEl.addEventListener('focus', onInputFocus);
+                inputEl.addEventListener('blur', onInputBlur);
+            });
+
+            function onInputFocus(ev) {
+                classie.add(ev.target.parentNode, 'input--filled');
+            }
+
+            function onInputBlur(ev) {
+                if (ev.target.value.trim() === '') {
+                    classie.remove(ev.target.parentNode, 'input--filled');
+                }
+            }
+        })();
+
+        $(function () {
+            $('#login #login-password').focus(function () {
+                $('.login-owl').addClass('password');
+            }).blur(function () {
+                $('.login-owl').removeClass('password');
+            });
+            $('#login #register-password').focus(function () {
+                $('.register-owl').addClass('password');
+            }).blur(function () {
+                $('.register-owl').removeClass('password');
+            });
+            $('#login #register-repassword').focus(function () {
+                $('.register-owl').addClass('password');
+            }).blur(function () {
+                $('.register-owl').removeClass('password');
+            });
+            $('#login #forget-password').focus(function () {
+                $('.forget-owl').addClass('password');
+            }).blur(function () {
+                $('.forget-owl').removeClass('password');
+            });
+        });
+
+        function goto_register() {
+            $("#register-username").val("");
+            $("#register-password").val("");
+            $("#register-repassword").val("");
+            $("#register-code").val("");
+            $("#tab-2").prop("checked", true);
+        }
+
+        function goto_login() {
+            $("#login-username").val("");
+            $("#login-password").val("");
+            $("#tab-1").prop("checked", true);
+        }
+
+        function goto_forget() {
+            $("#forget-username").val("");
+            $("#forget-password").val("");
+            $("#forget-code").val("");
+            $("#tab-3").prop("checked", true);
+        }
+
+        function login() {
+            var username = $("#login-username").val(),
+                password = $("#login-password").val(),
+                validatecode = null,
+                flag = false;
+                console.log(username,":",password);
+            /*Check whether the user name and password are empty*/
+            if (username == "") {
+                $.pt({
+                    target: $("#login-username"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The user name cannot be empty!"
+                });
+                flag = true;
+            }
+            if (password == "") {
+                $.pt({
+                    target: $("#login-password"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The password cannot be empty!"
+                });
+                flag = true;
+            }
+            /*The username can contain only 15 or fewer letters or digits*/
+            // var regExp = new RegExp("^[a-zA-Z0-9_]{1,15}$");
+            // if (!regExp.test(username)) {
+            //     $.pt({
+            //         target: $("#login-username"),
+            //         position: 'r',
+            //         align: 't',
+            //         width: 'auto',
+            //         height: 'auto',
+            //         content: "The username must contain a maximum of 15 letters or digits!"
+            //     });
+            //     flag = true;
+            // }
+
+            if (flag) {
+                return false;
+            } else {
+                var requestData={"email":username,"password":password};
+                fetch("http://afc0-77-75-244-133.ngrok.io/Login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+                body: JSON.stringify(requestData),
+                })
+                //.then((response) => response.json())
+                .then((json) => {
+                    if (json.status == 200) {
+                    alert("Done");
+                    window.location.href = "../../home.html";
+                } else {
+                    alert(json.status);
+                    return false;
+                }
+                    
+                    
+                });
+
+                /* Invokes the method of background login authentication*/
+                //alert('Login successfully');
+             
+            }
+        }
+
+        /*register*/
+        function register() {
+            var username = $("#register-username").val(),
+                password = $("#register-password").val(),
+                repassword = $("#register-repassword").val(),
+                code = $("#register-code").val(),
+                flag = false,
+                validatecode = null;
+            /* Check whether the user name and password are empty*/
+            if (username == "") {
+                $.pt({
+                    target: $("#register-username"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The user name cannot be empty!"
+                });
+                flag = true;
+            }
+            if (password == "") {
+                $.pt({
+                    target: $("#register-password"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The password cannot be empty!"
+                });
+                flag = true;
+            } else {
+                if (password != repassword) {
+                    $.pt({
+                        target: $("#register-repassword"),
+                        position: 'r',
+                        align: 't',
+                        width: 'auto',
+                        height: 'auto',
+                        content: " Entered passwords differ!"
+                    });
+                    flag = true;
+                }
+            }
+            /*The username can contain only 15 or fewer letters or digits*/
+            var regExp = new RegExp("^[a-zA-Z0-9_]{1,15}$");
+            if (!regExp.test(username)) {
+                $.pt({
+                    target: $("#register-username"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The username must contain a maximum of 15 letters or digits!"
+                });
+                flag = true;
+            }
+
+            /*Check the background method registration code, here write dead as 11111111*/
+            if (code != '11111111') {
+                $.pt({
+                    target: $("#register-code"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The registration code is incorrect!"
+                });
+                flag = true;
+            }
+
+
+            if (flag) {
+                return false;
+            } else {
+                spop({
+                    template: '<h4 class="spop-title"> Registration Successful</h4>Will return to login in 3 seconds',
+                    position: 'top-center',
+                    style: 'success',
+                    autoclose: 3000,
+                    onOpen: function () {
+                        var second = 2;
+                        var showPop = setInterval(function () {
+                            if (second == 0) {
+                                clearInterval(showPop);
+                            }
+                            $('.spop-body').html('<h4 class="spop-title">Registration Successful</h4></h4>Will return to login in' + second + 'seconds');
+                            second--;
+                        }, 1000);
+                    },
+                    onClose: function () {
+                        goto_login();
+                    }
+                });
+                return false;
+            }
+        }
+
+        /*Reset Password*/
+        function forget() {
+            var username = $("#forget-username").val(),
+                password = $("#forget-password").val(),
+                code = $("#forget-code").val(),
+                flag = false,
+                validatecode = null;
+            /*Check whether the user name and password are empty*/
+            if (username == "") {
+                $.pt({
+                    target: $("#forget-username"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The user name cannot be empty!"
+                });
+                flag = true;
+            }
+            if (password == "") {
+                $.pt({
+                    target: $("#forget-password"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The password cannot be empty!"
+                });
+                flag = true;
+            }
+            /*The username can contain only 15 or fewer letters or digits*/
+            var regExp = new RegExp("^[a-zA-Z0-9_]{1,15}$");
+            if (!regExp.test(username)) {
+                $.pt({
+                    target: $("#forget-username"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The username must contain a maximum of 15 letters or digits!"
+                });
+                flag = true;
+            }
+
+
+            /*Check whether the registration code is correct*/
+            if (code != '11111111') {
+                $.pt({
+                    target: $("#forget-code"),
+                    position: 'r',
+                    align: 't',
+                    width: 'auto',
+                    height: 'auto',
+                    content: "The registration code is incorrect!"
+                });
+                flag = true;
+            }
+
+
+
+            if (flag) {
+                return false;
+            } else {/*reset passwords*/
+                spop({
+                    template: '<h4 class="spop-title">Reset password succeeded</h4>Will return to login in 3 seconds',
+                    position: 'top-center',
+                    style: 'success',
+                    autoclose: 3000,
+                    onOpen: function () {
+                        var second = 2;
+                        var showPop = setInterval(function () {
+                            if (second == 0) {
+                                clearInterval(showPop);
+                            }
+                            $('.spop-body').html('<h4 class="spop-title">Reset password succeeded</h4>Will return to login in' + second + 'seconds');
+                            second--;
+                        }, 1000);
+                    },
+                    onClose: function () {
+                        goto_login();
+                    }
+                });
+                return false;
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+    <style type="text/css">
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-repeat: no-repeat;
+            background-position: center center #2D0F0F;
+            background-color: #00BDDC;
+            background-image: url(images/loginback.png);
+            background-size: 100% 100%;
+        }
+
+        
+    </style>
 </head>
- 
 <body>
-
-
-    <div id="main" class="main-warp">
-        <div class="main-content">
-            <div class="formDiv">
-                
-                    <h2 class="text-center"><b>Log in</b></h2>
-                
-                
-                <form id="loginForm" method="post">
-                    <div class="dataform" >
-                        <div class="input-warp gap">
-                            <span class="input-icon iconfont icon-yonghu1"></span>
-                            <input id="userName" name="username" type="text" class="inputs" placeholder="E-mail" maxlength="64">
+    
+    <!-- Login Control -->
+    <div id="login">
+        <input id="tab-1" type="radio" name="tab" class="sign-in hidden" checked />
+        <input id="tab-2" type="radio" name="tab" class="sign-up hidden" />
+        <input id="tab-3" type="radio" name="tab" class="sign-out hidden" />
+        <div class="wrapper">
+            <!-- login page -->
+            <div class="login sign-in-htm">
+                <form class="container offset1 loginform">
+                    
+                    <div id="owl-login" class="login-owl">
+                       
+                        <div class="arms">
+                            <div class="arm"></div>
+                            <div class="arm arm-r"></div>
                         </div>
-                        <div class="error-content">
-                            <span id="userNameErr" class="errMsg"></span>
-                        </div>
-
-                        <div class="input-warp gap">
-                            <span class="input-icon iconfont icon-baomi"></span>
-                            <input class="inputs" type="password" name="password" placeholder="Password" id="pwd" maxlength="20">
-                        </div>
-                        <div class="error-content">
-                            <span id="passwordErr" class="errMsg"></span>
-                        </div>
-
-                        <div class="btn-warp gap">
-                            <div class="text-center">                               
-                                <input type="hidden" value="jsform" id="_app"/>
-                                <button type="submit" id="btnLogin" class="btn btn-block lgbtn blue">Log in</button>
-                            </div>
-                        </div>
-                        <div class="gap">
-                            
-                                <div class="pull-right" style="margin-top: 6px"><a href="javascript:;" class="link">Lost Password</a><span class="split-space">|</span><a href="register.html" class="link"> Registration</a></div>
-                            
-                            <div class="pretty-box">
-                                <input type="checkbox" value="1" name="REMEMBER" id="remember" class="">
-                                <label for="remember" style="font-weight: normal" >Remember Me</label>
-                            </div>
-                        
-                        
+                    </div>
+                    <div class="pad input-container">
+                        <section class="content">
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="login-username"
+                                       autocomplete="off" placeholder="Please input user name" tabindex="1" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="login-username">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="login-password" placeholder="Please enter your password" tabindex="2" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="login-password">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                        </section>
+                    </div>
+                    <div class="form-actions">
+                        <a tabindex="4" class="btn pull-left btn-link text-muted" onclick="goto_forget()"> LOST PASSWORD?</a>
+                        <a tabindex="5" class="btn btn-link text-muted" onclick="goto_register()">Registration</a>
+                        <input class="btn btn-primary" type="button" tabindex="3" onclick="login()" value="Login" style="color:white;" />
                     </div>
                 </form>
-
+            </div>
+            <!-- Forgotten password page -->
+            <div class="login sign-out-htm">
+                <form action="#" method="post" class="container offset1 loginform">
+                   
+                    <div id="owl-login" class="forget-owl">
+                        
+                        <div class="arms">
+                            <div class="arm"></div>
+                            <div class="arm arm-r"></div>
+                        </div>
+                    </div>
+                    <div class="pad input-container">
+                        <section class="content">
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="forget-username" autocomplete="off" placeholder="Please input user name" />
+                                <label class="input__label input__label--hideo" for="forget-username">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="forget-code" autocomplete="off" placeholder=" please enter the registration code" />
+                                <label class="input__label input__label--hideo" for="forget-code">
+                                    <i class="fa fa-fw fa-wifi icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="forget-password" placeholder="Please reset your password" />
+                                <label class="input__label input__label--hideo" for="forget-password">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                        </section>
+                    </div>
+                    <div class="form-actions">
+                        <a class="btn pull-left btn-link text-muted" onclick="goto_login()">Back to Login</a>
+                        <input class="btn btn-primary" type="button" onclick="forget()" value="reset passwords"
+                               style="color:white;" />
+                    </div>
+                </form>
+            </div>
+            <!-- registration page -->
+            <div class="login sign-up-htm">
+                <form action="#" method="post" class="container offset1 loginform">
+                   
+                    <div id="owl-login" class="register-owl">
+                       
+                        <div class="arms">
+                            <div class="arm"></div>
+                            <div class="arm arm-r"></div>
+                        </div>
+                    </div>
+                    <div class="pad input-container">
+                        <section class="content">
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="register-username"
+                                       autocomplete="off" placeholder="Please input user name" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="register-username">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="register-password" placeholder="Please enter your password" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="register-password">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="register-repassword" placeholder=" Please confirm password" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="register-repassword">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="register-code" autocomplete="off" placeholder=" please enter the registration code" />
+                                <label class="input__label input__label--hideo" for="register-code">
+                                    <i class="fa fa-fw fa-wifi icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                                </label>
+                            </span>
+                        </section>
+                    </div>
+                    <div class="form-actions">
+                        <a class="btn pull-left btn-link text-muted" onclick="goto_login()">Back to Login</a>
+                        <input class="btn btn-primary" type="button" onclick="register()" value="register"
+                               style="color:white;" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
+   
 </body>
 </html>
+
