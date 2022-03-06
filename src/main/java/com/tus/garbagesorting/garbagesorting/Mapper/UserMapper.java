@@ -12,5 +12,7 @@ public interface UserMapper {
 
     int deleteById(int id);
 
+    User findById(int id);
+
     List<User> findAll();
 }
