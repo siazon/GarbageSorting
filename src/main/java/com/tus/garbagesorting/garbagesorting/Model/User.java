@@ -11,16 +11,14 @@ public class User implements Serializable {
     private String user_phone;
     private String user_password;
     private String user_role;
-    private String user_status;
 
-    public User (int id, String user_email, String user_name, String user_phone, String user_password, String user_role, String user_status) {
+    public User (int id, String user_email, String user_name, String user_phone, String user_password, String user_role) {
         this.id = id;
         this.user_email = user_email;
         this.user_name = user_name;
         this.user_phone = user_phone;
         this.user_password = user_password;
         this.user_role = user_role;
-        this.user_status = user_status;
     }
 
     public int getId() {
@@ -65,14 +63,6 @@ public class User implements Serializable {
 
     public void setUser_role(String user_role) {
         this.user_role = user_role;
-    }
-
-    public String getUser_status() {
-        return user_status;
-    }
-
-    public void setUser_status(String user_status) {
-        this.user_status = user_status;
     }
 
 
