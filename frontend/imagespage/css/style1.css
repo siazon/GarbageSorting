@@ -1,0 +1,34 @@
+/*---start-header----*/
+*---start-wrap----*/
+.wrap{
+	width:70%;
+	margin:0 auto;
+}
+.header{
+	background:url(../images/border.png) repeat-x 0px 0px #FFF;
+	padding: 1.5em 0 1.2em;
+	
+}
+h1{
+    padding-top: 100px;
+    text-align:center;
+    font-size: 40px;
+    color: rgb(82, 31, 119);
+
+}
+.form-group{
+    text-align:center;
+}
+.button {
+    background-color: rgb(82, 31, 119);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button {border-radius: 8px;}
