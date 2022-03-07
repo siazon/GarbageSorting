@@ -15,6 +15,7 @@ html, body {
 	background-color: #fff;
 	height: 78px;
 	border-bottom: lightgray solid 0.5px;
+	position: fixed;
 }
 
 header {
@@ -457,8 +458,9 @@ nav a:hover::before {
 .mainContent {
 	align-content: center;
 	margin-left: 25%;
-	margin-top: 6%;
+	margin-top: 7%;
 	width: 43%;
+	position: absolute;
 }
 
 
