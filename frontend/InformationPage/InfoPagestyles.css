@@ -1,7 +1,6 @@
 html, body {
 	min-height: 100%;
 	width: 100%;
-	background-image: url(background.jpg); /*replace image.jpg with path to your image*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -15,6 +14,7 @@ html, body {
 	width: 100%;
 	background-color: #fff;
 	height: 78px;
+	border-bottom: lightgray solid 0.5px;
 }
 
 header {
@@ -332,7 +332,7 @@ nav a:hover::before {
 	background-color: #282d32;
 	width: 100%;
 	position: absolute;
-	bottom: -287px;
+	bottom: -150%;
 }
 
 .gameAccess {
@@ -454,3 +454,16 @@ nav a:hover::before {
 	opacity:0;
 }
 
+.mainContent {
+	align-content: center;
+	margin-left: 25%;
+	margin-top: 6%;
+	width: 43%;
+}
+
+
+.mainTitleText {
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+	line-height: 1.2;
+}
