@@ -473,3 +473,7 @@ nav a:hover::before {
 	font-weight: 500;
 	line-height: 1.2;
 }
+
+.caption {
+	font-size: 12px;
+}
