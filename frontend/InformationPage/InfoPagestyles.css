@@ -1,7 +1,7 @@
 html, body {
 	min-height: 100%;
 	width: 100%;
-	background-image: url(infoBack.jpg); /*replace image.jpg with path to your image*/
+	background-image: url(background.jpg); /*replace image.jpg with path to your image*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -11,9 +11,10 @@ html, body {
 
 
 #container {
+	z-index: 5;
 	width: 100%;
 	background-color: #fff;
-	height: 60px;
+	height: 78px;
 }
 
 header {
@@ -23,9 +24,10 @@ header {
 
 .headerDiv {
 
-	float: left;
-	height: 50px;
 
+	float: left;
+	margin: 3px 200px;
+	height: 50px;
 }
 
 
@@ -84,7 +86,7 @@ nav a {
 	color: #135658;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 33px;
 	font-family: "UnpackW00-Fast";
 }
 
@@ -115,17 +117,64 @@ nav a:hover::before {
 	padding: 5px 38px;
 	text-align: center;
 	text-decoration: none;
-	font-size: 22px;
+	font-size: 33px;
+	font-family: "UnpackW00-Fast";
+}
+
+.button2 {
+	background-color: #282d32;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	padding: 4px 50px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 35px;
+	font-family: "UnpackW00-Fast";
+}
+
+.button3 {
+	background-color: #282d32;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	padding: 4px 50px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 35px;
 	font-family: "UnpackW00-Fast";
 }
 
 .buttonDiv {
 
-	margin: 12px 0px;
+	margin: 11px -307px;
 	display: inline-block;
 }
 
+.buttonDiv2 {
+	position: absolute;
+	margin-left: 17%;
+	bottom: 0;
+}
+
+.buttonDiv3 {
+
+	margin-left: 60%;
+	position: absolute;
+	bottom: 0;
+}
+
 .button:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.button2:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.button3:hover {
 	text-decoration: none;
 	color: white;
 }
@@ -247,12 +296,14 @@ nav a:hover::before {
 
 .headerLogo {
 	font-family: "UnpackW00-Fast";
-	font-size: 32px;
+	font-size: 37px;
 	float: left;
-	margin: 10px 71px;
+	margin-left: 33px;
 	letter-spacing: -3px;
 	text-shadow: 2px 2px #000000;
+	margin-top: 8px;
 }
+
 
 .a_logo:hover {
 	text-decoration: none;
@@ -269,7 +320,7 @@ nav a:hover::before {
 
 .navigationDiv {
 
-	margin: 6px 90px;
+	margin: -55px 33%;
 	display: inline-block;
 	float: left;
 }
@@ -281,6 +332,125 @@ nav a:hover::before {
 	background-color: #282d32;
 	width: 100%;
 	position: absolute;
-	bottom: -244px;
+	bottom: -287px;
+}
+
+.gameAccess {
+	position: absolute;
+	margin: 14% 9%;
+
+}
+
+
+.gameAccessImg {
+	border-radius: 50px;
+	width: 350px;
+	height: 350px;
+	animation: shake 3.5s;
+	animation-iteration-count: infinite;
+	position: absolute;
+
+}
+
+.gameAccessImg:hover {
+	animation: shake 0.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+
+
+
+
+.educationAccess {
+	position: absolute;
+	margin: 15% 55%;
+
+
+
+}
+
+.educationAccessImg {
+	width: 350px;
+	margin-top: 16%;
+	margin-left: 56%;
+	animation: shake 3.5s;
+	animation-iteration-count: infinite;
+	height: 350px;
+	position: absolute;
+
+}
+
+
+.searchAccessImg {
+	width: 280px;
+	margin-top: 17%;
+	margin-left: 59%;
+	height: 280px;
+	position: absolute;
+
+}
+
+
+.containerAccess{
+	position: absolute;
+	width: 1200px;
+	height: 71%;
+	margin-left: 18%;
+	margin-top: 5%;
+
+
+}
+
+.accessLogoGame {
+	font-size: 55px;
+	letter-spacing: -3px;
+	text-shadow: 3px 3px #000000;
+	position: absolute;
+	font-family: "UnpackW00-Fast";
+	margin-left: 15%;
+	margin-top: 5%;
+
+
+}
+
+
+.accessLogoEducation {
+	font-size: 55px;
+	letter-spacing: -3px;
+	text-shadow: 3px 3px #000000;
+	position: absolute;
+	width: 300px;
+	font-family: "UnpackW00-Fast";
+
+	margin-left: 60%;
+	margin-top: 5%;
+
+}
+
+#cf img {
+	position: absolute;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+}
+
+#cf img.educationAccessImg:hover {
+	opacity:0;
 }
 
