@@ -1,24 +1,17 @@
-html,
-body {
+html, body {
     min-height: 100%;
     width: 100%;
     background-size: cover;
     background-image: url("background.jpg");
     background-repeat: no-repeat;
     background-position: center center;
+
+
 }
 
-.select {
-    height: 980px;
-    width: 100%;
-}
-
-.container {
-    height: 100%;
-}
 
 #container {
-    z-index: 0;
+    z-index: 5;
     width: 100%;
     background-color: #fff;
     height: 78px;
@@ -32,6 +25,8 @@ header {
 }
 
 .headerDiv {
+
+
     float: left;
     margin-top: 3px;
     margin-left: 300px;
@@ -39,8 +34,8 @@ header {
 }
 
 
-/* Style all font awesome icons */
 
+/* Style all font awesome icons */
 .fa {
     padding: 20px;
     font-size: 30px;
@@ -51,27 +46,20 @@ header {
     border-radius: 50%;
 }
 
-
 /* Add a hover effect if you want */
-
 .fa:hover {
     opacity: 0.7;
 }
 
-
 /* Set a specific color for each brand */
 
-
 /* Facebook */
-
 .fa-facebook {
     background: #3B5998;
     color: white;
 }
 
-
 /* Twitter */
-
 .fa-twitter {
     background: #55ACEE;
     color: white;
@@ -80,12 +68,14 @@ header {
 nav {
     text-align: center;
     font-family: Oswald, Helvetica, Arial, sans-serif;
+
 }
 
 nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+
 }
 
 nav li {
@@ -159,6 +149,7 @@ nav a:hover::before {
 }
 
 .buttonDiv {
+
     /* margin: 11px -307px; */
     margin-top: -39px;
     margin-right: 29%;
@@ -168,11 +159,12 @@ nav a:hover::before {
 
 .buttonDiv2 {
     position: absolute;
-    margin-left: 17%;
+    margin-left: 15%;
     bottom: 0;
 }
 
 .buttonDiv3 {
+
     margin-left: 60%;
     position: absolute;
     bottom: 0;
@@ -219,11 +211,15 @@ nav a:hover::before {
     font-size: 1.2rem;
 }
 
+
+
+
 .footer-dark h3 {
     margin-top: 0;
     margin-bottom: 12px;
     font-weight: bold;
     font-size: 16px;
+
 }
 
 .footer-dark ul {
@@ -301,6 +297,7 @@ nav a:hover::before {
     opacity: 0.3;
     font-size: 13px;
     margin-bottom: 0;
+
 }
 
 .headerLogo {
@@ -313,6 +310,7 @@ nav a:hover::before {
     margin-top: 8px;
 }
 
+
 .a_logo:hover {
     text-decoration: none;
     -webkit-transform: scale(1.1);
@@ -322,14 +320,17 @@ nav a:hover::before {
 }
 
 .a_logo {
-    display: inline-block;
+    display:inline-block;
+
 }
 
 .navigationDiv {
+
     margin: -49px 33%;
     display: inline-block;
     float: left;
 }
+
 
 .footer-dark {
     padding: 50px 0;
@@ -342,8 +343,10 @@ nav a:hover::before {
 
 .gameAccess {
     position: absolute;
-    margin: 15% 12%;
+    margin: 14% 9%;
+
 }
+
 
 .gameAccessImg {
     border-radius: 50px;
@@ -352,6 +355,7 @@ nav a:hover::before {
     animation: shake 3.5s;
     animation-iteration-count: infinite;
     position: absolute;
+
 }
 
 .gameAccessImg:hover {
@@ -360,44 +364,30 @@ nav a:hover::before {
 }
 
 @keyframes shake {
-    0% {
-        transform: translate(1px, 1px) rotate(0deg);
-    }
-    10% {
-        transform: translate(-1px, -2px) rotate(-1deg);
-    }
-    20% {
-        transform: translate(-3px, 0px) rotate(1deg);
-    }
-    30% {
-        transform: translate(3px, 2px) rotate(0deg);
-    }
-    40% {
-        transform: translate(1px, -1px) rotate(1deg);
-    }
-    50% {
-        transform: translate(-1px, 2px) rotate(-1deg);
-    }
-    60% {
-        transform: translate(-3px, 1px) rotate(0deg);
-    }
-    70% {
-        transform: translate(3px, 1px) rotate(-1deg);
-    }
-    80% {
-        transform: translate(-1px, -1px) rotate(1deg);
-    }
-    90% {
-        transform: translate(1px, 2px) rotate(0deg);
-    }
-    100% {
-        transform: translate(1px, -2px) rotate(-1deg);
-    }
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+
+
+
+
 
 .educationAccess {
     position: absolute;
     margin: 15% 55%;
+
+
+
 }
 
 .educationAccessImg {
@@ -408,7 +398,9 @@ nav a:hover::before {
     animation-iteration-count: infinite;
     height: 350px;
     position: absolute;
+
 }
+
 
 .searchAccessImg {
     width: 280px;
@@ -416,14 +408,18 @@ nav a:hover::before {
     margin-left: 59%;
     height: 280px;
     position: absolute;
+
 }
 
-.containerAccess {
+
+.containerAccess{
     position: absolute;
-    width: 58%;
+    width: 1200px;
     height: 71%;
     margin-left: 18%;
     margin-top: 5%;
+
+
 }
 
 .accessLogoGame {
@@ -434,7 +430,10 @@ nav a:hover::before {
     font-family: "UnpackW00-Fast";
     margin-left: 15%;
     margin-top: 5%;
+
+
 }
+
 
 .accessLogoEducation {
     font-size: 55px;
@@ -443,8 +442,10 @@ nav a:hover::before {
     position: absolute;
     width: 300px;
     font-family: "UnpackW00-Fast";
+
     margin-left: 60%;
     margin-top: 5%;
+
 }
 
 #cf img {
@@ -456,5 +457,5 @@ nav a:hover::before {
 }
 
 #cf img.educationAccessImg:hover {
-    opacity: 0;
+    opacity:0;
 }
