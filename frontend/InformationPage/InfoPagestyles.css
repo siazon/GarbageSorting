@@ -27,7 +27,8 @@ header {
 
 
 	float: left;
-	margin: 3px 200px;
+	margin-top: 3px;
+	margin-left: 300px;
 	height: 50px;
 }
 
@@ -148,8 +149,11 @@ nav a:hover::before {
 
 .buttonDiv {
 
-	margin: 11px -307px;
-	display: inline-block;
+	/* margin: 11px -307px; */
+	margin-top: -39px;
+	margin-right: 29%;
+	/* display: inline-block; */
+	float: right;
 }
 
 .buttonDiv2 {
@@ -297,7 +301,7 @@ nav a:hover::before {
 
 .headerLogo {
 	font-family: "UnpackW00-Fast";
-	font-size: 37px;
+	font-size: 44px;
 	float: left;
 	margin-left: 33px;
 	letter-spacing: -3px;
@@ -321,7 +325,7 @@ nav a:hover::before {
 
 .navigationDiv {
 
-	margin: -55px 33%;
+	margin: -49px 33%;
 	display: inline-block;
 	float: left;
 }

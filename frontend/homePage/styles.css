@@ -1,8 +1,8 @@
 html, body {
 	min-height: 100%;
 	width: 100%;
-	background-image: url(background.jpg); /*replace image.jpg with path to your image*/
 	background-size: cover;
+	background-image: url("background.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
 
@@ -14,9 +14,9 @@ html, body {
 	z-index: 5;
 	width: 100%;
 	background-color: #fff;
-	position: fixed;
 	height: 78px;
 	border-bottom: lightgray solid 0.5px;
+	position: fixed;
 }
 
 header {
@@ -28,7 +28,8 @@ header {
 
 
 	float: left;
-	margin: 3px 200px;
+	margin-top: 3px;
+	margin-left: 300px;
 	height: 50px;
 }
 
@@ -74,7 +75,7 @@ nav ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	
+
 }
 
 nav li {
@@ -149,8 +150,11 @@ nav a:hover::before {
 
 .buttonDiv {
 
-	margin: 11px -307px;
-	display: inline-block;
+	/* margin: 11px -307px; */
+	margin-top: -39px;
+	margin-right: 29%;
+	/* display: inline-block; */
+	float: right;
 }
 
 .buttonDiv2 {
@@ -298,7 +302,7 @@ nav a:hover::before {
 
 .headerLogo {
 	font-family: "UnpackW00-Fast";
-	font-size: 37px;
+	font-size: 44px;
 	float: left;
 	margin-left: 33px;
 	letter-spacing: -3px;
@@ -317,12 +321,12 @@ nav a:hover::before {
 
 .a_logo {
 	display:inline-block;
-	
+
 }
 
 .navigationDiv {
 
-	margin: -55px 33%;
+	margin: -49px 33%;
 	display: inline-block;
 	float: left;
 }
@@ -334,7 +338,7 @@ nav a:hover::before {
 	background-color: #282d32;
 	width: 100%;
 	position: absolute;
-	bottom: -287px;
+	bottom: -30%;
 }
 
 .gameAccess {
@@ -455,73 +459,3 @@ nav a:hover::before {
 #cf img.educationAccessImg:hover {
 	opacity:0;
 }
-
-
-
-
-
-#bodymovin {
-	width: 100%;
-	height: 100%;
-	display: block;
-	overflow: hidden;
-	transform: translate3d(0, 0, 0);
-	text-align: center;
-	opacity: 1;
-	z-index: 5;
-
-}
-#close {
-	transition: opacity 0.4s ease 0.1s, color 0.2s, transform 0.2s;
-	opacity: 0;
-	border: none;
-	background: none;
-	position: fixed;
-	top: 1em;
-	right: 1em;
-	font-size: 2em;
-	padding: 1em;
-	cursor: pointer;
-	z-index: 1;
-}
-.open #close {
-	opacity: 1;
-}
-#close:focus {
-	outline: none;
-	transform: scale(1.1);
-}
-.modal {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-.modal__content {
-	opacity: 0;
-	transform: scale(0.8) translate3D(0, -20px, 0);
-	transition: opacity 0.2s, transform 0.8s cubic-bezier(0.09, 0.52, 0.25, 1);
-	text-align: center;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	padding: 1em;
-}
-.modal h1 {
-	text-transform: uppercase;
-	letter-spacing: 0.4em;
-}
-.modal p {
-	max-width: 25em;
-	line-height: 1.9;
-}
-.open .modal__content {
-	opacity: 1;
-	transform: scale(1) translate3D(0, 0, 0);
-}
-
