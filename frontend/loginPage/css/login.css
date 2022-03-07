@@ -11073,14 +11073,6 @@ Animated icons .content-block {
   transition: 0.3s ease-out;
 }
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #login .owl-signup .owl-body, #register .owl-signup .owl-body {
-    background-image: url("../images/signup@2x.png");
-    -webkit-background-size: 230px 288px;
-    -moz-background-size: 230px 288px;
-    background-size: 230px 288px;
-  }
-}
 
 #login .owl-signup .owl-body .owl-eye, #register .owl-signup .owl-body .owl-eye {
   -webkit-border-radius: 50px;
@@ -11140,32 +11132,10 @@ Animated icons .content-block {
   transform-origin: 100% 100%;
 }
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #login .owl-signup .owl-arm, #register .owl-signup .owl-arm {
-    background-image: url("../images/signup-arm@2x.png");
-    -webkit-background-size: 92px 103px;
-    -moz-background-size: 92px 103px;
-    background-size: 92px 103px;
-  }
-}
 
-#login .owl-signup .owl-feet, #register .owl-signup .owl-feet {
-  background-image: url("../images/signup-feet.png");
-  width: 150px;
-  height: 32px;
-  position: absolute;
-  bottom: -12px;
-  left: 12px;
-}
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #login .owl-signup .owl-feet, #register .owl-signup .owl-feet {
-    background-image: url("../images/signup-feet@2x.png");
-    -webkit-background-size: 150px 32px;
-    -moz-background-size: 150px 32px;
-    background-size: 150px 32px;
-  }
-}
+
+
 
 #login .owl-signup.step2 .owl-body, #register .owl-signup.step2 .owl-body {
   -webkit-transform: rotate(-3deg);
@@ -11256,21 +11226,7 @@ Animated icons .content-block {
   margin-bottom: 100px;
 }
 
-#register #signup-background .books {
-  background-image: url("../images/books.png");
-  background-position: -411px bottom;
-  position: relative;
-  background-repeat: repeat-x;
-}
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #register #signup-background .books {
-    background-image: url("../images/books@2x.png");
-    -webkit-background-size: 748px 161px;
-    -moz-background-size: 748px 161px;
-    background-size: 748px 161px;
-  }
-}
 
 #register #signup-background .signup-text {
   padding-top: 50px;
@@ -12147,27 +12103,7 @@ footer .middot:before {
   vertical-align: top;
 }
 
-footer .pf {
-  background-image: url("../images/pf-logo.png");
-  width: 200px;
-  height: 73px;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  display: inline-block;
-  vertical-align: top;
-  opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
-}
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  footer .pf {
-    background-image: url("../images/pf-logo@2x.png");
-    -webkit-background-size: 159px 73px;
-    -moz-background-size: 159px 73px;
-    background-size: 159px 73px;
-  }
-}
 
 footer .pf:hover {
   opacity: 1;
@@ -12205,76 +12141,8 @@ footer .pf .spacer {
   padding: 50px 0 0;
 }
 
-#error #error-page .container, #other #error-page .container {
-  background-image: url("../images/books.png");
-  background-position: -411px bottom;
-  background-repeat: repeat-x;
-}
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #error #error-page .container, #other #error-page .container {
-    background-image: url("../images/books@2x.png");
-    -webkit-background-size: 748px 161px;
-    -moz-background-size: 748px 161px;
-    background-size: 748px 161px;
-  }
-}
 
-#error #error-page .owl-404, #other #error-page .owl-404 {
-  background-image: url("../images/404.png");
-  margin: auto;
-  width: 239px;
-  height: 333px;
-  position: relative;
-  top: 60px;
-}
-
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #error #error-page .owl-404, #other #error-page .owl-404 {
-    background-image: url("../images/404@2x.png");
-    -webkit-background-size: 239px 333px;
-    -moz-background-size: 239px 333px;
-    background-size: 239px 333px;
-  }
-}
-
-#error #error-page .owl-maintenance, #other #error-page .owl-maintenance {
-  background-image: url("../images/maintenance.png");
-  margin: auto;
-  width: 229px;
-  height: 270px;
-  position: relative;
-  top: 40px;
-  margin-top: 30px;
-}
-
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #error #error-page .owl-maintenance, #other #error-page .owl-maintenance {
-    background-image: url("../images/maintenance@2x.png");
-    -webkit-background-size: 229px 270px;
-    -moz-background-size: 229px 270px;
-    background-size: 229px 270px;
-  }
-}
-
-#error #error-page .owl-500, #other #error-page .owl-500 {
-  background-image: url("../images/500.png");
-  margin: auto;
-  width: 280px;
-  height: 266px;
-  position: relative;
-  top: 20px;
-  margin-top: 30px;
-}
-
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #error #error-page .owl-500, #other #error-page .owl-500 {
-    background-image: url("../images/500@2x.png");
-    -webkit-background-size: 280px 266px;
-    -moz-background-size: 280px 266px;
-    background-size: 280px 266px;
-  }
-}
 
 #other h3 {
   margin: 40px 0 86px;
@@ -12395,21 +12263,7 @@ footer .pf .spacer {
   z-index: 1;
 }
 
-#blog .blog-header .container .books {
-  background-image: url("../images/books-small.png");
-  background-position: -411px bottom;
-  background-repeat: repeat-x;
-  height: 140px;
-}
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #blog .blog-header .container .books {
-    background-image: url("../images/books-small@2x.png");
-    -webkit-background-size: 748px 161px;
-    -moz-background-size: 748px 161px;
-    background-size: 748px 161px;
-  }
-}
 
 #blog .blog-header .container h2 {
   color: #fff;
@@ -12435,23 +12289,7 @@ footer .pf .spacer {
   margin: 0;
 }
 
-#blog .blog-header .container .owl {
-  width: 172px;
-  height: 250px;
-  background-image: url("../images/blogowl.png");
-  position: absolute;
-  top: 0;
-  left: 35px;
-}
 
-@media all and (-webkit-min-device-pixel-ratio:1.5), (min--moz-device-pixel-ratio:1.5), (-o-min-device-pixel-ratio:1.5/1), (min-device-pixel-ratio:1.5), (min-resolution:138dpi), (min-resolution:1.5dppx) {
-  #blog .blog-header .container .owl {
-    background-image: url("../images/blogowl@2x.png");
-    -webkit-background-size: 172px 250px;
-    -moz-background-size: 172px 250px;
-    background-size: 172px 250px;
-  }
-}
 
 #blog .blog-header .container .owl .eye {
   width: 54px;
