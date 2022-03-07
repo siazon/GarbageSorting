@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="../../../../favicon.ico" />
+
+    <title>Pricing example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        html {
+            overflow: hidden;
+        }
+        
+        .select {
+            height: 700px;
+        }
+        
+        .container {
+            max-width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">
+            <a href="#" class="a_logo">
+                <span style="color: #f17eb2">#</span>
+                <span style="color: #6bb2e2">K</span>
+                <span style="color: #6bb2e2">e</span>
+                <span style="color: #6bb2e2">e</span>
+                <span style="color: #6bb2e2">p</span>
+                <span style="color: #f17eb2">I</span>
+                <span style="color: #f17eb2">t</span>
+                <span style="color: #7ec479">S</span>
+                <span style="color: #7ec479">o</span>
+                <span style="color: #7ec479">r</span>
+                <span style="color: #7ec479">t</span>
+                <span style="color: #7ec479">e</span>
+                <span style="color: #7ec479">d</span>
+            </a>
+        </h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="#" onclick="displayHome()">Home</a>
+            <a class="p-2 text-dark" href="#" onclick="displayGame()">Game</a>
+            <a class="p-2 text-dark" href="#" onclick="Repository()">Repository</a>
+            <a class="p-2 text-dark" href="#" onclick="aboutUs()">About Us</a>
+        </nav>
+        <a class="btn btn-outline-primary" href="#" onclick="login()">Sign up</a>
+    </div>
+    <section class="select">
+        <iframe id="centerFrame" class="container" style="height: 100%" width="100%" src="userList.html" frameborder="0"></iframe>
+    </section>
+    <!-- <iframe class="container" style="height: 100%" width="100%" src="game.html" frameborder="0"></iframe> -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+</body>
+<script>
+    function displayHome() {
+        document.getElementById("centerFrame").src = "home.html";
+    }
+
+    function displayGame() {
+        document.getElementById("centerFrame").src = "gamewelcome.html";
+    }
+
+    function Repository() {
+        document.getElementById("centerFrame").src = "text.html";
+    }
+
+    function aboutUs() {
+        document.getElementById("centerFrame").src = "about.html";
+    }
+
+    function login() {
+        document.getElementById("centerFrame").src = "/loginPage/index.html";
+    }
+</script>
+
+</html>

@@ -2,89 +2,108 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="icon" href="../../../../favicon.ico" />
+    <meta charset="UTF-8" />
+    <title>Home</title>
 
-    <title>Pricing example for Bootstrap</title>
+    <link rel="stylesheet" href="homePage/styles.css" />
+    <!-- Add icon library -->
 
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play" />
+    <link href="//db.onlinewebfonts.com/c/31d6999b03b69180254d0999127e1bc8?family=UnpackW00-Fast" rel="stylesheet" type="text/css" />
 
-    <style>
-        html {
-            overflow: hidden;
-        }
-        
-        .select {
-            height: 700px;
-        }
-        
-        .container {
-            max-width: 100%;
-            height: 100%;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
 </head>
 
 <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal">
-            <a href="#" class="a_logo">
-                <span style="color: #f17eb2">#</span>
-                <span style="color: #6bb2e2">K</span>
-                <span style="color: #6bb2e2">e</span>
-                <span style="color: #6bb2e2">e</span>
-                <span style="color: #6bb2e2">p</span>
-                <span style="color: #f17eb2">I</span>
-                <span style="color: #f17eb2">t</span>
-                <span style="color: #7ec479">S</span>
-                <span style="color: #7ec479">o</span>
-                <span style="color: #7ec479">r</span>
-                <span style="color: #7ec479">t</span>
-                <span style="color: #7ec479">e</span>
-                <span style="color: #7ec479">d</span>
-            </a>
-        </h5>
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" href="#" onclick="displayHome()">Home</a>
-            <a class="p-2 text-dark" href="#" onclick="displayGame()">Game</a>
-            <a class="p-2 text-dark" href="#" onclick="Repository()">Repository</a>
-            <a class="p-2 text-dark" href="#" onclick="aboutUs()">About Us</a>
-        </nav>
-        <a class="btn btn-outline-primary" href="#" onclick="login()">Sign up</a>
-    </div>
+    <header>
+        <div id="container">
+            <div class="headerDiv">
+                <h1 class="headerLogo">
+                    <a href="#" onclick="displayHome()" class="a_logo">
+                        <span style="color: #f17eb2">#</span>
+                        <span style="color: #6bb2e2">K</span>
+                        <span style="color: #6bb2e2">e</span>
+                        <span style="color: #6bb2e2">e</span>
+                        <span style="color: #6bb2e2">p</span>
+                        <span style="color: #f17eb2">I</span>
+                        <span style="color: #f17eb2">t</span>
+                        <span style="color: #7ec479">S</span>
+                        <span style="color: #7ec479">o</span>
+                        <span style="color: #7ec479">r</span>
+                        <span style="color: #7ec479">t</span>
+                        <span style="color: #7ec479">e</span>
+                        <span style="color: #7ec479">d</span>
+                    </a>
+                </h1>
+            </div>
+
+            <div class="navigationDiv">
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="displayHome()">Home</a></li>
+                        <li><a href="#" onclick="displayGame()">Game</a></li>
+                        <li><a href="#" onclick="Repository()">Education</a></li>
+                        <li><a href="#" onclick="aboutUs()">About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="buttonDiv">
+                <a href="#" onclick="login()" class="button">Login</a>
+            </div>
+        </div>
+    </header>
     <section class="select">
-        <iframe id="centerFrame" class="container" style="height: 100%" width="100%" src="userList.html" frameborder="0"></iframe>
+        <iframe id="centerFrame" onload="this.width=screen.width;this.height=screen.height;" src="homePage/home.html"></iframe>
     </section>
-    <!-- <iframe class="container" style="height: 100%" width="100%" src="game.html" frameborder="0"></iframe> -->
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 item text">
+                        <h3>About Us</h3>
+                        <p>
+                            We are a team of developers that is passionate about sustainability and our goal is to encourage people through entertainment and education.
+                        </p>
+                    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+                    <div class="col item social">
+                        <h3>Follow us</h3>
+                        <a href="#"><i class="icon ion-social-facebook"></i></a
+              ><a href="#"><i class="icon ion-social-twitter"></i></a
+              ><a href="#"><i class="icon ion-social-snapchat"></i></a
+              ><a href="#"><i class="icon ion-social-instagram"></i></a>
+                    </div>
+                </div>
+                <p class="copyright">KeepItSorted © 2022</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function displayHome() {
+            document.getElementById("centerFrame").src = "/homePage/home.html";
+        }
+
+        function displayGame() {
+            document.getElementById("centerFrame").src = "gamewelcome.html";
+        }
+
+        function Repository() {
+            document.getElementById("centerFrame").src =
+                "InformationPage/InfoPage.html";
+        }
+
+        function aboutUs() {
+            document.getElementById("centerFrame").src = "about.html";
+        }
+
+        function login() {
+            document.getElementById("centerFrame").src = "/loginPage/index.html";
+        }
+    </script>
 </body>
-<script>
-    function displayHome() {
-        document.getElementById("centerFrame").src = "home.html";
-    }
-
-    function displayGame() {
-        document.getElementById("centerFrame").src = "gamewelcome.html";
-    }
-
-    function Repository() {
-        document.getElementById("centerFrame").src = "text.html";
-    }
-
-    function aboutUs() {
-        document.getElementById("centerFrame").src = "about.html";
-    }
-
-    function login() {
-        document.getElementById("centerFrame").src = "/loginPage/index.html";
-    }
-</script>
 
 </html>

@@ -60,20 +60,25 @@
             var $form = $("#formSubmit");
             var formData = getFormData($form);
             console.log(formData);
-            fetch("http://127.0.0.1:8082/InsertUser", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json;charset=utf-8",
-                },
-                body: JSON.stringify(formData),
-            }).then((json) => {
-                if (json.status == 200) {
-                    alert("Done");
-                    window.location.href = "userList.html";
-                } else {
-                    alert(json.status);
-                }
+            var url = "/js/config.json";
+            $.getJSON(url, function(data) {
+                var host = data.host;
+                fetch(host + "/InsertUser", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json;charset=utf-8",
+                    },
+                    body: JSON.stringify(formData),
+                }).then((json) => {
+                    if (json.status == 200) {
+                        alert("Done");
+                        window.location.href = "userList.html";
+                    } else {
+                        alert(json.status);
+                    }
+                });
             });
+
             return false;
         });
         //convert formdata to Json
