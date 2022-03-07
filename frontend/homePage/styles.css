@@ -1,8 +1,8 @@
 html, body {
 	min-height: 100%;
 	width: 100%;
-	background-image: url(background.jpg); /*replace image.jpg with path to your image*/
 	background-size: cover;
+	background-image: url("background.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
 
@@ -11,9 +11,12 @@ html, body {
 
 
 #container {
+	z-index: 5;
 	width: 100%;
 	background-color: #fff;
-	height: 70px;
+	height: 78px;
+	border-bottom: lightgray solid 0.5px;
+	position: fixed;
 }
 
 header {
@@ -25,7 +28,8 @@ header {
 
 
 	float: left;
-	margin: 3px 200px;
+	margin-top: 3px;
+	margin-left: 300px;
 	height: 50px;
 }
 
@@ -71,7 +75,7 @@ nav ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	
+
 }
 
 nav li {
@@ -85,7 +89,7 @@ nav a {
 	color: #135658;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 33px;
 	font-family: "UnpackW00-Fast";
 }
 
@@ -116,7 +120,7 @@ nav a:hover::before {
 	padding: 5px 38px;
 	text-align: center;
 	text-decoration: none;
-	font-size: 22px;
+	font-size: 33px;
 	font-family: "UnpackW00-Fast";
 }
 
@@ -146,19 +150,22 @@ nav a:hover::before {
 
 .buttonDiv {
 
-	margin: 20px -300px;
-	display: inline-block;
+	/* margin: 11px -307px; */
+	margin-top: -39px;
+	margin-right: 29%;
+	/* display: inline-block; */
+	float: right;
 }
 
 .buttonDiv2 {
 	position: absolute;
-	margin: 0px 29%;
+	margin-left: 17%;
 	bottom: 0;
 }
 
 .buttonDiv3 {
-	width: 100%;
-	margin: 0 55%;
+
+	margin-left: 60%;
 	position: absolute;
 	bottom: 0;
 }
@@ -295,11 +302,12 @@ nav a:hover::before {
 
 .headerLogo {
 	font-family: "UnpackW00-Fast";
-	font-size: 32px;
+	font-size: 44px;
 	float: left;
-	margin: 10px 71px;
+	margin-left: 33px;
 	letter-spacing: -3px;
 	text-shadow: 2px 2px #000000;
+	margin-top: 8px;
 }
 
 
@@ -313,12 +321,12 @@ nav a:hover::before {
 
 .a_logo {
 	display:inline-block;
-	
+
 }
 
 .navigationDiv {
 
-	margin: -40px 33%;
+	margin: -49px 33%;
 	display: inline-block;
 	float: left;
 }
@@ -330,17 +338,15 @@ nav a:hover::before {
 	background-color: #282d32;
 	width: 100%;
 	position: absolute;
-	bottom: -287px;
+	bottom: -30%;
 }
 
 .gameAccess {
-	position: fixed;
-	margin: 12% 25%;
-
-	height: 300px;
-	width: 300px;
+	position: absolute;
+	margin: 14% 9%;
 
 }
+
 
 .gameAccessImg {
 	border-radius: 50px;
@@ -348,6 +354,7 @@ nav a:hover::before {
 	height: 350px;
 	animation: shake 3.5s;
 	animation-iteration-count: infinite;
+	position: absolute;
 
 }
 
@@ -371,42 +378,84 @@ nav a:hover::before {
 }
 
 
-.gameLogo {
-	position: fixed;
 
-	margin: 6% 28%;
-	font-size: 30px;
 
-}
 
-.educationLogo {
-	position: fixed;
-
-	margin: 6% 55%;
-	width: 200px;
-	font-size: 30px;
-
-}
 
 .educationAccess {
-	position: fixed;
+	position: absolute;
 	margin: 15% 55%;
-	height: 500px;
-	width: 400px;
+
 
 
 }
 
 .educationAccessImg {
 	width: 350px;
-	margin: -35px -50px;
+	margin-top: 16%;
+	margin-left: 56%;
+	animation: shake 3.5s;
+	animation-iteration-count: infinite;
 	height: 350px;
+	position: absolute;
 
 }
 
-.containerAccess{
-	position: fixed;
 
-	width: 100%;
-	height: 72%;
+.searchAccessImg {
+	width: 280px;
+	margin-top: 17%;
+	margin-left: 59%;
+	height: 280px;
+	position: absolute;
+
+}
+
+
+.containerAccess{
+	position: absolute;
+	width: 1200px;
+	height: 71%;
+	margin-left: 18%;
+	margin-top: 5%;
+
+
+}
+
+.accessLogoGame {
+	font-size: 55px;
+	letter-spacing: -3px;
+	text-shadow: 3px 3px #000000;
+	position: absolute;
+	font-family: "UnpackW00-Fast";
+	margin-left: 15%;
+	margin-top: 5%;
+
+
+}
+
+
+.accessLogoEducation {
+	font-size: 55px;
+	letter-spacing: -3px;
+	text-shadow: 3px 3px #000000;
+	position: absolute;
+	width: 300px;
+	font-family: "UnpackW00-Fast";
+
+	margin-left: 60%;
+	margin-top: 5%;
+
+}
+
+#cf img {
+	position: absolute;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+}
+
+#cf img.educationAccessImg:hover {
+	opacity:0;
 }
