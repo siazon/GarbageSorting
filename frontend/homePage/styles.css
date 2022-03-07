@@ -29,7 +29,7 @@ header {
 
     float: left;
     margin-top: 3px;
-    margin-left: 300px;
+    margin-left: 233px;
     height: 50px;
 }
 
@@ -152,7 +152,7 @@ nav a:hover::before {
 
     /* margin: 11px -307px; */
     margin-top: -39px;
-    margin-right: 29%;
+    margin-right: 21%;
     /* display: inline-block; */
     float: right;
 }
