@@ -342,7 +342,7 @@ nav a:hover::before {
 
 .gameAccess {
     position: absolute;
-    margin: 14% 9%;
+    margin: 15% 12%;
 }
 
 .gameAccessImg {
@@ -420,7 +420,7 @@ nav a:hover::before {
 
 .containerAccess {
     position: absolute;
-    width: 100%;
+    width: 58%;
     height: 71%;
     margin-left: 18%;
     margin-top: 5%;
