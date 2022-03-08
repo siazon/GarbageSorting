@@ -1,380 +1,386 @@
 html, body {
-	min-height: 100%;
-	width: 100%;
-	background-size: cover;
-	background-image: url("background.jpg");
-	background-repeat: no-repeat;
-	background-position: center center;
+    min-height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-image: url("background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
 
 
 }
 
 
 #container {
-	z-index: 5;
-	width: 100%;
-	background-color: #fff;
-	height: 78px;
-	border-bottom: lightgray solid 0.5px;
-	position: fixed;
+    z-index: 5;
+    width: 100%;
+    background-color: #fff;
+    height: 78px;
+    border-bottom: lightgray solid 0.5px;
+    position: fixed;
 }
 
 header {
-	background: #fff;
-	font-family: Oswald, Helvetica, Arial, sans-serif;
+    background: #fff;
+    font-family: Oswald, Helvetica, Arial, sans-serif;
 }
 
 .headerDiv {
 
 
-	float: left;
-	margin-top: 3px;
-	margin-left: 300px;
-	height: 50px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 233px;
+    height: 50px;
 }
 
 
 
 /* Style all font awesome icons */
 .fa {
-	padding: 20px;
-	font-size: 30px;
-	width: 30px;
-	text-align: center;
-	text-decoration: none;
-	margin: 5px 2px;
-	border-radius: 50%;
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
 }
 
 /* Add a hover effect if you want */
 .fa:hover {
-	opacity: 0.7;
+    opacity: 0.7;
 }
 
 /* Set a specific color for each brand */
 
 /* Facebook */
 .fa-facebook {
-	background: #3B5998;
-	color: white;
+    background: #3B5998;
+    color: white;
 }
 
 /* Twitter */
 .fa-twitter {
-	background: #55ACEE;
-	color: white;
+    background: #55ACEE;
+    color: white;
 }
 
 nav {
-	text-align: center;
-	font-family: Oswald, Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-family: Oswald, Helvetica, Arial, sans-serif;
 
 }
 
 nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
 }
 
 nav li {
-	display: inline-block;
-	margin-left: 50px;
-	padding-top: 10px;
-	position: relative;
+    display: inline-block;
+    margin-left: 50px;
+    padding-top: 10px;
+    position: relative;
 }
 
 nav a {
-	color: #135658;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: 33px;
-	font-family: "UnpackW00-Fast";
+    color: #135658;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 33px;
+    font-family: "UnpackW00-Fast";
 }
 
 nav a:hover {
-	color: #5abe89;
+    color: #5abe89;
 }
 
 nav a::before {
-	content: '';
-	display: block;
-	height: 5px;
-	background-color: #135658;
-	position: absolute;
-	top: 0;
-	width: 0%;
-	transition: all ease-in-out 250ms;
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #135658;
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 250ms;
 }
 
 nav a:hover::before {
-	width: 100%;
+    width: 100%;
 }
 
 .button {
-	background-color: #7ec479;
-	border: none;
-	border-radius: 15px;
-	color: white;
-	padding: 5px 38px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 33px;
-	font-family: "UnpackW00-Fast";
+    background-color: #7ec479;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 5px 38px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 33px;
+    font-family: "UnpackW00-Fast";
 }
 
 .button2 {
-	background-color: #282d32;
-	border: none;
-	border-radius: 15px;
-	color: white;
-	padding: 4px 50px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 35px;
-	font-family: "UnpackW00-Fast";
+    background-color: #282d32;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 4px 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 35px;
+    font-family: "UnpackW00-Fast";
 }
 
 .button3 {
-	background-color: #282d32;
-	border: none;
-	border-radius: 15px;
-	color: white;
-	padding: 4px 50px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 35px;
-	font-family: "UnpackW00-Fast";
+    background-color: #282d32;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 4px 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 35px;
+    font-family: "UnpackW00-Fast";
 }
 
 .buttonDiv {
 
-	/* margin: 11px -307px; */
-	margin-top: -39px;
-	margin-right: 29%;
-	/* display: inline-block; */
-	float: right;
+    /* margin: 11px -307px; */
+    margin-top: -39px;
+    margin-right: 21%;
+    /* display: inline-block; */
+    float: right;
 }
 
 .buttonDiv2 {
+<<<<<<< HEAD
 	position: absolute;
 	margin-left: 15%;
 	bottom: 0;
+=======
+    position: absolute;
+    margin-left: 15%;
+    bottom: 0;
+>>>>>>> 40c488a4e2cedc8732d20533c59a57d4125ba41a
 }
 
 .buttonDiv3 {
 
-	margin-left: 60%;
-	position: absolute;
-	bottom: 0;
+    margin-left: 60%;
+    position: absolute;
+    bottom: 0;
 }
 
 .button:hover {
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+    color: white;
 }
 
 .button2:hover {
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+    color: white;
 }
 
 .button3:hover {
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+    color: white;
 }
 
 .sticky {
-	position: fixed;
-	top: 0;
-	width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .social-wrp-2 {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 .social-icon-wrp {
-	padding: 10px 5px;
+    padding: 10px 5px;
 }
 
 .w-inline-block {
-	max-width: 100%;
-	display: inline-block;
+    max-width: 100%;
+    display: inline-block;
 }
 
 .text-xxs {
-	font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 
 
 
 .footer-dark h3 {
-	margin-top: 0;
-	margin-bottom: 12px;
-	font-weight: bold;
-	font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 16px;
 
 }
 
 .footer-dark ul {
-	padding: 0;
-	list-style: none;
-	line-height: 1.6;
-	font-size: 14px;
-	margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 0;
 }
 
 .footer-dark ul a {
-	color: inherit;
-	text-decoration: none;
-	opacity: 0.6;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.6;
 }
 
 .footer-dark ul a:hover {
-	opacity: 0.8;
+    opacity: 0.8;
 }
 
 @media ( max-width :767px) {
-	.footer-dark .item:not(.social) {
-		text-align: center;
-		padding-bottom: 20px;
-	}
+    .footer-dark .item:not(.social) {
+        text-align: center;
+        padding-bottom: 20px;
+    }
 }
 
 .footer-dark .item.text {
-	margin-bottom: 36px;
+    margin-bottom: 36px;
 }
 
 @media ( max-width :767px) {
-	.footer-dark .item.text {
-		margin-bottom: 0;
-	}
+    .footer-dark .item.text {
+        margin-bottom: 0;
+    }
 }
 
 .footer-dark .item.text p {
-	opacity: 0.6;
-	margin-bottom: 0;
+    opacity: 0.6;
+    margin-bottom: 0;
 }
 
 .footer-dark .item.social {
-	text-align: center;
+    text-align: center;
 }
 
 @media ( max-width :991px) {
-	.footer-dark .item.social {
-		text-align: center;
-		margin-top: 20px;
-	}
+    .footer-dark .item.social {
+        text-align: center;
+        margin-top: 20px;
+    }
 }
 
 .footer-dark .item.social>a {
-	font-size: 20px;
-	width: 36px;
-	height: 36px;
-	line-height: 36px;
-	display: inline-block;
-	text-align: center;
-	border-radius: 50%;
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
-	margin: 0 8px;
-	color: #fff;
-	opacity: 0.75;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+    margin: 0 8px;
+    color: #fff;
+    opacity: 0.75;
 }
 
 .footer-dark .item.social>a:hover {
-	opacity: 0.9;
+    opacity: 0.9;
 }
 
 .footer-dark .copyright {
-	text-align: center;
-	padding-top: 24px;
-	opacity: 0.3;
-	font-size: 13px;
-	margin-bottom: 0;
+    text-align: center;
+    padding-top: 24px;
+    opacity: 0.3;
+    font-size: 13px;
+    margin-bottom: 0;
 
 }
 
 .headerLogo {
-	font-family: "UnpackW00-Fast";
-	font-size: 44px;
-	float: left;
-	margin-left: 33px;
-	letter-spacing: -3px;
-	text-shadow: 2px 2px #000000;
-	margin-top: 8px;
+    font-family: "UnpackW00-Fast";
+    font-size: 44px;
+    float: left;
+    margin-left: 33px;
+    letter-spacing: -3px;
+    text-shadow: 2px 2px #000000;
+    margin-top: 8px;
 }
 
 
 .a_logo:hover {
-	text-decoration: none;
-	-webkit-transform: scale(1.1);
-	-ms-transform: scale(1.1);
-	transform: scale(1.1);
-	transition: 0.1s ease;
+    text-decoration: none;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.1s ease;
 }
 
 .a_logo {
-	display:inline-block;
+    display:inline-block;
 
 }
 
 .navigationDiv {
 
-	margin: -49px 33%;
-	display: inline-block;
-	float: left;
+    margin: -49px 33%;
+    display: inline-block;
+    float: left;
 }
 
 
 .footer-dark {
-	padding: 50px 0;
-	color: #f0f9ff;
-	background-color: #282d32;
-	width: 100%;
-	position: absolute;
-	bottom: -30%;
+    padding: 50px 0;
+    color: #f0f9ff;
+    background-color: #282d32;
+    width: 100%;
+    position: absolute;
+    bottom: -30%;
 }
 
 .gameAccess {
-	position: absolute;
-	margin: 14% 9%;
+    position: absolute;
+    margin: 14% 9%;
 
 }
 
 
 .gameAccessImg {
-	border-radius: 50px;
-	width: 350px;
-	height: 350px;
-	animation: shake 3.5s;
-	animation-iteration-count: infinite;
-	position: absolute;
+    border-radius: 50px;
+    width: 350px;
+    height: 350px;
+    animation: shake 3.5s;
+    animation-iteration-count: infinite;
+    position: absolute;
 
 }
 
 .gameAccessImg:hover {
-	animation: shake 0.5s;
-	animation-iteration-count: infinite;
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes shake {
-	0% { transform: translate(1px, 1px) rotate(0deg); }
-	10% { transform: translate(-1px, -2px) rotate(-1deg); }
-	20% { transform: translate(-3px, 0px) rotate(1deg); }
-	30% { transform: translate(3px, 2px) rotate(0deg); }
-	40% { transform: translate(1px, -1px) rotate(1deg); }
-	50% { transform: translate(-1px, 2px) rotate(-1deg); }
-	60% { transform: translate(-3px, 1px) rotate(0deg); }
-	70% { transform: translate(3px, 1px) rotate(-1deg); }
-	80% { transform: translate(-1px, -1px) rotate(1deg); }
-	90% { transform: translate(1px, 2px) rotate(0deg); }
-	100% { transform: translate(1px, -2px) rotate(-1deg); }
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 
@@ -383,79 +389,79 @@ nav a:hover::before {
 
 
 .educationAccess {
-	position: absolute;
-	margin: 15% 55%;
+    position: absolute;
+    margin: 15% 55%;
 
 
 
 }
 
 .educationAccessImg {
-	width: 350px;
-	margin-top: 16%;
-	margin-left: 56%;
-	animation: shake 3.5s;
-	animation-iteration-count: infinite;
-	height: 350px;
-	position: absolute;
+    width: 350px;
+    margin-top: 16%;
+    margin-left: 56%;
+    animation: shake 3.5s;
+    animation-iteration-count: infinite;
+    height: 350px;
+    position: absolute;
 
 }
 
 
 .searchAccessImg {
-	width: 280px;
-	margin-top: 17%;
-	margin-left: 59%;
-	height: 280px;
-	position: absolute;
+    width: 280px;
+    margin-top: 17%;
+    margin-left: 59%;
+    height: 280px;
+    position: absolute;
 
 }
 
 
 .containerAccess{
-	position: absolute;
-	width: 1200px;
-	height: 71%;
-	margin-left: 18%;
-	margin-top: 5%;
+    position: absolute;
+    width: 1200px;
+    height: 71%;
+    margin-left: 18%;
+    margin-top: 5%;
 
 
 }
 
 .accessLogoGame {
-	font-size: 55px;
-	letter-spacing: -3px;
-	text-shadow: 3px 3px #000000;
-	position: absolute;
-	font-family: "UnpackW00-Fast";
-	margin-left: 15%;
-	margin-top: 5%;
+    font-size: 55px;
+    letter-spacing: -3px;
+    text-shadow: 3px 3px #000000;
+    position: absolute;
+    font-family: "UnpackW00-Fast";
+    margin-left: 15%;
+    margin-top: 5%;
 
 
 }
 
 
 .accessLogoEducation {
-	font-size: 55px;
-	letter-spacing: -3px;
-	text-shadow: 3px 3px #000000;
-	position: absolute;
-	width: 300px;
-	font-family: "UnpackW00-Fast";
+    font-size: 55px;
+    letter-spacing: -3px;
+    text-shadow: 3px 3px #000000;
+    position: absolute;
+    width: 300px;
+    font-family: "UnpackW00-Fast";
 
-	margin-left: 60%;
-	margin-top: 5%;
+    margin-left: 60%;
+    margin-top: 5%;
 
 }
 
 #cf img {
-	position: absolute;
-	-webkit-transition: opacity 0.5s ease-in-out;
-	-moz-transition: opacity 0.5s ease-in-out;
-	-o-transition: opacity 0.5s ease-in-out;
-	transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 #cf img.educationAccessImg:hover {
-	opacity:0;
+    opacity:0;
 }
