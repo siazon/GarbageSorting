@@ -2,77 +2,100 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>jQuery+ajax实现简单的上传图片功能</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jQuery+ajax实现简单的上传图片功能</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-	<link href="css/style1.css" rel='stylesheet' type='text/css' />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
-	<script
-		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	</script>
-	<!----webfonts---->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-	<!----//webfonts---->
-	<!---start-click-drop-down-menu----->
-	<script src="js/jquery.min.js"></script>
-	
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link href="css/style1.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    </script>
+    <!----webfonts---->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+    <!---start-click-drop-down-menu----->
+    <script src="js/jquery.min.js"></script>
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox {
+            /*需要引起用户注意的元素*/
+            position: absolute;
+            z-index: 1;
+            margin-top: 5%;
+        }
+    </style>
 
 </head>
 
-<body>
-	<div class="header">
-		<div class="wrap">
-		
-			<h1>Garbage Images Upload</h1>
-		</div>
-	
-		
-	</div>
-</div>
-	<div class="form-group">
-		<label ><b>Images</b></label>
-		<img src="" alt="" id="img" />
-		<input type="file" name="file" id="uploadImage" onchange="postData()">
-		<td><b>Type:</b></td><td><select id = "profession"><option>--Please select--</option><option>Organic waste
-		</option>
-			<option>General waste</option><option>Recyclables</option></select></td><br><br>
-		
-			<button type="submit"   class = "button" onclick="alert('Uploaded successfully')">Submit</button>
-		
-	</div>
+<body class="overlay">
+    <div>
+        <div>
+
+            <h1>Garbage Images Upload</h1>
+        </div>
+
+
+    </div>
+    </div>
+    <div class="form-group">
+        <label><b>Images</b></label>
+        <img src="" alt="" id="img" />
+        <input type="file" name="file" id="uploadImage" onchange="postData()">
+        <td><b>Type:</b></td>
+        <td><select id="profession"><option>--Please select--</option><option>Hazardous waste</option>
+			<option>Dry waste</option><option>Wet waste</option><option>Recyclable waste</option></select></td><br><br>
+
+        <button type="submit" class="button" onclick="alert('Uploaded successfully')">Submit</button>
+
+    </div>
 </body>
 <script type="text/javascript">
-	function postData() {
-		var formData = new FormData();
-		formData.append("file", $("#uploadImage")[0].files[0]);
-		$.ajax({
-			url: basePath + "/upload.action",
-			type: "post",
-			data: formData,
-			processData: false, // 告诉jQuery不要去处理发送的数据
-			contentType: false, // 告诉jQuery不要去设置Content-Type请求头
-			dataType: 'text',
-			success: function (data) {
-				var params = JSON.parse(data)
-				$("#img").attr("src", params);
-			},
-			error: function (data) {
+    function postData() {
+        var formData = new FormData();
+        formData.append("file", $("#uploadImage")[0].files[0]);
+        $.ajax({
+            url: basePath + "/upload.action",
+            type: "post",
+            data: formData,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            dataType: 'text',
+            success: function(data) {
+                var params = JSON.parse(data)
+                $("#img").attr("src", params);
+            },
+            error: function(data) {
 
-			}
-		});
-	}
-	//赋值变量
-	var basePath = getContextPath();
-	// 获取项目路径
-	function getContextPath() {
-		var pathName = window.document.location.pathname;
-		var projectName = pathName.substring(0, pathName.substr(1).indexOf(
-			'/') + 1);
-		return projectName;
-	}
+            }
+        });
+    }
+    //赋值变量
+    var basePath = getContextPath();
+    // 获取项目路径
+    function getContextPath() {
+        var pathName = window.document.location.pathname;
+        var projectName = pathName.substring(0, pathName.substr(1).indexOf(
+            '/') + 1);
+        return projectName;
+    }
 </script>
 
 </html>

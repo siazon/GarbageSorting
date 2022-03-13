@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="nextgame()">
-              Paly Again
+              Play Again
             </button>
                 </div>
             </div>
@@ -117,6 +117,8 @@
                 "music/bgm2.mp3",
                 "music/bgm3.mp3",
             ]);
+            this.load.audio("errorsound", ["music/error.wav"]);
+            this.load.audio("correctsound", ["music/correct.wav"]);
             this.load.image("ground", "img/ground.png");
             this.load.image("background", "img/backgroundy.png");
             this.load.image("sgreenbin", "img/green.png");
@@ -236,7 +238,7 @@
                 temp.setData("gType", "brown");
                 sps.push(temp);
             }
-
+            sps = sps.sort(() => Math.random() - 0.5);
             for (let i = 0; i < sps.length; i++) {
                 let xindex = i;
                 if (i % 16 == 0) xindex = 0;
@@ -267,7 +269,8 @@
                     brownbinface.setVisible(false);
                     brownbinwaitfeed.setVisible(true);
                 });
-
+                var errorsound = this.sound.add("errorsound");
+                var correctsound = this.sound.add("correctsound");
                 this.input.on("dragend", function(pointer, gameObject) {
                     gameObject.setDepth(0); //set z index back
                     gameObject.setData("isDrag", "false");
@@ -278,29 +281,35 @@
                     brownbinface.setVisible(true);
                     brownbinwaitfeed.setVisible(false);
                     //console.log("dragend selectBin:", pointer);
-                    console.log(selectBin);
                     if (
                         selectBin == "sgreenbin" &&
                         gameObject.getData("gType") == "green"
                     ) {
                         gameObject.disableBody(true, true);
+                        gameObject.setData("iscrrect", "true");
                         score++;
                     } else if (
                         selectBin == "sgraybin" &&
                         gameObject.getData("gType") == "gray"
                     ) {
                         gameObject.disableBody(true, true);
+                        gameObject.setData("iscrrect", "true");
                         score++;
                     } else if (
                         selectBin == "sbrownbin" &&
                         gameObject.getData("gType") == "brown"
                     ) {
                         gameObject.disableBody(true, true);
+                        gameObject.setData("iscrrect", "true");
                         score++;
                     } else {
                         //fall to the ground
                         gameObject.body.setAllowGravity(true);
                         gameObject.setBounceY(Phaser.Math.FloatBetween(0.2, 0.3));
+                        if (temp == gameObject) {
+                            if (gameObject.getData("iscrrect") != "true") errorsound.play();
+                            else correctsound.play();
+                        }
                     }
                     selectBin = "";
                 });
@@ -328,7 +337,12 @@
                 .setInteractive();
             stop.setDisplaySize(50, 50);
             stop.setVisible(false);
-            var music = _this.sound.add("theme");
+            var music = _this.sound.add("theme", {
+                volume: 0.3,
+            });
+            music.play();
+            start.setVisible(false);
+            stop.setVisible(true);
             start.on(
                 "pointerup",
                 function() {
@@ -395,6 +409,7 @@
             text.setText("Time Left: " + gamatimer);
             updateLapendEvent(sgreenbin);
             updateLapendEvent(sgraybin);
+            updateLapendEvent(sbrownbin);
             if (gameOver) {
                 return;
             }
