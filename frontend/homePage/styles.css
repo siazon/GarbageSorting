@@ -343,7 +343,7 @@ nav a:hover::before {
 
 .gameAccess {
 	position: absolute;
-	margin: 14% 9%;
+	margin: 21% 9%;
 
 }
 
@@ -392,43 +392,46 @@ nav a:hover::before {
 
 .educationAccessImg {
 	width: 350px;
-	margin-top: 16%;
-	margin-left: 56%;
+	margin-top: 7%;
+	margin-left: 0%;
 	animation: shake 3.5s;
 	animation-iteration-count: infinite;
 	height: 350px;
 	position: absolute;
 
+
 }
 
 
 .searchAccessImg {
-	width: 280px;
-	margin-top: 17%;
-	margin-left: 59%;
-	height: 280px;
+	width: 250px;
+	margin-top: 9%;
+	margin-left: 3%;
+	height: 250px;
 	position: absolute;
+
 
 }
 
 
 .containerAccess{
-	position: absolute;
-	width: 1200px;
-	height: 71%;
-	margin-left: 18%;
-	margin-top: 5%;
+    position: absolute;
+    width: 1200px;
+    height: 71%;
+    margin-left: 18%;
+    margin-top: 5%;
 
 
 }
 
 .accessLogoGame {
-	font-size: 55px;
-	letter-spacing: -3px;
-	text-shadow: 3px 3px #000000;
+    font-size: 65px;
+    letter-spacing: 8px;
+    /* text-shadow: 1px 1px #fff; */
+	color: #135658;
 	position: absolute;
 	font-family: "UnpackW00-Fast";
-	margin-left: 15%;
+	margin-left: 9%;
 	margin-top: 5%;
 
 
@@ -448,8 +451,16 @@ nav a:hover::before {
 
 }
 
+
+#cf {
+
+	margin: 15% 55%;
+
+
+}
+
 #cf img {
-	position: absolute;
+
 	-webkit-transition: opacity 0.5s ease-in-out;
 	-moz-transition: opacity 0.5s ease-in-out;
 	-o-transition: opacity 0.5s ease-in-out;
