@@ -12,6 +12,10 @@
         .input-space {
             padding-right: 15px;
         }
+        
+        body {
+            margin-top: 90px;
+        }
     </style>
 </head>
 
@@ -48,38 +52,44 @@
     </div>
 
     <script>
-        var mydata = [];
-        QueryList("e");
+        var host = "";
 
-        function QueryList(str) {
-            fetch("http://127.0.0.1:8082/AllUsers", {
-                    method: "GET",
-                })
-                .then((response) => response.json())
-                .then((json) => {
-                    mydata = json;
-                    $("#rows").empty();
-                    for (var i = 0; i < mydata.length; i++) {
-                        var $trTemp = $(
-                            "<tr data-index=" +
-                            i +
-                            " data-row-id=" +
-                            mydata[i].user_email +
-                            "></tr>"
-                        );
-                        $trTemp.append("<td>" + mydata[i].user_name + "</td>");
-                        $trTemp.append("<td>" + mydata[i].user_email + "</td>");
-                        $trTemp.append("<td>" + mydata[i].user_phone + "</td>");
-                        $trTemp.append("<td>" + mydata[i].user_password + "</td>");
-                        $trTemp.append("<td>" + mydata[i].user_role + "</td>");
-                        $trTemp.append("<td>" + mydata[i].user_status + "</td>");
-                        $trTemp.append(
-                            "<td> <button type='button' class = 'btn btn-success' onclick='doEdit(this)'> Edit </button> " +
-                            "<button type = 'button' class = 'btn btn-danger' onclick='doDelete(this)'> Delete </button>  </td>"
-                        );
-                        $trTemp.appendTo("#tb_user");
-                    }
-                });
+        var mydata = [];
+        QueryList(host);
+
+        function QueryList(host) {
+            var url = "/js/config.json";
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/AllUsers", {
+                        method: "GET",
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        mydata = json;
+                        $("#rows").empty();
+                        for (var i = 0; i < mydata.length; i++) {
+                            var $trTemp = $(
+                                "<tr data-index=" +
+                                i +
+                                " data-row-id=" +
+                                mydata[i].user_email +
+                                "></tr>"
+                            );
+                            $trTemp.append("<td>" + mydata[i].user_name + "</td>");
+                            $trTemp.append("<td>" + mydata[i].user_email + "</td>");
+                            $trTemp.append("<td>" + mydata[i].user_phone + "</td>");
+                            $trTemp.append("<td>" + mydata[i].user_password + "</td>");
+                            $trTemp.append("<td>" + mydata[i].user_role + "</td>");
+                            $trTemp.append("<td>" + mydata[i].user_status + "</td>");
+                            $trTemp.append(
+                                "<td> <button type='button' class = 'btn btn-success' onclick='doEdit(this)'> Edit </button> " +
+                                "<button type = 'button' class = 'btn btn-danger' onclick='doDelete(this)'> Delete </button>  </td>"
+                            );
+                            $trTemp.appendTo("#tb_user");
+                        }
+                    });
+            });
         }
 
         function doAdd() {
