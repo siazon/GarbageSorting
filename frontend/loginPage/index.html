@@ -162,11 +162,13 @@
                             },
                             body: JSON.stringify(requestData),
                         })
-                        //.then((response) => response.json())
+                        // .then((response) => response.json())
                         .then((json) => {
                             if (json.status == 200) {
-                                //alert("Done");
-                                window.location.href = "../../userList.html";
+                                console.log(json);
+                                if (username.indexOf("garbagesorting") != -1)
+                                    window.location.href = "../../userList.html";
+                                else window.location.href = "../../imagespage/index.html";
                             } else {
                                 alert(json.status);
                                 return false;
@@ -452,7 +454,7 @@
                     autocomplete="off"
                     placeholder="Please input user name"
                     tabindex="1"
-                    maxlength="15"
+                    maxlength="55"
                   />
                   <label
                     class="input__label input__label--hideo"
