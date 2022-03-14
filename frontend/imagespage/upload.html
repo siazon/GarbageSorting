@@ -21,81 +21,62 @@
     </script>
     </script>
     <!----webfonts---->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
     <!----//webfonts---->
     <!---start-click-drop-down-menu----->
     <script src="js/jquery.min.js"></script>
-    <style>
-        .overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        
-        .lightbox {
-            /*需要引起用户注意的元素*/
-            position: absolute;
-            z-index: 1;
-            margin-top: 5%;
-        }
-    </style>
 
+    <script type="text/javascript">
+        function uploadFile() {
+            var options = document.getElementById("profession");
+            var index = options.selectedIndex;
+            if (index == 0) {
+                options.className = "redBorder";
+                return;
+            }
+            let formData = new FormData();
+            var url = "/js/config.json";
+            $.getJSON(url, function(data) {
+                formData.append("file", fileupload.files[0]);
+                let response = fetch(data.host + "/upload/" + options.options[index].value, {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.status == 200) {
+                    alert("File successfully uploaded.");
+                }
+            });
+        }
+
+        function onSelected() {
+            var options = document.getElementById("profession");
+            var index = options.selectedIndex;
+            if (index > 0) {
+                options.className = "blackBorder";
+                return;
+            }
+        }
+    </script>
 </head>
 
 <body class="overlay">
-    <div>
+    <div class="lightbox">
         <div>
-
             <h1>Garbage Images Upload</h1>
         </div>
+        <div class="form-group">
+            <label><b>Images</b></label>
+            <img src="" alt="" id="img" />
+            <input id="fileupload" type="file" name="file" id="uploadImage">
+            <td><b>Type:</b></td>
+            <td><select id="profession" onchange="onSelected()"><option>--Please select--</option>
+			<option>Recycle</option><option>Organic</option><option>Trash</option></select></td><br><br>
 
-
-    </div>
-    </div>
-    <div class="form-group">
-        <label><b>Images</b></label>
-        <img src="" alt="" id="img" />
-        <input type="file" name="file" id="uploadImage" onchange="postData()">
-        <td><b>Type:</b></td>
-        <td><select id="profession"><option>--Please select--</option><option>Hazardous waste</option>
-			<option>Dry waste</option><option>Wet waste</option><option>Recyclable waste</option></select></td><br><br>
-
-        <button type="submit" class="button" onclick="alert('Uploaded successfully')">Submit</button>
-
+            <button class="button" id="upload-button" onclick="uploadFile()">Submit</button>
+            <button class="button" id="upload-button" onclick=" window.history.back();">Cancel</button>
+        </div>
     </div>
 </body>
-<script type="text/javascript">
-    function postData() {
-        var formData = new FormData();
-        formData.append("file", $("#uploadImage")[0].files[0]);
-        $.ajax({
-            url: basePath + "/upload.action",
-            type: "post",
-            data: formData,
-            processData: false, // 告诉jQuery不要去处理发送的数据
-            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
-            dataType: 'text',
-            success: function(data) {
-                var params = JSON.parse(data)
-                $("#img").attr("src", params);
-            },
-            error: function(data) {
-
-            }
-        });
-    }
-    //赋值变量
-    var basePath = getContextPath();
-    // 获取项目路径
-    function getContextPath() {
-        var pathName = window.document.location.pathname;
-        var projectName = pathName.substring(0, pathName.substr(1).indexOf(
-            '/') + 1);
-        return projectName;
-    }
-</script>
 
 </html>
