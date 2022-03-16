@@ -28,7 +28,7 @@ public class DetectLabels {
 
     public static void detectLabels() throws IOException {
         // TODO(developer): Replace these variables before running the sample.
-        String filePath = "src/main/java/vision_API/dragon.jpg";
+        String filePath = "src/main/java/vision_API/botttlee.jpg";
         detectLabels(filePath);
     }
 
