@@ -1,6 +1,6 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
-import com.tus.garbagesorting.garbagesorting.Service.ImageUtils;
+import com.tus.garbagesorting.garbagesorting.Common.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
@@ -9,17 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 
 @CrossOrigin
 @Controller
 public class FileUploadController {
 
+    @Autowired
+    private FileUtil fileUtil;
     @Autowired
     ServletContext context;
     //Save the uploaded file to this folder
@@ -30,38 +28,27 @@ public class FileUploadController {
         return "upload";
     }
 
-    @PostMapping("/upload/{type}") // //new annotation since 4.3
-    public ResponseEntity<?> singleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable String type) {
-        String iType = type;
+    @PostMapping("/upload/{iType}") // //new annotation since 4.3
+    public ResponseEntity<?> singleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable int iType) {
         String path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp";
         String fileName = file.getOriginalFilename();
         try {
             file.transferTo(new File(path + "\\" + fileName));
-            ChangeImgSize(path, fileName);
+            fileUtil.SaveFile(iType, fileName);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
         return ResponseEntity.ok("File uploaded successfully.");
     }
 
-    @GetMapping("/uploadStatus")
-    public String uploadStatus() {
-        return "uploadStatus";
+    @GetMapping("/fileList/")
+    public Object GetFileList() {
+        int[] counts = new int[3];
+        counts[0] = fileUtil.GetFiles(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\khs\\");
+        counts[1] = fileUtil.GetFiles(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\cy\\");
+        counts[2] = fileUtil.GetFiles(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\yh\\");
+        return new ResponseEntity<>(counts, HttpStatus.OK);
     }
 
-    public void ChangeImgSize(String path, String fileName) {
-        try {
-            //读取原始图片
-            BufferedImage image = ImageIO.read(new FileInputStream(path + "\\" + fileName));
-            System.out.println("Width: " + image.getWidth());
-            System.out.println("Height: " + image.getHeight());
-            //Resize
-            BufferedImage newImage = ImageUtils.resizeImage(image, 100, 100);
-            //
-            String _path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp";
-            ImageIO.write(newImage, "png", new File(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\" + fileName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

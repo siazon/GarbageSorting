@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Making your first Phaser 3 Game - Part 10</title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
@@ -23,34 +23,50 @@
             background-color: #d4f0fe;
         }
     </style>
+    <script>
+        function ReadCookie(key) {
+            var allcookies = document.cookie;
+            document.write("All Cookies : " + allcookies);
+            // 获取数组中的所有cookie对
+            cookiearray = allcookies.split(';');
+            // 现在从这个数组中取出键值对
+            for (var i = 0; i < cookiearray.length; i++) {
+
+                name = cookiearray[i].split('=')[0];
+                value = cookiearray[i].split('=')[1];
+                if (name == key)
+                    console.log(value)
+            }
+        }
+    </script>
 </head>
 
 <body>
-    <section class="jumbotron text-center" style="background-color: #d4f0fe; margin-top: 0px; padding-top: 15px">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="container">
-            <h1 class="jumbotron-heading">How to paly</h1>
-            <p class="lead text-muted">
-                Drag the rubbish to the correct bin to score points
-            </p>
-            <p class="lead text-muted">Mistakes over 10% and the game is over.</p>
-            <p class="lead text-muted">Timeout game over.</p>
-            <br />
-            <br />
-            <p>
-                <a href="game.html">
-                    <img width="300" src="/img/gamestart.png" alt="" /></a>
-            </p>
-        </div>
-        <br />
-    </section>
+<section class="jumbotron text-center" style="background-color: #d4f0fe; margin-top: 0px; padding-top: 15px">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="container">
+        <h1 class="jumbotron-heading">How to paly</h1>
+        <p class="lead text-muted">
+            Drag the rubbish to the correct bin to score points
+        </p>
+        <p class="lead text-muted">Mistakes over 10% and the game is over.</p>
+        <p class="lead text-muted">Timeout game over.</p>
+        <br/>
+        <br/>
+        <p>
+            <a href="game.html">
+                <img width="300" src="./img/gamestart.png" alt=""/></a>
+        </p>
+    </div>
+    <br/>
+</section>
 </body>
 
 </html>
