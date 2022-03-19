@@ -2,6 +2,7 @@ package com.tus.garbagesorting.garbagesorting.Controller;
 
 import com.tus.garbagesorting.garbagesorting.Common.JwtTokenUtil;
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
+import com.tus.garbagesorting.garbagesorting.Model.LoginUserData;
 import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,6 @@ public class UserController {
         return userMapper.findById(id);
 //                if (userMapper.findById(id) != null) {
 //                    throw new NotFoundException("User with Id " + id + " does not exist.");
-
-
     }
 
 
@@ -89,7 +88,7 @@ public class UserController {
         // Check if email and password stored in database matches with email and password provided.
         if (userDB.getUser_password().equals(userData.getPassword())) {
             Map<String, String> payload = new HashMap<>();
-            payload.put("eamil", userDB.getUser_email());
+            payload.put("id", String.valueOf(userDB.getId()));
             payload.put("username", userDB.getUser_name());
             String token = JwtTokenUtil.getToken(payload);
             map.put("state", true);

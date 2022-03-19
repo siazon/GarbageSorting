@@ -13,7 +13,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JWTInterceptor())
                 .addPathPatterns("/upload/{iType}",
-                        "/fileList");        // Verify API
+                        "/GetInviteCode");        // Verify API
         //.excludePathPatterns("/user/login"); // Skip API
     }
 }

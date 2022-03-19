@@ -1,6 +1,5 @@
 package com.tus.garbagesorting.garbagesorting.Common;
 
-import com.tus.garbagesorting.garbagesorting.Service.ImageUtils;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Repository;
 

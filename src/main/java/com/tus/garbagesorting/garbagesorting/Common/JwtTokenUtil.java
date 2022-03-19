@@ -51,4 +51,6 @@ public class JwtTokenUtil {
         DecodedJWT verify = JWT.require(Algorithm.HMAC256(SIGN)).build().verify(token);
         return verify;
     }
+    
+
 }
