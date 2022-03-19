@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// A test suite to test the API endpoint performing CRUD functionalities.
-
 @CrossOrigin
 @RestController
 public class UserController {
