@@ -8,14 +8,11 @@ html, body {
 
 }
 
-#h2InMain {
-    margin-bottom: 5%;
-    margin-top: 5%;
-}
 
 .image1 {
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 7%;
+    margin-top: 109%;
+    position: absolute;
 }
 
 #container {
@@ -484,22 +481,30 @@ nav a:hover::before {
 
 .mainContent {
     align-content: center;
-    margin-left: 25%;
+    text-align: center;
+    margin-left: 14%;
     margin-top: 7%;
-    width: 43%;
+    width: 60%;
     position: absolute;
 }
 
 
 .mainContent h1 {
+    font-size: 300%;
     color: #009b5e;
+    text-align: center;
+    margin-left: -8%;
+
+    width: 120%;
 }
 
 
 .mainTitleText {
     margin-bottom: 0.5rem;
+    text-align: center;
     font-weight: 500;
     line-height: 1.2;
+
 }
 
 .caption {
@@ -614,7 +619,8 @@ ol, li {
     position: relative;
     flex: 0 0 100%;
     width: 100%;
-    background-image: url("../InformationPage/nemo.png");
+    background-image: url("../InformationPage/rec1.png");
+    background-size: 100% 100%;
     counter-increment: item;
 }
 
@@ -622,7 +628,27 @@ ol, li {
     position: relative;
     flex: 0 0 100%;
     width: 100%;
-    background-image: url("../InformationPage/slide2.png");
+    background-image: url("../InformationPage/rec2.png");
+    background-size: 100% 100%;
+    counter-increment: item;
+}
+
+.carousel__slide3 {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    background-image: url("../InformationPage/rec3.jpg");
+    background-size: 100% 100%;
+    counter-increment: item;
+}
+
+
+.carousel__slide4 {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    background-image: url("../InformationPage/rec4.jpg");
+    background-size: 100% 100%;
     counter-increment: item;
 }
 
@@ -739,19 +765,185 @@ ol, li {
 }
 
 .slider {
-    margin-left: 28%;
-    margin-top: 110%;
     position: absolute;
-    width: 32%;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 6%;
 
 }
 
-.slider h2 {
+
+.content2 {
+    position: absolute;
+    margin-top: 6%;
+
+}
+
+
+.modal-window {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.25);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.modal-window:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-window > div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: left;
+    transform: translate(-50%, -50%);
+    padding: 10em;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+
+.modal-window header {
+    font-weight: bold;
+}
+
+.modal-window h1 {
+    font-size: 150%;
+    margin: 0 0 15px;
+}
+
+.modal-close {
+    color: #009b5e;
+    line-height: 50px;
+    font-size: 120%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+}
+
+.modal-close:hover {
+    color: black;
+}
+
+/* Demo Styles */
+
+.container2x {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-window > div {
+    border-radius: 1rem;
+}
+
+.modal-window div:not(:last-of-type) {
+    margin-bottom: 15px;
+}
+
+small {
+    color: lightgray;
+}
+
+.btn2x {
+    border: 2px solid #009B5E;
+    color: #000000;
+    padding: 1em 1.5em;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+
+.btn2x i {
+    padding-right: 0.3em;
+    border: black solid 1rem;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.modalContainer {
+    margin-top: 48%;
+}
+
+
+.list-modal__list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#recyclingTitle {
+    margin-top: 2%;
     font-size: 300%;
     color: #009b5e;
-    text-align: center;
-    margin-left: -8%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 120%;
+}
+
+.wrapper2x {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+.wrapper3x {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 14%;
+}
+
+.wrapper4x {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 14%;
+}
+
+
+#modalTitle1 {
+    font-size: 4em;
+    color: #1d2124;
+    width: 10%;
+    /* margin-top: 0%; */
+    margin-left: 42%;
+    z-index: 999;
+    position: absolute;
+
+}
+
+
+#modalTitle2 {
+    font-size: 4em;
+    color: #1d2124;
+    width: 40%;
+    /* margin-top: 0%; */
+    margin-left: 27%;
+    z-index: 999;
+    position: absolute;
+    float: left;
+}
+
+#modalTitle3 {
+    font-size: 4em;
+    color: #1d2124;
+    width: 40%;
+    /* margin-top: 0%; */
+    margin-left: 27%;
+    z-index: 999;
+    position: absolute;
+    float: left;
 }
