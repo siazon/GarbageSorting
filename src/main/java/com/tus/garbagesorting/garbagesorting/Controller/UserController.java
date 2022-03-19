@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// A test suite to test the API endpoint performing CRUD functionalities.
-
 @CrossOrigin
 @RestController
 public class UserController {
