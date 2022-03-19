@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking </title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="title">
+            <img src="img/logo.png" alt="" />
+            <div>Ranking </div>
+        </div>
+        <div class="list-box">
+            <div class="list">
+                <div class="number">1</div>
+                <div class="user">
+                   
+                    <img src="./img/1.png" class="level" alt="" />
+                    <div>
+                        <p class="good"><span></span><span></span><span></span><span></span><span></span>Tom</p>
+                        <p class="jk-num">
+                            <span></span><span></span><span></span><span></span><span></span><span>First place</span>0001
+                        </p>
+                    </div>
+                </div>
+                <div class="km">227</div>
+            </div>
+            <div class="list">
+                <div class="number">2</div>
+                <div class="user">
+
+
+                    <img src="./img/2.png" class="level"  alt="" />
+                    <div>
+                        <p class="good"><span></span><span></span><span></span><span></span><span></span>Jon</p>
+                        <p class="jk-num">
+                            <span></span><span></span><span></span><span></span><span></span><span>Second place</span>0002
+                        </p>
+                    </div>
+                </div>
+                <div class="km">174</div>
+            </div>
+            <div class="list">
+                <div class="number">3</div>
+                <div class="user">
+                    
+                    <img src="./img/3.png" class="level" alt=""  />
+                    <div>
+                        <p class="good"><span></span><span></span><span></span><span></span><span></span>Jack</p>
+                        <p class="jk-num">
+                            <span></span><span></span><span></span><span></span><span></span><span>Third place</span>0003
+                        </p>
+                    </div>
+                </div>
+                <div class="km">149</div>
+            </div>
+            <div class="list">
+                <div class="number">4</div>
+                <div class="user">
+                    
+                    <div>
+                        <p class="good">Feng</p>
+                        <p class="jk-num">0004
+                        </p>
+                    </div>
+                </div>
+                <div class="km">145</div>
+            </div>
+            <div class="list">
+                <div class="number">5</div>
+                <div class="user">
+                    
+                    <div>
+                        <p class="good">Ming</p>
+                        <p class="jk-num">0005
+                        </p>
+                    </div>
+                </div>
+                <div class="km">123</div>
+            </div>
+            <div class="list">
+                <div class="number">6</div>
+                <div class="user">
+                    
+                    <div>
+                        <p class="good">FGT</p>
+                        <p class="jk-num">0006
+                        </p>
+                    </div>
+                </div>
+                <div class="km">113</div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .main {
+        background-image: url(img/background.jpg);
+        width: auto;
+        min-height: 10vh;
+        overflow: hidden;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 200px;
+        padding-left: 200px;
+        box-sizing: border-box;
+        color: rgba(255, 217, 0, 0.89);
+    }
+
+    .main .title {
+        width: 100%;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main .title img {
+        width: 150px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .main .list-box {
+        margin: 10px 0;
+        background-color: rgba(255, 255, 255, 0.767);
+        border-radius: 16px;
+    }
+
+    .main .list-box .list {
+        display: flex;
+        align-items: center;
+        padding: 20px 10px;
+        color: #666;
+        box-sizing: border-box;
+    }
+
+    .main .list-box .list .number {
+        width: 25px;
+        text-align: left;
+        color: rgb(104, 99, 99);
+        font-size: 14px;
+    }
+
+    .main .list-box .list .user {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+   
+
+    .main .list-box .list .user .level {
+        display: block;
+        position: absolute;
+        top: -7.5px;
+        left: -7.5px;
+        width: 40px;
+        z-index: 10;
+        display: block;
+        width: 60px;
+        height: 60px;
+        padding-right: 30px;
+        
+        border-radius: 50%;
+    }
+
+    .main .list-box .list .user .good {
+        font-weight: bold;
+    }
+
+    .main .list-box .list .user div {
+        min-width: 0;
+        flex: 1;
+
+
+    }
+
+    .main .list-box .list .user div .jk-num {
+        margin-top: 10px;
+        font-size: 10px;
+        color: rgb(104, 99, 99);
+
+
+    }
+
+    .main .list-box .list .user div span {
+        margin-right: 10px;
+        color: rgb(238, 76, 76);
+    }
+
+    .main .list-box .list .km {
+        margin-left: auto;
+        font-size: 14px;
+    }
+</style>
