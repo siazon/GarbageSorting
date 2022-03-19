@@ -36,7 +36,9 @@ public class ScoreService implements ScoreMapper {
         return jdbcTemplate.queryForObject("SELECT * FROM scores WHERE id=?", new Object[]{user_id}, (rs, rowNum) ->
                 new Score(
                         rs.getInt("user_score"),
-                        rs.getInt("user_id")
+                        rs.getInt("user_id"),
+                        rs.getString("user_name")
+
 
                 ));
     }
@@ -44,11 +46,12 @@ public class ScoreService implements ScoreMapper {
     @Override
     public List<Score> findAllScores() {
         return jdbcTemplate.query(
-                "select * from scores inner join user on scores.user_id = tb_user.id order by user_score desc",
+                "select tb_user.user_name, scores.user_id, scores.user_score from scores inner join tb_user on scores.user_id = tb_user.id order by user_score desc;",
                 (rs, rowNum) ->
                         new Score(
                                 rs.getInt("user_score"),
-                                rs.getInt("user_id")
+                                rs.getInt("user_id"),
+                                rs.getString("user_name")
 
                         )
         );
