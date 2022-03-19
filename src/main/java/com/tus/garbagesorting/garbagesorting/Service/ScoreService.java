@@ -17,10 +17,10 @@ public class ScoreService implements ScoreMapper {
 
     @Override
     public int insertScore(Score score) {
-      return   jdbcTemplate.update(
+        return jdbcTemplate.update(
                 "insert into scores(user_score, user_id)" +
                         "values(?, ?)",
-               score.getUserScore(), score.getUserId());
+                score.getUserScore(), score.getUserId());
     }
 
     @Override
@@ -30,28 +30,26 @@ public class ScoreService implements ScoreMapper {
     }
 
     @Override
-    public Score findScorebById(int user_id) {
-//        return jdbcTemplate.queryForObject("select * from student_id = ?", studentRowMapper, studentId);
-        return jdbcTemplate.queryForObject("SELECT * FROM scores WHERE id=?", new Object[]{user_id}, (rs, rowNum) ->
+    public Score findScoreById(int id) {
+        // query the user_score view which was created in the db, using the id.
+        return jdbcTemplate.queryForObject("select * from user_score where user_id=?", new Object[]{id}, (rs, rowNum) ->
                 new Score(
                         rs.getInt("user_score"),
                         rs.getInt("user_id"),
                         rs.getString("user_name")
-
-
                 ));
     }
 
     @Override
     public List<Score> findAllScores() {
         return jdbcTemplate.query(
-                "select tb_user.user_name, scores.user_id, scores.user_score from scores inner join tb_user on scores.user_id = tb_user.id order by user_score desc;",
+                "select tb_user.user_name, scores.user_id, scores.user_score from scores inner join tb_user on scores" +
+                        ".user_id = tb_user.id order by user_score desc;",
                 (rs, rowNum) ->
                         new Score(
                                 rs.getInt("user_score"),
                                 rs.getInt("user_id"),
                                 rs.getString("user_name")
-
                         )
         );
     }

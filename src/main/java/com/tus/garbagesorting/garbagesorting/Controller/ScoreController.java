@@ -2,7 +2,7 @@ package com.tus.garbagesorting.garbagesorting.Controller;
 
 import com.tus.garbagesorting.garbagesorting.Mapper.ScoreMapper;
 import com.tus.garbagesorting.garbagesorting.Model.Score;
-import com.tus.garbagesorting.garbagesorting.Model.User;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +23,16 @@ public class ScoreController {
         return new ResponseEntity<List<Score>>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/findById/{id}")
+    public Score findById(@PathVariable int id) throws NotFoundException {
+       return scoreMapper.findScoreById(id);
+    }
+
 
     @PostMapping("/insertScore")
     public Object insertScore(@RequestBody Score score) {
             scoreMapper.insertScore(score);
             return score;
-
     }
 
     @PutMapping("/updateScore")
@@ -36,6 +40,5 @@ public class ScoreController {
         scoreMapper.updateScore(score);
         return new ResponseEntity<>("Score updated", HttpStatus.NOT_FOUND);
     }
-
 
 }

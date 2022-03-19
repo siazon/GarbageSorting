@@ -15,16 +15,8 @@ public class Score {
         return userScore;
     }
 
-    public void setUserScore(int userScore) {
-        this.userScore = userScore;
-    }
-
     public String getUserName() {
         return userName;
-    }
-
-    public void setUser_name(String userName) {
-        this.userName = userName;
     }
 
     public int getUserId() {

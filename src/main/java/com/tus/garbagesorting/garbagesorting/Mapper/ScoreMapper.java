@@ -8,7 +8,6 @@ import java.util.List;
 public interface ScoreMapper {
     int insertScore(Score score);
     int updateScore(Score score);
-    Score findScorebById(int id);
-
+    Score findScoreById(int id);
     List<Score> findAllScores(); // use joins on the user table
 }
