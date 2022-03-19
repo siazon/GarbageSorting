@@ -480,8 +480,7 @@ nav a:hover::before {
 }
 
 .mainContent {
-    align-content: center;
-    text-align: center;
+
     margin-left: 14%;
     margin-top: 7%;
     width: 60%;
@@ -492,16 +491,12 @@ nav a:hover::before {
 .mainContent h1 {
     font-size: 300%;
     color: #009b5e;
-    text-align: center;
-    margin-left: -8%;
 
-    width: 120%;
 }
 
 
 .mainTitleText {
     margin-bottom: 0.5rem;
-    text-align: center;
     font-weight: 500;
     line-height: 1.2;
 
@@ -767,8 +762,7 @@ ol, li {
 .slider {
     position: absolute;
     width: 50%;
-    margin-left: 25%;
-    margin-top: 6%;
+    margin-top: 4%;
 
 }
 
@@ -842,10 +836,6 @@ ol, li {
 
 .container2x {
     display: grid;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
 }
 
 .modal-window > div {
