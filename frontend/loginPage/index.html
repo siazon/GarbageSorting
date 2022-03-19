@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/spop.min.css" />
 
     <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
-
+    <script src="../JS/Util.js"></script>
     <script src="js/jquery.pure.tooltips.js"></script>
     <script src="js/spop.min.js"></script>
     <script>
@@ -152,7 +152,7 @@
                     email: username,
                     password: password,
                 };
-                var url = "/js/config.json";
+                var url = "../js/config.json";
                 $.getJSON(url, function(data) {
                     host = data.host;
                     fetch(host + "/Login", {
@@ -162,15 +162,17 @@
                             },
                             body: JSON.stringify(requestData),
                         })
-                        // .then((response) => response.json())
+                        .then((response) => response.json())
                         .then((json) => {
-                            if (json.status == 200) {
+                            if (json.state == true) {
                                 console.log(json);
+                                localStorage.setItem("token", json.token);
                                 if (username.indexOf("garbagesorting") != -1)
-                                    window.location.href = "../../userList.html";
-                                else window.location.href = "../../imagespage/index.html";
+                                    window.location.href = "../userList.html";
+                                else window.location.href = "../imagespage/index.html";
                             } else {
-                                alert(json.status);
+                                console.log(json);
+                                alert(json.msg);
                                 return false;
                             }
                         });
@@ -261,7 +263,7 @@
                     user_password: password,
                     user_role: "",
                 };
-                var url = "/js/config.json";
+                var url = "../js/config.json";
                 $.getJSON(url, function(data) {
                     host = data.host;
                     fetch(host + "/InsertUser", {
@@ -403,19 +405,11 @@
         }
         
         body {
-<<<<<<< HEAD
             background-repeat: no-repeat;
-            background-position: center center #2D0F0F;
-            background-color: #00BDDC;
+            background-position: center center;
+            background-color: #00bddc;
             background-image: url(images/lll.jpg);
             background-size: 100% 100%;
-=======
-            /* background-repeat: no-repeat;
-            background-position: center center #2d0f0f;
-            background-color: #00bddc;
-            background-image: url(../homePage/background.png);
-            background-size: 100% 100%; */
->>>>>>> 40c488a4e2cedc8732d20533c59a57d4125ba41a
         }
         
         .overlay {

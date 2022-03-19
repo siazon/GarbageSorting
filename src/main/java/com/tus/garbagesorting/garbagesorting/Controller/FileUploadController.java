@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 @CrossOrigin
 @Controller
@@ -29,16 +31,22 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload/{iType}") // //new annotation since 4.3
-    public ResponseEntity<?> singleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable int iType) {
+    public ResponseEntity<Map<String, Object>> singleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable int iType) {
+        Map<String, Object> map = new HashMap<>();
         String path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp";
         String fileName = file.getOriginalFilename();
         try {
             file.transferTo(new File(path + "\\" + fileName));
             fileUtil.SaveFile(iType, fileName);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            map.put("state", false);
+            map.put("msg", "unknown error");
+            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
         }
-        return ResponseEntity.ok("File uploaded successfully.");
+
+        map.put("state", true);
+        map.put("msg", "File uploaded successfully.");
+        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
     }
 
     @GetMapping("/fileList/")

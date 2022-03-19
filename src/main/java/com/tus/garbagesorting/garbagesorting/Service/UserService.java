@@ -1,5 +1,3 @@
-
-
 package com.tus.garbagesorting.garbagesorting.Service;
 
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
@@ -7,7 +5,6 @@ import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 
 import java.util.List;
 
@@ -47,6 +44,22 @@ public class UserService implements UserMapper {
     public User findById(int id) {
 
         return jdbcTemplate.queryForObject("SELECT * FROM tb_user WHERE id=?", new Object[]{id}, (rs, rowNum) ->
+                new User(
+                        rs.getInt("id"),
+                        rs.getString("user_email"),
+                        rs.getString("user_name"),
+                        rs.getString("user_phone"),
+                        rs.getString("user_password"),
+                        rs.getString("user_role")
+
+                ));
+
+    }
+
+    @Override
+    public User findByEamil(String email) {
+
+        return jdbcTemplate.queryForObject("SELECT * FROM tb_user WHERE user_email=?", new Object[]{email}, (rs, rowNum) ->
                 new User(
                         rs.getInt("id"),
                         rs.getString("user_email"),

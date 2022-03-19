@@ -1,17 +1,17 @@
-
-
 package com.tus.garbagesorting.garbagesorting.Controller;
 
+import com.tus.garbagesorting.garbagesorting.Common.JwtTokenUtil;
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // A test suite to test the API endpoint performing CRUD functionalities.
 
@@ -68,30 +68,39 @@ public class UserController {
     }
 
     @PostMapping("/Login")
-    public ResponseEntity<String> login(@RequestBody LoginUserData userData) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginUserData userData) {
 
+        Map<String, Object> map = new HashMap<>();
+        User userDB = null;
+        try {
+            userDB = userMapper.findByEamil(userData.getEmail());
+        } catch (Exception ex) {
+            map.put("state", false);
+            map.put("msg", "username or password does not exist");
+            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+        }
         // Validate email and password
         if (userData.getEmail() == "" || userData.getPassword() == "") {
-            return new ResponseEntity<>("username or password cannot be empty", HttpStatus.NOT_FOUND);
+            map.put("state", false);
+            map.put("msg", "username or password cannot be empty");
+            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
         }
-
-        List<User> list = userMapper.findAll();
 
         // Check if email and password stored in database matches with email and password provided.
-        String userEmail;
-        String userPassword;
-        boolean isExist = false;//user exist tag
-        for (int i = 0; i < list.size(); i++) {
-            userEmail = list.get(i).getUser_email();
-            userPassword = list.get(i).getUser_password();
-            if (userData.getEmail().equalsIgnoreCase(userEmail) && userData.getPassword().equals(userPassword)) {
-                isExist = true;
-            }
+        if (userDB.getUser_password().equals(userData.getPassword())) {
+            Map<String, String> payload = new HashMap<>();
+            payload.put("eamil", userDB.getUser_email());
+            payload.put("username", userDB.getUser_name());
+            String token = JwtTokenUtil.getToken(payload);
+            map.put("state", true);
+            map.put("msg", "Successful login");// back token
+            map.put("token", token);
+            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+        } else {
+            map.put("state", true);
+            map.put("msg", "Incorrect username or password");// back token
+            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
         }
-        if (isExist)
-            return new ResponseEntity<>("Successful login", HttpStatus.OK);
-        else
-            return new ResponseEntity<>("Incorrect username or password", HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/delete/{id}")

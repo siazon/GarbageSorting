@@ -4,14 +4,15 @@
 <head>
     <title>jQuery+ajax实现简单的上传图片功能</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+    <script src="../JS/Util.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <link href="css/style1.css" rel='stylesheet' type='text/css'/>
+    <link href="css/style1.css" rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
     <script type="application/x-javascript">
-        addEventListener("load", function () {
+        addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
         }, false);
 
@@ -36,16 +37,33 @@
             }
             let formData = new FormData();
             var url = "../js/config.json";
-            $.getJSON(url, function (data) {
+            $.getJSON(url, function(data) {
                 formData.append("file", fileupload.files[0]);
-                let response = fetch(data.host + "/upload/" + index, {
-                    method: "POST",
-                    body: formData
-                });
+                // let response = fetch(data.host + "/upload/" + index, {
+                //     method: "POST",
+                //     body: formData
+                // });
 
-                if (response.status == 200) {
-                    alert("File successfully uploaded.");
-                }
+                fetch(data.host + "/upload/" + index, {
+                        method: "POST",
+                        headers: {
+                            // "Content-Type": "application/json;charset=utf-8",
+                            "token": localStorage.getItem("token")
+                        },
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json);
+                        if (json.state == true) {
+                            console.log(json);
+
+                        } else {
+                            console.log(json);
+                            //alert(json.msg)
+                            //return false;
+                        }
+                    });
             });
         }
 
@@ -61,27 +79,27 @@
 </head>
 
 <body class="overlay">
-<div class="lightbox">
-    <div>
-        <h1>Garbage Images Upload</h1>
-    </div>
-    <div class="form-group">
-        <label><b>Images</b></label>
-        <img src="" alt="" id="img"/>
-        <input id="fileupload" type="file" name="file" id="uploadImage">
-        <td><b>Type:</b></td>
-        <td><select id="profession" onchange="onSelected()">
+    <div class="lightbox">
+        <div>
+            <h1>Garbage Images Upload</h1>
+        </div>
+        <div class="form-group">
+            <label><b>Images</b></label>
+            <img src="" alt="" id="img" />
+            <input id="fileupload" type="file" name="file" id="uploadImage">
+            <td><b>Type:</b></td>
+            <td><select id="profession" onchange="onSelected()">
             <option>--Please select--</option>
             <option>Recycle</option>
             <option>Organic</option>
             <option>Trash</option>
         </select></td>
-        <br><br>
+            <br><br>
 
-        <button class="button" id="upload-button" onclick="uploadFile()">Submit</button>
-        <button class="button" id="upload-button" onclick=" window.history.back();">Cancel</button>
+            <button class="button" id="upload-button" onclick="uploadFile()">Submit</button>
+            <button class="button" id="upload-button" onclick=" window.history.back();">Cancel</button>
+        </div>
     </div>
-</div>
 </body>
 
 </html>

@@ -1,76 +1,54 @@
 package com.tus.garbagesorting.garbagesorting.Common;
 
 
-import com.tus.garbagesorting.garbagesorting.Model.User;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTCreator;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.Calendar;
 import java.util.Map;
-import java.util.function.Function;
 
-@Component
-public class JwtTokenUtil implements Serializable {
 
-    private static final long serialVersionUID = -2550185165626007488L;
+public class JwtTokenUtil {
+    private static final String SIGN = "!Q@W#E$R%T1,./"; //签名
 
-    public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-
-    @Value("${jwt.secret}")
-    private String secret;
-
-    //retrieve username from jwt token
-    public String getUsernameFromToken(String token) {
-        return getClaimFromToken(token, Claims::getSubject);
+    /**
+     * 生成token令牌 header.payload.sign
+     *
+     * @param map
+     * @return
+     */
+    public static String getToken(Map<String, String> map) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_WEEK, 7); // 生成token过期时间,默认7天过期
+        // 创建jwt builder
+        JWTCreator.Builder builder = JWT.create();
+        map.forEach((key, value) -> {
+            builder.withClaim(key, value); //循环token的用户信息
+        });
+        String token = builder.withExpiresAt(calendar.getTime()) // 指定token过期时间
+                .sign(Algorithm.HMAC256(SIGN)); // token的密钥
+        return token;
     }
 
-    //retrieve expiration date from jwt token
-    public Date getExpirationDateFromToken(String token) {
-        return getClaimFromToken(token, Claims::getExpiration);
+    /**
+     * 验证token的合法性
+     *
+     * @param token
+     */
+    public static void verifier(String token) {
+        JWT.require(Algorithm.HMAC256(SIGN)).build().verify(token);
     }
 
-    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = getAllClaimsFromToken(token);
-        return claimsResolver.apply(claims);
-    }
-
-    //for retrieveing any information from token we will need the secret key
-    private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-    }
-
-    //check if the token has expired
-    private Boolean isTokenExpired(String token) {
-        final Date expiration = getExpirationDateFromToken(token);
-        return expiration.before(new Date());
-    }
-
-    //generate token for user
-    public String generateToken(User userDetails) {
-        Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, userDetails.getUser_name());
-    }
-
-    //while creating the token -
-    //1. Define  claims of the token, like Issuer, Expiration, Subject, and the ID
-    //2. Sign the JWT using the HS512 algorithm and secret key.
-    //3. According to JWS Compact Serialization(https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#section-3.1)
-    //   compaction of the JWT to a URL-safe string
-    private String doGenerateToken(Map<String, Object> claims, String subject) {
-
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                .signWith(SignatureAlgorithm.HS512, secret).compact();
-    }
-
-    //validate token
-    public Boolean validateToken(String token, User userDetails) {
-        final String username = getUsernameFromToken(token);
-        return (username.equals(userDetails.getUser_name()) && !isTokenExpired(token));
+    /**
+     * 获取token信息，可以不用这个方法，如果需要获取信息可以将verifier设置一个返回值跟这个方法一致即可
+     *
+     * @param token
+     * @return
+     */
+    public static DecodedJWT getTokenInfo(String token) {
+        DecodedJWT verify = JWT.require(Algorithm.HMAC256(SIGN)).build().verify(token);
+        return verify;
     }
 }

@@ -150,7 +150,16 @@
     <!----wookmark-scripts---->
     <script src="js/jquery.imagesloaded.js"></script>
     <script src="js/jquery.wookmark.js"></script>
+    <script src="../JS/Util.js"></script>
     <script type="text/javascript">
+        init();
+
+        function init() {
+            var token = localStorage.getItem("token");
+            console.log("init token: ", token);
+
+        }
+
         (function($) {
             var $tiles = $('#tiles'),
                 $handler = $('li', $tiles),
@@ -200,7 +209,7 @@
             applyLayout();
 
             // Capture scroll event.
-            $window.bind('scroll.wookmark', onScroll);
+            // $window.bind('scroll.wookmark', onScroll);
         })(jQuery);
     </script>
     <!----//wookmark-scripts---->
