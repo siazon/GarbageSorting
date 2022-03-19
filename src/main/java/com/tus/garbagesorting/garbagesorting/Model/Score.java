@@ -3,12 +3,12 @@ package com.tus.garbagesorting.garbagesorting.Model;
 public class Score {
     public int userScore;
     public int userId;
-    public String user_name;
+    public String userName;
 
-    public Score(int userScore, int userId, String user_name) {
+    public Score(int userScore, int userId, String userName) {
         this.userScore = userScore;
         this.userId = userId;
-        this.user_name = user_name;
+        this.userName = userName;
     }
 
     public int getUserScore() {
@@ -19,12 +19,20 @@ public class Score {
         this.userScore = userScore;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUser_name(String userName) {
+        this.userName = userName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
 

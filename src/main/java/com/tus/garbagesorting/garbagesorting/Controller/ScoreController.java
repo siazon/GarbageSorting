@@ -6,10 +6,7 @@ import com.tus.garbagesorting.garbagesorting.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,9 +24,18 @@ public class ScoreController {
     }
 
 
+    @PostMapping("/insertScore")
+    public Object insertScore(@RequestBody Score score) {
+            scoreMapper.insertScore(score);
+            return score;
 
-//    @PostMapping("insertScore") {
-//
-//    }
+    }
+
+    @PutMapping("/updateScore")
+    public ResponseEntity<String> updateScore(@RequestBody Score score) {
+        scoreMapper.updateScore(score);
+        return new ResponseEntity<>("Score updated", HttpStatus.NOT_FOUND);
+    }
+
 
 }

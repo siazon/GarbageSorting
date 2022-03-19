@@ -18,16 +18,15 @@ public class ScoreService implements ScoreMapper {
     @Override
     public int insertScore(Score score) {
       return   jdbcTemplate.update(
-                "insert into scores (user_score, user_id) " +
-                        "values(?,?)",
-               score.getUserScore());
-
-
+                "insert into scores(user_score, user_id)" +
+                        "values(?, ?)",
+               score.getUserScore(), score.getUserId());
     }
 
     @Override
     public int updateScore(Score score) {
-        return jdbcTemplate.update("update scores set user_score=? where user_id = ?");
+        return jdbcTemplate.update("update scores set user_score=? where user_id = ?", score.getUserScore(),
+                score.getUserId());
     }
 
     @Override
