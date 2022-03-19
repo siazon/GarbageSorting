@@ -17,24 +17,27 @@ public class ScoreController {
     @Autowired
     private ScoreMapper scoreMapper;
 
+    // Rank users by getting scores in descending order
     @GetMapping("/allScores")
     public ResponseEntity<List<Score>> findAllScores() {
         List<Score> list = scoreMapper.findAllScores();
         return new ResponseEntity<List<Score>>(list, HttpStatus.OK);
     }
 
+    // find score of one user by id
     @GetMapping("/findById/{id}")
     public Score findById(@PathVariable int id) throws NotFoundException {
        return scoreMapper.findScoreById(id);
     }
 
-
+    // insert score
     @PostMapping("/insertScore")
     public Object insertScore(@RequestBody Score score) {
             scoreMapper.insertScore(score);
             return score;
     }
 
+    // update score
     @PutMapping("/updateScore")
     public ResponseEntity<String> updateScore(@RequestBody Score score) {
         scoreMapper.updateScore(score);
