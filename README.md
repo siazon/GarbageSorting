@@ -23,6 +23,11 @@ return: string msg
 # Mysql
 
 ```
+DROP DATABASE IF EXISTS garbagesorting;
+CREATE DATABASE garbagesorting;
+
+Use garbagesorting;
+
 drop table if exists tb_user;
 CREATE TABLE tb_user(
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -46,10 +51,11 @@ on delete cascade on update cascade
 
 select * from scores;
 
- -- Create view to find user by id
+-- Create view to find user by id
 drop view if exists user_score;
 create view user_score as
 select tb_user.user_name, scores.user_id, scores.user_score from scores inner join tb_user on scores.user_id = tb_user.id;
 
 select * from user_score;
+
 ```
