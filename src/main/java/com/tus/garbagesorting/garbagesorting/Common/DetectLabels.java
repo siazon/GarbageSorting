@@ -39,7 +39,7 @@ public class DetectLabels {
             for (AnnotateImageResponse res : responses) {
                 if (res.hasError()) {
                     System.out.format("Error: %s%n", res.getError().getMessage());
-                    return;
+                    return "";
                 }
 
                 // For full list of available annotations, see http://g.co/cloud/vision/docs
