@@ -403,7 +403,7 @@ nav a:hover::before {
 
 
 .educationAccess {
-    position: absolute;
+    border: red solid 3px;
     margin: 15% 55%;
 
 
@@ -416,7 +416,6 @@ nav a:hover::before {
     animation: shake 3.5s;
     animation-iteration-count: infinite;
     height: 350px;
-    position: absolute;
 
 }
 
@@ -432,11 +431,11 @@ nav a:hover::before {
 
 
 .containerAccess {
-    position: absolute;
-    width: 1200px;
+
     height: 71%;
     margin-left: 18%;
     margin-top: 5%;
+    border: red solid 3px;
 
 
 }
