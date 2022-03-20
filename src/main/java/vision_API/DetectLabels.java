@@ -25,7 +25,7 @@ public class DetectLabels {
 
     public static void detectLabels() throws IOException {
         // TODO(developer): Replace these variables before running the sample.
-        String filePath = "src/main/java/vision_API/sains.jpg";
+        String filePath = "src/main/java/vision_API/leaves.jpg";
         detectLabels(filePath);
     }
 
@@ -57,24 +57,11 @@ public class DetectLabels {
                 // For full list of available annotations, see http://g.co/cloud/vision/docs
                 int limit = 0;
                 for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
-
-                    float score = annotation.getScore();
-                    String description = annotation.getDescription();
-                
-
-                    if (score > 0.5) {
-                        if (description.toLowerCase().contains("glass")) {
-                            System.out.println("");
-                            System.out.println("This object is recyclable");
-                        } else if (description.toLowerCase().contains("plastic")) {
-                            System.out.println("");
-                            System.out.println("This object is garbage");
-                        }
-
-                    }
+                    annotation
+                            .getAllFields()
+                            .forEach((k, v) -> System.out.format("%s : %s%n", k, v.toString()));
                 }
-
-
+                //Organic: Plant, Food, Fish, Fruit, Vegetable,
             }
         }
     }
