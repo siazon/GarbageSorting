@@ -11,29 +11,29 @@ import java.util.Map;
 
 
 public class JwtTokenUtil {
-    private static final String SIGN = "!Q@W#E$R%T1,./"; //签名
+    private static final String SIGN = "!Q@W#E$R%T1,./"; //sign
 
     /**
-     * 生成token令牌 header.payload.sign
+     * Create token header.payload.sign
      *
      * @param map
      * @return
      */
     public static String getToken(Map<String, String> map) {
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_WEEK, 7); // 生成token过期时间,默认7天过期
+        calendar.add(Calendar.DAY_OF_WEEK, 7); // Generate token expiry time, default 7 days
         // 创建jwt builder
         JWTCreator.Builder builder = JWT.create();
         map.forEach((key, value) -> {
-            builder.withClaim(key, value); //循环token的用户信息
+            builder.withClaim(key, value); //Loop token's user information
         });
-        String token = builder.withExpiresAt(calendar.getTime()) // 指定token过期时间
-                .sign(Algorithm.HMAC256(SIGN)); // token的密钥
+        String token = builder.withExpiresAt(calendar.getTime()) // Specify the token expiry time
+                .sign(Algorithm.HMAC256(SIGN)); // token key
         return token;
     }
 
     /**
-     * 验证token的合法性
+     * Verify the token
      *
      * @param token
      */
@@ -42,7 +42,9 @@ public class JwtTokenUtil {
     }
 
     /**
-     * 获取token信息，可以不用这个方法，如果需要获取信息可以将verifier设置一个返回值跟这个方法一致即可
+     * Get token information, you can not use this method,
+     * if you need to get information,
+     * you can set the verifier a return value consistent with this method can be
      *
      * @param token
      * @return
@@ -51,6 +53,6 @@ public class JwtTokenUtil {
         DecodedJWT verify = JWT.require(Algorithm.HMAC256(SIGN)).build().verify(token);
         return verify;
     }
-    
+
 
 }

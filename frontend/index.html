@@ -52,13 +52,11 @@
                     <ul>
                         <li><a href="#" onclick="displayHome()">Home</a></li>
                         <li><a href="#" onclick="displayGame()">Game</a></li>
+                        <li><a href="#" onclick="Repository()">Point Store</a></li>
                         <li><a href="#" onclick="Repository()">Education</a></li>
                         <li><a href="#" onclick="aboutUs()">About Us</a></li>
                         <li>
                             <a href="#" id="btnLogin" onclick="login()" class="button">Login</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="onInvite()" class="button">Invite</a>
                         </li>
                     </ul>
                 </nav>
@@ -88,8 +86,6 @@
 
     <section class="select">
         <iframe id="centerFrame" onload="this.width=screen.width;this.height=screen.height;" src="homePage/home.html"></iframe>
-
-
     </section>
     <div class="footer-dark">
         <footer>
@@ -156,52 +152,10 @@
                     localStorage.setItem("trashQty", json[2]);
                 });
         }
-        window.onload = function() {
-            var token = localStorage.getItem("token");
-            if (token.length > 0) {
-                $("#btnLogin").val("Logout");
-                console.log("token is ", $("#btnLogin").val(), token);
-            } else {
-                console.log("token is null");
-            }
-            getQty();
-        };
 
-        function onInvite() {
-            var url = "/js/config.json";
-            var _this = this;
-            host = "http://127.0.0.1:8082";
-            fetch(host + "/GetInviteCode/", {
-                    method: "GET",
-                    headers: {
-                        token: localStorage.getItem("token"),
-                    },
-                })
-                .then((response) => response.json())
-                .then((json) => {
-                    var url = window.top.document.URL
-                    url = url.substr(0, url.length - 1)
-                    alert("Invite Url already on clipboard.\n Please send this URL to your friend for signup");
-                    //TODO
-                    //  showGameOver(url + "loginPage/index.html?code=" + json.code);
-                    copyToClip(url + "loginPage/index.html?code=" + json.code);
-                    console.log(json, url);
-                });
-        }
 
-        function copyToClip(content) {
-            var aux = document.createElement("input");
-            aux.setAttribute("value", content);
-            document.body.appendChild(aux);
-            aux.select();
-            document.execCommand("copy");
-            document.body.removeChild(aux);
-            // if (message == null) {
-            //     alert("复制成功");
-            // } else {
-            //     alert(message);
-            // }
-        }
+
+
 
         function showGameOver(url) {
             console.log(url)
@@ -213,6 +167,14 @@
         var $loader = document.querySelector('.loader')
 
         window.onload = function() {
+            getQty();
+            var token = localStorage.getItem("token");
+            if (token.length > 0) {
+                $("#btnLogin").val("Logout");
+                console.log("token is ", $("#btnLogin").val(), token);
+            } else {
+                console.log("token is null");
+            }
             $loader.classList.remove('loader--active')
         };
 
