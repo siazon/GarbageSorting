@@ -160,23 +160,16 @@ nav a:hover::before {
 }
 
 .buttonDiv {
-    /* margin: 11px -307px; */
-    margin-top: -39px;
-    margin-right: 29%;
-    /* display: inline-block; */
-    float: right;
+
+
 }
 
 .buttonDiv2 {
-    position: absolute;
-    margin-left: 15%;
-    bottom: 0;
+
 }
 
 .buttonDiv3 {
-    margin-left: 60%;
-    position: absolute;
-    bottom: 0;
+
 }
 
 .button:hover {
@@ -245,7 +238,7 @@ nav a:hover::before {
     opacity: 0.8;
 }
 
-@media ( max-width :767px) {
+@media ( max-width: 767px) {
     .footer-dark .item:not(.social) {
         text-align: center;
         padding-bottom: 20px;
@@ -256,7 +249,7 @@ nav a:hover::before {
     margin-bottom: 36px;
 }
 
-@media ( max-width :767px) {
+@media ( max-width: 767px) {
     .footer-dark .item.text {
         margin-bottom: 0;
     }
@@ -271,14 +264,14 @@ nav a:hover::before {
     text-align: center;
 }
 
-@media ( max-width :991px) {
+@media ( max-width: 991px) {
     .footer-dark .item.social {
         text-align: center;
         margin-top: 20px;
     }
 }
 
-.footer-dark .item.social>a {
+.footer-dark .item.social > a {
     font-size: 20px;
     width: 36px;
     height: 36px;
@@ -292,7 +285,7 @@ nav a:hover::before {
     opacity: 0.75;
 }
 
-.footer-dark .item.social>a:hover {
+.footer-dark .item.social > a:hover {
     opacity: 0.9;
 }
 
@@ -336,17 +329,16 @@ nav a:hover::before {
 }
 
 .gameAccess {
-    position: absolute;
-    margin: 21% 9%;
+    border: #c800ff solid 3px;
 }
 
 .gameAccessImg {
-    border-radius: 50px;
+
     width: 350px;
     height: 350px;
     animation: shake 3.5s;
     animation-iteration-count: infinite;
-    position: absolute;
+
 }
 
 .gameAccessImg:hover {
@@ -391,8 +383,8 @@ nav a:hover::before {
 }
 
 .educationAccess {
-    position: absolute;
-    margin: 15% 55%;
+
+
 }
 
 .educationAccessImg {
@@ -402,7 +394,14 @@ nav a:hover::before {
     animation: shake 3.5s;
     animation-iteration-count: infinite;
     height: 350px;
-    position: absolute;
+    border: #00ff04 solid 3px;
+}
+
+.accesImageContainer {
+    display: flex;
+    flex-direction: row;
+    border: #00ff04 solid 3px;
+    justify-content: center;
 }
 
 .searchAccessImg {
@@ -414,37 +413,26 @@ nav a:hover::before {
 }
 
 .containerAccess {
-    position: absolute;
-    width: 1200px;
-    height: 71%;
-    margin-left: 18%;
-    margin-top: 5%;
+    display: flex;
+    border: red solid 3px;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .accessLogoGame {
     font-size: 65px;
-    letter-spacing: 8px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
     /* text-shadow: 1px 1px #fff; */
     color: #135658;
-    position: absolute;
+    border: #ffff1d solid 5px;
     font-family: "UnpackW00-Fast";
-    margin-left: 9%;
-    margin-top: 5%;
 }
 
-.accessLogoEducation {
-    font-size: 55px;
-    letter-spacing: -3px;
-    text-shadow: 3px 3px #000000;
-    position: absolute;
-    width: 300px;
-    font-family: "UnpackW00-Fast";
-    margin-left: 60%;
-    margin-top: 5%;
-}
 
 #cf {
-    margin: 15% 55%;
+    order: 1;
 }
 
 #cf img {

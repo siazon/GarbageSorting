@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "steel-signifier-344120",
+  "private_key_id": "f5f3e0a479c0c57c39063ccbaf0067b795635fef",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDKzWWZ7Wx1+Bkz\n4c2xW6j8uOM4jiJDqgoxno3WWALEYVcNWjeMwy9Fv6C9f7PkYy7G2MRT2iicRfcV\nBgmySj/iglc0xwiwnYoPlsrC9VDBAUoyuSA1mQefK6ntn1NetS5ryJNvjN1zXxsK\nw6fcjw5BYxczykD9KGXU6FybmdHV46TQMyr3QRNHdSH+sqiGtpDtDRYw9ki0AaEq\nn4NG1huLu07tSng/YmLimjHsjHRPEv7U8VemRr23y20KWEREJzDWIu1mjuRUlY5V\n6N/tJAziRaXIqW5GxtyTBUVUrOFD66SuTXd2Vin7MyLRRwMi7TlEGZZ/im2Vq94U\nujodlxLlAgMBAAECggEAJKPcXeWT6XJkF0gOEiOV0ecTglXHogL4KYPUa2vmQBW4\nFRz+GUvwYAEhqOsIFNTIkDt8qQuqt6U6YU2AdfpNNX7IA6yMCODFn1BmnLeWmfBC\nOAzTYWufAWZxopFdDijc1LNd09MW9W+y4ox76PDdqfmdqQk7GaHxV/iNNr2hOCvA\n3vnvwEdXzPW8H/ncpcfq8Ff1UpnS4+68uFc7JJloFSzvO3Q++J28b20p2InIIKYc\npsZ0roOeNduVq6dWj1hFq5GbuBCGW7BLk0fytEdseKwNvnajVZMzXFLCoo5lfv6e\nowgQAzThIMqYO4OPNtc/HWN+eDJcD80k/kybIvxOhwKBgQDvEX6LDHYbs8b235T6\n+4vT54x6TKYY74E7o2nCpbjLWraSAVF7DoontBH32IjgBs8CtmXWWdF1wfF0XOUP\n/U4wl8D5TRkDklQTdCSBesVm3cHcMWRDGF7vHp4LhQGzas0DneelklCkqGBUydLA\nhllY8kYMe5dJsYLC71BA3SnPjwKBgQDZKl67Q0B+3KZDpUtZVrPwShMeOyOKPqUd\ntpqG5RmJWBNxKkt2fGeQhqfwRYMHm9BJMxfV0I3eqwQLcGzlq7N6VtnrrKjnjcz1\n1lRG1QApHNvynaaeGf7Jld6VdyGVcjPbnBLyXrivMvtt+g3F6pYEhUU8FFeKivtD\nhidXClJ8SwKBgEHrigAfbIXQ+aDjH7phGDpTE6o5bmdbyz+9nJD+j0kLd2IlGOmc\npb2y6m1z+LIFTpmJ3+TOGXKmCsUyRDs3dpLxlVVoy+fvNl2y3coSJ1Jo/WaQ+/uA\nQdUflSbKAyEM5wEDTneaM8BjaUSX7hQGN6bOD0Cr55h7aPoFcRShp0DDAoGAM/2q\n1FZTeIvG2mcWVPsm9R4m2ZP6/DvnN+fhsu3iYTlO3kbr7h/2g2lZh3J83jN1eDDd\nQfk+HdL/kuWFjK7At0dXwM6DWXxfV3PKlXKlKTKZjcoke7FpiEVzFoGA7tB6jdcd\nyhzXRkqEW14EMh/pboehfbK5Cpgfc5kIjhQQj2UCgYEA1qgpnpLvT5WCNedIO4oP\nIoHdYZoNGC4rhesiLxz2C1PhlJjvVUbMdlgZ5ajIg2smEbtH26XKND/zbN9jgSsG\nIYDThmFsw9kNXgV+f13Sq4BaG70gafBBYWLVLwclHdEBnn4JWHOJmSTOYHooOSDy\nxP40e2ncDAKjz8/PIdLXGX8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "eshaq95@steel-signifier-344120.iam.gserviceaccount.com",
+  "client_id": "107263830475026533519",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eshaq95%40steel-signifier-344120.iam.gserviceaccount.com"
+}

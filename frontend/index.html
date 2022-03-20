@@ -169,7 +169,7 @@
         window.onload = function() {
             getQty();
             var token = localStorage.getItem("token");
-            if (token.length > 0) {
+            if (token != undefined && token.length > 0) {
                 $("#btnLogin").val("Logout");
                 console.log("token is ", $("#btnLogin").val(), token);
             } else {
