@@ -187,7 +187,21 @@
     document.querySelector('.btn').addEventListener('click', function () {
         $loader.classList.add('loader--active')
 
+<<<<<<< HEAD
         window.setTimeout(function () {
+=======
+        var $loader = document.querySelector('.loader')
+
+        window.onload = function() {
+            getQty();
+            var token = localStorage.getItem("token");
+            if (token != undefined && token.length > 0) {
+                $("#btnLogin").val("Logout");
+                console.log("token is ", $("#btnLogin").val(), token);
+            } else {
+                console.log("token is null");
+            }
+>>>>>>> 1ed83df532671b39efbb6bbb9f9bf8b2b81a51f6
             $loader.classList.remove('loader--active')
         }, 5000)
     })

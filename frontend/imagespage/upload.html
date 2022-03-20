@@ -6,80 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<<<<<<< HEAD
-    <script src="../JS/Util.js"></script>
-=======
-   
->>>>>>> page
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <link href="css/style1.css" rel='stylesheet' type='text/css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
-    <script type="application/x-javascript">
-        addEventListener("load", function() {
-            setTimeout(hideURLbar, 0);
-        }, false);
+    <<<<<<< HEAD <script src="../JS/Util.js">
+        </script>
+        ======= >>>>>>> page
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <link href="css/style1.css" rel='stylesheet' type='text/css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+        <script type="application/x-javascript">
+            addEventListener("load", function() {
+                setTimeout(hideURLbar, 0);
+            }, false);
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    </script>
-    <!----webfonts---->
-    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
-    <!----//webfonts---->
-    <!---start-click-drop-down-menu----->
-    <script src="js/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        function uploadFile() {
-            var options = document.getElementById("profession");
-            var index = options.selectedIndex;
-            if (index == 0) {
-                options.className = "redBorder";
-                return;
+            function hideURLbar() {
+                window.scrollTo(0, 1);
             }
-            let formData = new FormData();
-            var url = "../js/config.json";
-            $.getJSON(url, function(data) {
-                formData.append("file", fileupload.files[0]);
-                // let response = fetch(data.host + "/upload/" + index, {
-                //     method: "POST",
-                //     body: formData
-                // });
+        </script>
+        </script>
+        <!----webfonts---->
+        <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
+        <!----//webfonts---->
+        <!---start-click-drop-down-menu----->
+        <script src="js/jquery.min.js"></script>
 
-                fetch(data.host + "/upload/" + index, {
-                        method: "POST",
-                        headers: {
-                            // "Content-Type": "application/json;charset=utf-8",
-                            "token": localStorage.getItem("token")
-                        },
-                        body: formData,
-                    })
-                    .then((response) => response.json())
-                    .then((json) => {
-                        console.log(json);
-                        if (json.state == true) {
+        <script type="text/javascript">
+            function uploadFile() {
+                var options = document.getElementById("profession");
+                var index = options.selectedIndex;
+                if (index == 0) {
+                    options.className = "redBorder";
+                    return;
+                }
+                let formData = new FormData();
+                var url = "../js/config.json";
+                $.getJSON(url, function(data) {
+                    formData.append("file", fileupload.files[0]);
+                    // let response = fetch(data.host + "/upload/" + index, {
+                    //     method: "POST",
+                    //     body: formData
+                    // });
+
+                    fetch(data.host + "/upload/" + index, {
+                            method: "POST",
+                            headers: {
+                                // "Content-Type": "application/json;charset=utf-8",
+                                "token": localStorage.getItem("token")
+                            },
+                            body: formData,
+                        })
+                        .then((response) => response.json())
+                        .then((json) => {
                             console.log(json);
+                            if (json.state == true) {
+                                console.log(json);
 
-                        } else {
-                            console.log(json);
-                            //alert(json.msg)
-                            //return false;
-                        }
-                    });
-            });
-        }
-
-        function onSelected() {
-            var options = document.getElementById("profession");
-            var index = options.selectedIndex;
-            if (index > 0) {
-                options.className = "blackBorder";
-                return;
+                            } else {
+                                console.log(json);
+                                alert(json.msg)
+                                    //return false;
+                            }
+                        });
+                });
             }
-        }
-    </script>
+
+            function onSelected() {
+                var options = document.getElementById("profession");
+                var index = options.selectedIndex;
+                if (index > 0) {
+                    options.className = "blackBorder";
+                    return;
+                }
+            }
+        </script>
 </head>
 
 <body class="overlay">

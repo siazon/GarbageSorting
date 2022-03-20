@@ -20,10 +20,12 @@ public class FileUtil {
      * @param iType
      * @param fileName
      */
-    public void SaveFile(int iType, String fileName) {
+    public void SaveFile(int iType, String fileName) throws IOException {
         String path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp\\";
         String SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\";
         int count = 0;
+        DetectLabels.detectLabels(path + fileName);
+
         WASTETYPE eType = WASTETYPE.fromInteger(iType);
         switch (eType) {
             case Recycle:
