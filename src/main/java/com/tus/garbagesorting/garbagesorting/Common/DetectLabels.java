@@ -1,6 +1,12 @@
 package com.tus.garbagesorting.garbagesorting.Common;
 
-import com.google.cloud.vision.v1.*;
+import com.google.cloud.vision.v1.AnnotateImageRequest;
+import com.google.cloud.vision.v1.AnnotateImageResponse;
+import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
+import com.google.cloud.vision.v1.EntityAnnotation;
+import com.google.cloud.vision.v1.Feature;
+import com.google.cloud.vision.v1.Image;
+import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.protobuf.ByteString;
 
 import java.io.FileInputStream;
@@ -9,11 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 public class DetectLabels {
+
+    private static String label = "";
+    private static String category = "";
 
     public static void detectLabels() throws IOException {
         // TODO(developer): Replace these variables before running the sample.
-        String filePath = "src/main/java/vision_API/leaves.jpg";
+        String filePath = "src/main/java/vision_API/banana.jpg";
         detectLabels(filePath);
     }
 
@@ -39,20 +54,44 @@ public class DetectLabels {
             for (AnnotateImageResponse res : responses) {
                 if (res.hasError()) {
                     System.out.format("Error: %s%n", res.getError().getMessage());
-                    return "";
+                    break;
                 }
 
                 // For full list of available annotations, see http://g.co/cloud/vision/docs
                 int limit = 0;
                 for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
-                    annotation
-                            .getAllFields()
-                            .forEach((k, v) -> System.out.format("%s : %s%n", k, v.toString()));
+                    label = annotation.getDescription();
+
+                    if (label.toLowerCase().contains("glass")
+                            || label.toLowerCase().contains("plastic")
+                            || label.toLowerCase().contains("tin")
+                            || label.toLowerCase().contains("metal")
+                            || label.toLowerCase().contains("can")
+                            || label.toLowerCase().contains("paper")
+                            || label.toLowerCase().contains("foil")
+                            || label.toLowerCase().contains("cardboard")
+                            || label.toLowerCase().contains("newspaper")) {
+
+                        category = "green";
+                    } else if (label.toLowerCase().contains("plant")
+                            || label.toLowerCase().contains("grass")
+                            || label.toLowerCase().contains("food")
+                            || label.toLowerCase().contains("fruit")
+                            || label.toLowerCase().contains("vegetable")
+                            || label.toLowerCase().contains("livestock")
+                            || label.toLowerCase().contains("coffee")
+                            || label.toLowerCase().contains("wood")
+                            || label.toLowerCase().contains("leaves")
+                            || label.toLowerCase().contains("leave")) {
+                        category = "brown";
+                    } else {
+                        category = "blue";
+                    }
                 }
                 //Organic: Plant, Food, Fish, Fruit, Vegetable,
             }
         }
-        return "recycle";//or return garbage
+        return category;
     }
 
 }

@@ -23,14 +23,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class DetectLabels {
 
+    private static String label = "";
+    private static String category = "";
+
     public static void detectLabels() throws IOException {
         // TODO(developer): Replace these variables before running the sample.
-        String filePath = "src/main/java/vision_API/leaves.jpg";
+        String filePath = "src/main/java/vision_API/banana.jpg";
         detectLabels(filePath);
     }
 
     // Detects labels in the specified local image.
-    public static void detectLabels(String filePath) throws IOException {
+    public static String detectLabels(String filePath) throws IOException {
         List<AnnotateImageRequest> requests = new ArrayList<>();
 
         ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
@@ -51,19 +54,44 @@ public class DetectLabels {
             for (AnnotateImageResponse res : responses) {
                 if (res.hasError()) {
                     System.out.format("Error: %s%n", res.getError().getMessage());
-                    return;
+                    break;
                 }
 
                 // For full list of available annotations, see http://g.co/cloud/vision/docs
                 int limit = 0;
                 for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
-                    annotation
-                            .getAllFields()
-                            .forEach((k, v) -> System.out.format("%s : %s%n", k, v.toString()));
+                    label = annotation.getDescription();
+
+                    if (label.toLowerCase().contains("glass")
+                            || label.toLowerCase().contains("plastic")
+                            || label.toLowerCase().contains("tin")
+                            || label.toLowerCase().contains("metal")
+                            || label.toLowerCase().contains("can")
+                            || label.toLowerCase().contains("paper")
+                            || label.toLowerCase().contains("foil")
+                            || label.toLowerCase().contains("cardboard")
+                            || label.toLowerCase().contains("newspaper")) {
+
+                        category = "green";
+                    } else if (label.toLowerCase().contains("plant")
+                            || label.toLowerCase().contains("grass")
+                            || label.toLowerCase().contains("food")
+                            || label.toLowerCase().contains("fruit")
+                            || label.toLowerCase().contains("vegetable")
+                            || label.toLowerCase().contains("livestock")
+                            || label.toLowerCase().contains("coffee")
+                            || label.toLowerCase().contains("wood")
+                            || label.toLowerCase().contains("leaves")
+                            || label.toLowerCase().contains("leave")) {
+                        category = "brown";
+                    } else {
+                        category = "blue";
+                    }
                 }
                 //Organic: Plant, Food, Fish, Fruit, Vegetable,
             }
         }
+        return category;
     }
 
 }
