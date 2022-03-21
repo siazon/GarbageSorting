@@ -21,7 +21,7 @@ public class PointStoreController {
     @Autowired
     private PointStoreMapper pointStoreMapper;
 
-    @GetMapping("/GetInviteCode")
+    @GetMapping("/GePoints")
     public ResponseEntity<Map<String, Object>> GetInviteCode(
             @RequestHeader Map<String, String> headers) {
         headers.forEach((key, value) -> {

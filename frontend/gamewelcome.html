@@ -106,25 +106,27 @@
         function onInvite() {
             var url = "/js/config.json";
             var _this = this;
-            host = "http://127.0.0.1:8082";
-            fetch(host + "/GetInviteCode/", {
-                    method: "GET",
-                    headers: {
-                        token: localStorage.getItem("token"),
-                    },
-                })
-                .then((response) => response.json())
-                .then((json) => {
-                    var url = window.top.document.URL;
-                    url = url.substr(0, url.length - 1);
-                    alert(
-                        "Invite Url already on clipboard.\n Please send this URL to your friend for signup"
-                    );
-                    //TODO
-                    //  showGameOver(url + "loginPage/index.html?code=" + json.code);
-                    copyToClip(url + "loginPage/index.html?inviteCode=" + json.code);
-                    console.log(json, url);
-                });
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/GetInviteCode/", {
+                        method: "GET",
+                        headers: {
+                            token: localStorage.getItem("token"),
+                        },
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        var url = window.top.document.URL;
+                        url = url.substr(0, url.length - 1);
+                        alert(
+                            "Invite Url already on clipboard.\n Please send this URL to your friend for signup"
+                        );
+                        //TODO
+                        //  showGameOver(url + "loginPage/index.html?code=" + json.code);
+                        copyToClip(url + "loginPage/index.html?inviteCode=" + json.code);
+                        console.log(json, url);
+                    });
+            });
         }
 
         function copyToClip(content) {

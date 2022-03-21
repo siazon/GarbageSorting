@@ -24,9 +24,7 @@ public class InviteController {
     @GetMapping("/GetInviteCode")
     public ResponseEntity<Map<String, Object>> GetInviteCode(
             @RequestHeader Map<String, String> headers) {
-        headers.forEach((key, value) -> {
-
-        });
+      
         String token = headers.get("token");
         DecodedJWT jwt = JwtTokenUtil.getTokenInfo(token);
         String user_id = jwt.getClaim("id").asString();

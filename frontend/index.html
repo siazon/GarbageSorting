@@ -52,7 +52,7 @@
                     <ul>
                         <li><a href="#" onclick="displayHome()">Home</a></li>
                         <li><a href="#" onclick="displayGame()">Game</a></li>
-                        <li><a href="#" onclick="Repository()">Point Store</a></li>
+                        <li><a href="#" onclick="displayStore()">Point Store</a></li>
                         <li><a href="#" onclick="Repository()">Education</a></li>
                         <li><a href="#" onclick="aboutUs()">About Us</a></li>
                         <li>
@@ -134,23 +134,23 @@
     </div>
 
     <script>
-        async function getQty() {
+        function getQty() {
             var url = "/js/config.json";
             var _this = this;
-            host = "http://127.0.0.1:8082";
-            await fetch(host + "/fileList/", {
-                    method: "GET",
-                    headers: {
-                        // token: localStorage.getItem("token"),
-                    },
-                })
-                .then((response) => response.json())
-                .then((json) => {
-                    console.log(json);
-                    localStorage.setItem("recycleQty", json[0]);
-                    localStorage.setItem("organicQty", json[1]);
-                    localStorage.setItem("trashQty", json[2]);
-                });
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/fileList/", {
+                        method: "GET",
+                        headers: {
+                            // token: localStorage.getItem("token"),
+                        },
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json);
+                        localStorage.setItem("wastes", json);
+                    });
+            });
         }
 
 
@@ -194,6 +194,11 @@
 
 
             document.getElementById("centerFrame").src = "./gamewelcome.html";
+        }
+
+        function displayStore() {
+            document.getElementById("centerFrame").src =
+                "./imagespage/store.html";
         }
 
         function Repository() {

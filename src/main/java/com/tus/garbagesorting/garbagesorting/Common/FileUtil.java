@@ -29,19 +29,21 @@ public class FileUtil {
         WASTETYPE eType = WASTETYPE.fromInteger(iType);
         switch (eType) {
             case Recycle:
-                count = GetFiles(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\khs\\");
-                SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\khs\\";
+                count = GetFilescount(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\recycle\\");
+                SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\recycle\\";
                 break;
             case Organic:
-                count = GetFiles(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\cy\\");
-                SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\cy\\";
+                count = GetFilescount(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\organic\\");
+                SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\organic\\";
                 break;
             case Trash:
-                count = GetFiles(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\yh\\");
-                SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\yh\\";
+                count = GetFilescount(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\trash\\");
+                SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\trash\\";
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + eType);
+                count = GetFilescount(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\todo\\");
+                SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\todo\\";
+                break;
         }
         count++;
         if (count > 0)
@@ -54,10 +56,26 @@ public class FileUtil {
      * @param fileDir
      * @return
      */
-    public int GetFiles(String fileDir) {
+    public int GetFilescount(String fileDir) {
         File file = new File(fileDir);
         File[] files = file.listFiles();
         return files.length;
+    }
+
+    /**
+     * get files count
+     *
+     * @param fileDir
+     * @return
+     */
+    public List<String> GetFiles(String fileDir) {
+        File file = new File(fileDir);
+        File[] files = file.listFiles();
+        List<String> filePaths = new ArrayList<>();
+        for (File _file : files) {
+            filePaths.add(_file.getPath());
+        }
+        return filePaths;
     }
 
     /**
