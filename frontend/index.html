@@ -64,12 +64,12 @@
         </div>
 
         <!-- <div class="buttonDiv">
-            <a href="#" id="btnLogina" onclick="login()" class="button">Login</a> =======
-            <div class="buttonDiv">
-                <div class="wrapper"><a href="#" onclick="login()" class="button">Login</a></div>
-                >>>>>>> c2b9d4350c7658ddc5126399858c1614d36bc4b5
-            </div>
-    </div> -->
+        <a href="#" id="btnLogina" onclick="login()" class="button">Login</a> =======
+        <div class="buttonDiv">
+            <div class="wrapper"><a href="#" onclick="login()" class="button">Login</a></div>
+            >>>>>>> c2b9d4350c7658ddc5126399858c1614d36bc4b5
+        </div>
+</div> -->
     </div>
 </header>
 
@@ -91,6 +91,13 @@
     <div class="loader__tile"></div>
     <div class="loader__tile"></div>
     <div class="loader__tile"></div>
+</div>
+<<<<<<< HEAD
+<div class="loader__tile"></div>
+<div class="loader__tile"></div>
+<div class="loader__tile"></div>
+<div class="loader__tile"></div>
+<div class="loader__tile"></div>
 </div>
 
 
@@ -116,132 +123,135 @@
                     </p>
                 </div>
 
-                <div class="col item social">
-                    <h3>Follow us</h3>
-                    <a href="#"><i class="icon ion-social-facebook"></i></a
-                    ><a href="#"><i class="icon ion-social-twitter"></i></a
-                ><a href="#"><i class="icon ion-social-snapchat"></i></a
-                ><a href="#"><i class="icon ion-social-instagram"></i></a>
+
+                <section class="select">
+                    <iframe id="centerFrame" onload="this.width=screen.width;this.height=screen.height;"
+                            src="homePage/home.html"></iframe>
+                </section>
+                <div class="footer-dark">
+                    <footer>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 item text">
+                                    <h3>About Us</h3>
+                                    <p>
+                                        We are a team of developers that is passionate about sustainability and our goal
+                                        is to encourage people through entertainment and education.
+                                    </p>
+                                </div>
+
+                                <div class="col item social">
+                                    <h3>Follow us</h3>
+                                    <a href="#"><i class="icon ion-social-facebook"></i></a
+                                    ><a href="#"><i class="icon ion-social-twitter"></i></a
+                                ><a href="#"><i class="icon ion-social-snapchat"></i></a
+                                ><a href="#"><i class="icon ion-social-instagram"></i></a>
+                                </div>
+                            </div>
+                            <p class="copyright">KeepItSorted © 2022</p>
+                        </div>
+                    </footer>
                 </div>
-            </div>
-            <p class="copyright">KeepItSorted © 2022</p>
-        </div>
-    </footer>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="gameover" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Game Over</h5>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button> -->
-            </div>
-            <div class="modal-body">
-                <p id="msgscore" class="lead text-muted">Please send this URL to your friend for signup:</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="onCopy()">
-                    Copy
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+                <!-- Modal -->
+                <div class="modal fade" id="gameover" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Game Over</h5>
+                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+                            </div>
+                            <div class="modal-body">
+                                <p id="msgscore" class="lead text-muted">Please send this URL to your friend for
+                                    signup:</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="onCopy()">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<script>
-    async function getQty() {
-        var url = "/js/config.json";
-        var _this = this;
-        host = "http://127.0.0.1:8082";
-        await fetch(host + "/fileList/", {
-            method: "GET",
-            headers: {
-                // token: localStorage.getItem("token"),
-            },
-        })
-            .then((response) => response.json())
-            .then((json) => {
-                console.log(json);
-                localStorage.setItem("recycleQty", json[0]);
-                localStorage.setItem("organicQty", json[1]);
-                localStorage.setItem("trashQty", json[2]);
-            });
-    }
+                <script>
+                    async function getQty() {
+                        var url = "/js/config.json";
+                        var _this = this;
+                        host = "http://127.0.0.1:8082";
+                        await fetch(host + "/fileList/", {
+                            method: "GET",
+                            headers: {
+                                // token: localStorage.getItem("token"),
+                            },
+                        })
+                            .then((response) => response.json())
+                            .then((json) => {
+                                console.log(json);
+                                localStorage.setItem("recycleQty", json[0]);
+                                localStorage.setItem("organicQty", json[1]);
+                                localStorage.setItem("trashQty", json[2]);
+                            });
+                    }
 
 
-    function showGameOver(url) {
-        console.log(url)
-        $("#msgscore").append(url);
-        $("#gameover").modal("show");
-    }
+                    function showGameOver(url) {
+                        console.log(url)
+                        $("#msgscore").append(url);
+                        $("#gameover").modal("show");
+                    }
+
+                    var $loader = document.querySelector('.loader')
+                    window.onload = function () {
+                        getQty();
+                        var token = localStorage.getItem("token");
+                        if (token.length > 0) {
+                            $("#btnLogin").val("Logout");
+                            console.log("token is ", $("#btnLogin").val(), token);
+                        } else {
+                            console.log("token is null");
+                        }
+                        $loader.classList.remove('loader--active')
+                    };
+
+                    document.querySelector('.btn').addEventListener('click', function () {
+                        $loader.classList.add('loader--active')
+
+                        window.setTimeout(function () {
+                            $loader.classList.remove('loader--active')
+                        }, 5000)
+                    })
+
+                    function displayHome() {
+                        document.getElementById("centerFrame").src = "./homePage/home.html";
+                    }
+
+                    function displayGame() {
 
 
-    var $loader = document.querySelector('.loader')
+                        document.getElementById("centerFrame").src = "./gamewelcome.html";
+                    }
 
-    window.onload = function () {
-        getQty();
-        var token = localStorage.getItem("token");
-        if (token.length > 0) {
-            $("#btnLogin").val("Logout");
-            console.log("token is ", $("#btnLogin").val(), token);
-        } else {
-            console.log("token is null");
-        }
-        $loader.classList.remove('loader--active')
-    };
+                    function Repository() {
+                        document.getElementById("centerFrame").src =
+                            "InformationPage/InfoPage.html";
+                    }
 
-    document.querySelector('.btn').addEventListener('click', function () {
-        $loader.classList.add('loader--active')
+                    function aboutUs() {
+                        document.getElementById("centerFrame").src = "./imagespage/upload.html"; //"about.html";
+                    }
 
-
-        window.setTimeout(function () {
-
-            var $loader = document.querySelector('.loader')
-
-            window.onload = function () {
-                getQty();
-                var token = localStorage.getItem("token");
-                if (token != undefined && token.length > 0) {
-                    $("#btnLogin").val("Logout");
-                    console.log("token is ", $("#btnLogin").val(), token);
-                } else {
-                    console.log("token is null");
-                }
-
-                $loader.classList.remove('loader--active')
-            }, 5000
-        )
-        })
-
-        function displayHome() {
-            document.getElementById("centerFrame").src = "./homePage/home.html";
-        }
-
-        function displayGame() {
+                    function login() {
+                        document.getElementById("centerFrame").src = "./loginPage/index.html";
+                    }
 
 
-            document.getElementById("centerFrame").src = "./gamewelcome.html";
-        }
+                </script>
+                </script>
 
-        function Repository() {
-            document.getElementById("centerFrame").src =
-                "InformationPage/InfoPage.html";
-        }
-
-        function aboutUs() {
-            document.getElementById("centerFrame").src = "./imagespage/upload.html"; //"about.html";
-        }
-
-        function login() {
-            document.getElementById("centerFrame").src = "./loginPage/index.html";
-        }
-
-
-</script>
 </body>
 
 </html>
