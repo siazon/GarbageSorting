@@ -93,10 +93,17 @@
     <div class="loader__tile"></div>
 </div>
 
-<section class="select">
-    <iframe id="centerFrame" onload="this.width=screen.width;this.height=screen.height;"
-            src="homePage/home.html"></iframe>
-</section>
+
+<div class="iframeContainer">
+
+
+    <section class="select">
+        <iframe id="centerFrame" onload="this.width=screen.width;this.height=screen.height;"
+                src="homePage/home.html"></iframe>
+    </section>
+
+
+</div>
 <div class="footer-dark">
     <footer>
         <div class="container">
@@ -232,7 +239,8 @@
         function login() {
             document.getElementById("centerFrame").src = "./loginPage/index.html";
         }
-    })
+
+
 </script>
 </body>
 
