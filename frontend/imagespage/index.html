@@ -51,8 +51,33 @@
                 $(this).toggleClass("active").next().slideToggle("slow");
                 return false; //Prevent the browser jump to the link anchor
             });
+            $("#search").click(function() {
+               var sear= $("#searchtxt").val()
+               
+               all= $("#tiles")
+            //    alert(all.find('li').length)
+               for (var i = 0; i < all.find('li').length; i++) {
+                   alli=$(all.find('li')[i])
+                   
+                if (sear==alli.find('h3').html()) {
+                   
+                   var dispalyi=i
+                    
+                   for (var i = 0; i < all.find('li').length; i++) {
+                       if (i!=dispalyi) {
+                        $(all.find('li')[i]).css('display','none')
+                       }
+                  
+                }}
+                
+                   
+               }
+               
+            });
 
         });
+
+
     </script>
     <!----//End-dropdown--->
     <!---//End-click-drop-down-menu----->
@@ -90,10 +115,10 @@
             </div>
             <div class="top-searchbar">
                 <form>
-                    <input type="text" /><input type="submit" value="" />
+                    <input type="text" id="searchtxt"/><input id="search"  type="submit"  value="" />
                 </form>
             </div>
-
+         
             <div class="clear"> </div>
         </div>
     </div>
@@ -103,45 +128,81 @@
     <div class="content">
         <div class="wrap">
             <div id="main" role="main">
-                <ul id="tiles">
+                <ul class="all" id="tiles">
                     <!-- These are our grid blocks -->
-                    <li>
-                        <a href="upload.html">
-                            <img src="images/img1.jpg" width="200" height="200">
+                    
+                    <li class="images" id="im1" >
+                        
+                            <img   src="images/img1.jpg" width="200" height="200">
                             <div class="post-info">
                                 <div class="post-basic-info">
-                                    <h3>>lipstick</h3>
-                                    <span><h4>Hazardous waste</h4></span>
-                                    <p> Lipstick, whether expired or not, belongs to hazardous garbage, because even if the lipstick is not expired, it still contains a certain amount of heavy metal substances or chemical components</p>
+                                    <h3 class='rname'>lipstick</h3>
+                                    <span><h4>Trash</h4></span>
+                                    <p> Lipstick, whether expired or not, belongs to Trash, because even if the lipstick is not expired, it still contains a certain amount of heavy metal substances or chemical components</p>
                                 </div>
 
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <img src="images/img2.jpg" width="200" height="299">
+                    <li class="images" >
+                        <img src="images/img2.jpg" width="200" height="284">
                         <div class="post-info">
                             <div class="post-basic-info">
-                                <h3>Stone</h3>
-                                <span>Dry waste</span>
-                                <p>Adopting sanitary landfill can effectively reduce the pollution of groundwater, surface water, soil and air.
+                                <h3 class='rname'>Stone</h3>
+                                <span>Recycle</span>
+                                <p>Recyclable garbage is garbage that can be recycled.
                                 </p>
                             </div>
-
+                        </div>
                     </li>
-                    <li>
-                        <img src="images/img3.jpg" width="200" height="214">
+                    <li class="images" >
+                        <img src="images/img3.jpg" width="200" height="220">
                         <div class="post-info">
                             <div class="post-basic-info">
-                                <h3>Egg</h3>
-                                <span>Wet waste</span>
+                                <h3 class='rname'>Egg</h3>
+                                <span>Organic</span>
                                 <p>Leftovers, expired food, melon rinds and kernels, flowers and green plants, Chinese medicine residues and other perishable biomass household waste.</p>
                             </div>
+                        </div> 
+                    </li>
+                    <li class="images" >
+                        
+                            <img src="images/img4.jpg" width="200" height="263">
+                            <div class="post-info">
+                                <div class="post-basic-info">
+                                    <h3 class='rname'>Chair</h3>
+                                    <span><h4>Recycle</h4></span>
+                                    <p>Recyclable garbage is garbage that can be recycled.</p>
+                                </div>
 
+                            </div>
+                        </a>
+                    </li>
+                    <li class="images"  >
+                       
+                            <img src="images/img5.jpg" width="200" height="263">
+                            <div class="post-info">
+                                <div class="post-basic-info">
+                                    <h3 class='rname'>Toy car</h3>
+                                    <span><h4>Recycle</h4></span>
+                                    <p>Recyclable garbage is garbage that can be recycled.</p>
+                                </div>
 
+                            </div>
+                        </a>
+                    </li>
+                    <li class="images" >
+                       
+                            <img src="images/img6.jpg" width="200" height="200">
+                            <div class="post-info">
+                                <div class="post-basic-info">
+                                    <h3 class='rname'>Orange peel</h3>
+                                    <span>Organic</span>
+                                <p>Leftovers, expired food, melon rinds and kernels, flowers and green plants, Chinese medicine residues and other perishable biomass household waste.</p>
+                            </div> 
 
-                        </div>
-                        </div>
+                            </div>
+                        </a>
                     </li>
 
 
@@ -150,6 +211,11 @@
             </div>
         </div>
     </div>
+
+    
+
+
+    
     <!---//End-content---->
     <!----wookmark-scripts---->
     <script src="js/jquery.imagesloaded.js"></script>
@@ -245,13 +311,13 @@
             $loader.classList.remove('loader--active')
         };
     
-        document.querySelector('.btn').addEventListener('click', function () {
-            $loader.classList.add('loader--active')
+        // document.querySelector('.btn').addEventListener('click', function () {
+        //     $loader.classList.add('loader--active')
     
-            window.setTimeout(function () {
-                $loader.classList.remove('loader--active')
-            }, 5000)
-        })
+        //     window.setTimeout(function () {
+        //         $loader.classList.remove('loader--active')
+        //     }, 5000)
+        // })
     </script>
 </body>
 

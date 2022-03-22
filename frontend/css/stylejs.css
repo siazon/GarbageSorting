@@ -38,7 +38,7 @@ body {
     left: 0;
     width: 0;
     height: 20%;
-    background-color: #f17eb2;
+    background-color: #f186b6ec;
     transition: width 0.7s ease;
 }
 .loader .loader__tile:nth-child(0) {
