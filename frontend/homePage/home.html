@@ -2,25 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Home</title>
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css"/>
     <!-- Add icon library -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play" />
-    <link href="//db.onlinewebfonts.com/c/31d6999b03b69180254d0999127e1bc8?family=UnpackW00-Fast" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play"/>
+    <link href="//db.onlinewebfonts.com/c/31d6999b03b69180254d0999127e1bc8?family=UnpackW00-Fast" rel="stylesheet"
+          type="text/css"/>
 
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" /> =======
-    <link rel="stylesheet" href="/css/stylejs.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+    <link rel="stylesheet" href="/css/stylejs.css"/>
 </head>
 
-<body>
-    <!-- 
-<header>
+<body class="homeBody">
+
+<div class="topContainer">
+
+
+    <!--
+    <header>
 
     <div id="container">
 
@@ -59,36 +64,59 @@
 
     </div>
 
-</header> -->
+    </header> -->
 
-    <div class="containerAccess">
+
+    <div class="mainContentContainerAccess">
+
+        <!---child_1  start -->
         <div class="accessLogoGame">
-            <p>Welcome to the garbage sorting website!</p>
+            Welcome to the garbage sorting website!
         </div>
+        <!---child_1 end -->
 
-        <div class="gameAccess">
-            <a href="../gamewelcome.html"><img src="Daco.png" class="gameAccessImg" /></a>
+        <!---child_2 start -->
+        <div class="accesImageContainer">
+
+            <!---child_2_1 start -->
+            <div class="gameAccess">
+                <a href="../gamewelcome.html"><img src="Daco.png" class="gameAccessImg"/></a>
+                <!---child_2_1_1 start -->
+                <div class="playButtonContainer">
+                    <!-- Buttons -->
+                    <div class="buttonDiv2">
+                        <a href="../gamewelcome.html" class="button2">Play</a>
+                    </div>
+                </div>
+                <!---child_2_1_1 end -->
+            </div>
+            <!---child_2_1 end -->
+
+
+            <!---child_2_2 start -->
+            <div id="cf">
+                <a href="../InformationPage/InfoPage.html">
+                    <img src="search.png" class="searchAccessImg"/>
+                    <img src="book.png" class="educationAccessImg"/>
+                </a>
+                <!---child_2_2_1 start -->
+                <div class="educationButtonContainer">
+                    <div class="buttonDiv3">
+                        <a href="../InformationPage/InfoPage.html" class="button3">Get Educated</a>
+                    </div>
+                </div>
+                <!---child_2_2_1 end -->
+            </div>
+            <!---child_2_2 end -->
+
         </div>
+        <!---child_2 end -->
 
-        <div id="cf">
-            <a href="../InformationPage/InfoPage.html">
-                <img src="search.png" class="searchAccessImg" />
-                <img src="book.png" class="educationAccessImg" />
-            </a>
-        </div>
-
-        <!-- Buttons -->
-        <div class="buttonDiv2">
-            <a href="../gamewelcome.html" class="button2">Play</a>
-        </div>
-
-        <div class="buttonDiv3">
-            <a href="../InformationPage/InfoPage.html" class="button3">Get Educated</a
-        >
-      </div>
     </div>
-    <!--     
-<div class="footer-dark">
+
+
+    <!--
+    <div class="footer-dark">
     <footer>
         <div class="container">
             <div class="row">
@@ -114,27 +142,31 @@
     </footer>
     </div> -->
 
+
     <div class="loader loader--active">
         <div class="loader__icon">
-            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40"
+                 xml:space="preserve">
           <path
-            opacity="0.2"
-            fill="#000"
-            d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"
+                  opacity="0.2"
+                  fill="#000"
+                  d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"
           ></path>
-          <path
-            fill="#000"
-            d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"
-          ></path>
-          <animateTransform
-            attributeType="xml"
-            attributeName="transform"
-            type="rotate"
-            from="0 20 20"
-            to="360 20 20"
-            dur="0.5s"
-            repeatCount="indefinite"
-          ></animateTransform>
+                <path
+                        fill="#000"
+                        d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"
+                ></path>
+                <animateTransform
+                        attributeType="xml"
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 20 20"
+                        to="360 20 20"
+                        dur="0.5s"
+                        repeatCount="indefinite"
+                ></animateTransform>
         </svg>
         </div>
         <div class="loader__tile"></div>
@@ -147,20 +179,19 @@
     <script>
         var $loader = document.querySelector(".loader");
 
-        window.onload = function() {
+        window.onload = function () {
             $loader.classList.remove("loader--active");
         };
 
-        document.querySelector(".btn").addEventListener("click", function() {
-            $loader.classList.add("loader--active");
+        // document.querySelector(".btn").addEventListener("click", function() {
+        //     $loader.classList.add("loader--active");
 
-            window.setTimeout(function() {
-                $loader.classList.remove("loader--active");
-            }, 5000);
-        });
+        //     window.setTimeout(function() {
+        //         $loader.classList.remove("loader--active");
+        //     }, 5000);
+        // });
     </script>
-
-    >>>>>>> page >>>>>>> c2b9d4350c7658ddc5126399858c1614d36bc4b5
+</div>
 </body>
 
 </html>

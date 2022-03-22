@@ -2,79 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>Making your first Phaser 3 Game - Part 10</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
-=======
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="/css/stylejs.css">
->>>>>>> page
+    <link rel="stylesheet" href="/css/stylejs.css" />
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
-    </style>
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            color: black;
-            font: caption;
-            background-color: #d4f0fe;
-        }
-    </style>
-    <script>
-        function ReadCookie(key) {
-            var allcookies = document.cookie;
-            document.write("All Cookies : " + allcookies);
-            // 获取数组中的所有cookie对
-            cookiearray = allcookies.split(';');
-            // 现在从这个数组中取出键值对
-            for (var i = 0; i < cookiearray.length; i++) {
-
-                name = cookiearray[i].split('=')[0];
-                value = cookiearray[i].split('=')[1];
-                if (name == key)
-                    console.log(value)
+    <script src="./JS/Util.js" <style type="text/css">
+        body { margin: 0; }
+        </style>
+        <style>
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                color: black;
+                font: caption;
+                background-color: #d4f0fe;
             }
-        }
-    </script>
+        </style>
+        <script>
+            function ReadCookie(key) {
+                var allcookies = document.cookie;
+                document.write("All Cookies : " + allcookies);
+                // 获取数组中的所有cookie对
+                cookiearray = allcookies.split(";");
+                // 现在从这个数组中取出键值对
+                for (var i = 0; i < cookiearray.length; i++) {
+                    name = cookiearray[i].split("=")[0];
+                    value = cookiearray[i].split("=")[1];
+                    if (name == key) console.log(value);
+                }
+            }
+        </script>
 </head>
 
 <body>
-<<<<<<< HEAD
-<section class="jumbotron text-center" style="background-color: #d4f0fe; margin-top: 0px; padding-top: 15px">
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <div class="container">
-        <h1 class="jumbotron-heading">How to paly</h1>
-        <p class="lead text-muted">
-            Drag the rubbish to the correct bin to score points
-        </p>
-        <p class="lead text-muted">Mistakes over 10% and the game is over.</p>
-        <p class="lead text-muted">Timeout game over.</p>
-        <br/>
-        <br/>
-        <p>
-            <a href="game.html">
-                <img width="300" src="./img/gamestart.png" alt=""/></a>
-        </p>
-    </div>
-    <br/>
-</section>
-=======
     <section class="jumbotron text-center" style="background-color: #d4f0fe; margin-top: 0px; padding-top: 15px">
         <br />
         <br />
@@ -92,7 +57,7 @@
             <p class="lead text-muted">Mistakes over 10% and the game is over.</p>
             <p class="lead text-muted">Timeout game over.</p>
             <br />
-            <br />
+            <p><a onclick="onInvite()">Invite friends</a></p>
             <p>
                 <a href="game.html">
                     <img width="300" src="/img/gamestart.png" alt="" /></a>
@@ -102,36 +67,87 @@
     </section>
 
     <div class="loader loader--active">
-        <div class="loader__icon"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-                <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
-                <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
-                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
-            </svg></div>
+        <div class="loader__icon">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+          <path
+            opacity="0.2"
+            fill="#000"
+            d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"
+          ></path>
+          <path
+            fill="#000"
+            d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"
+          ></path>
+          <animateTransform
+            attributeType="xml"
+            attributeName="transform"
+            type="rotate"
+            from="0 20 20"
+            to="360 20 20"
+            dur="0.5s"
+            repeatCount="indefinite"
+          ></animateTransform>
+        </svg>
+        </div>
         <div class="loader__tile"></div>
         <div class="loader__tile"></div>
         <div class="loader__tile"></div>
         <div class="loader__tile"></div>
         <div class="loader__tile"></div>
     </div>
-    
-    <script>
-    
-    
-        var $loader = document.querySelector('.loader')
-    
-        window.onload = function() {
-            $loader.classList.remove('loader--active')
-        };
-    
-        document.querySelector('.btn').addEventListener('click', function () {
-            $loader.classList.add('loader--active')
-    
-            window.setTimeout(function () {
-                $loader.classList.remove('loader--active')
-            }, 5000)
-        })
-    </script>
 
+    <script>
+        var $loader = document.querySelector(".loader");
+
+        window.onload = function() {
+            $loader.classList.remove("loader--active");
+        };
+
+        function onInvite() {
+            var url = "/js/config.json";
+            var _this = this;
+            host = "http://127.0.0.1:8082";
+            fetch(host + "/GetInviteCode/", {
+                    method: "GET",
+                    headers: {
+                        token: localStorage.getItem("token"),
+                    },
+                })
+                .then((response) => response.json())
+                .then((json) => {
+                    var url = window.top.document.URL;
+                    url = url.substr(0, url.length - 1);
+                    alert(
+                        "Invite Url already on clipboard.\n Please send this URL to your friend for signup"
+                    );
+                    //TODO
+                    //  showGameOver(url + "loginPage/index.html?code=" + json.code);
+                    copyToClip(url + "loginPage/index.html?inviteCode=" + json.code);
+                    console.log(json, url);
+                });
+        }
+
+        function copyToClip(content) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", content);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+            // if (message == null) {
+            //     alert("复制成功");
+            // } else {
+            //     alert(message);
+            // }
+        }
+        // document.querySelector(".btn").addEventListener("click", function() {
+        //     $loader.classList.add("loader--active");
+
+        //     window.setTimeout(function() {
+        //         $loader.classList.remove("loader--active");
+        //     }, 5000);
+        // });
+    </script>
 </body>
 
 </html>

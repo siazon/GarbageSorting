@@ -1,5 +1,5 @@
 html,
-body {
+.indexBody {
     min-height: 100%;
     width: 100%;
     background-size: cover;
@@ -8,13 +8,23 @@ body {
     background-position: center center;
 }
 
-#container {
-    z-index: 5;
+.homeBody {
+    min-height: 100%;
     width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    
+
+}
+
+#container {
     background-color: #fff;
     height: 78px;
-    border-bottom: lightgray solid 0.5px;
-    position: fixed;
+    display: flex;
+    justify-content: center;
+
 }
 
 header {
@@ -23,20 +33,10 @@ header {
 }
 
 .headerDiv {
-    float: left;
-    margin-top: 0px;
-    margin-left: 10px;
-    height: 50px;
-    /* background-color: #55ACEE; */
+
 }
 
 .navigationDiv {
-    /* margin: -49px 10%; */
-    display: inline-block;
-    width: auto;
-    float: right;
-    /* float: left; */
-    /* background-color: red; */
 }
 
 
@@ -143,7 +143,7 @@ nav a:hover::before {
     padding: 4px 50px;
     text-align: center;
     text-decoration: none;
-    font-size: 35px;
+    font-size: 50px;
     font-family: "UnpackW00-Fast";
 }
 
@@ -155,28 +155,26 @@ nav a:hover::before {
     padding: 4px 50px;
     text-align: center;
     text-decoration: none;
-    font-size: 35px;
+    font-size: 50px;
     font-family: "UnpackW00-Fast";
 }
 
 .buttonDiv {
-    /* margin: 11px -307px; */
-    margin-top: -39px;
-    margin-right: 29%;
-    /* display: inline-block; */
-    float: right;
+
 }
 
 .buttonDiv2 {
-    position: absolute;
-    margin-left: 15%;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
 }
 
 .buttonDiv3 {
-    margin-left: 60%;
-    position: absolute;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
 }
 
 .button:hover {
@@ -194,11 +192,6 @@ nav a:hover::before {
     color: white;
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
 
 .social-wrp-2 {
     display: -webkit-box;
@@ -245,7 +238,7 @@ nav a:hover::before {
     opacity: 0.8;
 }
 
-@media ( max-width :767px) {
+@media ( max-width: 767px) {
     .footer-dark .item:not(.social) {
         text-align: center;
         padding-bottom: 20px;
@@ -256,7 +249,7 @@ nav a:hover::before {
     margin-bottom: 36px;
 }
 
-@media ( max-width :767px) {
+@media ( max-width: 767px) {
     .footer-dark .item.text {
         margin-bottom: 0;
     }
@@ -271,14 +264,14 @@ nav a:hover::before {
     text-align: center;
 }
 
-@media ( max-width :991px) {
+@media ( max-width: 991px) {
     .footer-dark .item.social {
         text-align: center;
         margin-top: 20px;
     }
 }
 
-.footer-dark .item.social>a {
+.footer-dark .item.social > a {
     font-size: 20px;
     width: 36px;
     height: 36px;
@@ -292,7 +285,7 @@ nav a:hover::before {
     opacity: 0.75;
 }
 
-.footer-dark .item.social>a:hover {
+.footer-dark .item.social > a:hover {
     opacity: 0.9;
 }
 
@@ -331,22 +324,20 @@ nav a:hover::before {
     color: #f0f9ff;
     background-color: #282d32;
     width: 100%;
-    position: absolute;
-    bottom: -30%;
+
+    display: flex;
+    justify-content: center;
 }
 
 .gameAccess {
-    position: absolute;
-    margin: 21% 9%;
+
 }
 
 .gameAccessImg {
-    border-radius: 50px;
     width: 350px;
     height: 350px;
     animation: shake 3.5s;
     animation-iteration-count: infinite;
-    position: absolute;
 }
 
 .gameAccessImg:hover {
@@ -391,60 +382,57 @@ nav a:hover::before {
 }
 
 .educationAccess {
-    position: absolute;
-    margin: 15% 55%;
+
+
 }
 
 .educationAccessImg {
     width: 350px;
-    margin-top: 7%;
-    margin-left: 0%;
     animation: shake 3.5s;
     animation-iteration-count: infinite;
     height: 350px;
-    position: absolute;
+
+}
+
+.accesImageContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 5%;
 }
 
 .searchAccessImg {
     width: 250px;
-    margin-top: 9%;
-    margin-left: 3%;
     height: 250px;
     position: absolute;
+    margin-left: 2%;
+    margin-top: 1%;
+
 }
 
-.containerAccess {
-    position: absolute;
-    width: 1200px;
-    height: 71%;
-    margin-left: 18%;
-    margin-top: 5%;
+.mainContentContainerAccess {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0);
+
+
 }
 
 .accessLogoGame {
     font-size: 65px;
-    letter-spacing: 8px;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: row;
     /* text-shadow: 1px 1px #fff; */
     color: #135658;
-    position: absolute;
     font-family: "UnpackW00-Fast";
-    margin-left: 9%;
-    margin-top: 5%;
+    background-color: rgba(255, 255, 255, 0);
 }
 
-.accessLogoEducation {
-    font-size: 55px;
-    letter-spacing: -3px;
-    text-shadow: 3px 3px #000000;
-    position: absolute;
-    width: 300px;
-    font-family: "UnpackW00-Fast";
-    margin-left: 60%;
-    margin-top: 5%;
-}
 
 #cf {
-    margin: 15% 55%;
 }
 
 #cf img {
@@ -456,4 +444,23 @@ nav a:hover::before {
 
 #cf img.educationAccessImg:hover {
     opacity: 0;
+}
+
+.topContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.headerContainer {
+
+}
+
+.playButtonContainer {
+
+}
+
+.iframeContainer {
+    display: flex;
+
 }
