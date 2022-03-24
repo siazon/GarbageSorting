@@ -8,6 +8,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +28,7 @@ public class FileUtil {
         String path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp\\";
         String SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\";
         int count = 0;
-        DetectLabels.detectLabels(path + fileName);
+        //DetectLabels.detectLabels(path + fileName);
 
         WASTETYPE eType = WASTETYPE.fromInteger(iType);
         switch (eType) {
@@ -124,6 +128,26 @@ public class FileUtil {
             BufferedImage newImage = ImageUtils.resizeImage(image, 100, 100);
             //
             ImageIO.write(newImage, "png", new File(savePath + saveFieName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void CopyImage(String src, String gType) {
+        try {
+            String SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\";
+            String _path = src.substring(0, src.lastIndexOf('_'));
+            _path = _path.replace('_', '\\');
+            String fileName = src.substring(src.lastIndexOf('_') + 1);
+            src = SavePath + _path + "." + fileName;
+
+            int Qty = GetFilescount(SavePath + "img\\" + gType + "\\");
+            String dst = SavePath + "img\\" + gType + "\\" + ++Qty + "." + fileName;
+
+            Path srcPath = Paths.get(src);
+            Path dstPath = Paths.get(dst);
+            Files.copy(srcPath, dstPath, StandardCopyOption.REPLACE_EXISTING);
+            Files.delete(srcPath);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -100,8 +100,28 @@
         var $loader = document.querySelector(".loader");
 
         window.onload = function() {
+            getQty();
             $loader.classList.remove("loader--active");
         };
+
+        function getQty() {
+            var url = "/js/config.json";
+            var _this = this;
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/fileList/", {
+                        method: "GET",
+                        headers: {
+                            // token: localStorage.getItem("token"),
+                        },
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json);
+                        localStorage.setItem("wastes", json);
+                    });
+            });
+        }
 
         function onInvite() {
             var url = "/js/config.json";

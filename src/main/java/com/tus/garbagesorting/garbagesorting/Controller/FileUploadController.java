@@ -95,9 +95,38 @@ public class FileUploadController {
     public ResponseEntity<Map<String, Object>> UploadUserImgState(@RequestBody PictureInfo pic) {
         Map<String, Object> map = new HashMap<>();
         pictureMapper.upset(pic);
+        CalcRate(pic.getPath());
         map.put("state", true);
         map.put("msg", "File uploaded successfully.");
         return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+    }
+
+    /**
+     * official material
+     *
+     * @param imgName
+     */
+    private void CalcRate(String imgName) {
+        List<PictureInfo> infos = pictureMapper.findByPath(imgName);
+        double sum = 0;
+        double Confidence = 0.95;
+        //Get total number of the sorting
+        for (int i = 0; i < infos.size(); i++) {
+            sum += infos.get(i).getSort_times();
+        }
+        for (int i = 0; i < infos.size(); i++) {
+            //Get ratio
+            double rate = infos.get(i).getSort_times() / sum;
+            if (rate >= Confidence) {
+                UpdateImageState(infos.get(i));
+                break;//Jump out in time to reduce loops
+            }
+        }
+    }
+
+
+    private void UpdateImageState(PictureInfo info) {
+        fileUtil.CopyImage(info.getPath(), info.getType());
     }
 
 }

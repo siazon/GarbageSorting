@@ -1,13 +1,14 @@
 package com.tus.garbagesorting.garbagesorting.Mapper;
 
 import com.tus.garbagesorting.garbagesorting.Model.PictureInfo;
-import com.tus.garbagesorting.garbagesorting.Model.User;
+
+import java.util.List;
 
 
 public interface PictureMapper {
 
     int upset(PictureInfo pictureInfo);
 
-    User findByUrl(String url);
+    List<PictureInfo> findByPath(String url);
 
 }

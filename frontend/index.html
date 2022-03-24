@@ -134,40 +134,9 @@
     </div>
 
     <script>
-        function getQty() {
-            var url = "/js/config.json";
-            var _this = this;
-            $.getJSON(url, function(data) {
-                host = data.host;
-                fetch(host + "/fileList/", {
-                        method: "GET",
-                        headers: {
-                            // token: localStorage.getItem("token"),
-                        },
-                    })
-                    .then((response) => response.json())
-                    .then((json) => {
-                        console.log(json);
-                        localStorage.setItem("wastes", json);
-                    });
-            });
-        }
-
-
-
-
-
-        function showGameOver(url) {
-            console.log(url)
-            $("#msgscore").append(url);
-            $("#gameover").modal("show");
-        }
-
-
         var $loader = document.querySelector('.loader')
 
         window.onload = function() {
-            getQty();
             var token = localStorage.getItem("token");
             if (token != undefined && token.length > 0) {
                 $("#btnLogin").val("Logout");
@@ -207,7 +176,7 @@
         }
 
         function aboutUs() {
-            document.getElementById("centerFrame").src = "./imagespage/upload.html"; //"about.html";
+            document.getElementById("centerFrame").src = "./userList.html"; //"about.html";
         }
 
         function login() {
