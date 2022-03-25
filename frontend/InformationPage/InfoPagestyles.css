@@ -4,6 +4,7 @@
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: Helvetica;
     background-position: center center;
     background-color: #fff;
 }
@@ -363,16 +364,20 @@ nav a:hover::before {
 
 
 .mainContent h1 {
-    font-size: 300%;
     color: #009b5e;
+    font-size: 4vw;
 }
 
 
 .mainTitleText {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    line-height: 1.2;
 
+}
+
+.mainTitleText2 {
+    margin-bottom: 5%;
+    font-weight: 500;
+    font-size: 2vw;
+    line-height: 1.2;
 }
 
 .caption {
@@ -384,8 +389,7 @@ nav a:hover::before {
 
 
 .slider {
-    width: 50%;
-    height: 50%;
+    width: 430px;
 }
 
 
@@ -711,9 +715,9 @@ small {
 }
 
 .btn2x {
-    border: 2px solid #009B5E;
+    border: 2px solid #0062cc;
     color: #000000;
-    padding: 1em 1.5em;
+    padding: 10px 30px;
     border-radius: 1rem;
     text-decoration: none;
 }
@@ -739,10 +743,10 @@ a:hover {
 }
 
 #recyclingTitle {
-    font-size: 300%;
+    font-size: 3vw;
+    min-font-size: 2vw;
     color: #009b5e;
     margin-bottom: 5%;
-
 }
 
 .wrapper2x {
@@ -828,3 +832,70 @@ a:hover {
 
 }
 
+img {
+    width: 100%;
+}
+
+#h2InMain {
+    font-size: 3vw;
+    color: #009b5e;
+    margin-bottom: 5%;
+}
+
+
+@media only screen and (max-width: 391px) {
+    .mainContent h1 {
+        font-size: 150%;
+    }
+
+    .mainTitleText2 {
+
+        font-size: 100%;
+
+    }
+
+    .mainContent_child1 {
+
+        width: 80%;
+    }
+
+
+    .mainContent_child2 {
+
+        width: 80%;
+    }
+
+    .mainContent_child3 {
+
+        width: 80%;
+    }
+
+    #recyclingTitle {
+        font-size: 120%;
+    }
+
+    #h2InMain {
+        font-size: 120%;
+    }
+
+    .btn2x {
+
+        padding: 1em 1.5em;
+        font-size: 66%;
+
+    }
+
+    .slider {
+        width: 330px;
+    }
+
+}
+
+@media only screen and (max-width: 821px) {
+
+
+    .btn2x {
+        padding: 10px 15px;
+    }
+    
+}
