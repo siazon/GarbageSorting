@@ -7,6 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+/**
+ * This class implements the methods in the InviteMapper interface to perform
+ * operations which generate and send invitation links to other users.
+ **/
+
 @Repository
 public class InviteService implements InviteMapper {
 

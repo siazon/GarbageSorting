@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * This class contains all REST endpoints to create, read and update the user scores
+ * */
+
 @CrossOrigin
 @RestController
 public class ScoreController {
