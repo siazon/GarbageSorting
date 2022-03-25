@@ -7,6 +7,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
+/**
+ * This interface defins methods that will be used for image upload.
+ **/
+
 public interface StorageMapper {
     void init();
 

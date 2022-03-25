@@ -9,6 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * This class implements the methods in the ScoreMapper interface to perform
+ * operations which insert, find, update and delete a user's score.
+ **/
+
 @Repository
 public class ScoreService implements ScoreMapper {
 

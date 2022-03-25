@@ -1,6 +1,11 @@
 package com.tus.garbagesorting.garbagesorting.Model;
 
-// This class is created for the data provided in the request body during when a user logs in
+
+/**
+ * This class is created to hold the data provided in the request body,
+ * when a user attempts to log in
+ **/
+
 public class LoginUserData {
 
     private String email;

@@ -7,78 +7,78 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="/css/stylejs.css">
 
-    <<<<<<< HEAD <script src="../JS/Util.js">
-        </script>
-        ======= >>>>>>> page
-        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-        <link href="css/style1.css" rel='stylesheet' type='text/css' />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
-        <script type="application/x-javascript">
-            addEventListener("load", function() {
-                setTimeout(hideURLbar, 0);
-            }, false);
+    <script src="../JS/Util.js">
+    </script>
 
-            function hideURLbar() {
-                window.scrollTo(0, 1);
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link href="css/style1.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    </script>
+    <!----webfonts---->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
+    <!----//webfonts---->
+    <!---start-click-drop-down-menu----->
+    <script src="js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function uploadFile() {
+            var options = document.getElementById("profession");
+            var index = options.selectedIndex;
+            if (index == 0) {
+                options.className = "redBorder";
+                return;
             }
-        </script>
-        </script>
-        <!----webfonts---->
-        <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
-        <!----//webfonts---->
-        <!---start-click-drop-down-menu----->
-        <script src="js/jquery.min.js"></script>
+            let formData = new FormData();
+            var url = "../js/config.json";
+            $.getJSON(url, function(data) {
+                formData.append("file", fileupload.files[0]);
+                // let response = fetch(data.host + "/upload/" + index, {
+                //     method: "POST",
+                //     body: formData
+                // });
 
-        <script type="text/javascript">
-            function uploadFile() {
-                var options = document.getElementById("profession");
-                var index = options.selectedIndex;
-                if (index == 0) {
-                    options.className = "redBorder";
-                    return;
-                }
-                let formData = new FormData();
-                var url = "../js/config.json";
-                $.getJSON(url, function(data) {
-                    formData.append("file", fileupload.files[0]);
-                    // let response = fetch(data.host + "/upload/" + index, {
-                    //     method: "POST",
-                    //     body: formData
-                    // });
-
-                    fetch(data.host + "/upload/" + index, {
-                            method: "POST",
-                            headers: {
-                                // "Content-Type": "application/json;charset=utf-8",
-                                "token": localStorage.getItem("token")
-                            },
-                            body: formData,
-                        })
-                        .then((response) => response.json())
-                        .then((json) => {
+                fetch(data.host + "/upload/" + index, {
+                        method: "POST",
+                        headers: {
+                            // "Content-Type": "application/json;charset=utf-8",
+                            "token": localStorage.getItem("token")
+                        },
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json);
+                        if (json.state == true) {
                             console.log(json);
-                            if (json.state == true) {
-                                console.log(json);
 
-                            } else {
-                                console.log(json);
-                                alert(json.msg)
-                                    //return false;
-                            }
-                        });
-                });
-            }
+                        } else {
+                            console.log(json);
+                            alert(json.msg)
+                                //return false;
+                        }
+                    });
+            });
+        }
 
-            function onSelected() {
-                var options = document.getElementById("profession");
-                var index = options.selectedIndex;
-                if (index > 0) {
-                    options.className = "blackBorder";
-                    return;
-                }
+        function onSelected() {
+            var options = document.getElementById("profession");
+            var index = options.selectedIndex;
+            if (index > 0) {
+                options.className = "blackBorder";
+                return;
             }
-        </script>
+        }
+    </script>
 </head>
 
 <body class="overlay">
@@ -118,20 +118,20 @@
         <div class="loader__tile"></div>
     </div>
     <script>
-         var $loader = document.querySelector('.loader')
+        var $loader = document.querySelector('.loader')
 
-window.onload = function() {
-    $loader.classList.remove('loader--active')
-};
+        window.onload = function() {
+            $loader.classList.remove('loader--active')
+        };
 
-document.querySelector('.btn').addEventListener('click', function() {
-    $loader.classList.add('loader--active')
+        document.querySelector('.btn').addEventListener('click', function() {
+            $loader.classList.add('loader--active')
 
-    window.setTimeout(function() {
-        $loader.classList.remove('loader--active')
-    }, 5000)
-})
-</script>
+            window.setTimeout(function() {
+                $loader.classList.remove('loader--active')
+            }, 5000)
+        })
+    </script>
 </body>
 
 </html>

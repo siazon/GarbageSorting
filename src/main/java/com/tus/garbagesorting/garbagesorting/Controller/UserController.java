@@ -14,6 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class contains all REST enpoints to create, read, update, delete and login a user.
+ * */
+
 @CrossOrigin
 @RestController
 public class UserController {
@@ -21,12 +25,14 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    // Get all users
     @GetMapping("/AllUsers")
     public ResponseEntity<List<User>> findAll() {
         List<User> list = userMapper.findAll();
         return new ResponseEntity<List<User>>(list, HttpStatus.OK);
     }
 
+    // Get one user by user id
     @GetMapping("/GetUser/{id}")
     public User getUserById(@PathVariable int id) throws NotFoundException {
         return userMapper.findById(id);
@@ -35,6 +41,7 @@ public class UserController {
     }
 
 
+    // Create a new user
     @PostMapping("/InsertUser")
     public Object insert(@RequestBody User user) {
         // Check if user email is already in use
@@ -48,8 +55,7 @@ public class UserController {
                 isExist = true;
             }
 
-            // Create User Roles
-            // Every admin should have an email which ends with "garbagesorting.com".
+            // Create User Roles. Every admin will have the email extension - "garbagesorting.com".
             if (user.getUser_email().contains("garbagesorting.com")) {
                 user.setUser_role("admin");
             } else {
@@ -70,7 +76,7 @@ public class UserController {
         Map<String, Object> map = new HashMap<>();
         User userDB = null;
         try {
-            userDB = userMapper.findByEamil(userData.getEmail());
+            userDB = userMapper.findByEmail(userData.getEmail());
         } catch (Exception ex) {
             map.put("state", false);
             map.put("msg", "username or password does not exist");
