@@ -3,6 +3,11 @@ package com.tus.garbagesorting.garbagesorting.Model;
 
 import java.io.Serializable;
 
+/**
+ * This is the user class containing all the user information, defined as instance variables.
+ * It also contains getters and setter methods to retrieve and update a user's information.
+ **/
+
 public class User implements Serializable {
 
     private int id;

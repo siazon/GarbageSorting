@@ -1,5 +1,10 @@
 package com.tus.garbagesorting.garbagesorting.Model;
 
+/**
+ * This is the invite class containing the information required to create an invitation link.
+ * It also contains getters and setter methods to retrieve and update information required to send invitation links.
+ **/
+
 public class InviteModel {
     private int id;
     private int user_id;

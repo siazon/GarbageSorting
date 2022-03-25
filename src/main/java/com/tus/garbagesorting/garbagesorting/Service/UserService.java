@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * This class implements the methods in the UserMapper interface to perform
+ * operations which register, find, update, delete and login a user.
+ **/
+
 @Repository
 public class UserService implements UserMapper {
 
@@ -57,7 +62,7 @@ public class UserService implements UserMapper {
     }
 
     @Override
-    public User findByEamil(String email) {
+    public User findByEmail(String email) {
 
         return jdbcTemplate.queryForObject("SELECT * FROM tb_user WHERE user_email=?", new Object[]{email}, (rs, rowNum) ->
                 new User(

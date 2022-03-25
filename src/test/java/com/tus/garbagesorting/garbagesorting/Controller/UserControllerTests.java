@@ -23,6 +23,10 @@ import java.util.Optional;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * This test suites tests the API endpoints in UserController which successfully creates, reads anu deletes
+ * a user, using Mockito and JUnit
+ **/
 
 @WebMvcTest(UserController.class)
 class UserControllerTests {
