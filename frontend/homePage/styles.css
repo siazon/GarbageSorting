@@ -6,6 +6,9 @@ html,
     background-image: url("background.jpg");
     background-repeat: no-repeat;
     background-position: center center;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .homeBody {
@@ -15,16 +18,16 @@ html,
     background-repeat: no-repeat;
     background-position: center center;
     background-color: transparent;
-    
+
 
 }
 
-#container {
+#header_container {
     background-color: #fff;
     height: 78px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-
 }
 
 header {
@@ -37,6 +40,7 @@ header {
 }
 
 .navigationDiv {
+    margin-top: 1px;
 }
 
 
@@ -94,6 +98,7 @@ nav li {
     margin-left: 50px;
     padding-top: 10px;
     position: relative;
+
 }
 
 nav a {
@@ -140,7 +145,7 @@ nav a:hover::before {
     border: none;
     border-radius: 15px;
     color: white;
-    padding: 4px 50px;
+    padding: 0% 18%;
     text-align: center;
     text-decoration: none;
     font-size: 50px;
@@ -152,7 +157,7 @@ nav a:hover::before {
     border: none;
     border-radius: 15px;
     color: white;
-    padding: 4px 50px;
+    padding: 0% 10%;
     text-align: center;
     text-decoration: none;
     font-size: 50px;
@@ -160,21 +165,17 @@ nav a:hover::before {
 }
 
 .buttonDiv {
-
+    margin-top: 10px;
+    margin-left: 4%;
 }
 
 .buttonDiv2 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 10%;
+    margin-left: 16%;
+
 }
 
 .buttonDiv3 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 10%;
+    margin-left: 9%;
 }
 
 .button:hover {
@@ -211,6 +212,17 @@ nav a:hover::before {
 
 .text-xxs {
     font-size: 1.2rem;
+}
+
+
+.footer-dark {
+    padding: 50px 0;
+    color: #f0f9ff;
+    background-color: #282d32;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: end;
 }
 
 .footer-dark h3 {
@@ -285,6 +297,7 @@ nav a:hover::before {
     opacity: 0.75;
 }
 
+
 .footer-dark .item.social > a:hover {
     opacity: 0.9;
 }
@@ -300,8 +313,6 @@ nav a:hover::before {
 .headerLogo {
     font-family: "UnpackW00-Fast";
     font-size: 44px;
-    float: left;
-    margin-left: 33px;
     letter-spacing: -3px;
     text-shadow: 2px 2px #000000;
     margin-top: 8px;
@@ -319,23 +330,16 @@ nav a:hover::before {
     display: inline-block;
 }
 
-.footer-dark {
-    padding: 50px 0;
-    color: #f0f9ff;
-    background-color: #282d32;
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-}
 
 .gameAccess {
-
+    display: flex;
+    flex-direction: column;
+    margin-right: 15%;
 }
 
 .gameAccessImg {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     animation: shake 3.5s;
     animation-iteration-count: infinite;
 }
@@ -387,25 +391,26 @@ nav a:hover::before {
 }
 
 .educationAccessImg {
-    width: 350px;
+    width: 300px;
+    height: 300px;
     animation: shake 3.5s;
     animation-iteration-count: infinite;
-    height: 350px;
 
 }
 
 .accesImageContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 5%;
+    justify-content: center;
+    margin-top: 4%;
+
 }
 
 .searchAccessImg {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     position: absolute;
-    margin-left: 2%;
+    margin-left: 3%;
     margin-top: 1%;
 
 }
@@ -415,24 +420,25 @@ nav a:hover::before {
     flex-direction: column;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0);
-
-
+    margin-bottom: 12%;
 }
 
 .accessLogoGame {
     font-size: 65px;
     justify-content: center;
-
     display: flex;
     flex-direction: row;
     /* text-shadow: 1px 1px #fff; */
     color: #135658;
     font-family: "UnpackW00-Fast";
     background-color: rgba(255, 255, 255, 0);
+    margin-top: 2%;
 }
 
 
 #cf {
+    display: flex;
+    flex-direction: column;
 }
 
 #cf img {
@@ -462,5 +468,410 @@ nav a:hover::before {
 
 .iframeContainer {
     display: flex;
+}
 
+.checkbtn {
+    font-size: 30px;
+    color: #000000;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+@media only screen and (max-width: 857px) {
+
+    #header_container {
+
+        height: 70px;
+
+    }
+
+
+    .headerLogo {
+        font-size: 38px;
+        margin-top: 11px;
+        transition: font-size 1s;
+    }
+
+
+    nav a {
+        font-size: 28px;
+        transition: font-size 1s;
+    }
+
+    nav li {
+        margin-left: 34px;
+    }
+
+    .navigationDiv {
+        margin-top: 4px;
+    }
+
+    .button {
+        padding: 4px 32px;
+        font-size: 33px;
+    }
+
+    .buttonDiv {
+        margin-top: 11px;
+        margin-left: 4%;
+    }
+
+
+    .accessLogoGame {
+        font-size: 47px;
+        margin-top: 2%;
+        transition: font-size 1s;
+    }
+
+    .gameAccessImg {
+        width: 250px;
+        height: 250px;
+        transition: 1s;
+    }
+
+    .educationAccessImg {
+        width: 250px;
+        height: 250px;
+        transition: 1s;
+
+    }
+
+
+    .searchAccessImg {
+        width: 165px;
+        height: 165px;
+    }
+
+
+    .button2 {
+        transition: 1s;
+        padding: 0% 16%;
+        font-size: 46px;
+    }
+
+    .button3 {
+        padding: 0% 8%;
+        font-size: 46px;
+    }
+}
+
+
+@media only screen and (max-width: 698px) {
+
+    #header_container {
+
+        height: 70px;
+
+    }
+
+
+    .headerLogo {
+        font-family: "UnpackW00-Fast";
+        font-size: 33px;
+        letter-spacing: -3px;
+        text-shadow: 2px 2px #000000;
+        margin-top: 14px;
+    }
+
+
+    nav a {
+        color: #135658;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 25px;
+        font-family: "UnpackW00-Fast";
+    }
+
+    nav li {
+        display: inline-block;
+        margin-left: 22px;
+        padding-top: 10px;
+        position: relative;
+    }
+
+
+    .navigationDiv {
+        margin-top: 8px;
+    }
+
+    .button {
+        background-color: #7ec479;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        padding: 2px 25px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 30px;
+        font-family: "UnpackW00-Fast";
+    }
+
+    .buttonDiv {
+        margin-top: 11px;
+        margin-left: 4%;
+    }
+
+
+    .accessLogoGame {
+        font-size: 40px;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        /* text-shadow: 1px 1px #fff; */
+        color: #135658;
+        font-family: "UnpackW00-Fast";
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .gameAccessImg {
+        width: 190px;
+        height: 190px;
+        animation: shake 3.5s;
+        transition: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    .educationAccessImg {
+        width: 190px;
+        height: 190px;
+        animation: shake 3.5s;
+        animation-iteration-count: infinite;
+    }
+
+    .searchAccessImg {
+        width: 145px;
+        height: 145px;
+
+    }
+
+
+    .button2 {
+        transition: 1s;
+        padding: 0% 14%;
+        font-size: 40px;
+
+    }
+
+    .button3 {
+        padding: 0% 6%;
+        font-size: 40px;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 570px) {
+
+    #header_container {
+        background-color: #fff;
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+
+    .headerLogo {
+        font-family: "UnpackW00-Fast";
+        font-size: 30px;
+        float: left;
+        letter-spacing: -3px;
+        text-shadow: 2px 2px #000000;
+        margin-top: 15px;
+
+
+    }
+
+
+    nav a {
+        color: #135658;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 22px;
+        font-family: "UnpackW00-Fast";
+    }
+
+    nav li {
+        display: inline-block;
+        margin-left: 16px;
+        padding-top: 10px;
+        position: relative;
+    }
+
+
+    .navigationDiv {
+        margin-top: 8px;
+        float: left;
+    }
+
+    .button {
+        background-color: #7ec479;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        padding: 1px 22px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 28px;
+        font-family: "UnpackW00-Fast";
+    }
+
+    .buttonDiv {
+        margin-top: 13px;
+        margin-left: 4%;
+    }
+
+    .accessLogoGame {
+        font-size: 36px;
+    }
+
+    .gameAccessImg {
+        width: 160px;
+        height: 160px;
+        animation: shake 3.5s;
+        transition: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    .educationAccessImg {
+        width: 160px;
+        height: 160px;
+        animation: shake 3.5s;
+        animation-iteration-count: infinite;
+
+    }
+
+    .searchAccessImg {
+        width: 120px;
+        height: 120px;
+
+    }
+
+    .button2 {
+        transition: 1s;
+        padding: 0% 12%;
+        font-size: 30px;
+
+    }
+
+    .button3 {
+        padding: 0% 4%;
+        font-size: 30px;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 495px) {
+
+    #header_container {
+        background-color: #fff;
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+
+    .headerLogo {
+        font-family: "UnpackW00-Fast";
+        font-size: 30px;
+        float: left;
+        letter-spacing: -3px;
+        text-shadow: 2px 2px #000000;
+        margin-top: 15px;
+        display: none;
+
+    }
+
+
+    nav a {
+        color: #135658;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 22px;
+        font-family: "UnpackW00-Fast";
+    }
+
+    nav li {
+        display: inline-block;
+        margin-left: 16px;
+        padding-top: 10px;
+        position: relative;
+    }
+
+
+    .navigationDiv {
+        margin-top: 8px;
+        float: left;
+    }
+
+    .button {
+        background-color: #7ec479;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        padding: 1px 22px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 28px;
+        font-family: "UnpackW00-Fast";
+    }
+
+    .buttonDiv {
+        margin-top: 13px;
+        margin-left: 4%;
+    }
+
+
+    .accessLogoGame {
+        font-size: 36px;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        /* text-shadow: 1px 1px #fff; */
+        color: #135658;
+        font-family: "UnpackW00-Fast";
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .gameAccessImg {
+        width: 140px;
+        height: 140px;
+        animation: shake 3.5s;
+        transition: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    .educationAccessImg {
+        width: 140px;
+        height: 140px;
+        animation: shake 3.5s;
+        animation-iteration-count: infinite;
+
+    }
+
+    .searchAccessImg {
+        width: 115px;
+        height: 115px;
+
+    }
+
+    .accessLogoGame {
+        font-size: 30px;
+    }
+
+
+}
+
+#playButtonContainer {
 }
