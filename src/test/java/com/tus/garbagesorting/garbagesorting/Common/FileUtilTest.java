@@ -10,4 +10,10 @@ public class FileUtilTest {
         FileUtil util = new FileUtil();
         util.GetFiles(path);
     }
+
+    @Test
+    void TestCopyFile() throws Exception {
+        FileUtil util = new FileUtil();
+        util.CopyImage("img_todo_1_png", "recycle");
+    }
 }

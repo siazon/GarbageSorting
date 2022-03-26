@@ -3,7 +3,7 @@ package com.tus.garbagesorting.garbagesorting.Controller;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.tus.garbagesorting.garbagesorting.Common.JwtTokenUtil;
-import com.tus.garbagesorting.garbagesorting.Mapper.InviteMapper;
+import com.tus.garbagesorting.garbagesorting.Mapper.PointStoreMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,19 +17,21 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
-public class InviteController {
+public class PointStoreController {
     @Autowired
-    private InviteMapper inviteMapper;
+    private PointStoreMapper pointStoreMapper;
 
-    @GetMapping("/GetInviteCode")
+    @GetMapping("/GePoints")
     public ResponseEntity<Map<String, Object>> GetInviteCode(
             @RequestHeader Map<String, String> headers) {
-      
+        headers.forEach((key, value) -> {
+
+        });
         String token = headers.get("token");
         DecodedJWT jwt = JwtTokenUtil.getTokenInfo(token);
         String user_id = jwt.getClaim("id").asString();
         Map<String, Object> map = new HashMap<>();
-        String code = inviteMapper.GetInviteCode(Integer.parseInt(user_id));
+        String code = pointStoreMapper.GetGiftList(Integer.parseInt(user_id));
         if (code.length() > 0) {
             map.put("state", true);
             map.put("code", code);

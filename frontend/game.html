@@ -14,8 +14,13 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
+<<<<<<< HEAD
     <link rel="stylesheet" href="/css/stylejs.css">
    
+=======
+
+
+>>>>>>> game
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -133,9 +138,9 @@
             this.load.audio("correctsound", ["music/correct.wav"]);
             this.load.image("ground", "img/ground.png");
             this.load.image("background", "static/backgroundy.png");
-            this.load.image("sgreenbin", "img/green.png");
-            this.load.image("sgraybin", "img/gray.png");
-            this.load.image("sbrownbin", "img/brown.png");
+            this.load.image("recycle", "img/green.png");
+            this.load.image("trash", "img/gray.png");
+            this.load.image("organic", "img/brown.png");
             this.load.image("goodface", "img/good.png");
             this.load.image("waitfeed", "img/waitfeed.png");
             this.load.image("start", "img/start.png");
@@ -143,16 +148,23 @@
             this.load.spritesheet("eat", "img/eat.png", {
                 frameWidth: 60,
                 frameHeight: 32,
-            });
-            for (let i = 1; i <= recycleQty; i++) {
-                this.load.image("img_khs" + i, "img/khs/" + i + ".png");
+            }); //
+            var _wastes = localStorage.getItem("wastes");
+            var wastes = _wastes.split(",");
+            for (let i = 0; i < wastes.length; i++) {
+                var imgKey = wastes[i].replace('.', '_');
+                imgKey = imgKey.replace(/\\/g, '_');
+                this.load.image(imgKey, wastes[i]);
             }
-            for (let i = 1; i <= trashQty; i++) {
-                this.load.image("img_yh" + i, "img/yh/" + i + ".png");
-            }
-            for (let i = 1; i <= organicQty; i++) {
-                this.load.image("img_cy" + i, "img/cy/" + i + ".png");
-            }
+            // for (let i = 1; i <= recycleQty; i++) {
+            //     this.load.image("img_khs" + i, "img/khs/" + i + ".png");
+            // }
+            // for (let i = 1; i <= trashQty; i++) {
+            //     this.load.image("img_yh" + i, "img/yh/" + i + ".png");
+            // }
+            // for (let i = 1; i <= organicQty; i++) {
+            //     this.load.image("img_cy" + i, "img/cy/" + i + ".png");
+            // }
         }
 
         function create() {
@@ -180,8 +192,8 @@
             });
             //Now let's create some Bins
             var binWidth = 125;
-            sgreenbin = bin.create(170, 250, "sgreenbin");
-            sgreenbin.setDisplaySize(120, 150);
+            recycle = bin.create(170, 250, "recycle");
+            recycle.setDisplaySize(120, 150);
 
             scoretext = this.add.text(230, 32, "", {
                 font: "20px Arial Black",
@@ -201,11 +213,11 @@
                 loop: true,
             });
 
-            sgraybin = bin.create(170 + binWidth, 250, "sgraybin");
-            sgraybin.setDisplaySize(120, 150);
+            trash = bin.create(170 + binWidth, 250, "trash");
+            trash.setDisplaySize(120, 150);
 
-            sbrownbin = bin.create(170 + binWidth * 2, 250, "sbrownbin");
-            sbrownbin.setDisplaySize(120, 150);
+            organic = bin.create(170 + binWidth * 2, 250, "organic");
+            organic.setDisplaySize(120, 150);
             loadMusic(this);
             var ginfo = loadFace(this, 170, 240);
             var greenbinface = ginfo.face;
@@ -223,33 +235,54 @@
             this.wasteGroup = this.physics.add.group({
                 //allowGravity: false,
             });
-            for (let i = 1; i <= recycleQty; i++) {
+            var _wastes = localStorage.getItem("wastes");
+            var wastes = _wastes.split(",");
+            for (let i = 0; i < wastes.length; i++) {
+                var imgKey = wastes[i].replace('.', '_');
+                imgKey = imgKey.replace(/\\/g, '_');
                 let temp = this.wasteGroup
-                    .create(60 * i, 390, "img_khs" + i)
+                    .create(60 * i, 390, imgKey)
                     .setInteractive({
                         cursor: "url(img/grab.png), pointer",
                     });
-                temp.setData("gType", "green");
+                if (wastes[i].indexOf("recycle") > 0)
+                    temp.setData("gType", "green");
+                if (wastes[i].indexOf("trash") > 0)
+                    temp.setData("gType", "gray");
+                if (wastes[i].indexOf("organic") > 0)
+                    temp.setData("gType", "brown");
+
+                if (wastes[i].indexOf("todo") > 0)
+                    temp.setData("gType", "todo");
                 sps.push(temp);
             }
-            for (let i = 1; i <= trashQty; i++) {
-                let temp = this.wasteGroup
-                    .create(60 * i, 390, "img_yh" + i)
-                    .setInteractive({
-                        cursor: "url(img/grab.png), pointer",
-                    });
-                temp.setData("gType", "gray");
-                sps.push(temp);
-            }
-            for (let i = 1; i <= organicQty; i++) {
-                let temp = this.wasteGroup
-                    .create(60 * i, 690, "img_cy" + i)
-                    .setInteractive({
-                        cursor: "url(img/grab.png), pointer",
-                    });
-                temp.setData("gType", "brown");
-                sps.push(temp);
-            }
+            // for (let i = 1; i <= recycleQty; i++) {
+            //     let temp = this.wasteGroup
+            //         .create(60 * i, 390, "img_khs" + i)
+            //         .setInteractive({
+            //             cursor: "url(img/grab.png), pointer",
+            //         });
+            //     temp.setData("gType", "green");
+            //     sps.push(temp);
+            // }
+            // for (let i = 1; i <= trashQty; i++) {
+            //     let temp = this.wasteGroup
+            //         .create(60 * i, 390, "img_yh" + i)
+            //         .setInteractive({
+            //             cursor: "url(img/grab.png), pointer",
+            //         });
+            //     temp.setData("gType", "gray");
+            //     sps.push(temp);
+            // }
+            // for (let i = 1; i <= organicQty; i++) {
+            //     let temp = this.wasteGroup
+            //         .create(60 * i, 690, "img_cy" + i)
+            //         .setInteractive({
+            //             cursor: "url(img/grab.png), pointer",
+            //         });
+            //     temp.setData("gType", "brown");
+            //     sps.push(temp);
+            // }
             sps = sps.sort(() => Math.random() - 0.5);
             for (let i = 0; i < sps.length; i++) {
                 let xindex = i;
@@ -293,22 +326,29 @@
                     brownbinface.setVisible(true);
                     brownbinwaitfeed.setVisible(false);
                     //console.log("dragend selectBin:", pointer);
+                    if (gameObject.getData("gType") == "todo") {
+                        if (selectBin == undefined || selectBin.length == 0)
+                            return;
+                        gameObject.disableBody(true, true);
+                        updateTodoImage(gameObject.texture.key, selectBin);
+                        score++;
+                    }
                     if (
-                        selectBin == "sgreenbin" &&
+                        selectBin == "recycle" &&
                         gameObject.getData("gType") == "green"
                     ) {
                         gameObject.disableBody(true, true);
                         gameObject.setData("iscrrect", "true");
                         score++;
                     } else if (
-                        selectBin == "sgraybin" &&
+                        selectBin == "trash" &&
                         gameObject.getData("gType") == "gray"
                     ) {
                         gameObject.disableBody(true, true);
                         gameObject.setData("iscrrect", "true");
                         score++;
                     } else if (
-                        selectBin == "sbrownbin" &&
+                        selectBin == "organic" &&
                         gameObject.getData("gType") == "brown"
                     ) {
                         gameObject.disableBody(true, true);
@@ -325,17 +365,19 @@
                     }
                     selectBin = "";
                 });
-                bindingBin(sgreenbin);
-                bindingBin(sgraybin);
-                bindingBin(sbrownbin);
+                bindingBin(recycle);
+                bindingBin(trash);
+                bindingBin(organic);
 
-                this.physics.add.overlap(temp, sgreenbin, spriteHitBin);
-                this.physics.add.overlap(temp, sgraybin, spriteHitBin);
-                this.physics.add.overlap(temp, sbrownbin, spriteHitBin);
+                this.physics.add.overlap(temp, recycle, spriteHitBin);
+                this.physics.add.overlap(temp, trash, spriteHitBin);
+                this.physics.add.overlap(temp, organic, spriteHitBin);
 
                 this.physics.add.collider(temp, platforms);
             }
         }
+
+
 
         function loadMusic(_this) {
             var start = platforms
@@ -419,9 +461,9 @@
         function update(e) {
             scoretext.setText("Score: " + score);
             text.setText("Time Left: " + gamatimer);
-            updateLapendEvent(sgreenbin);
-            updateLapendEvent(sgraybin);
-            updateLapendEvent(sbrownbin);
+            updateLapendEvent(recycle);
+            updateLapendEvent(trash);
+            updateLapendEvent(organic);
             if (gameOver) {
                 return;
             }
@@ -457,10 +499,62 @@
         }
 
         function showGameOver() {
+
             $("#msgscore").append(" ");
             $("#msgscore").append(score);
             $("#gameover").modal("show");
             game.destroy();
+            AddScroe();
+        }
+
+        function AddScroe() {
+            var formData = {
+                userId: 0,
+                userScore: score
+            };
+            var url = "/js/config.json";
+            var _this = this;
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/insertScore/", {
+                        method: "Post",
+                        headers: {
+                            "Content-Type": "application/json;charset=utf-8",
+                            token: localStorage.getItem("token"),
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+
+                    });
+            });
+        }
+
+        function updateTodoImage(imgUrl, gType) {
+            var formData = {
+                name: "",
+                path: imgUrl,
+                type: gType,
+                sort_times: 1
+            };
+            var url = "/js/config.json";
+            var _this = this;
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/UploadUserImgState/", {
+                        method: "Post",
+                        headers: {
+                            "Content-Type": "application/json;charset=utf-8",
+                            token: localStorage.getItem("token"),
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+
+                    });
+            });
         }
 
         function nextgame() {
