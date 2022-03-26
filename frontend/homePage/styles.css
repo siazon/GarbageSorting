@@ -1,6 +1,5 @@
-html,
-.indexBody {
-    min-height: 100%;
+Body {
+    height: 800px;
     width: 100%;
     background-size: cover;
     background-image: url("background.jpg");
@@ -8,7 +7,6 @@ html,
     background-position: center center;
     display: flex;
     flex-direction: column;
-
 }
 
 .homeBody {
@@ -18,8 +16,6 @@ html,
     background-repeat: no-repeat;
     background-position: center center;
     background-color: transparent;
-
-
 }
 
 #header_container {
@@ -36,7 +32,6 @@ header {
 }
 
 .headerDiv {
-
 }
 
 .navigationDiv {
@@ -98,7 +93,6 @@ nav li {
     margin-left: 50px;
     padding-top: 10px;
     position: relative;
-
 }
 
 nav a {
@@ -171,7 +165,6 @@ nav a:hover::before {
 
 .buttonDiv2 {
     margin-left: 16%;
-
 }
 
 .buttonDiv3 {
@@ -193,7 +186,6 @@ nav a:hover::before {
     color: white;
 }
 
-
 .social-wrp-2 {
     display: -webkit-box;
     display: -webkit-flex;
@@ -213,7 +205,6 @@ nav a:hover::before {
 .text-xxs {
     font-size: 1.2rem;
 }
-
 
 .footer-dark {
     padding: 50px 0;
@@ -297,7 +288,6 @@ nav a:hover::before {
     opacity: 0.75;
 }
 
-
 .footer-dark .item.social > a:hover {
     opacity: 0.9;
 }
@@ -329,7 +319,6 @@ nav a:hover::before {
 .a_logo {
     display: inline-block;
 }
-
 
 .gameAccess {
     display: flex;
@@ -386,8 +375,6 @@ nav a:hover::before {
 }
 
 .educationAccess {
-
-
 }
 
 .educationAccessImg {
@@ -395,7 +382,6 @@ nav a:hover::before {
     height: 300px;
     animation: shake 3.5s;
     animation-iteration-count: infinite;
-
 }
 
 .accesImageContainer {
@@ -403,7 +389,6 @@ nav a:hover::before {
     flex-direction: row;
     justify-content: center;
     margin-top: 4%;
-
 }
 
 .searchAccessImg {
@@ -412,7 +397,6 @@ nav a:hover::before {
     position: absolute;
     margin-left: 3%;
     margin-top: 1%;
-
 }
 
 .mainContentContainerAccess {
@@ -434,7 +418,6 @@ nav a:hover::before {
     background-color: rgba(255, 255, 255, 0);
     margin-top: 2%;
 }
-
 
 #cf {
     display: flex;
@@ -459,11 +442,9 @@ nav a:hover::before {
 }
 
 .headerContainer {
-
 }
 
 .playButtonContainer {
-
 }
 
 .iframeContainer {
@@ -485,20 +466,15 @@ nav a:hover::before {
 }
 
 @media only screen and (max-width: 857px) {
-
     #header_container {
-
         height: 70px;
-
     }
-
 
     .headerLogo {
         font-size: 38px;
         margin-top: 11px;
         transition: font-size 1s;
     }
-
 
     nav a {
         font-size: 28px;
@@ -523,7 +499,6 @@ nav a:hover::before {
         margin-left: 4%;
     }
 
-
     .accessLogoGame {
         font-size: 47px;
         margin-top: 2%;
@@ -540,15 +515,12 @@ nav a:hover::before {
         width: 250px;
         height: 250px;
         transition: 1s;
-
     }
-
 
     .searchAccessImg {
         width: 165px;
         height: 165px;
     }
-
 
     .button2 {
         transition: 1s;
@@ -562,15 +534,10 @@ nav a:hover::before {
     }
 }
 
-
 @media only screen and (max-width: 698px) {
-
     #header_container {
-
         height: 70px;
-
     }
-
 
     .headerLogo {
         font-family: "UnpackW00-Fast";
@@ -579,7 +546,6 @@ nav a:hover::before {
         text-shadow: 2px 2px #000000;
         margin-top: 14px;
     }
-
 
     nav a {
         color: #135658;
@@ -595,7 +561,6 @@ nav a:hover::before {
         padding-top: 10px;
         position: relative;
     }
-
 
     .navigationDiv {
         margin-top: 8px;
@@ -617,7 +582,6 @@ nav a:hover::before {
         margin-top: 11px;
         margin-left: 4%;
     }
-
 
     .accessLogoGame {
         font-size: 40px;
@@ -648,28 +612,21 @@ nav a:hover::before {
     .searchAccessImg {
         width: 145px;
         height: 145px;
-
     }
-
 
     .button2 {
         transition: 1s;
         padding: 0% 14%;
         font-size: 40px;
-
     }
 
     .button3 {
         padding: 0% 6%;
         font-size: 40px;
     }
-
-
 }
 
-
 @media only screen and (max-width: 570px) {
-
     #header_container {
         background-color: #fff;
         height: 70px;
@@ -678,7 +635,6 @@ nav a:hover::before {
         justify-content: center;
     }
 
-
     .headerLogo {
         font-family: "UnpackW00-Fast";
         font-size: 30px;
@@ -686,10 +642,7 @@ nav a:hover::before {
         letter-spacing: -3px;
         text-shadow: 2px 2px #000000;
         margin-top: 15px;
-
-
     }
-
 
     nav a {
         color: #135658;
@@ -705,7 +658,6 @@ nav a:hover::before {
         padding-top: 10px;
         position: relative;
     }
-
 
     .navigationDiv {
         margin-top: 8px;
@@ -746,33 +698,26 @@ nav a:hover::before {
         height: 160px;
         animation: shake 3.5s;
         animation-iteration-count: infinite;
-
     }
 
     .searchAccessImg {
         width: 120px;
         height: 120px;
-
     }
 
     .button2 {
         transition: 1s;
         padding: 0% 12%;
         font-size: 30px;
-
     }
 
     .button3 {
         padding: 0% 4%;
         font-size: 30px;
     }
-
-
 }
 
-
 @media only screen and (max-width: 495px) {
-
     #header_container {
         background-color: #fff;
         height: 70px;
@@ -780,7 +725,6 @@ nav a:hover::before {
         flex-direction: row;
         justify-content: space-evenly;
     }
-
 
     .headerLogo {
         font-family: "UnpackW00-Fast";
@@ -790,9 +734,7 @@ nav a:hover::before {
         text-shadow: 2px 2px #000000;
         margin-top: 15px;
         display: none;
-
     }
-
 
     nav a {
         color: #135658;
@@ -808,7 +750,6 @@ nav a:hover::before {
         padding-top: 10px;
         position: relative;
     }
-
 
     .navigationDiv {
         margin-top: 8px;
@@ -831,7 +772,6 @@ nav a:hover::before {
         margin-top: 13px;
         margin-left: 4%;
     }
-
 
     .accessLogoGame {
         font-size: 36px;
@@ -857,20 +797,16 @@ nav a:hover::before {
         height: 140px;
         animation: shake 3.5s;
         animation-iteration-count: infinite;
-
     }
 
     .searchAccessImg {
         width: 115px;
         height: 115px;
-
     }
 
     .accessLogoGame {
         font-size: 30px;
     }
-
-
 }
 
 #playButtonContainer {
