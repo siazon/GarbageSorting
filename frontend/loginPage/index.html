@@ -2,18 +2,17 @@
 <html>
 
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Log in</title>
 
-    <link rel="stylesheet" href="css/login.css"/>
-    <link rel="stylesheet" href="css/sign-up-login.css"/>
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/inputEffect.css"/>
-    <link rel="stylesheet" href="css/tooltips.css"/>
-    <link rel="stylesheet" href="css/spop.min.css"/>
-    <link rel="stylesheet" href="../css/stylejs.css"/>
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/sign-up-login.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/inputEffect.css" />
+    <link rel="stylesheet" href="css/tooltips.css" />
+    <link rel="stylesheet" href="css/spop.min.css" />
+    <link rel="stylesheet" href="../css/stylejs.css" />
 
     <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="../JS/Util.js"></script>
@@ -32,7 +31,7 @@
             return false;
         }
 
-        $(window).load(function () {
+        $(window).load(function() {
             onInvite();
         });
 
@@ -45,11 +44,11 @@
             }
         }
 
-        (function () {
+        (function() {
             if (!String.prototype.trim) {
-                (function () {
+                (function() {
                     var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-                    String.prototype.trim = function () {
+                    String.prototype.trim = function() {
                         return this.replace(rtrim, "");
                     };
                 })();
@@ -57,7 +56,7 @@
 
             [].slice
                 .call(document.querySelectorAll("input.input__field"))
-                .forEach(function (inputEl) {
+                .forEach(function(inputEl) {
                     if (inputEl.value.trim() !== "") {
                         classie.add(inputEl.parentNode, "input--filled");
                     }
@@ -77,33 +76,33 @@
             }
         })();
 
-        $(function () {
+        $(function() {
             $("#login #login-password")
-                .focus(function () {
+                .focus(function() {
                     $(".login-owl").addClass("password");
                 })
-                .blur(function () {
+                .blur(function() {
                     $(".login-owl").removeClass("password");
                 });
             $("#login #register-password")
-                .focus(function () {
+                .focus(function() {
                     $(".register-owl").addClass("password");
                 })
-                .blur(function () {
+                .blur(function() {
                     $(".register-owl").removeClass("password");
                 });
             $("#login #register-repassword")
-                .focus(function () {
+                .focus(function() {
                     $(".register-owl").addClass("password");
                 })
-                .blur(function () {
+                .blur(function() {
                     $(".register-owl").removeClass("password");
                 });
             $("#login #forget-password")
-                .focus(function () {
+                .focus(function() {
                     $(".forget-owl").addClass("password");
                 })
-                .blur(function () {
+                .blur(function() {
                     $(".forget-owl").removeClass("password");
                 });
         });
@@ -180,15 +179,15 @@
                     password: password,
                 };
                 var url = "../js/config.json";
-                $.getJSON(url, function (data) {
+                $.getJSON(url, function(data) {
                     host = data.host;
                     fetch(host + "/Login", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json;charset=utf-8",
-                        },
-                        body: JSON.stringify(requestData),
-                    })
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json;charset=utf-8",
+                            },
+                            body: JSON.stringify(requestData),
+                        })
                         .then((response) => response.json())
                         .then((json) => {
                             if (json.state == true) {
@@ -291,15 +290,15 @@
                     user_role: "",
                 };
                 var url = "../js/config.json";
-                $.getJSON(url, function (data) {
+                $.getJSON(url, function(data) {
                     host = data.host;
                     fetch(host + "/InsertUser", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json;charset=utf-8",
-                        },
-                        body: JSON.stringify(requestData),
-                    })
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json;charset=utf-8",
+                            },
+                            body: JSON.stringify(requestData),
+                        })
                         //.then((response) => response.json())
                         .then((json) => {
                             if (json.status == 200) {
@@ -308,9 +307,9 @@
                                     position: "top-center",
                                     style: "success",
                                     autoclose: 3000,
-                                    onOpen: function () {
+                                    onOpen: function() {
                                         var second = 2;
-                                        var showPop = setInterval(function () {
+                                        var showPop = setInterval(function() {
                                             if (second == 0) {
                                                 clearInterval(showPop);
                                             }
@@ -322,7 +321,7 @@
                                             second--;
                                         }, 1000);
                                     },
-                                    onClose: function () {
+                                    onClose: function() {
                                         goto_login();
                                     },
                                 });
@@ -403,9 +402,9 @@
                     position: "top-center",
                     style: "success",
                     autoclose: 3000,
-                    onOpen: function () {
+                    onOpen: function() {
                         var second = 2;
-                        var showPop = setInterval(function () {
+                        var showPop = setInterval(function() {
                             if (second == 0) {
                                 clearInterval(showPop);
                             }
@@ -417,7 +416,7 @@
                             second--;
                         }, 1000);
                     },
-                    onClose: function () {
+                    onClose: function() {
                         goto_login();
                     },
                 });
@@ -430,7 +429,7 @@
             width: 100%;
             height: 800px;
         }
-
+        
         body {
             background-repeat: no-repeat;
             background-position: center center;
@@ -438,7 +437,7 @@
             background-image: url(images/lll.jpg);
             background-size: 100% 100%;
         }
-
+        
         .overlay {
             position: fixed;
             top: 0;
@@ -447,7 +446,7 @@
             left: 0;
             background-color: rgba(0, 0, 0, 0.5);
         }
-
+        
         .lightbox {
             /*需要引起用户注意的元素*/
             position: absolute;
@@ -458,326 +457,183 @@
 </head>
 
 <body class="overlay">
-<!-- Login Control -->
-<div id="login" class="lightbox">
-    <input id="tab-1" type="radio" name="tab" class="sign-in hidden" checked/>
-    <input id="tab-2" type="radio" name="tab" class="sign-up hidden"/>
-    <input id="tab-3" type="radio" name="tab" class="sign-out hidden"/>
-    <div class="wrapper">
-        <!-- login page -->
-        <div class="login sign-in-htm">
-            <form class="container offset1 loginform">
-                <div id="owl-login" class="login-owl">
-                    <div class="arms">
-                        <div class="arm"></div>
-                        <div class="arm arm-r"></div>
+    <!-- Login Control -->
+    <div id="login" class="lightbox">
+        <input id="tab-1" type="radio" name="tab" class="sign-in hidden" checked />
+        <input id="tab-2" type="radio" name="tab" class="sign-up hidden" />
+        <input id="tab-3" type="radio" name="tab" class="sign-out hidden" />
+        <div class="wrapper" style="height: 800px;">
+            <!-- login page -->
+            <div class="login sign-in-htm">
+                <form class="container offset1 loginform">
+                    <div id="owl-login" class="login-owl">
+                        <div class="arms">
+                            <div class="arm"></div>
+                            <div class="arm arm-r"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="pad input-container">
-                    <section class="content">
+                    <div class="pad input-container">
+                        <section class="content">
                             <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="text"
-                          id="login-username"
-                          autocomplete="off"
-                          placeholder="Please input user name"
-                          tabindex="1"
-                          maxlength="55"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="login-username"
-                  >
-                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
+                                <input class="input__field input__field--hideo" type="text" id="login-username"
+                                    autocomplete="off" placeholder="Please input user name" tabindex="1"
+                                    maxlength="55" />
+                                <label class="input__label input__label--hideo" for="login-username">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
                             </label>
                             </span>
-                        <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="password"
-                          id="login-password"
-                          placeholder="Please enter your password"
-                          tabindex="2"
-                          maxlength="15"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="login-password"
-                  >
-                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="login-password"
+                                    placeholder="Please enter your password" tabindex="2" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="login-password">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
                             </label>
                             </span>
-                    </section>
-                </div>
-                <div class="form-actions">
-                    <a tabindex="4" class="btn pull-left btn-link text-muted" onclick="goto_forget()">
-                        LOST PASSWORD?</a
-                    >
-                    <a
-                            tabindex="5"
-                            class="btn btn-link text-muted"
-                            onclick="goto_register()"
-                    >Registration</a
-                    >
-                    <input
-                            class="btn btn-primary"
-                            type="button"
-                            tabindex="3"
-                            onclick="login()"
-                            value="Login"
-                            style="color: white"
-                    />
-                </div>
-            </form>
-        </div>
-        <!-- Forgotten password page -->
-        <div class="login sign-out-htm">
-            <form action="#" method="post" class="container offset1 loginform">
-                <div id="owl-login" class="forget-owl">
-                    <div class="arms">
-                        <div class="arm"></div>
-                        <div class="arm arm-r"></div>
+                        </section>
                     </div>
-                </div>
-                <div class="pad input-container">
-                    <section class="content">
-                <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="text"
-                          id="forget-username"
-                          autocomplete="off"
-                          placeholder="Please input user name"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="forget-username"
-                  >
-                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
-                  </label>
-                </span>
-                        <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="text"
-                          id="forget-code"
-                          autocomplete="off"
-                          placeholder=" please enter the registration code"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="forget-code"
-                  >
-                    <i class="fa fa-fw fa-wifi icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
-                  </label>
-                </span>
-                        <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="password"
-                          id="forget-password"
-                          placeholder="Please reset your password"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="forget-password"
-                  >
-                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
-                  </label>
-                </span>
-                    </section>
-                </div>
-                <div class="form-actions">
-                    <a
-                            class="btn pull-left btn-link text-muted"
-                            onclick="goto_login()"
-                    >Back to Login</a
-                    >
-                    <input
-                            class="btn btn-primary"
-                            type="button"
-                            onclick="forget()"
-                            value="reset passwords"
-                            style="color: white"
-                    />
-                </div>
-            </form>
-        </div>
-        <!-- registration page -->
-        <div class="login sign-up-htm">
-            <form action="#" method="post" class="container offset1 loginform">
-                <div id="owl-login" class="register-owl">
-                    <div class="arms">
-                        <div class="arm"></div>
-                        <div class="arm arm-r"></div>
+                    <div class="form-actions">
+                        <a tabindex="4" class="btn pull-left btn-link text-muted" onclick="goto_forget()">
+                            LOST PASSWORD?</a>
+                        <a tabindex="5" class="btn btn-link text-muted" onclick="goto_register()">Registration</a>
+                        <input class="btn btn-primary" type="button" tabindex="3" onclick="login()" value="Login" style="color: white" />
                     </div>
-                </div>
-                <div class="pad input-container">
-                    <section class="content">
-                <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="text"
-                          id="Email"
-                          autocomplete="off"
-                          placeholder=" please enter the email"
-                  />
-                  <label class="input__label input__label--hideo" for="Email">
-                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
-                  </label>
-                </span>
+                </form>
+            </div>
+            <!-- Forgotten password page -->
+            <div class="login sign-out-htm">
+                <form action="#" method="post" class="container offset1 loginform">
+                    <div id="owl-login" class="forget-owl">
+                        <div class="arms">
+                            <div class="arm"></div>
+                            <div class="arm arm-r"></div>
+                        </div>
+                    </div>
+                    <div class="pad input-container">
+                        <section class="content">
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="forget-username"
+                                    autocomplete="off" placeholder="Please input user name" />
+                                <label class="input__label input__label--hideo" for="forget-username">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="forget-code"
+                                    autocomplete="off" placeholder=" please enter the registration code" />
+                                <label class="input__label input__label--hideo" for="forget-code">
+                                    <i class="fa fa-fw fa-wifi icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="forget-password"
+                                    placeholder="Please reset your password" />
+                                <label class="input__label input__label--hideo" for="forget-password">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
+                        </section>
+                    </div>
+                    <div class="form-actions">
+                        <a class="btn pull-left btn-link text-muted" onclick="goto_login()">Back to Login</a>
+                        <input class="btn btn-primary" type="button" onclick="forget()" value="reset passwords" style="color: white" />
+                    </div>
+                </form>
+            </div>
+            <!-- registration page -->
+            <div class="login sign-up-htm">
+                <form action="#" method="post" class="container offset1 loginform">
+                    <div id="owl-login" class="register-owl">
+                        <div class="arms">
+                            <div class="arm"></div>
+                            <div class="arm arm-r"></div>
+                        </div>
+                    </div>
+                    <div class="pad input-container">
+                        <section class="content">
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="Email"
+                                    autocomplete="off" placeholder=" please enter the email" />
+                                <label class="input__label input__label--hideo" for="Email">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
 
-                        <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="password"
-                          id="register-password"
-                          placeholder="Please enter your password"
-                          maxlength="15"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="register-password"
-                  >
-                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
-                  </label>
-                </span>
-                        <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="password"
-                          id="register-repassword"
-                          placeholder=" Please confirm password"
-                          maxlength="15"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="register-repassword"
-                  >
-                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
-                  </label>
-                </span>
-                        <span class="input input--hideo">
-                  <input
-                          class="input__field input__field--hideo"
-                          type="text"
-                          id="register-username"
-                          autocomplete="off"
-                          placeholder="Please input Invite Code"
-                          maxlength="15"
-                  />
-                  <label
-                          class="input__label input__label--hideo"
-                          for="register-username"
-                  >
-                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
-                    <span
-                            class="input__label-content input__label-content--hideo"
-                    ></span>
-                  </label>
-                </span>
-                    </section>
-                </div>
-                <div class="form-actions">
-                    <a
-                            class="btn pull-left btn-link text-muted"
-                            onclick="goto_login()"
-                    >Back to Login</a
-                    >
-                    <input
-                            class="btn btn-primary"
-                            type="button"
-                            onclick="register()"
-                            value="register"
-                            style="color: white"
-                    />
-                </div>
-            </form>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="register-password"
+                                    placeholder="Please enter your password" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="register-password">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="password" id="register-repassword"
+                                    placeholder=" Please confirm password" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="register-repassword">
+                                    <i class="fa fa-fw fa-lock icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="register-username"
+                                    autocomplete="off" placeholder="Please input Invite Code" maxlength="15" />
+                                <label class="input__label input__label--hideo" for="register-username">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
+                        </section>
+                    </div>
+                    <div class="form-actions">
+                        <a class="btn pull-left btn-link text-muted" onclick="goto_login()">Back to Login</a>
+                        <input class="btn btn-primary" type="button" onclick="register()" value="register" style="color: white" />
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="loader loader--active">
-    <div class="loader__icon">
-        <svg
-                version="1.1"
-                id="loader-1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                width="40px"
-                height="40px"
-                viewBox="0 0 40 40"
-                enable-background="new 0 0 40 40"
-                xml:space="preserve"
-        >
-          <path
-                  opacity="0.2"
-                  fill="#000"
-                  d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"
-          ></path>
-            <path
-                    fill="#000"
-                    d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"
-            ></path>
-            <animateTransform
-                    attributeType="xml"
-                    attributeName="transform"
-                    type="rotate"
-                    from="0 20 20"
-                    to="360 20 20"
-                    dur="0.5s"
-                    repeatCount="indefinite"
-            ></animateTransform>
-        </svg>
+    <div class="loader loader--active">
+        <div class="loader__icon">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                <path opacity="0.2" fill="#000"
+                    d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z">
+                </path>
+                <path fill="#000"
+                    d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
+                </path>
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
+                    to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+            </svg>
+        </div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
     </div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-</div>
 
-<script>
-    var $loader = document.querySelector(".loader");
+    <script>
+        var $loader = document.querySelector(".loader");
 
-    window.onload = function () {
-        $loader.classList.remove("loader--active");
-    };
-
-    document.querySelector(".btn").addEventListener("click", function () {
-        $loader.classList.add("loader--active");
-
-        window.setTimeout(function () {
+        window.onload = function() {
             $loader.classList.remove("loader--active");
-        }, 5000);
-    });
-</script>
+        };
+
+        document.querySelector(".btn").addEventListener("click", function() {
+            $loader.classList.add("loader--active");
+
+            window.setTimeout(function() {
+                $loader.classList.remove("loader--active");
+            }, 5000);
+        });
+    </script>
 </body>
+
 </html>

@@ -109,7 +109,7 @@ public class FileUploadController {
     private void CalcRate(String imgName) {
         List<PictureInfo> infos = pictureMapper.findByPath(imgName);
         double sum = 0;
-        double Confidence = 0.95;
+        double Confidence = 0.99;
         //Get total number of the sorting
         for (int i = 0; i < infos.size(); i++) {
             sum += infos.get(i).getSort_times();

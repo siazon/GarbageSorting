@@ -6,6 +6,20 @@ body {
     background-position: center center;
     background-color: transparent;
 }
+.iframe-container {
+    overflow: hidden;
+    position: relative;
+    padding-top: 56.25%;
+  }
+  
+  .iframe-container iframe {
+     position: absolute;
+     left: 0;
+     top: 0;
+     height: 100%;
+     width: 100%;
+     border: 0;
+  }
 
 .headerDiv {
     padding: 0%;
