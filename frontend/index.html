@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <title>Home</title>
 
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./homePage/styles.css" />
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <!-- Add icon library -->
     <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
@@ -63,8 +63,54 @@
         </div>
     </header> -->
 
+    <header>
 
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom box-shadow headerDiv">
+        <div id="header_container">
+
+
+            <div class="headerDiv">
+                <h1 class="headerLogo">
+                    <a href="../homePage/home.html" class="a_logo"> <span style="color: #f17eb2">#</span>
+                        <span style="color: #6bb2e2">K</span> <span style="color: #6bb2e2">e</span>
+                        <span style="color: #6bb2e2">e</span> <span style="color: #6bb2e2">p</span>
+                        <span style="color: #f17eb2">I</span> <span style="color: #f17eb2">t</span>
+                        <span style="color: #7ec479">S</span> <span style="color: #7ec479">o</span>
+                        <span style="color: #7ec479">r</span> <span style="color: #7ec479">t</span>
+                        <span style="color: #7ec479">e</span> <span style="color: #7ec479">d</span>
+                    </a>
+                </h1>
+
+            </div>
+
+            <div class="navigationDiv">
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i>
+
+                    </label>
+                    <ul>
+                        <li><a href="#" onclick="displayHome()">Home</a></li>
+                        <li><a href="#" onclick="displayGame()">Game</a></li>
+                        <li><a href="#" onclick="Repository()">Education</a></li>
+                        <li><a href="#" onclick="aboutUs()">About Us</a></li>
+                        <li>
+                            <a href="#" id="btnLogin" onclick="login()" class="button">Login</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+
+
+
+
+        </div>
+
+    </header>
+
+
+    <!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom box-shadow headerDiv">
         <h5 class="my-0 mr-md-auto font-weight-normal headerLogo">
             <a href="#" onclick="displayHome()" class="a_logo">
                 <span style="color: #f17eb2">#</span>
@@ -87,9 +133,10 @@
                 <a class="p-2" href="#" onclick="displayGame()">Game</a>
                 <a class="p-2" href="#" onclick="Repository()">Education</a>
                 <a class="p-2" href="#" onclick="aboutUs()">About Us</a>
+                <a class="button" href="#">Login</a>
             </nav>
-            <a class="button" href="#">Login</a>
-    </div>
+
+    </div> -->
 
     <div class="loader loader--active">
         <div class="loader__icon">
