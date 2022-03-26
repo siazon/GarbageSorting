@@ -2,242 +2,239 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home</title>
 
-    <link rel="stylesheet" href="./homePage/styles.css" />
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./homePage/styles.css"/>
+    <link rel="stylesheet" href="./css/bootstrap.min.css"/>
     <!-- Add icon library -->
     <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play" />
-    <link href="//db.onlinewebfonts.com/c/31d6999b03b69180254d0999127e1bc8?family=UnpackW00-Fast" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Play"/>
+    <link href="//db.onlinewebfonts.com/c/31d6999b03b69180254d0999127e1bc8?family=UnpackW00-Fast" rel="stylesheet"
+          type="text/css"/>
 
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
 
-    <link rel="stylesheet" href="/css/stylejs.css">
+    <link rel="stylesheet" href="../css/stylejs.css">
 </head>
 
 <body class="indexBody">
-    <!-- <header>
-        <div id="container">
-            <div class="headerDiv">
-                <h1 class="headerLogo">
-                    <a href="#" onclick="displayHome()" class="a_logo">
-                        <span style="color: #f17eb2">#</span>
-                        <span style="color: #6bb2e2">K</span>
-                        <span style="color: #6bb2e2">e</span>
-                        <span style="color: #6bb2e2">e</span>
-                        <span style="color: #6bb2e2">p</span>
-                        <span style="color: #f17eb2">I</span>
-                        <span style="color: #f17eb2">t</span>
-                        <span style="color: #7ec479">S</span>
-                        <span style="color: #7ec479">o</span>
-                        <span style="color: #7ec479">r</span>
-                        <span style="color: #7ec479">t</span>
-                        <span style="color: #7ec479">e</span>
-                        <span style="color: #7ec479">d</span>
-                    </a>
-                </h1>
-            </div>
-
-            <div class="navigationDiv">
-                <nav>
-                    <ul>
-                        <li><a href="#" onclick="displayHome()">Home</a></li>
-                        <li><a href="#" onclick="displayGame()">Game</a></li>
-                        <li><a href="#" onclick="Repository()">Education</a></li>
-                        <li><a href="#" onclick="aboutUs()">About Us</a></li>
-                        <li>
-                            <a href="#" id="btnLogin" onclick="login()" class="button">Login</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-
-
-        </div>
-    </header> -->
-
-    <header>
-
-        <div id="header_container">
-
-
-            <div class="headerDiv">
-                <h1 class="headerLogo">
-                    <a href="../homePage/home.html" class="a_logo"> <span style="color: #f17eb2">#</span>
-                        <span style="color: #6bb2e2">K</span> <span style="color: #6bb2e2">e</span>
-                        <span style="color: #6bb2e2">e</span> <span style="color: #6bb2e2">p</span>
-                        <span style="color: #f17eb2">I</span> <span style="color: #f17eb2">t</span>
-                        <span style="color: #7ec479">S</span> <span style="color: #7ec479">o</span>
-                        <span style="color: #7ec479">r</span> <span style="color: #7ec479">t</span>
-                        <span style="color: #7ec479">e</span> <span style="color: #7ec479">d</span>
-                    </a>
-                </h1>
-
-            </div>
-
-            <div class="navigationDiv">
-                <nav>
-                    <input type="checkbox" id="check">
-                    <label for="check" class="checkbtn">
-                        <i class="fas fa-bars"></i>
-
-                    </label>
-                    <ul>
-                        <li><a href="#" onclick="displayHome()">Home</a></li>
-                        <li><a href="#" onclick="displayGame()">Game</a></li>
-                        <li><a href="#" onclick="Repository()">Education</a></li>
-                        <li><a href="#" onclick="aboutUs()">About Us</a></li>
-                        <li>
-                            <a href="#" id="btnLogin" onclick="login()" class="button">Login</a>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-
-
-
-
-        </div>
-
-    </header>
-
-
-    <!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom box-shadow headerDiv">
-        <h5 class="my-0 mr-md-auto font-weight-normal headerLogo">
-            <a href="#" onclick="displayHome()" class="a_logo">
-                <span style="color: #f17eb2">#</span>
-                <span style="color: #6bb2e2">K</span>
-                <span style="color: #6bb2e2">e</span>
-                <span style="color: #6bb2e2">e</span>
-                <span style="color: #6bb2e2">p</span>
-                <span style="color: #f17eb2">I</span>
-                <span style="color: #f17eb2">t</span>
-                <span style="color: #7ec479">S</span>
-                <span style="color: #7ec479">o</span>
-                <span style="color: #7ec479">r</span>
-                <span style="color: #7ec479">t</span>
-                <span style="color: #7ec479">e</span>
-                <span style="color: #7ec479">d</span>
-            </a>
+<!-- <header>
+    <div id="container">
+        <div class="headerDiv">
+            <h1 class="headerLogo">
+                <a href="#" onclick="displayHome()" class="a_logo">
+                    <span style="color: #f17eb2">#</span>
+                    <span style="color: #6bb2e2">K</span>
+                    <span style="color: #6bb2e2">e</span>
+                    <span style="color: #6bb2e2">e</span>
+                    <span style="color: #6bb2e2">p</span>
+                    <span style="color: #f17eb2">I</span>
+                    <span style="color: #f17eb2">t</span>
+                    <span style="color: #7ec479">S</span>
+                    <span style="color: #7ec479">o</span>
+                    <span style="color: #7ec479">r</span>
+                    <span style="color: #7ec479">t</span>
+                    <span style="color: #7ec479">e</span>
+                    <span style="color: #7ec479">d</span>
+                </a>
             </h1>
-            <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2" href="#" onclick="displayHome()">Home</a>
-                <a class="p-2" href="#" onclick="displayGame()">Game</a>
-                <a class="p-2" href="#" onclick="Repository()">Education</a>
-                <a class="p-2" href="#" onclick="aboutUs()">About Us</a>
-                <a class="button" href="#">Login</a>
-            </nav>
-
-    </div> -->
-
-    <div class="loader loader--active">
-        <div class="loader__icon">
-            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-                <path opacity="0.2" fill="#000"
-                    d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z">
-                </path>
-                <path fill="#000"
-                    d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
-                </path>
-                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
-                    to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
-            </svg>
         </div>
-        <div class="loader__tile"></div>
-        <div class="loader__tile"></div>
-        <div class="loader__tile"></div>
-        <div class="loader__tile"></div>
-        <div class="loader__tile"></div>
+
+        <div class="navigationDiv">
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="displayHome()">Home</a></li>
+                    <li><a href="#" onclick="displayGame()">Game</a></li>
+                    <li><a href="#" onclick="Repository()">Education</a></li>
+                    <li><a href="#" onclick="aboutUs()">About Us</a></li>
+                    <li>
+                        <a href="#" id="btnLogin" onclick="login()" class="button">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </div>
+</header> -->
+
+<header>
+
+    <div id="header_container">
+
+
+        <div class="headerDiv">
+            <h1 class="headerLogo">
+                <a href="#" onclick="displayHome()" class="a_logo"> <span style="color: #f17eb2">#</span>
+                    <span style="color: #6bb2e2">K</span> <span style="color: #6bb2e2">e</span>
+                    <span style="color: #6bb2e2">e</span> <span style="color: #6bb2e2">p</span>
+                    <span style="color: #f17eb2">I</span> <span style="color: #f17eb2">t</span>
+                    <span style="color: #7ec479">S</span> <span style="color: #7ec479">o</span>
+                    <span style="color: #7ec479">r</span> <span style="color: #7ec479">t</span>
+                    <span style="color: #7ec479">e</span> <span style="color: #7ec479">d</span>
+                </a>
+            </h1>
+
+        </div>
+
+        <div class="navigationDiv">
+            <nav>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+
+                </label>
+                <ul>
+                    <li><a href="#" onclick="displayHome()">Home</a></li>
+                    <li><a href="#" onclick="displayGame()">Game</a></li>
+                    <li><a href="#" onclick="Repository()">Education</a></li>
+                    <li><a href="#" onclick="aboutUs()">About Us</a></li>
+                    <li>
+                        <a href="#" id="btnLogin" onclick="login()" class="button">Login</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+
     </div>
 
+</header>
 
-    <div class="iframe-container">
-        <iframe id="centerFrame" onLoad="iframeLoad()" frameborder="0" src="homePage/home.html"></iframe>
-    </div>
-    <div class="footer-dark">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 item text">
-                        <h3>About Us</h3>
-                        <p>
-                            We are a team of developers that is passionate about sustainability and our goal is to encourage people through entertainment and education.
-                        </p>
-                    </div>
 
-                    <div class="col item social">
-                        <h3>Follow us</h3>
-                        <a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
-                                class="icon ion-social-twitter"></i></a><a href="#"><i
-                                class="icon ion-social-snapchat"></i></a><a href="#"><i
-                                class="icon ion-social-instagram"></i></a>
-                    </div>
+<!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom box-shadow headerDiv">
+    <h5 class="my-0 mr-md-auto font-weight-normal headerLogo">
+        <a href="#" onclick="displayHome()" class="a_logo">
+            <span style="color: #f17eb2">#</span>
+            <span style="color: #6bb2e2">K</span>
+            <span style="color: #6bb2e2">e</span>
+            <span style="color: #6bb2e2">e</span>
+            <span style="color: #6bb2e2">p</span>
+            <span style="color: #f17eb2">I</span>
+            <span style="color: #f17eb2">t</span>
+            <span style="color: #7ec479">S</span>
+            <span style="color: #7ec479">o</span>
+            <span style="color: #7ec479">r</span>
+            <span style="color: #7ec479">t</span>
+            <span style="color: #7ec479">e</span>
+            <span style="color: #7ec479">d</span>
+        </a>
+        </h1>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2" href="#" onclick="displayHome()">Home</a>
+            <a class="p-2" href="#" onclick="displayGame()">Game</a>
+            <a class="p-2" href="#" onclick="Repository()">Education</a>
+            <a class="p-2" href="#" onclick="aboutUs()">About Us</a>
+            <a class="button" href="#">Login</a>
+        </nav>
+
+</div> -->
+
+<!--    <div class="loader loader&#45;&#45;active">-->
+<!--        <div class="loader__icon">-->
+<!--            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">-->
+<!--                <path opacity="0.2" fill="#000"-->
+<!--                    d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z">-->
+<!--                </path>-->
+<!--                <path fill="#000"-->
+<!--                    d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">-->
+<!--                </path>-->
+<!--                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"-->
+<!--                    to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>-->
+<!--            </svg>-->
+<!--        </div>-->
+<!--        <div class="loader__tile"></div>-->
+<!--        <div class="loader__tile"></div>-->
+<!--        <div class="loader__tile"></div>-->
+<!--        <div class="loader__tile"></div>-->
+<!--        <div class="loader__tile"></div>-->
+<!--    </div>-->
+
+
+<div class="iframe-container">
+    <iframe id="centerFrame" onLoad="iframeLoad()" frameborder="0" src="homePage/home.html"></iframe>
+</div>
+<div class="footer-dark">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 item text">
+                    <h3>About Us</h3>
+                    <p>
+                        We are a team of developers that is passionate about sustainability and our goal is to encourage
+                        people through entertainment and education.
+                    </p>
                 </div>
-                <p class="copyright">KeepItSorted © 2022</p>
+
+                <div class="col item social">
+                    <h3>Follow us</h3>
+                    <a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
+                        class="icon ion-social-twitter"></i></a><a href="#"><i
+                        class="icon ion-social-snapchat"></i></a><a href="#"><i
+                        class="icon ion-social-instagram"></i></a>
+                </div>
             </div>
-        </footer>
-    </div>
+            <p class="copyright">KeepItSorted © 2022</p>
+        </div>
+    </footer>
+</div>
 
 
-
-
-    <script>
-        var $loader = document.querySelector('.loader')
-        window.onload = function() {
-            var token = localStorage.getItem("token");
-            if (token.length > 0) {
-                $("#btnLogin").val("Logout");
-                console.log("token is ", $("#btnLogin").val(), token);
-            } else {
-                console.log("token is null");
-            }
-            $loader.classList.remove('loader--active')
-        };
-
-
-
-        function iframeLoad() {
-            var height = document.getElementById("centerFrame").contentWindow.document.body.scrollHeight;
-            console.log("height is: ", height);
-            document.getElementById("centerFrame").height = document.getElementById("centerFrame").contentWindow.document.body.scrollHeight;
-            document.getElementById("centerFrame").width = screen.width;
+<script>
+    var $loader = document.querySelector('.loader')
+    window.onload = function () {
+        var token = localStorage.getItem("token");
+        if (token.length > 0) {
+            $("#btnLogin").val("Logout");
+            console.log("token is ", $("#btnLogin").val(), token);
+        } else {
+            console.log("token is null");
         }
+        $loader.classList.remove('loader--active')
+    };
 
-        function displayHome() {
-            document.getElementById("centerFrame").src = "./homePage/home.html";
-        }
 
-        function displayGame() {
+    function iframeLoad() {
+        var height = document.getElementById("centerFrame").contentWindow.document.body.scrollHeight;
+        console.log("height is: ", height);
+        document.getElementById("centerFrame").height = document.getElementById("centerFrame").contentWindow.document.body.scrollHeight;
+        document.getElementById("centerFrame").width = screen.width;
+    }
 
-            document.getElementById("centerFrame").src = "./gamewelcome.html";
-        }
+    function displayHome() {
+        document.getElementById("centerFrame").src = "./homePage/home.html";
+    }
 
-        function displayStore() {
-            document.getElementById("centerFrame").src =
-                "./imagespage/store.html";
-        }
+    function displayGame() {
 
-        function Repository() {
-            document.getElementById("centerFrame").src =
-                "InformationPage/InfoPage.html";
-        }
+        document.getElementById("centerFrame").src = "./gamewelcome.html";
+    }
 
-        function aboutUs() {
-            document.getElementById("centerFrame").src = "about.html";
-        }
+    function displayStore() {
+        document.getElementById("centerFrame").src =
+            "./imagespage/store.html";
+    }
 
-        function login() {
-            document.getElementById("centerFrame").src = "./loginPage/index.html";
-        }
-    </script>
+    function Repository() {
+        document.getElementById("centerFrame").src =
+            "InformationPage/InfoPage.html";
+    }
+
+    function aboutUs() {
+        document.getElementById("centerFrame").src = "about.html";
+    }
+
+    function login() {
+        document.getElementById("centerFrame").src = "./loginPage/index.html";
+    }
+</script>
 
 </body>
 
