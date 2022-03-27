@@ -240,38 +240,44 @@ body {
 
 
 /*---start-header----*/
-.header{
-	background:url(../images/border.png) repeat-x 0px 0px #FFF;
-	padding: 1.5em 0 1.2em;
-	border-bottom: 1px solid rgba(214, 213, 212, 0.64);
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 999;
+
+.header {
+    background: url(../border.png) repeat-x 0px 0px #FFF;
+    padding: 1.5em 0 1.2em;
+    border-bottom: 1px solid rgba(214, 213, 212, 0.64);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
 }
-.logo{
-	float:left;
-	font-size: 30px;
+
+.logo {
+    float: left;
+    font-size: 30px;
 }
-.logo img{
-	display:inline-block;
+
+.logo img {
+    display: inline-block;
 }
-.nav-icon{
-	float: left;
-	margin: 0.6% 2% 0 8%;
-	width: 4.55%;
+
+.nav-icon {
+    float: left;
+    margin: 0.6% 2% 0 8%;
+    width: 4.55%;
 }
-.nav-icon button{
-	width: 80px;
-	height:34px;
-	border: none;
-	border-radius: 8px;
-	display: inline-block;
-	background-color: #7FC379;
-	color: white;
+
+.nav-icon button {
+    width: 80px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    display: inline-block;
+    background-color: #7FC379;
+    color: white;
 }
-.nav-icon button:hover{
-	background-color: white; 
+
+.nav-icon button:hover {
+    background-color: white;
     color: #551A8B;
     border: 2px solid #7FC379;
 }
