@@ -175,7 +175,7 @@
     <div class="iframe-container">
         <iframe id="centerFrame" onLoad="iframeLoad()" frameborder="0" width="100%" src="homePage/home.html"></iframe>
     </div>
-    <div class="footer-dark">
+    <div class="footer-dark" style="margin-top: -2%;">
         <footer>
             <div class="container">
                 <div class="row">
@@ -300,6 +300,7 @@
 
         function onLogout() {
             localStorage.setItem("token", "");
+            localStorage.setItem("userType", "user");
             isLogin(false);
             document.getElementById("centerFrame").src = "./homePage/home.html";
         }
