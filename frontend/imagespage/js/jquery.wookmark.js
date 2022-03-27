@@ -17,8 +17,8 @@
 }(function ($) {
   var Wookmark, defaultOptions, __bind;
 
-  __bind = function(fn, me) {
-    return function() {
+  __bind = function (fn, me) {
+    return function () {
       return fn.apply(me, arguments);
     };
   };
@@ -43,10 +43,10 @@
   };
 
   // Function for executing css writes to dom on the next animation frame if supported
-  var executeNextFrame = window.requestAnimationFrame || function(callback) {callback();};
+  var executeNextFrame = window.requestAnimationFrame || function (callback) { callback(); };
 
   function bulkUpdateCSS(data) {
-    executeNextFrame(function() {
+    executeNextFrame(function () {
       var i, item;
       for (i = 0; i < data.length; i++) {
         item = data[i];
@@ -60,7 +60,7 @@
   }
 
   // Main wookmark plugin class
-  Wookmark = (function() {
+  Wookmark = (function () {
 
     function Wookmark(handler, options) {
       // Instance variables.
@@ -99,10 +99,10 @@
       this.container.bind('refreshWookmark', this.onRefresh);
     }
 
-    Wookmark.prototype.updateFilterClasses = function() {
+    Wookmark.prototype.updateFilterClasses = function () {
       // Collect filter data
       var i = 0, j = 0, k = 0, filterClasses = {}, itemFilterClasses,
-          $item, filterClass, possibleFilters = this.possibleFilters, possibleFilter;
+        $item, filterClass, possibleFilters = this.possibleFilters, possibleFilter;
 
       for (; i < this.handler.length; i++) {
         $item = this.handler.eq(i);
@@ -132,20 +132,20 @@
     };
 
     // Method for updating the plugins options
-    Wookmark.prototype.update = function(options) {
+    Wookmark.prototype.update = function (options) {
       this.itemHeightsDirty = true;
       $.extend(true, this, options);
     };
 
     // This timer ensures that layout is not continuously called as window is being dragged.
-    Wookmark.prototype.onResize = function() {
+    Wookmark.prototype.onResize = function () {
       clearTimeout(this.resizeTimer);
       this.itemHeightsDirty = this.flexibleWidth !== 0;
       this.resizeTimer = setTimeout(this.layout, this.resizeDelay);
     };
 
     // Marks the items heights as dirty and does a relayout
-    Wookmark.prototype.onRefresh = function() {
+    Wookmark.prototype.onRefresh = function () {
       this.itemHeightsDirty = true;
       this.layout();
     };
@@ -155,9 +155,9 @@
      * @param filters array of string
      * @param mode 'or' or 'and'
      */
-    Wookmark.prototype.filter = function(filters, mode) {
+    Wookmark.prototype.filter = function (filters, mode) {
       var activeFilters = [], activeFiltersLength, activeItems = $(),
-          i, j, k, filter;
+        i, j, k, filter;
 
       filters = filters || [];
       mode = mode || 'or';
@@ -180,8 +180,8 @@
           }
         } else if (mode == 'and') {
           var shortestFilter = activeFilters[0],
-              itemValid = true, foundInFilter,
-              currentItem, currentFilter;
+            itemValid = true, foundInFilter,
+            currentItem, currentFilter;
 
           // Find shortest filter class
           for (i = 1; i < activeFiltersLength; i++) {
@@ -228,12 +228,12 @@
     /**
      * Creates or updates existing placeholders to create columns of even height
      */
-    Wookmark.prototype.refreshPlaceholders = function(columnWidth, sideOffset) {
+    Wookmark.prototype.refreshPlaceholders = function (columnWidth, sideOffset) {
       var i = this.placeholders.length,
-          $placeholder, $lastColumnItem,
-          columnsLength = this.columns.length, column,
-          height, top, innerOffset,
-          containerHeight = this.container.innerHeight();
+        $placeholder, $lastColumnItem,
+        columnsLength = this.columns.length, column,
+        height, top, innerOffset,
+        containerHeight = this.container.innerHeight();
 
       for (; i < columnsLength; i++) {
         $placeholder = $('<div class="wookmark-placeholder"/>').appendTo(this.container);
@@ -267,16 +267,16 @@
     };
 
     // Method the get active items which are not disabled and visible
-    Wookmark.prototype.getActiveItems = function() {
+    Wookmark.prototype.getActiveItems = function () {
       return this.ignoreInactiveItems ? this.handler.not('.inactive') : this.handler;
     };
 
     // Method to get the standard item width
-    Wookmark.prototype.getItemWidth = function() {
+    Wookmark.prototype.getItemWidth = function () {
       var itemWidth = this.itemWidth,
-          innerWidth = this.container.width() - 2 * this.outerOffset,
-          firstElement = this.handler.eq(0),
-          flexibleWidth = this.flexibleWidth;
+        innerWidth = this.container.width() - 2 * this.outerOffset,
+        firstElement = this.handler.eq(0),
+        flexibleWidth = this.flexibleWidth;
 
       if (this.itemWidth === undefined || this.itemWidth === 0 && !this.flexibleWidth) {
         itemWidth = firstElement.outerWidth();
@@ -293,10 +293,10 @@
 
         // Find highest column count
         var paddedInnerWidth = (innerWidth + this.offset),
-            flexibleColumns = ~~(0.5 + paddedInnerWidth / (flexibleWidth + this.offset)),
-            fixedColumns = ~~(paddedInnerWidth / (itemWidth + this.offset)),
-            columns = Math.max(flexibleColumns, fixedColumns),
-            columnWidth = Math.min(flexibleWidth, ~~((innerWidth - (columns - 1) * this.offset) / columns));
+          flexibleColumns = ~~(0.5 + paddedInnerWidth / (flexibleWidth + this.offset)),
+          fixedColumns = ~~(paddedInnerWidth / (itemWidth + this.offset)),
+          columns = Math.max(flexibleColumns, fixedColumns),
+          columnWidth = Math.min(flexibleWidth, ~~((innerWidth - (columns - 1) * this.offset) / columns));
 
         itemWidth = Math.max(itemWidth, columnWidth);
 
@@ -308,19 +308,19 @@
     };
 
     // Main layout method.
-    Wookmark.prototype.layout = function(force) {
+    Wookmark.prototype.layout = function (force) {
       // Do nothing if container isn't visible
       if (!this.container.is(':visible')) return;
 
       // Calculate basic layout parameters.
       var columnWidth = this.getItemWidth() + this.offset,
-          containerWidth = this.container.width(),
-          innerWidth = containerWidth - 2 * this.outerOffset,
-          columns = ~~((innerWidth + this.offset) / columnWidth),
-          offset = 0, maxHeight = 0, i = 0,
-          activeItems = this.getActiveItems(),
-          activeItemsLength = activeItems.length,
-          $item;
+        containerWidth = this.container.width(),
+        innerWidth = containerWidth - 2 * this.outerOffset,
+        columns = ~~((innerWidth + this.offset) / columnWidth),
+        offset = 0, maxHeight = 0, i = 0,
+        activeItems = this.getActiveItems(),
+        activeItemsLength = activeItems.length,
+        $item;
 
       // Cache item height
       if (this.itemHeightsDirty || !this.container.data('itemHeightsInitialized')) {
@@ -368,20 +368,20 @@
     /**
      * Sort elements with configurable comparator
      */
-    Wookmark.prototype.sortElements = function(elements) {
-      return typeof(this.comparator) === 'function' ? elements.sort(this.comparator) : elements;
+    Wookmark.prototype.sortElements = function (elements) {
+      return typeof (this.comparator) === 'function' ? elements.sort(this.comparator) : elements;
     };
 
     /**
      * Perform a full layout update.
      */
-    Wookmark.prototype.layoutFull = function(columnWidth, columns, offset) {
+    Wookmark.prototype.layoutFull = function (columnWidth, columns, offset) {
       var $item, i = 0, k = 0,
-          activeItems = $.makeArray(this.getActiveItems()),
-          length = activeItems.length,
-          shortest = null, shortestIndex = null,
-          sideOffset, heights = [], itemBulkCSS = [],
-          leftAligned = this.align == 'left' ? true : false;
+        activeItems = $.makeArray(this.getActiveItems()),
+        length = activeItems.length,
+        shortest = null, shortestIndex = null,
+        sideOffset, heights = [], itemBulkCSS = [],
+        leftAligned = this.align == 'left' ? true : false;
 
       this.columns = [];
 
@@ -395,7 +395,7 @@
       }
 
       // Loop over items.
-      for (; i < length; i++ ) {
+      for (; i < length; i++) {
         $item = $(activeItems[i]);
 
         // Find the shortest column.
@@ -418,7 +418,7 @@
         (itemBulkCSS[i] = {
           obj: $item,
           css: {
-            position: 'absolute',
+            // position: 'absolute',
             top: shortest
           }
         }).css[this.direction] = sideOffset;
@@ -438,10 +438,10 @@
      * This layout method only updates the vertical position of the
      * existing column assignments.
      */
-    Wookmark.prototype.layoutColumns = function(columnWidth, offset) {
+    Wookmark.prototype.layoutColumns = function (columnWidth, offset) {
       var heights = [], itemBulkCSS = [],
-          i = 0, k = 0, j = 0, currentHeight,
-          column, $item, itemData, sideOffset;
+        i = 0, k = 0, j = 0, currentHeight,
+        column, $item, itemData, sideOffset;
 
       for (; i < this.columns.length; i++) {
         heights.push(this.outerOffset);
@@ -472,7 +472,7 @@
     /**
      * Clear event listeners and time outs and the instance itself
      */
-    Wookmark.prototype.clear = function() {
+    Wookmark.prototype.clear = function () {
       clearTimeout(this.resizeTimer);
       $(window).unbind('resize.wookmark', this.onResize);
       this.container.unbind('refreshWookmark', this.onRefresh);
@@ -482,7 +482,7 @@
     return Wookmark;
   })();
 
-  $.fn.wookmark = function(options) {
+  $.fn.wookmark = function (options) {
     // Create a wookmark instance if not available
     if (!this.wookmarkInstance) {
       this.wookmarkInstance = new Wookmark(this, options || {});

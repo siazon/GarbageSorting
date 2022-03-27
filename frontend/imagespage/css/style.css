@@ -52,11 +52,19 @@ body{
 	margin: 0.6% 2% 0 8%;
 	width: 4.55%;
 }
-.nav-icon a span{
-	width:48px;
+.nav-icon button{
+	width: 80px;
 	height:34px;
-	display:block;
-	background:url(../images/nav-icon.png) no-repeat 0px 0px;
+	border: none;
+	border-radius: 8px;
+	display: inline-block;
+	background-color: #7FC379;
+	color: white;
+}
+.nav-icon button:hover{
+	background-color: white; 
+    color: #551A8B;
+    border: 2px solid #7FC379;
 }
 .top-searchbar {
 	float: left;

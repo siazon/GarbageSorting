@@ -1,292 +1,310 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <title>Home</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <title>Home</title>
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="/css/stylejs.css">
+  <script type="application/x-javascript">
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
 
-    <link rel="stylesheet" href="/css/stylejs.css">
-
-    <script type="application/x-javascript">
-        addEventListener("load", function() {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+  </script>
+  <!----webfonts---->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <!----//webfonts---->
+  <!-- Global CSS for the page and tiles -->
+  <link rel="stylesheet" href="css/main.css" />
+  <!-- //Global CSS for the page and tiles -->
+  <!---start-click-drop-down-menu----->
+  <script src="js/jquery.min.js"></script>
+  <!----start-dropdown--->
+  <script type="text/javascript">
+    var $ = jQuery.noConflict()
+    $(function () {
+      $('#activator').click(function () {
+        $('#box').animate(
+          {
+            top: '0px',
+          },
+          500
+        )
+      })
+      $('#boxclose').click(function () {
+        $('#box').animate(
+          {
+            top: '-700px',
+          },
+          500
+        )
+      })
+    })
+    $(document).ready(function () {
+      $('#searchtxt').focus()
+      //Hide (Collapse) the toggle containers on load
+      $('.toggle_container').hide()
+      //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+      $('.trigger').click(function () {
+        $(this).toggleClass('active').next().slideToggle('slow')
+        return false //Prevent the browser jump to the link anchor
+      })
+      //搜索框内容变动触发事件：
+      $('#searchtxt').bind('input propertychange', function (e) {
+        var sear = $('#searchtxt').val()
+        //如果输入框没字符
+        if (!sear) {
+          location.reload() //刷新当前页面
         }
-    </script>
-    </script>
-    <!----webfonts---->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <!----//webfonts---->
-    <!-- Global CSS for the page and tiles -->
-    <link rel="stylesheet" href="css/main.css">
-    <!-- //Global CSS for the page and tiles -->
-    <!---start-click-drop-down-menu----->
-    <script src="js/jquery.min.js"></script>
-    <!----start-dropdown--->
-    <script type="text/javascript">
-        var $ = jQuery.noConflict();
-        $(function() {
-            $('#activator').click(function() {
-                $('#box').animate({
-                    'top': '0px'
-                }, 500);
-            });
-            $('#boxclose').click(function() {
-                $('#box').animate({
-                    'top': '-700px'
-                }, 500);
-            });
-        });
-        $(document).ready(function() {
-            //Hide (Collapse) the toggle containers on load
-            $(".toggle_container").hide();
-            //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-            $(".trigger").click(function() {
-                $(this).toggleClass("active").next().slideToggle("slow");
-                return false; //Prevent the browser jump to the link anchor
-            });
-            $("#search").click(function() {
-               var sear= $("#searchtxt").val()
-               
-               all= $("#tiles")
-              alert(all.find('li').length)
-               for (var i = 0; i < all.find('li').length; i++) {
-                   alli=$(all.find('li')[i])
-                   
-                if (sear==alli.find('h3').html()) {
-                   
-                   var dispalyi=i
-                    
-                   for (var i = 0; i < all.find('li').length; i++) {
-                       if (i!=dispalyi) {
-                        $(all.find('li')[i]).css('display','none')
-                       }
-                  
-                }}
-                
-                   
-               }
-               
-            });
+        all = $('#tiles')
 
-        });
+        for (var i = 0; i < all.find('li').length; i++) {
+          alli = $(all.find('li')[i])
+          if (sear == alli.find('h3').html()) {
+            var dispalyi = i
+            for (var i = 0; i < all.find('li').length; i++) {
+              if (i != dispalyi) {
+                $(all.find('li')[i]).css('display', 'none')
+              }
+              all.css('justify-content', ' center')
+            }
+          }
+        }
+      })
 
+      $('#search').click(function (e) {
+        e.preventDefault()
+        var sear = $('#searchtxt').val()
+        //如果输入框没字符
+        if (!sear) {
+          location.reload() //刷新当前页面
+        }
+        all = $('#tiles')
 
-    </script>
-    <!----//End-dropdown--->
-    <!---//End-click-drop-down-menu----->
-</head>
+        for (var i = 0; i < all.find('li').length; i++) {
+          alli = $(all.find('li')[i])
+          if (sear == alli.find('h3').html()) {
+            var dispalyi = i
+            for (var i = 0; i < all.find('li').length; i++) {
+              if (i != dispalyi) {
+                $(all.find('li')[i]).css('display', 'none')
+              }
+              all.css('justify-content', ' center')
+            }
+          }
+        }
+      })
+    })
+  </script>
+  <!----//End-dropdown--->
+  <!---//End-click-drop-down-menu----->
+<style>
+.button
 
-<body>
-   
+</style>
+  <body>
     <!---start-header---->
     <div class="header">
-        <div class="wrap">
-            <div class="logo">
-                <a href="index.html">
-                    <h1><b>Garbage photo gallery</b></h1>
-                </a>
-            </div>
-            <div class="nav-icon">
-                <a href="#" class="right_bt" id="activator"><span> </span> </a>
-            </div>
-            <div class="box" id="box">
-                <div class="box_content">
-                    <div class="box_content_center">
-                        <div class="form_content">
-                            <div class="menu_box_list">
-                                <ul>
-
-
-                                    <li><a href="upload.html"><span>Upload Images</span></a></li>
-                                    <div class="clear"> </div>
-                                </ul>
-                            </div>
-                            <a class="boxclose" id="boxclose"> <span> </span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="top-searchbar">
-                <form>
-                    <input type="text" id="searchtxt"/><input id="search"  type="submit"  value="" />
-                </form>
-            </div>
-         
-            <div class="clear"> </div>
+      <div class="wrap">
+        <div class="logo">
+          <a href="index.html">
+            <h1><b>Garbage photo gallery</b></h1>
+          </a>
         </div>
+        <div button class="nav-icon">
+          <a  href="upload.html"><span> 
+            <button ><b>Upload Images</b></button></span> </a>
+        </div>
+        <div class="box" id="box">
+          <div class="box_content">
+            <div class="box_content_center">
+              <div class="form_content">
+                 
+                  
+                </div>
+                <a class="boxclose" id="boxclose"> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="top-searchbar">
+          <form>
+            <input type="text" id="searchtxt" /><input
+              id="search"
+              type="submit"
+              value=""
+            />
+          </form>
+        </div>
+
+        <div class="clear"></div>
+      </div>
     </div>
     <!---//End-header---->
-
     <!---start-content---->
     <div class="content">
-        <div class="wrap">
-            <div id="main" role="main">
-                <ul class="all" id="tiles">
-                    <!-- These are our grid blocks -->
-                    
-                    <li class="images" id="im1" >
-                        
-                            <img   src="images/img1.jpg" width="200" height="200">
-                            <div class="post-info">
-                                <div class="post-basic-info">
-                                    <h3 class='rname'>lipstick</h3>
-                                    <span><h4>Trash</h4></span>
-                                    <p> Lipstick, whether expired or not, belongs to Trash, because even if the lipstick is not expired, it still contains a certain amount of heavy metal substances or chemical components</p>
-                                </div>
+      <div class="wrap">
+        <div id="main" role="main">
+          <ul class="all" id="tiles">
+            <!-- These are our grid blocks -->
 
-                            </div>
-                        </a>
-                    </li>
-                    <li class="images" >
-                        <img src="images/img2.jpg" width="200" height="284">
-                        <div class="post-info">
-                            <div class="post-basic-info">
-                                <h3 class='rname'>Stone</h3>
-                                <span>Recycle</span>
-                                <p>Recyclable garbage is garbage that can be recycled.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="images" >
-                        <img src="images/img3.jpg" width="200" height="220">
-                        <div class="post-info">
-                            <div class="post-basic-info">
-                                <h3 class='rname'>Egg</h3>
-                                <span>Organic</span>
-                                <p>Leftovers, expired food, melon rinds and kernels, flowers and green plants, Chinese medicine residues and other perishable biomass household waste.</p>
-                            </div>
-                        </div> 
-                    </li>
-                    <li class="images" >
-                        
-                            <img src="images/img4.jpg" width="200" height="263">
-                            <div class="post-info">
-                                <div class="post-basic-info">
-                                    <h3 class='rname'>Chair</h3>
-                                    <span><h4>Recycle</h4></span>
-                                    <p>Recyclable garbage is garbage that can be recycled.</p>
-                                </div>
+            <li class="images" id="im1">
+              <img src="images/img1.jpg" width="200" height="200" />
+              <div class="post-info">
+                <div class="post-basic-info">
+                  <h3 class="rname">lipstick</h3>
+                  <span><h4>Trash</h4></span>
+                  <p>
+                    Lipstick, whether expired or not, belongs to Trash, because
+                    even if the lipstick is not expired, it still contains a
+                    certain amount of heavy metal substances or chemical
+                    components
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="images">
+              <img src="images/img2.jpg" width="200" height="284" />
+              <div class="post-info">
+                <div class="post-basic-info">
+                  <h3 class="rname">Stone</h3>
+                  <span>Recycle</span>
+                  <p>Recyclable garbage is garbage that can be recycled.</p>
+                </div>
+              </div>
+            </li>
+            <li class="images">
+              <img src="images/img3.jpg" width="200" height="220" />
+              <div class="post-info">
+                <div class="post-basic-info">
+                  <h3 class="rname">Egg</h3>
+                  <span>Organic</span>
+                  <p>
+                    Leftovers, expired food, melon rinds and kernels, flowers
+                    and green plants, Chinese medicine residues and other
+                    perishable biomass household waste.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="images">
+              <img src="images/img4.jpg" width="200" height="263" />
+              <div class="post-info">
+                <div class="post-basic-info">
+                  <h3 class="rname">Chair</h3>
+                  <span><h4>Recycle</h4></span>
+                  <p>Recyclable garbage is garbage that can be recycled.</p>
+                </div>
+              </div>
+            </li>
+            <li class="images">
+              <img src="images/img5.jpg" width="200" height="263" />
+              <div class="post-info">
+                <div class="post-basic-info">
+                  <h3 class="rname">Toy car</h3>
+                  <span><h4>Recycle</h4></span>
+                  <p>Recyclable garbage is garbage that can be recycled.</p>
+                </div>
+              </div>
+            </li>
+            <li class="images">
+              <img src="images/img6.jpg" width="200" height="200" />
+              <div class="post-info">
+                <div class="post-basic-info">
+                  <h3 class="rname">Orange peel</h3>
+                  <span>Organic</span>
+                  <p>
+                    Leftovers, expired food, melon rinds and kernels, flowers
+                    and green plants, Chinese medicine residues and other
+                    perishable biomass household waste.
+                  </p>
+                </div>
+              </div>
+            </li>
 
-                            </div>
-                        </a>
-                    </li>
-                    <li class="images"  >
-                       
-                            <img src="images/img5.jpg" width="200" height="263">
-                            <div class="post-info">
-                                <div class="post-basic-info">
-                                    <h3 class='rname'>Toy car</h3>
-                                    <span><h4>Recycle</h4></span>
-                                    <p>Recyclable garbage is garbage that can be recycled.</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </li>
-                    <li class="images" >
-                       
-                            <img src="images/img6.jpg" width="200" height="200">
-                            <div class="post-info">
-                                <div class="post-basic-info">
-                                    <h3 class='rname'>Orange peel</h3>
-                                    <span>Organic</span>
-                                <p>Leftovers, expired food, melon rinds and kernels, flowers and green plants, Chinese medicine residues and other perishable biomass household waste.</p>
-                            </div> 
-
-                            </div>
-                        </a>
-                    </li>
-
-
-                    <!-- End of grid blocks -->
-                </ul>
-            </div>
+            <!-- End of grid blocks -->
+          </ul>
         </div>
+      </div>
     </div>
-
-    
-
-
-    
     <!---//End-content---->
     <!----wookmark-scripts---->
     <script src="js/jquery.imagesloaded.js"></script>
     <script src="js/jquery.wookmark.js"></script>
     <script src="../JS/Util.js"></script>
     <script type="text/javascript">
-        init();
+      init()
 
-        function init() {
-            var token = localStorage.getItem("token");
-            console.log("init token: ", token);
+      function init() {
+        var token = localStorage.getItem('token')
+        console.log('init token: ', token)
+      }
 
-        }
-
-        (function($) {
-            var $tiles = $('#tiles'),
-                $handler = $('li', $tiles),
-                $main = $('#main'),
-                $window = $(window),
-                $document = $(document),
-                options = {
-                    autoResize: true, // This will auto-update the layout when the browser window is resized.
-                    container: $main, // Optional, used for some extra CSS styling
-                    offset: 20, // Optional, the distance between grid items
-                    itemWidth: 280 // Optional, the width of a grid item
-                };
-            /**
-             * Reinitializes the wookmark handler after all images have loaded
-             */
-            function applyLayout() {
-                $tiles.imagesLoaded(function() {
-                    // Destroy the old handler
-                    if ($handler.wookmarkInstance) {
-                        $handler.wookmarkInstance.clear();
-                    }
-
-                    // Create a new layout handler.
-                    $handler = $('li', $tiles);
-                    $handler.wookmark(options);
-                });
+      ;(function ($) {
+        var $tiles = $('#tiles'),
+          $handler = $('li', $tiles),
+          $main = $('#main'),
+          $window = $(window),
+          $document = $(document),
+          options = {
+            autoResize: true, // This will auto-update the layout when the browser window is resized.
+            container: $main, // Optional, used for some extra CSS styling
+            offset: 20, // Optional, the distance between grid items
+            itemWidth: 280, // Optional, the width of a grid item
+          }
+        /**
+         * Reinitializes the wookmark handler after all images have loaded
+         */
+        function applyLayout() {
+          $tiles.imagesLoaded(function () {
+            // Destroy the old handler
+            if ($handler.wookmarkInstance) {
+              $handler.wookmarkInstance.clear()
             }
-            /**
-             * When scrolled all the way to the bottom, add more tiles
-             */
-            //   function onScroll() {
-            //     // Check if we're within 100 pixels of the bottom edge of the broser window.
-            //     var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
-            //         closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
 
-            //     if (closeToBottom) {
-            //       // Get the first then items from the grid, clone them, and add them to the bottom of the grid
-            //       var $items = $('li', $tiles),
-            //           $firstTen = $items.slice(0, 10);
-            //       $tiles.append($firstTen.clone());
+            // Create a new layout handler.
+            $handler = $('li', $tiles)
+            $handler.wookmark(options)
+          })
+        }
+        /**
+         * When scrolled all the way to the bottom, add more tiles
+         */
+        //   function onScroll() {
+        //     // Check if we're within 100 pixels of the bottom edge of the broser window.
+        //     var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
+        //         closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
 
-            //       applyLayout();
-            //     }
-            //   };
+        //     if (closeToBottom) {
+        //       // Get the first then items from the grid, clone them, and add them to the bottom of the grid
+        //       var $items = $('li', $tiles),
+        //           $firstTen = $items.slice(0, 10);
+        //       $tiles.append($firstTen.clone());
 
-            // Call the layout function for the first time
-            applyLayout();
+        //       applyLayout();
+        //     }
+        //   };
 
-            // Capture scroll event.
-            // $window.bind('scroll.wookmark', onScroll);
-        })(jQuery);
+        // Call the layout function for the first time
+        applyLayout()
+
+        // Capture scroll event.
+        // $window.bind('scroll.wookmark', onScroll);
+      })(jQuery)
     </script>
     <!----//wookmark-scripts---->
     <!----start-footer--->
-    <div class="footer">
-
-    </div>
+    <div class="footer"></div>
     <!----//End-footer--->
     <!---//End-wrap---->
     <div class="loader loader--active">
@@ -303,22 +321,29 @@
     </div>
 
     <script>
+      var $loader = document.querySelector('.loader')
+      window.onload = function () {
+        $loader.classList.remove('loader--active')
+      }
 
+      // document.querySelector('.btn').addEventListener('click', function () {
+      //     $loader.classList.add('loader--active')
 
-        var $loader = document.querySelector('.loader')
-    
-        window.onload = function() {
-            $loader.classList.remove('loader--active')
-        };
-    
-        // document.querySelector('.btn').addEventListener('click', function () {
-        //     $loader.classList.add('loader--active')
-    
-        //     window.setTimeout(function () {
-        //         $loader.classList.remove('loader--active')
-        //     }, 5000)
-        // })
+      //     window.setTimeout(function () {
+      //         $loader.classList.remove('loader--active')
+      //     }, 5000)
+      // })
     </script>
-</body>
-
+    <style scoped>
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: flex-start;
+      }
+      li {
+        margin-bottom: 20px;
+      }
+    </style>
+  </body>
 </html>
