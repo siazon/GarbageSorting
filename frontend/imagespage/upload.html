@@ -83,21 +83,21 @@
 <body class="overlay">
     <div class="lightbox">
         <div>
-            <h1>Garbage Images Upload</h1>
+            <h1 id="hTitle">Garbage Images Upload</h1>
         </div>
         <div class="form-group">
             <label><b>Images</b></label>
             <img src="" alt="" id="img" />
             <input id="fileupload" type="file" name="file" id="uploadImage">
-            <td><b>Type:</b></td>
-            <td><select id="profession" onchange="onSelected()">
+            <td><b class="sType">Type:</b></td>
+            <td><select id="profession" class="sType" onchange="onSelected()">
                     <option>--Please select--</option>
                     <option>Recycle</option>
                     <option>Organic</option>
                     <option>Trash</option>
                 </select></td>
-            <br><br>
 
+            <br><br>
             <button class="button" id="upload-button" onclick="uploadFile()">Submit</button>
             <button class="button" id="upload-button" onclick=" window.history.back();">Cancel</button>
         </div>
@@ -125,16 +125,19 @@
         var $loader = document.querySelector('.loader')
 
         window.onload = function() {
+
             $loader.classList.remove('loader--active')
+
+            console.log(localStorage.getItem("userType"))
+            if (localStorage.getItem("userType") == "staff") {
+                document.getElementById("hTitle").innerHTML = "Garbage Images Upload";
+                $(".sType").show();
+            } else {
+                document.getElementById("hTitle").innerHTML = "Search recycle way by Images";
+                $(".sType").hide();
+                //document.getElementById("profession").style.display = "none";
+            }
         };
-
-        document.querySelector('.btn').addEventListener('click', function() {
-            $loader.classList.add('loader--active')
-
-            window.setTimeout(function() {
-                $loader.classList.remove('loader--active')
-            }, 5000)
-        })
     </script>
 </body>
 

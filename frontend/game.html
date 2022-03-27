@@ -20,7 +20,7 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body style="background-color: #d4f0fe; margin-top: 60px">
+<body style="background-color: #d4f0fe; text-align: center;">
     <!-- Modal -->
     <div class="modal fade" id="gameover" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -33,6 +33,28 @@
                 </div>
                 <div class="modal-body">
                     <p id="msgscore" class="lead text-muted">Your Score is</p>
+                    <object data="./rankingpage/index.html" type="text/x-scriptlet" height="450" width="570"></object>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="nextgame()">
+                        Play Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ranking" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Game Over</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+                </div>
+                <div class="modal-body">
+                    <object data="./rankingpage/index.html" type="text/x-scriptlet" height="450" width="570"></object>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="nextgame()">
@@ -404,6 +426,8 @@
             stop.on(
                 "pointerup",
                 function() {
+
+                    $("#ranking").modal("show");
                     music.stop();
                     start.setVisible(true);
                     stop.setVisible(false);
@@ -507,7 +531,7 @@
                 userId: 0,
                 userScore: score
             };
-            var url = "/js/config.json";
+            var url = "./js/config.json";
             var _this = this;
             $.getJSON(url, function(data) {
                 host = data.host;
@@ -533,7 +557,7 @@
                 type: gType,
                 sort_times: 1
             };
-            var url = "/js/config.json";
+            var url = "./js/config.json";
             var _this = this;
             $.getJSON(url, function(data) {
                 host = data.host;

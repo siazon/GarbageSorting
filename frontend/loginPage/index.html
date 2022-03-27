@@ -193,9 +193,18 @@
                             if (json.state == true) {
                                 console.log(json);
                                 localStorage.setItem("token", json.token);
-                                if (username.indexOf("garbagesorting") != -1)
+                                var autoMessage = {
+                                    "name": "msg"
+                                };
+                                window.parent.postMessage(autoMessage, '*');
+                                if (username.indexOf("garbagesorting") != -1) {
+                                    localStorage.setItem("userType", "staff");
+
                                     window.location.href = "../userList.html";
-                                else window.location.href = "../imagespage/index.html";
+                                } else {
+                                    localStorage.setItem("userType", "user");
+                                    window.location.href = "../rankingpage/index.html";
+                                }
                             } else {
                                 console.log(json);
                                 alert(json.msg);

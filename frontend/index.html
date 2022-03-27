@@ -97,16 +97,17 @@
                         <li><a href="#" onclick="displayHome()">Home</a></li>
                         <li><a href="#" onclick="displayGame()">Game</a></li>
                         <li><a href="#" onclick="Repository()">Education</a></li>
-                        <li><a href="#" onclick="aboutUs()">About Us</a></li>
+                        <li><a href="#" onclick="onSearch()">ImageSearch</a></li>
+                        <!-- <li><a href="#" onclick="aboutUs()">About Us</a></li> -->
                         <li id="btnLogin">
                             <a href="#" onclick="login()" class="button">Login</a>
                         </li>
                         <li id="btnAccount" class="dropdown"><a class="button" data-toggle="dropdown" href="#">Account
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" class="button">Your Profile</a></li>
+                                <li><a href="#" onclick="onProfile()">Your Profile</a></li>
                                 <!-- <li><a href="#">Page 1-2</a></li> -->
-                                <li><a href="#" class="button" onclick="onLogout()">Logout</a></li>
+                                <li><a href="#" onclick="onLogout()">Logout</a></li>
                             </ul>
                         </li>
 
@@ -179,7 +180,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 item text">
-                        <h3>About Us</h3>
+                        <h3>
+                            <a onclick="aboutUs()">About Us</a>
+                        </h3>
                         <p>
                             We are a team of developers that is passionate about sustainability and our goal is to encourage people through entertainment and education.
                         </p>
@@ -187,10 +190,13 @@
 
                     <div class="col item social">
                         <h3>Follow us</h3>
-                        <a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
-                                class="icon ion-social-twitter"></i></a><a href="#"><i
-                                class="icon ion-social-snapchat"></i></a><a href="#"><i
-                                class="icon ion-social-instagram"></i></a>
+                        <a href="#"><i class="icon ion-social-facebook"></i></a>
+                        <a href="https://twitter.com/siazonchen"><i class="icon ion-social-twitter"></i></a>
+                        <a href="https://github.com/siazon/GarbageSorting"><i class="icon ion-social-github"></i></a>
+                        <a href="#">
+                            <i class="icon ion-social-instagram">
+                            </i>
+                        </a>
                     </div>
                 </div>
                 <p class="copyright">KeepItSorted © 2022</p>
@@ -202,7 +208,7 @@
     <script>
         window.onload = function() {
             var token = localStorage.getItem("token");
-            if (token.length > 0) {
+            if (token != undefined && token.length > 0) {
                 isLogin(true);
                 console.log("token is ", $("#btnLogin"), token);
 
@@ -210,7 +216,21 @@
                 isLogin(false);
                 console.log("token is null", $("#btnLogin"));
             }
+
         };
+        window.addEventListener('message', function(e) {
+            if (e.data.name != undefined && e.data.name.length > 0) {
+                var token = localStorage.getItem("token");
+                if (token.length > 0) {
+                    isLogin(true);
+
+                } else {
+                    isLogin(false);
+                }
+            }
+
+
+        }, false);
 
         function isLogin(flag) {
             if (flag) {
@@ -248,6 +268,10 @@
                 "./imagespage/store.html";
         }
 
+        function onSearch() {
+            document.getElementById("centerFrame").src = "./imagespage/upload.html";
+        }
+
         function Repository() {
             document.getElementById("centerFrame").src =
                 "InformationPage/InfoPage.html";
@@ -259,6 +283,19 @@
 
         function login() {
             document.getElementById("centerFrame").src = "./loginPage/index.html";
+        }
+
+        function onProfile() {
+
+            var userType = localStorage.getItem("userType");
+            if (userType.length > 0 && userType == "user") {
+                document.getElementById("centerFrame").src = "./rankingpage/index.html";
+            } else {
+                console.log("imagespage")
+                document.getElementById("centerFrame").src = "./imagespage/store.html";
+                console.log("url:", document.getElementById("centerFrame").src)
+            }
+
         }
 
         function onLogout() {

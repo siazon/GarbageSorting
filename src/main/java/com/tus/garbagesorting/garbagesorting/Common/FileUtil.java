@@ -28,7 +28,7 @@ public class FileUtil {
         String path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp\\";
         String SavePath = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\";
         int count = 0;
-        //DetectLabels.detectLabels(path + fileName);
+
 
         WASTETYPE eType = WASTETYPE.fromInteger(iType);
         switch (eType) {

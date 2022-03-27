@@ -1,5 +1,6 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
+import com.tus.garbagesorting.garbagesorting.Common.DetectLabels;
 import com.tus.garbagesorting.garbagesorting.Common.FileUtil;
 import com.tus.garbagesorting.garbagesorting.Mapper.PictureMapper;
 import com.tus.garbagesorting.garbagesorting.Model.PictureInfo;
@@ -40,18 +41,22 @@ public class FileUploadController {
     public ResponseEntity<Map<String, Object>> singleFileUpload(@RequestParam("file") MultipartFile file,
                                                                 @PathVariable int iType) {
         Map<String, Object> map = new HashMap<>();
-        String path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp";
+        String path = new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\temp\\";
         String fileName = file.getOriginalFilename();
+        String garbageType = "";
         try {
-            file.transferTo(new File(path + "\\" + fileName));
+            file.transferTo(new File(path + fileName));
             fileUtil.SaveFile(iType, fileName);
+            garbageType = DetectLabels.detectLabels(path + fileName);
         } catch (Exception e) {
             map.put("state", false);
+            map.put("gType", garbageType);
             map.put("msg", "unknown error");
             return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
         }
 
         map.put("state", true);
+        map.put("gType", garbageType);
         map.put("msg", "File uploaded successfully.");
         return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
     }
