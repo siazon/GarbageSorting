@@ -1,6 +1,5 @@
 package com.tus.garbagesorting.garbagesorting.Controller;
 
-import com.tus.garbagesorting.garbagesorting.Common.DetectLabels;
 import com.tus.garbagesorting.garbagesorting.Common.FileUtil;
 import com.tus.garbagesorting.garbagesorting.Mapper.PictureMapper;
 import com.tus.garbagesorting.garbagesorting.Model.PictureInfo;
@@ -47,7 +46,7 @@ public class FileUploadController {
         try {
             file.transferTo(new File(path + fileName));
             fileUtil.SaveFile(iType, fileName);
-            garbageType = DetectLabels.detectLabels(path + fileName);
+            //garbageType = DetectLabels.detectLabels(path + fileName);
         } catch (Exception e) {
             map.put("state", false);
             map.put("gType", garbageType);

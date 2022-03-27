@@ -7,17 +7,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../css/stylejs.css">
 
-     <script src="../JS/Util.js">
-        </script>
-       
-        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-        <link href="css/style1.css" rel='stylesheet' type='text/css' />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
-        <script type="application/x-javascript">
-            addEventListener("load", function() {
-                setTimeout(hideURLbar, 0);
-            }, false);
+    <script src="../JS/Util.js">
+    </script>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link href="css/style1.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
         function hideURLbar() {
             window.scrollTo(0, 1);
@@ -60,7 +60,7 @@
                         console.log(json);
                         if (json.state == true) {
                             console.log(json);
-
+                            document.getElementById("centerFrame").src = "./imagespage/index.html";
                         } else {
                             console.log(json);
                             alert(json.msg)

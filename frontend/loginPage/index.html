@@ -199,8 +199,7 @@
                                 window.parent.postMessage(autoMessage, '*');
                                 if (username.indexOf("garbagesorting") != -1) {
                                     localStorage.setItem("userType", "staff");
-
-                                    window.location.href = "../userList.html";
+                                    window.location.href = "../imagespage/index.html";
                                 } else {
                                     localStorage.setItem("userType", "user");
                                     window.location.href = "../rankingpage/index.html";
@@ -227,17 +226,17 @@
                 flag = false,
                 validatecode = null;
             /* Check whether the user name and password are empty*/
-            if (username == "") {
-                $.pt({
-                    target: $("#register-username"),
-                    position: "r",
-                    align: "t",
-                    width: "auto",
-                    height: "auto",
-                    content: "The user name cannot be empty!",
-                });
-                flag = true;
-            }
+            // if (username == "") {
+            //     $.pt({
+            //         target: $("#register-username"),
+            //         position: "r",
+            //         align: "t",
+            //         width: "auto",
+            //         height: "auto",
+            //         content: "The user name cannot be empty!",
+            //     });
+            //     flag = true;
+            // }
             if (password == "") {
                 $.pt({
                     target: $("#register-password"),
@@ -262,18 +261,18 @@
                 }
             }
             /*The username can contain only 15 or fewer letters or digits*/
-            var regExp = new RegExp("^[a-zA-Z0-9_]{1,15}$");
-            if (!regExp.test(username)) {
-                $.pt({
-                    target: $("#register-username"),
-                    position: "r",
-                    align: "t",
-                    width: "auto",
-                    height: "auto",
-                    content: "The username must contain a maximum of 15 letters or digits!",
-                });
-                flag = true;
-            }
+            // var regExp = new RegExp("^[a-zA-Z0-9_]{1,15}$");
+            // if (!regExp.test(username)) {
+            //     $.pt({
+            //         target: $("#register-username"),
+            //         position: "r",
+            //         align: "t",
+            //         width: "auto",
+            //         height: "auto",
+            //         content: "The username must contain a maximum of 15 letters or digits!",
+            //     });
+            //     flag = true;
+            // }
 
             // /*Check the background method registration code, here write dead as 11111111*/
             // if (code != "11111111") {
