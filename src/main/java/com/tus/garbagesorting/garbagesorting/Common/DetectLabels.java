@@ -1,24 +1,12 @@
 package com.tus.garbagesorting.garbagesorting.Common;
 
-import com.google.cloud.vision.v1.AnnotateImageRequest;
-import com.google.cloud.vision.v1.AnnotateImageResponse;
-import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
-import com.google.cloud.vision.v1.EntityAnnotation;
-import com.google.cloud.vision.v1.Feature;
-import com.google.cloud.vision.v1.Image;
-import com.google.cloud.vision.v1.ImageAnnotatorClient;
+import com.google.cloud.vision.v1.*;
 import com.google.protobuf.ByteString;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 public class DetectLabels {
@@ -72,7 +60,7 @@ public class DetectLabels {
                             || label.toLowerCase().contains("cardboard")
                             || label.toLowerCase().contains("newspaper")) {
 
-                        category = "green";
+                        category = "recycle";
                     } else if (label.toLowerCase().contains("plant")
                             || label.toLowerCase().contains("grass")
                             || label.toLowerCase().contains("food")
@@ -83,9 +71,9 @@ public class DetectLabels {
                             || label.toLowerCase().contains("wood")
                             || label.toLowerCase().contains("leaves")
                             || label.toLowerCase().contains("leave")) {
-                        category = "brown";
+                        category = "organic";
                     } else {
-                        category = "blue";
+                        category = "trash";
                     }
                 }
                 //Organic: Plant, Food, Fish, Fruit, Vegetable,

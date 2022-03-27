@@ -5,25 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Ranking </title>
 </head>
 
 <body>
     <div class="main">
         <div class="title">
-            <img src="img/logo.png" alt="" />
+            <!-- <img src="img/logo.png" alt="" onclick="refreshData()" /> -->
             <div>Ranking </div>
         </div>
-        <div class="list-box">
-            <div class="list">
+        <div class="list-box" id="listBox">
+            <!-- <div class="list">
                 <div class="number">1</div>
                 <div class="user">
-                   
                     <img src="./img/1.png" class="level" alt="" />
                     <div>
                         <p class="good"><span></span><span></span><span></span><span></span><span></span>Tom</p>
                         <p class="jk-num">
-                            <span></span><span></span><span></span><span></span><span></span><span>First place</span>0001
+                            <span></span><span></span><span></span><span></span><span></span><span>First
+                                place</span>0001
                         </p>
                     </div>
                 </div>
@@ -34,11 +35,12 @@
                 <div class="user">
 
 
-                    <img src="./img/2.png" class="level"  alt="" />
+                    <img src="./img/2.png" class="level" alt="" />
                     <div>
                         <p class="good"><span></span><span></span><span></span><span></span><span></span>Jon</p>
                         <p class="jk-num">
-                            <span></span><span></span><span></span><span></span><span></span><span>Second place</span>0002
+                            <span></span><span></span><span></span><span></span><span></span><span>Second
+                                place</span>0002
                         </p>
                     </div>
                 </div>
@@ -47,12 +49,13 @@
             <div class="list">
                 <div class="number">3</div>
                 <div class="user">
-                    
-                    <img src="./img/3.png" class="level" alt=""  />
+
+                    <img src="./img/3.png" class="level" alt="" />
                     <div>
                         <p class="good"><span></span><span></span><span></span><span></span><span></span>Jack</p>
                         <p class="jk-num">
-                            <span></span><span></span><span></span><span></span><span></span><span>Third place</span>0003
+                            <span></span><span></span><span></span><span></span><span></span><span>Third
+                                place</span>0003
                         </p>
                     </div>
                 </div>
@@ -61,7 +64,6 @@
             <div class="list">
                 <div class="number">4</div>
                 <div class="user">
-                    
                     <div>
                         <p class="good">Feng</p>
                         <p class="jk-num">0004
@@ -73,7 +75,7 @@
             <div class="list">
                 <div class="number">5</div>
                 <div class="user">
-                    
+
                     <div>
                         <p class="good">Ming</p>
                         <p class="jk-num">0005
@@ -85,7 +87,7 @@
             <div class="list">
                 <div class="number">6</div>
                 <div class="user">
-                    
+
                     <div>
                         <p class="good">FGT</p>
                         <p class="jk-num">0006
@@ -93,34 +95,99 @@
                     </div>
                 </div>
                 <div class="km">113</div>
-            </div>
+            </div> -->
 
         </div>
     </div>
+    <script>
+        window.onload = function() {
+            var url = "../js/config.json";
+            var _this = this;
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/allScores/", {
+                        method: "Get",
+                        headers: {
+                            "Content-Type": "application/json;charset=utf-8",
+                            token: localStorage.getItem("token"),
+                        },
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json)
+                        refreshData(json)
+                    });
+            });
 
+        };
+
+        function refreshData(data) {
+            //$("#rows").empty();
+            for (var i = 0; i < data.length; i++) {
+                if (i > 7) break;
+                var $trTemp = $("<a></a>");
+                if (i < 3) {
+                    var seq = "First";
+                    if (i == 1)
+                        seq = "Second";
+                    if (i == 2)
+                        seq = "Third";
+                    $trTemp.append("<div class=\"list\">" +
+                        "<div class=\"number\">" + (i + 1) + "</div>" +
+                        "<div class=\"user\">" +
+                        "<img src=\"./img/" + (i + 1) + ".png\" class=\"level\" alt=\"\" />" +
+                        "<div>" +
+                        "<p class=\"good\"><span></span><span></span><span></span><span></span><span></span>" + data[i].userName + "</p>" +
+                        "<p class=\"jk-num\">" +
+                        "<span></span><span></span><span></span><span></span><span></span><span>" + seq +
+                        " place</span>" +
+                        "</p>" +
+                        "</div>" +
+                        "</div>" +
+                        "<div class=\"km\">" + data[i].userScore + "</div>" +
+                        "</div>");
+                } else {
+                    $trTemp.append("<div class=\"list\">" +
+                        "<div class=\"number\">" + (i + 1) + "</div>" +
+                        "<div class=\"user\">" +
+                        "<div>" +
+                        "<p class=\"good\">" + data[i].userName + "</p>" +
+                        "<p class=\"jk-num\">" +
+                        "</p>" +
+                        " </div>" +
+                        " </div>" +
+                        "<div class=\"km\">" + data[i].userScore + "</div>" +
+                        " </div>");
+                }
+                $trTemp.appendTo("#listBox");
+            }
+        }
+    </script>
 </body>
 
 </html>
 
 <style>
+    html {}
+    
     * {
         margin: 0;
         padding: 0;
     }
-
+    
     .main {
         background-image: url(img/background.jpg);
         width: auto;
-        min-height: 10vh;
+        height: 800px;
         overflow: hidden;
         padding-top: 5px;
         padding-bottom: 5px;
-        padding-right: 200px;
-        padding-left: 200px;
+        padding-right: 2%;
+        padding-left: 2%;
         box-sizing: border-box;
         color: rgba(255, 217, 0, 0.89);
     }
-
+    
     .main .title {
         width: 100%;
         text-align: center;
@@ -130,19 +197,20 @@
         align-items: center;
         justify-content: center;
     }
-
+    
     .main .title img {
         width: 150px;
         height: 50px;
         margin-right: 10px;
     }
-
+    
     .main .list-box {
-        margin: 10px 0;
-        background-color: rgba(255, 255, 255, 0.767);
+        width: 500px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.87);
         border-radius: 16px;
     }
-
+    
     .main .list-box .list {
         display: flex;
         align-items: center;
@@ -150,22 +218,20 @@
         color: #666;
         box-sizing: border-box;
     }
-
+    
     .main .list-box .list .number {
         width: 25px;
         text-align: left;
         color: rgb(104, 99, 99);
         font-size: 14px;
     }
-
+    
     .main .list-box .list .user {
         display: flex;
         align-items: center;
         position: relative;
     }
-
-   
-
+    
     .main .list-box .list .user .level {
         display: block;
         position: absolute;
@@ -177,34 +243,29 @@
         width: 60px;
         height: 60px;
         padding-right: 30px;
-        
         border-radius: 50%;
     }
-
+    
     .main .list-box .list .user .good {
         font-weight: bold;
     }
-
+    
     .main .list-box .list .user div {
         min-width: 0;
         flex: 1;
-
-
     }
-
+    
     .main .list-box .list .user div .jk-num {
         margin-top: 10px;
         font-size: 10px;
         color: rgb(104, 99, 99);
-
-
     }
-
+    
     .main .list-box .list .user div span {
         margin-right: 10px;
         color: rgb(238, 76, 76);
     }
-
+    
     .main .list-box .list .km {
         margin-left: auto;
         font-size: 14px;

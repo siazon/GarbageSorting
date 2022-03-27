@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This test suites tests the API endpoints in InviteController which generates the invitation link.
+ **/
+
 public class InviteControllerTest {
     @Test
     public void GetInviteCode() throws Exception {

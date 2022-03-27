@@ -4,6 +4,10 @@ import com.tus.garbagesorting.garbagesorting.Model.User;
 
 import java.util.List;
 
+/***
+ * This interface declares methods that are implemented in the UserService class
+ * to create, find, update and delete a user
+ */
 
 public interface UserMapper {
     User insert(User user);
@@ -14,7 +18,7 @@ public interface UserMapper {
 
     User findById(int id);
 
-    User findByEamil(String email);
+    User findByEmail(String email);
 
     List<User> findAll();
 }

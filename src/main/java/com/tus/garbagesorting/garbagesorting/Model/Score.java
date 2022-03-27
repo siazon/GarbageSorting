@@ -1,5 +1,10 @@
 package com.tus.garbagesorting.garbagesorting.Model;
 
+/**
+ * The Score class containing all the information intended to create a user's score, defined as instance variables.
+ * It also contains getters and setter methods to retrieve and update a user's score.
+ **/
+
 public class Score {
     public int userScore;
     public int userId;

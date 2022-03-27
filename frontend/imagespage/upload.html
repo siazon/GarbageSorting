@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>jQuery+ajax实现简单的上传图片功能</title>
+    <title>upload Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="/css/stylejs.css">
+    <link rel="stylesheet" href="../css/stylejs.css">
 
      <script src="../JS/Util.js">
         </script>
@@ -19,86 +19,86 @@
                 setTimeout(hideURLbar, 0);
             }, false);
 
-            function hideURLbar() {
-                window.scrollTo(0, 1);
-            }
-        </script>
-        </script>
-        <!----webfonts---->
-        <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
-        <!----//webfonts---->
-        <!---start-click-drop-down-menu----->
-        <script src="js/jquery.min.js"></script>
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    </script>
+    <!----webfonts---->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'> -->
+    <!----//webfonts---->
+    <!---start-click-drop-down-menu----->
+    <script src="js/jquery.min.js"></script>
 
-        <script type="text/javascript">
-            function uploadFile() {
-                var options = document.getElementById("profession");
-                var index = options.selectedIndex;
-                if (index == 0) {
-                    options.className = "redBorder";
-                    return;
-                }
-                let formData = new FormData();
-                var url = "../js/config.json";
-                $.getJSON(url, function(data) {
-                    formData.append("file", fileupload.files[0]);
-                    // let response = fetch(data.host + "/upload/" + index, {
-                    //     method: "POST",
-                    //     body: formData
-                    // });
+    <script type="text/javascript">
+        function uploadFile() {
+            var options = document.getElementById("profession");
+            var index = options.selectedIndex;
+            // if (index == 0) {
+            //     options.className = "redBorder";
+            //     return;
+            // }
+            let formData = new FormData();
+            var url = "../js/config.json";
+            $.getJSON(url, function(data) {
+                formData.append("file", fileupload.files[0]);
+                // let response = fetch(data.host + "/upload/" + index, {
+                //     method: "POST",
+                //     body: formData
+                // });
 
-                    fetch(data.host + "/upload/" + index, {
-                            method: "POST",
-                            headers: {
-                                // "Content-Type": "application/json;charset=utf-8",
-                                "token": localStorage.getItem("token")
-                            },
-                            body: formData,
-                        })
-                        .then((response) => response.json())
-                        .then((json) => {
+                fetch(data.host + "/upload/" + index, {
+                        method: "POST",
+                        headers: {
+                            // "Content-Type": "application/json;charset=utf-8",
+                            "token": localStorage.getItem("token")
+                        },
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json);
+                        if (json.state == true) {
                             console.log(json);
-                            if (json.state == true) {
-                                console.log(json);
 
-                            } else {
-                                console.log(json);
-                                alert(json.msg)
-                                    //return false;
-                            }
-                        });
-                });
-            }
+                        } else {
+                            console.log(json);
+                            alert(json.msg)
+                                //return false;
+                        }
+                    });
+            });
+        }
 
-            function onSelected() {
-                var options = document.getElementById("profession");
-                var index = options.selectedIndex;
-                if (index > 0) {
-                    options.className = "blackBorder";
-                    return;
-                }
+        function onSelected() {
+            var options = document.getElementById("profession");
+            var index = options.selectedIndex;
+            if (index > 0) {
+                options.className = "blackBorder";
+                return;
             }
-        </script>
+        }
+    </script>
 </head>
 
 <body class="overlay">
     <div class="lightbox">
         <div>
-            <h1>Garbage Images Upload</h1>
+            <h1 id="hTitle">Garbage Images Upload</h1>
         </div>
         <div class="form-group">
             <label><b>Images</b></label>
             <img src="" alt="" id="img" />
             <input id="fileupload" type="file" name="file" id="uploadImage">
-            <td><b>Type:</b></td>
-            <td><select id="profession" onchange="onSelected()">
-            <option>--Please select--</option>
-            <option>Recycle</option>
-            <option>Organic</option>
-            <option>Trash</option>
-        </select></td>
-            <br><br>
+            <td><b class="sType">Type:</b></td>
+            <td><select id="profession" class="sType" onchange="onSelected()">
+                    <option>--Please select--</option>
+                    <option>Recycle</option>
+                    <option>Organic</option>
+                    <option>Trash</option>
+                </select></td>
 
+            <br><br>
             <button class="button" id="upload-button" onclick="uploadFile()">Submit</button>
             <button class="button" id="upload-button" onclick=" window.history.back();">Cancel</button>
         </div>
@@ -107,9 +107,14 @@
 
     <div class="loader loader--active">
         <div class="loader__icon"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-                <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
-                <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
-                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+                <path opacity="0.2" fill="#000"
+                    d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z">
+                </path>
+                <path fill="#000"
+                    d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
+                </path>
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
+                    to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
             </svg></div>
         <div class="loader__tile"></div>
         <div class="loader__tile"></div>
@@ -118,20 +123,23 @@
         <div class="loader__tile"></div>
     </div>
     <script>
-         var $loader = document.querySelector('.loader')
+        var $loader = document.querySelector('.loader')
 
-window.onload = function() {
-    $loader.classList.remove('loader--active')
-};
+        window.onload = function() {
 
-document.querySelector('.btn').addEventListener('click', function() {
-    $loader.classList.add('loader--active')
+            $loader.classList.remove('loader--active')
 
-    window.setTimeout(function() {
-        $loader.classList.remove('loader--active')
-    }, 5000)
-})
-</script>
+            console.log(localStorage.getItem("userType"))
+            if (localStorage.getItem("userType") == "staff") {
+                document.getElementById("hTitle").innerHTML = "Garbage Images Upload";
+                $(".sType").show();
+            } else {
+                document.getElementById("hTitle").innerHTML = "Search recycle way by Images";
+                $(".sType").hide();
+                //document.getElementById("profession").style.display = "none";
+            }
+        };
+    </script>
 </body>
 
 </html>

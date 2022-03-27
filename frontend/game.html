@@ -14,13 +14,13 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="/css/stylejs.css">
-   
+    <link rel="stylesheet" href="./css/stylejs.css">
+
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body style="background-color: #d4f0fe; margin-top: 60px">
+<body style="background-color: #d4f0fe; text-align: center;">
     <!-- Modal -->
     <div class="modal fade" id="gameover" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -33,11 +33,33 @@
                 </div>
                 <div class="modal-body">
                     <p id="msgscore" class="lead text-muted">Your Score is</p>
+                    <object data="./rankingpage/index.html" type="text/x-scriptlet" height="450" width="570"></object>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="nextgame()">
-              Play Again
-            </button>
+                        Play Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ranking" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Game Over</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+                </div>
+                <div class="modal-body">
+                    <object data="./rankingpage/index.html" type="text/x-scriptlet" height="450" width="570"></object>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="nextgame()">
+                        Play Again
+                    </button>
                 </div>
             </div>
         </div>
@@ -133,9 +155,9 @@
             this.load.audio("correctsound", ["music/correct.wav"]);
             this.load.image("ground", "img/ground.png");
             this.load.image("background", "static/backgroundy.png");
-            this.load.image("sgreenbin", "img/green.png");
-            this.load.image("sgraybin", "img/gray.png");
-            this.load.image("sbrownbin", "img/brown.png");
+            this.load.image("recycle", "img/green.png");
+            this.load.image("trash", "img/gray.png");
+            this.load.image("organic", "img/brown.png");
             this.load.image("goodface", "img/good.png");
             this.load.image("waitfeed", "img/waitfeed.png");
             this.load.image("start", "img/start.png");
@@ -143,16 +165,23 @@
             this.load.spritesheet("eat", "img/eat.png", {
                 frameWidth: 60,
                 frameHeight: 32,
-            });
-            for (let i = 1; i <= recycleQty; i++) {
-                this.load.image("img_khs" + i, "img/khs/" + i + ".png");
+            }); //
+            var _wastes = localStorage.getItem("wastes");
+            var wastes = _wastes.split(",");
+            for (let i = 0; i < wastes.length; i++) {
+                var imgKey = wastes[i].replace('.', '_');
+                imgKey = imgKey.replace(/\\/g, '_');
+                this.load.image(imgKey, wastes[i]);
             }
-            for (let i = 1; i <= trashQty; i++) {
-                this.load.image("img_yh" + i, "img/yh/" + i + ".png");
-            }
-            for (let i = 1; i <= organicQty; i++) {
-                this.load.image("img_cy" + i, "img/cy/" + i + ".png");
-            }
+            // for (let i = 1; i <= recycleQty; i++) {
+            //     this.load.image("img_khs" + i, "img/khs/" + i + ".png");
+            // }
+            // for (let i = 1; i <= trashQty; i++) {
+            //     this.load.image("img_yh" + i, "img/yh/" + i + ".png");
+            // }
+            // for (let i = 1; i <= organicQty; i++) {
+            //     this.load.image("img_cy" + i, "img/cy/" + i + ".png");
+            // }
         }
 
         function create() {
@@ -180,8 +209,8 @@
             });
             //Now let's create some Bins
             var binWidth = 125;
-            sgreenbin = bin.create(170, 250, "sgreenbin");
-            sgreenbin.setDisplaySize(120, 150);
+            recycle = bin.create(170, 250, "recycle");
+            recycle.setDisplaySize(120, 150);
 
             scoretext = this.add.text(230, 32, "", {
                 font: "20px Arial Black",
@@ -201,11 +230,11 @@
                 loop: true,
             });
 
-            sgraybin = bin.create(170 + binWidth, 250, "sgraybin");
-            sgraybin.setDisplaySize(120, 150);
+            trash = bin.create(170 + binWidth, 250, "trash");
+            trash.setDisplaySize(120, 150);
 
-            sbrownbin = bin.create(170 + binWidth * 2, 250, "sbrownbin");
-            sbrownbin.setDisplaySize(120, 150);
+            organic = bin.create(170 + binWidth * 2, 250, "organic");
+            organic.setDisplaySize(120, 150);
             loadMusic(this);
             var ginfo = loadFace(this, 170, 240);
             var greenbinface = ginfo.face;
@@ -223,33 +252,54 @@
             this.wasteGroup = this.physics.add.group({
                 //allowGravity: false,
             });
-            for (let i = 1; i <= recycleQty; i++) {
+            var _wastes = localStorage.getItem("wastes");
+            var wastes = _wastes.split(",");
+            for (let i = 0; i < wastes.length; i++) {
+                var imgKey = wastes[i].replace('.', '_');
+                imgKey = imgKey.replace(/\\/g, '_');
                 let temp = this.wasteGroup
-                    .create(60 * i, 390, "img_khs" + i)
+                    .create(60 * i, 390, imgKey)
                     .setInteractive({
                         cursor: "url(img/grab.png), pointer",
                     });
-                temp.setData("gType", "green");
+                if (wastes[i].indexOf("recycle") > 0)
+                    temp.setData("gType", "green");
+                if (wastes[i].indexOf("trash") > 0)
+                    temp.setData("gType", "gray");
+                if (wastes[i].indexOf("organic") > 0)
+                    temp.setData("gType", "brown");
+
+                if (wastes[i].indexOf("todo") > 0)
+                    temp.setData("gType", "todo");
                 sps.push(temp);
             }
-            for (let i = 1; i <= trashQty; i++) {
-                let temp = this.wasteGroup
-                    .create(60 * i, 390, "img_yh" + i)
-                    .setInteractive({
-                        cursor: "url(img/grab.png), pointer",
-                    });
-                temp.setData("gType", "gray");
-                sps.push(temp);
-            }
-            for (let i = 1; i <= organicQty; i++) {
-                let temp = this.wasteGroup
-                    .create(60 * i, 690, "img_cy" + i)
-                    .setInteractive({
-                        cursor: "url(img/grab.png), pointer",
-                    });
-                temp.setData("gType", "brown");
-                sps.push(temp);
-            }
+            // for (let i = 1; i <= recycleQty; i++) {
+            //     let temp = this.wasteGroup
+            //         .create(60 * i, 390, "img_khs" + i)
+            //         .setInteractive({
+            //             cursor: "url(img/grab.png), pointer",
+            //         });
+            //     temp.setData("gType", "green");
+            //     sps.push(temp);
+            // }
+            // for (let i = 1; i <= trashQty; i++) {
+            //     let temp = this.wasteGroup
+            //         .create(60 * i, 390, "img_yh" + i)
+            //         .setInteractive({
+            //             cursor: "url(img/grab.png), pointer",
+            //         });
+            //     temp.setData("gType", "gray");
+            //     sps.push(temp);
+            // }
+            // for (let i = 1; i <= organicQty; i++) {
+            //     let temp = this.wasteGroup
+            //         .create(60 * i, 690, "img_cy" + i)
+            //         .setInteractive({
+            //             cursor: "url(img/grab.png), pointer",
+            //         });
+            //     temp.setData("gType", "brown");
+            //     sps.push(temp);
+            // }
             sps = sps.sort(() => Math.random() - 0.5);
             for (let i = 0; i < sps.length; i++) {
                 let xindex = i;
@@ -293,22 +343,29 @@
                     brownbinface.setVisible(true);
                     brownbinwaitfeed.setVisible(false);
                     //console.log("dragend selectBin:", pointer);
+                    if (gameObject.getData("gType") == "todo") {
+                        if (selectBin == undefined || selectBin.length == 0)
+                            return;
+                        gameObject.disableBody(true, true);
+                        updateTodoImage(gameObject.texture.key, selectBin);
+                        score++;
+                    }
                     if (
-                        selectBin == "sgreenbin" &&
+                        selectBin == "recycle" &&
                         gameObject.getData("gType") == "green"
                     ) {
                         gameObject.disableBody(true, true);
                         gameObject.setData("iscrrect", "true");
                         score++;
                     } else if (
-                        selectBin == "sgraybin" &&
+                        selectBin == "trash" &&
                         gameObject.getData("gType") == "gray"
                     ) {
                         gameObject.disableBody(true, true);
                         gameObject.setData("iscrrect", "true");
                         score++;
                     } else if (
-                        selectBin == "sbrownbin" &&
+                        selectBin == "organic" &&
                         gameObject.getData("gType") == "brown"
                     ) {
                         gameObject.disableBody(true, true);
@@ -325,17 +382,19 @@
                     }
                     selectBin = "";
                 });
-                bindingBin(sgreenbin);
-                bindingBin(sgraybin);
-                bindingBin(sbrownbin);
+                bindingBin(recycle);
+                bindingBin(trash);
+                bindingBin(organic);
 
-                this.physics.add.overlap(temp, sgreenbin, spriteHitBin);
-                this.physics.add.overlap(temp, sgraybin, spriteHitBin);
-                this.physics.add.overlap(temp, sbrownbin, spriteHitBin);
+                this.physics.add.overlap(temp, recycle, spriteHitBin);
+                this.physics.add.overlap(temp, trash, spriteHitBin);
+                this.physics.add.overlap(temp, organic, spriteHitBin);
 
                 this.physics.add.collider(temp, platforms);
             }
         }
+
+
 
         function loadMusic(_this) {
             var start = platforms
@@ -367,6 +426,8 @@
             stop.on(
                 "pointerup",
                 function() {
+
+                    $("#ranking").modal("show");
                     music.stop();
                     start.setVisible(true);
                     stop.setVisible(false);
@@ -419,9 +480,9 @@
         function update(e) {
             scoretext.setText("Score: " + score);
             text.setText("Time Left: " + gamatimer);
-            updateLapendEvent(sgreenbin);
-            updateLapendEvent(sgraybin);
-            updateLapendEvent(sbrownbin);
+            updateLapendEvent(recycle);
+            updateLapendEvent(trash);
+            updateLapendEvent(organic);
             if (gameOver) {
                 return;
             }
@@ -457,10 +518,62 @@
         }
 
         function showGameOver() {
+
             $("#msgscore").append(" ");
             $("#msgscore").append(score);
             $("#gameover").modal("show");
             game.destroy();
+            AddScroe();
+        }
+
+        function AddScroe() {
+            var formData = {
+                userId: 0,
+                userScore: score
+            };
+            var url = "./js/config.json";
+            var _this = this;
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/insertScore/", {
+                        method: "Post",
+                        headers: {
+                            "Content-Type": "application/json;charset=utf-8",
+                            token: localStorage.getItem("token"),
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+
+                    });
+            });
+        }
+
+        function updateTodoImage(imgUrl, gType) {
+            var formData = {
+                name: "",
+                path: imgUrl,
+                type: gType,
+                sort_times: 1
+            };
+            var url = "./js/config.json";
+            var _this = this;
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/UploadUserImgState/", {
+                        method: "Post",
+                        headers: {
+                            "Content-Type": "application/json;charset=utf-8",
+                            token: localStorage.getItem("token"),
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+
+                    });
+            });
         }
 
         function nextgame() {
@@ -469,36 +582,39 @@
     </script>
 
 
-<div class="loader loader--active">
-    <div class="loader__icon"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-            <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
-            <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
-            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
-        </svg></div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-    <div class="loader__tile"></div>
-</div>
+    <div class="loader loader--active">
+        <div class="loader__icon"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                <path opacity="0.2" fill="#000"
+                    d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z">
+                </path>
+                <path fill="#000"
+                    d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
+                </path>
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
+                    to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+            </svg></div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
+        <div class="loader__tile"></div>
+    </div>
 
-<script>
+    <script>
+        var $loader = document.querySelector('.loader')
 
-
-    var $loader = document.querySelector('.loader')
-
-    window.onload = function() {
-        $loader.classList.remove('loader--active')
-    };
-
-    document.querySelector('.btn').addEventListener('click', function () {
-        $loader.classList.add('loader--active')
-
-        window.setTimeout(function () {
+        window.onload = function() {
             $loader.classList.remove('loader--active')
-        }, 5000)
-    })
-</script>
+        };
+
+        document.querySelector('.btn').addEventListener('click', function() {
+            $loader.classList.add('loader--active')
+
+            window.setTimeout(function() {
+                $loader.classList.remove('loader--active')
+            }, 5000)
+        })
+    </script>
 
 </body>
 

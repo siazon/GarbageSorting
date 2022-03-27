@@ -39,7 +39,7 @@ public class JWTInterceptor implements HandlerInterceptor {
             map.put("msg", "Token algorithm inconsistent, please log in again!");
         } catch (Exception e) {
             e.printStackTrace();
-            map.put("msg", "Token invalid, please log in again!");
+            map.put("msg", "Token invalid, please login first!");
         }
         map.put("state", false); // set state
         // Map To JSON jaskson

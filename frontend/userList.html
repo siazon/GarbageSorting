@@ -14,7 +14,11 @@
         }
         
         body {
-            margin-top: 90px;
+            margin-top: 0px;
+        }
+        
+        .ubtn {
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -24,10 +28,10 @@
 
     <div class="input-group mb-3">
         <span class="input-space">
-        <button type="button" class="btn btn-primary" onclick="doAdd()">
-          Add
-        </button>
-      </span>
+            <button type="button" class="btn btn-primary ubtn" onclick="doAdd()">
+                Add
+            </button>
+        </span>
 
         <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
         <div class="input-group-append">
@@ -58,7 +62,7 @@
         QueryList(host);
 
         function QueryList(host) {
-            var url = "/js/config.json";
+            var url = "./js/config.json";
             $.getJSON(url, function(data) {
                 host = data.host;
                 fetch(host + "/AllUsers", {
