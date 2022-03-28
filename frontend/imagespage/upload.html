@@ -60,7 +60,8 @@
                         console.log(json);
                         if (json.state == true) {
                             console.log(json);
-                            document.getElementById("centerFrame").src = "./imagespage/index.html";
+                            alert("Image uploaded successfully")
+                            window.location.href = "../imagespage/index.html";
                         } else {
                             console.log(json);
                             alert(json.msg)

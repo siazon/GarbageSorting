@@ -20,7 +20,7 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body style="background-color: #d4f0fe; text-align: center;">
+<body id="gameDiv" style="background-color: #d4f0fe; text-align: center;">
     <!-- Modal -->
     <div class="modal fade" id="gameover" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -67,6 +67,7 @@
 
     <script type="text/javascript">
         var isMobile = navigator.userAgent.indexOf("Mobile");
+        console.log('isMobile: ', isMobile)
         if (isMobile == -1) {
             isMobile = navigator.userAgent.indexOf("Tablet");
         }
@@ -109,7 +110,7 @@
                         gravity: {
                             y: 300,
                         },
-                        debug: true,
+                        debug: false,
                     },
                 },
                 scene: {
@@ -137,8 +138,16 @@
         var recycleQty = 0;
         var organicQty = 0;
         var trashQty = 0;
+        var greenbinface;
+        var greenbinwaitfeed;
+        var graybinface;
+        var graybinwaitfeed;
+        var brownbinface;
+        var brownbinwaitfeed;
+        var errorsound;
+        var correctsound;
 
-        var game = new Phaser.Game(config, Phaser.CANVAS);
+        var game = new Phaser.Game(config, Phaser.CANVAS, gameDiv);
 
         function preload() {
             recycleQty = localStorage.getItem("recycleQty");
@@ -173,15 +182,7 @@
                 imgKey = imgKey.replace(/\\/g, '_');
                 this.load.image(imgKey, wastes[i]);
             }
-            // for (let i = 1; i <= recycleQty; i++) {
-            //     this.load.image("img_khs" + i, "img/khs/" + i + ".png");
-            // }
-            // for (let i = 1; i <= trashQty; i++) {
-            //     this.load.image("img_yh" + i, "img/yh/" + i + ".png");
-            // }
-            // for (let i = 1; i <= organicQty; i++) {
-            //     this.load.image("img_cy" + i, "img/cy/" + i + ".png");
-            // }
+
         }
 
         function create() {
@@ -207,12 +208,9 @@
                 immovable: true,
                 allowGravity: false,
             });
-            //Now let's create some Bins
-            var binWidth = 125;
-            recycle = bin.create(170, 250, "recycle");
-            recycle.setDisplaySize(120, 150);
 
-            scoretext = this.add.text(230, 32, "", {
+            //ScoreText{
+            scoretext = this.add.text(230, 30, "", {
                 font: "20px Arial Black",
                 fill: "black",
             });
@@ -222,92 +220,62 @@
                 fill: "red",
             });
             text.setStroke("#fff", 6);
+            //}
 
+            //timeer
             timedEvent = this.time.addEvent({
                 delay: 1000,
                 callback: onEvent,
                 callbackScope: this,
                 loop: true,
             });
+            //init location
+            console.log(window.innerWidth)
+            var rowQty = 16;
+            var leftbase = 170;
+            if (isMobile != -1) {
+                leftbase = 60;
+                rowQty = 7;
+            }
+            leftbase = (window.innerWidth) / 3 - 180;
+            leftbase = parseInt(leftbase, 10);
+            console.log(window.innerWidth, leftbase)
+            if (leftbase < 60) leftbase = 60;
 
-            trash = bin.create(170 + binWidth, 250, "trash");
-            trash.setDisplaySize(120, 150);
+            rowQty = window.innerWidth / 60;
+            rowQty = parseInt(rowQty, 10);
 
-            organic = bin.create(170 + binWidth * 2, 250, "organic");
-            organic.setDisplaySize(120, 150);
+            //Now let's create some Bins
+            loadBins(leftbase);
+
             loadMusic(this);
-            var ginfo = loadFace(this, 170, 240);
-            var greenbinface = ginfo.face;
-            var greenbinwaitfeed = ginfo.mouth;
+            //load fase
 
-            var rinfo = loadFace(this, 295, 240);
-            var graybinface = rinfo.face;
-            var graybinwaitfeed = rinfo.mouth;
+            var ginfo = loadFace(this, leftbase, 240);
+            greenbinface = ginfo.face;
+            greenbinwaitfeed = ginfo.mouth;
 
-            var binfo = loadFace(this, 420, 240);
-            var brownbinface = binfo.face;
-            var brownbinwaitfeed = binfo.mouth;
+            var rinfo = loadFace(this, leftbase + 125, 240);
+            graybinface = rinfo.face;
+            graybinwaitfeed = rinfo.mouth;
+
+            var binfo = loadFace(this, leftbase + 250, 240);
+            brownbinface = binfo.face;
+            brownbinwaitfeed = binfo.mouth;
 
             let sps = new Array();
             this.wasteGroup = this.physics.add.group({
                 //allowGravity: false,
             });
-            var _wastes = localStorage.getItem("wastes");
-            var wastes = _wastes.split(",");
-            for (let i = 0; i < wastes.length; i++) {
-                var imgKey = wastes[i].replace('.', '_');
-                imgKey = imgKey.replace(/\\/g, '_');
-                let temp = this.wasteGroup
-                    .create(60 * i, 390, imgKey)
-                    .setInteractive({
-                        cursor: "url(img/grab.png), pointer",
-                    });
-                if (wastes[i].indexOf("recycle") > 0)
-                    temp.setData("gType", "green");
-                if (wastes[i].indexOf("trash") > 0)
-                    temp.setData("gType", "gray");
-                if (wastes[i].indexOf("organic") > 0)
-                    temp.setData("gType", "brown");
-
-                if (wastes[i].indexOf("todo") > 0)
-                    temp.setData("gType", "todo");
-                sps.push(temp);
-            }
-            // for (let i = 1; i <= recycleQty; i++) {
-            //     let temp = this.wasteGroup
-            //         .create(60 * i, 390, "img_khs" + i)
-            //         .setInteractive({
-            //             cursor: "url(img/grab.png), pointer",
-            //         });
-            //     temp.setData("gType", "green");
-            //     sps.push(temp);
-            // }
-            // for (let i = 1; i <= trashQty; i++) {
-            //     let temp = this.wasteGroup
-            //         .create(60 * i, 390, "img_yh" + i)
-            //         .setInteractive({
-            //             cursor: "url(img/grab.png), pointer",
-            //         });
-            //     temp.setData("gType", "gray");
-            //     sps.push(temp);
-            // }
-            // for (let i = 1; i <= organicQty; i++) {
-            //     let temp = this.wasteGroup
-            //         .create(60 * i, 690, "img_cy" + i)
-            //         .setInteractive({
-            //             cursor: "url(img/grab.png), pointer",
-            //         });
-            //     temp.setData("gType", "brown");
-            //     sps.push(temp);
-            // }
+            loaddWastes(this, sps);
             sps = sps.sort(() => Math.random() - 0.5);
             for (let i = 0; i < sps.length; i++) {
-                let xindex = i;
-                if (i % 16 == 0) xindex = 0;
-                let x = 60 + 60 * (i % 16);
-                let y = 390 + ((i / 16) | 0) * 70;
-
-                let temp = sps[i]; //this.wasteGroup.create(60 * i, 590, "img_yh" + i);
+                //line add
+                let x = 30 + 60 * (i % rowQty);
+                let y = 390 + ((i / rowQty) | 0) * 70;
+                if (i % rowQty == 0)
+                    console.log('line', x, rowQty)
+                let temp = sps[i];
 
                 temp.setScale(0.5);
                 temp.x = x;
@@ -317,22 +285,9 @@
                 temp.setCollideWorldBounds(true);
                 this.input.setDraggable(temp.setInteractive());
 
-                this.input.on("drag", function(pointer, gameObject, dragX, dragY) {
-                    gameObject.x = dragX;
-                    gameObject.y = dragY;
-                    gameObject.setData("isDrag", "true");
-                    gameObject.setDepth(1); //set z index to top
-                    gameObject.setBounceY(0);
-                    gameObject.body.setAllowGravity(false);
-                    greenbinface.setVisible(false);
-                    greenbinwaitfeed.setVisible(true);
-                    graybinface.setVisible(false);
-                    graybinwaitfeed.setVisible(true);
-                    brownbinface.setVisible(false);
-                    brownbinwaitfeed.setVisible(true);
-                });
-                var errorsound = this.sound.add("errorsound");
-                var correctsound = this.sound.add("correctsound");
+                this.input.on("drag", onDrag);
+                errorsound = this.sound.add("errorsound");
+                correctsound = this.sound.add("correctsound");
                 this.input.on("dragend", function(pointer, gameObject) {
                     gameObject.setDepth(0); //set z index back
                     gameObject.setData("isDrag", "false");
@@ -347,6 +302,7 @@
                         if (selectBin == undefined || selectBin.length == 0)
                             return;
                         gameObject.disableBody(true, true);
+                        gameObject.setData("iscrrect", "true");
                         updateTodoImage(gameObject.texture.key, selectBin);
                         score++;
                     }
@@ -375,9 +331,12 @@
                         //fall to the ground
                         gameObject.body.setAllowGravity(true);
                         gameObject.setBounceY(Phaser.Math.FloatBetween(0.2, 0.3));
+
                         if (temp == gameObject) {
-                            if (gameObject.getData("iscrrect") != "true") errorsound.play();
-                            else correctsound.play();
+                            if (gameObject.getData("iscrrect") != "true")
+                                errorsound.play();
+                            else
+                                correctsound.play();
                         }
                     }
                     selectBin = "";
@@ -394,16 +353,42 @@
             }
         }
 
+        function onDrag(pointer, gameObject, dragX, dragY) {
+            gameObject.x = dragX;
+            gameObject.y = dragY;
+            gameObject.setData("isDrag", "true");
+            gameObject.setDepth(1); //set z index to top
+            gameObject.setBounceY(0);
+            gameObject.body.setAllowGravity(false);
+            greenbinface.setVisible(false);
+            greenbinwaitfeed.setVisible(true);
+            graybinface.setVisible(false);
+            graybinwaitfeed.setVisible(true);
+            brownbinface.setVisible(false);
+            brownbinwaitfeed.setVisible(true);
+        }
 
+
+        function loadBins(leftbase) {
+            var binWidth = 125;
+            recycle = bin.create(leftbase, 250, "recycle");
+            recycle.setDisplaySize(120, 150);
+
+            trash = bin.create(leftbase + binWidth, 250, "trash");
+            trash.setDisplaySize(120, 150);
+
+            organic = bin.create(leftbase + binWidth * 2, 250, "organic");
+            organic.setDisplaySize(120, 150);
+        }
 
         function loadMusic(_this) {
             var start = platforms
-                .create(400, 50, "start")
+                .create(370, 45, "start")
                 .refreshBody()
                 .setInteractive();
             start.setDisplaySize(50, 50);
             var stop = platforms
-                .create(400, 50, "stop")
+                .create(370, 45, "stop")
                 .refreshBody()
                 .setInteractive();
             stop.setDisplaySize(50, 50);
@@ -426,8 +411,6 @@
             stop.on(
                 "pointerup",
                 function() {
-
-                    $("#ranking").modal("show");
                     music.stop();
                     start.setVisible(true);
                     stop.setVisible(false);
@@ -455,6 +438,30 @@
                 mouth: greenbinwaitfeed,
             };
             return info;
+        }
+
+        function loaddWastes(_this, sps) {
+            var _wastes = localStorage.getItem("wastes");
+            var wastes = _wastes.split(",");
+            for (let i = 0; i < wastes.length; i++) {
+                var imgKey = wastes[i].replace('.', '_');
+                imgKey = imgKey.replace(/\\/g, '_');
+                let temp = _this.wasteGroup
+                    .create(60 * i, 390, imgKey)
+                    .setInteractive({
+                        cursor: "url(img/grab.png), pointer",
+                    });
+                if (wastes[i].indexOf("recycle") > 0)
+                    temp.setData("gType", "green");
+                if (wastes[i].indexOf("trash") > 0)
+                    temp.setData("gType", "gray");
+                if (wastes[i].indexOf("organic") > 0)
+                    temp.setData("gType", "brown");
+
+                if (wastes[i].indexOf("todo") > 0)
+                    temp.setData("gType", "todo");
+                sps.push(temp);
+            }
         }
 
         function spriteHitBin(sprite, bin) {
@@ -614,8 +621,10 @@
                 $loader.classList.remove('loader--active')
             }, 5000)
         })
+        if (isMobile == -1) {
+            // $("canvas").css("left", "0");
+        }
     </script>
-
 </body>
 
 </html>
