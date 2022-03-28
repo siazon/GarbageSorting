@@ -98,12 +98,32 @@
             }
         })
     })
+    getFileList()
+
+    function getFileList() {
+        var url = "../js/config.json";
+        var _this = this;
+        $.getJSON(url, function(data) {
+            host = data.host;
+            fetch(host + "/GetUploadedList/", {
+                    method: "GET",
+                    headers: {
+                        // token: localStorage.getItem("token"),
+                    },
+                })
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    localStorage.setItem("wastes", json);
+                });
+        });
+    }
 </script>
 <!----//End-dropdown--->
 <!---//End-click-drop-down-menu----->
 <style>
-    .body {
-        height: 800px;
+    body {
+        height: 1000px;
     }
 </style>
 
@@ -118,7 +138,7 @@
             </div>
             <div button class="nav-icon">
                 <a href="upload.html"><span>
-                        <button><b>Upload Images</b></button></span> </a>
+                        <button><b>Search By Images</b></button></span> </a>
             </div>
             <div class="box" id="box">
                 <div class="box_content">

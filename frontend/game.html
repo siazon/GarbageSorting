@@ -230,7 +230,6 @@
                 loop: true,
             });
             //init location
-            console.log(window.innerWidth)
             var rowQty = 16;
             var leftbase = 170;
             if (isMobile != -1) {
@@ -244,8 +243,10 @@
 
             rowQty = window.innerWidth / 60;
             rowQty = parseInt(rowQty, 10);
-
-            //Now let's create some Bins
+            if (rowQty > 17)
+                rowQty = 17;
+            console.log('rowQty:', rowQty)
+                //Now let's create some Bins
             loadBins(leftbase);
 
             loadMusic(this);
@@ -273,8 +274,6 @@
                 //line add
                 let x = 30 + 60 * (i % rowQty);
                 let y = 390 + ((i / rowQty) | 0) * 70;
-                if (i % rowQty == 0)
-                    console.log('line', x, rowQty)
                 let temp = sps[i];
 
                 temp.setScale(0.5);

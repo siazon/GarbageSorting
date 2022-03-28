@@ -95,6 +95,16 @@ public class FileUploadController {
         return new ResponseEntity<List<String>>(files, HttpStatus.OK);
     }
 
+    @GetMapping("/GetUploadedList/")
+    public Object GetUploadedList() {
+        List<String> files = new ArrayList<>();
+        var temp = fileUtil.GetFiles(new FileSystemResource("").getFile().getAbsolutePath() + "\\frontend\\img\\todo\\");
+        for (String path : temp) {
+            files.add(path.substring(path.indexOf("img")));
+        }
+        return new ResponseEntity<List<String>>(files, HttpStatus.OK);
+    }
+
     @PostMapping("/UploadUserImgState") // //new annotation since 4.3
     public ResponseEntity<Map<String, Object>> UploadUserImgState(@RequestBody PictureInfo pic) {
         Map<String, Object> map = new HashMap<>();

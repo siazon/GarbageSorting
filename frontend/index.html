@@ -52,7 +52,7 @@
                         <li><a href="#" onclick="Repository()">Education</a></li>
                         <li><a href="#" onclick="onSearch()">ImageSearch</a></li>
                         <li id="btnLogin">
-                            <a href="#" onclick="login()" class="button">Login</a>
+                            <a id="aLogin" href="#" onclick="login()" class="button">Login</a>
                         </li>
                         <li id="btnAccount" class="dropdown"><a class="button" data-toggle="dropdown" href="#">Account
                                 <span class="caret"></span></a>
@@ -122,7 +122,11 @@
         }, false);
 
         function isLogin(flag) {
+            // console.log('before:', $("#aLogin").text())
+            // $("#aLogin").text("acount")
+            // console.log('after:', $("#aLogin").text())
             if (flag) {
+
                 $("#btnLogin").hide();
                 $("#btnAccount").show();
             } else {
@@ -155,7 +159,7 @@
         }
 
         function onSearch() {
-            document.getElementById("centerFrame").src = "./imagespage/upload.html";
+            document.getElementById("centerFrame").src = "./imagespage/index.html";
             document.getElementById("centerFrame").height = 750;
         }
 
