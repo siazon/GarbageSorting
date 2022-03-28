@@ -3,9 +3,7 @@ package com.tus.garbagesorting.garbagesorting.Controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tus.garbagesorting.garbagesorting.Mapper.UserMapper;
 import com.tus.garbagesorting.garbagesorting.Model.User;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,10 +16,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * This test suites tests the API endpoints in UserController which successfully creates, reads anu deletes
@@ -39,8 +37,8 @@ class UserControllerTests {
     @MockBean
     UserMapper userMapper;
 
-    User john = new User(1, "john@gmail.com", "john", "123654", "reredf", "player");
-    User pete = new User(2, "pete@gmail.com", "pete", "135654", "reghbr", "admin");
+    User john = new User(1, "john@gmail.com", "john", "123654", "reredf", "player", "");
+    User pete = new User(2, "pete@gmail.com", "pete", "135654", "reghbr", "admin", "");
 
     @Test
     public void getAllUsersSuccessfully() throws Exception {
@@ -71,7 +69,7 @@ class UserControllerTests {
 
     @Test
     void createdUserSuccessfully() throws Exception {
-        User terry = new User(2, "terry@gmail.com", "terry", "49838294", "fhrhhd", "admin");
+        User terry = new User(2, "terry@gmail.com", "terry", "49838294", "fhrhhd", "admin", "");
 
         Mockito.when(userMapper.insert(terry)).thenReturn(terry);
 

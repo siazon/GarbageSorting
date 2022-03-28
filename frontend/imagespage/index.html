@@ -98,26 +98,6 @@
             }
         })
     })
-    getFileList()
-
-    function getFileList() {
-        var url = "../js/config.json";
-        var _this = this;
-        $.getJSON(url, function(data) {
-            host = data.host;
-            fetch(host + "/GetUploadedList/", {
-                    method: "GET",
-                    headers: {
-                        // token: localStorage.getItem("token"),
-                    },
-                })
-                .then((response) => response.json())
-                .then((json) => {
-                    console.log(json);
-                    localStorage.setItem("wastes", json);
-                });
-        });
-    }
 </script>
 <!----//End-dropdown--->
 <!---//End-click-drop-down-menu----->
@@ -138,7 +118,7 @@
             </div>
             <div button class="nav-icon">
                 <a href="upload.html"><span>
-                        <button><b>Search By Images</b></button></span> </a>
+                        <button id="btnUpdate">Search By Images</button></span> </a>
             </div>
             <div class="box" id="box">
                 <div class="box_content">
@@ -261,8 +241,15 @@
         init()
 
         function init() {
-            var token = localStorage.getItem('token')
-            console.log('init token: ', token)
+            var userType = localStorage.getItem("userType");
+            if (userType != undefined && userType.length > 0 && userType == "user") {
+                $('#btnUpdate').text("Search By Images")
+                console.log("user")
+            } else {
+                console.log("Upload")
+                $('#btnUpdate').text("Upload Image");
+                console.log("staff")
+            }
         }
 
         ;
@@ -347,13 +334,52 @@
             $loader.classList.remove('loader--active')
         }
 
-        // document.querySelector('.btn').addEventListener('click', function () {
-        //     $loader.classList.add('loader--active')
+        getFileList()
 
-        //     window.setTimeout(function () {
-        //         $loader.classList.remove('loader--active')
-        //     }, 5000)
-        // })
+        function getFileList() {
+
+            var url = "../js/config.json";
+            var _this = this;
+            $.getJSON(url, function(data) {
+                host = data.host;
+                fetch(host + "/GetUploadedList/", {
+                        method: "GET",
+                        headers: {
+                            // token: localStorage.getItem("token"),
+                        },
+                    })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json);
+                        // localStorage.setItem("wastes", json);
+                        refreshData(json);
+                    });
+            });
+        }
+
+        function refreshData(data) {
+            //TODO Refresh Images
+            //$("#rows").empty();
+            // console.log("title:", data)
+            // $("<a>cxs</a>").appendTo("#tiles");
+            // for (var i = 0; i < data.length; i++) {
+            //     var $trTemp = $("<li class=\"images\">" +
+            //         // "<img src=\"images/img4.jpg\" width=\"200\" height=\"263\" />" +
+            //         "<div class=\"post-info\">" +
+            //         "<div class=\"post-basic-info\">" +
+            //         // "<h3 class=\"rname\">Chair</h3>" +
+            //         // "<span>" +
+            //         // "<h4>Recycle</h4>" +
+            //         // "</span>" +
+            //         "<p>Recyclable garbage is garbage that can be recycled.</p>" +
+            //         "</div>" +
+            //         "</div>" +
+            //         "</li>"
+            //     );
+            //     $trTemp.appendTo("#tiles");
+            //     console.log("appendto title")
+            // }
+        }
     </script>
     <style scoped>
         ul {

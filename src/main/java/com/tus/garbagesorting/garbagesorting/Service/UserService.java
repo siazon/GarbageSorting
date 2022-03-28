@@ -24,10 +24,10 @@ public class UserService implements UserMapper {
     @Override
     public User insert(User user) {
         jdbcTemplate.update(
-                "insert into tb_user (user_name, user_email, user_phone, user_password, user_role) " +
-                        "values(?,?,?,?,?)",
+                "insert into tb_user (user_name, user_email, user_phone, user_password, user_role,invite_code) " +
+                        "values(?,?,?,?,?,?)",
                 user.getUser_name(), user.getUser_email(), user.getUser_phone(), user.getUser_password(),
-                user.getUser_role());
+                user.getUser_role(), user.getInvite_code());
 
         return user;
 
@@ -55,7 +55,7 @@ public class UserService implements UserMapper {
                         rs.getString("user_name"),
                         rs.getString("user_phone"),
                         rs.getString("user_password"),
-                        rs.getString("user_role")
+                        rs.getString("user_role"), ""
 
                 ));
 
@@ -71,7 +71,7 @@ public class UserService implements UserMapper {
                         rs.getString("user_name"),
                         rs.getString("user_phone"),
                         rs.getString("user_password"),
-                        rs.getString("user_role")
+                        rs.getString("user_role"), ""
 
                 ));
 
@@ -88,7 +88,7 @@ public class UserService implements UserMapper {
                                 rs.getString("user_name"),
                                 rs.getString("user_phone"),
                                 rs.getString("user_password"),
-                                rs.getString("user_role")
+                                rs.getString("user_role"), ""
 
                         )
         );

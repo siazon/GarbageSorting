@@ -112,7 +112,7 @@
         window.addEventListener('message', function(e) {
             if (e.data.name != undefined && e.data.name.length > 0) {
                 var token = localStorage.getItem("token");
-                if (token.length > 0) {
+                if (token != undefined && token.length > 0) {
                     isLogin(true);
 
                 } else {

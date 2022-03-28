@@ -17,13 +17,25 @@ public class User implements Serializable {
     private String user_password;
     private String user_role;
 
-    public User (int id, String user_email, String user_name, String user_phone, String user_password, String user_role) {
+    public String getInvite_code() {
+        return invite_code;
+    }
+
+    public void setInvite_code(String invite_code) {
+        this.invite_code = invite_code;
+    }
+
+    private String invite_code;
+
+
+    public User(int id, String user_email, String user_name, String user_phone, String user_password, String user_role, String invite_code) {
         this.id = id;
         this.user_email = user_email;
         this.user_name = user_name;
         this.user_phone = user_phone;
         this.user_password = user_password;
         this.user_role = user_role;
+        this.invite_code = invite_code;
     }
 
     public int getId() {

@@ -39,7 +39,7 @@
             var res = getQueryVariable("inviteCode");
             if (res != false) {
                 $("#tab-2").prop("checked", true);
-                $("#register-username").val(res);
+                $("#register-invitecode").val(res);
                 console.log("invite: ", res);
             }
         }
@@ -111,6 +111,7 @@
             $("#register-username").val("");
             $("#register-password").val("");
             $("#register-repassword").val("");
+            $("#register-invitecode").val("");
             $("#Email").val("");
             $("#tab-2").prop("checked", true);
         }
@@ -199,7 +200,7 @@
                                 window.parent.postMessage(autoMessage, '*');
                                 if (username.indexOf("garbagesorting") != -1) {
                                     localStorage.setItem("userType", "staff");
-                                    window.location.href = "../imagespage/index.html";
+                                    window.location.href = "../userList.html";
                                 } else {
                                     localStorage.setItem("userType", "user");
                                     window.location.href = "../rankingpage/index.html";
@@ -223,20 +224,21 @@
                 password = $("#register-password").val(),
                 repassword = $("#register-repassword").val(),
                 email = $("#Email").val(),
+                invite_code = $("#register-invitecode").val(),
                 flag = false,
                 validatecode = null;
             /* Check whether the user name and password are empty*/
-            // if (username == "") {
-            //     $.pt({
-            //         target: $("#register-username"),
-            //         position: "r",
-            //         align: "t",
-            //         width: "auto",
-            //         height: "auto",
-            //         content: "The user name cannot be empty!",
-            //     });
-            //     flag = true;
-            // }
+            if (username == "") {
+                $.pt({
+                    target: $("#register-username"),
+                    position: "r",
+                    align: "t",
+                    width: "auto",
+                    height: "auto",
+                    content: "The user name cannot be empty!",
+                });
+                flag = true;
+            }
             if (password == "") {
                 $.pt({
                     target: $("#register-password"),
@@ -293,6 +295,7 @@
                 var requestData = {
                     user_email: email,
                     user_name: username,
+                    invite_code: invite_code,
                     user_phone: "",
                     user_password: password,
                     user_role: "",
@@ -590,8 +593,16 @@
                             </span>
                             <span class="input input--hideo">
                                 <input class="input__field input__field--hideo" type="text" id="register-username"
-                                    autocomplete="off" placeholder="Please input Invite Code" maxlength="15" />
+                                    autocomplete="off" placeholder="Please input user name" />
                                 <label class="input__label input__label--hideo" for="register-username">
+                                    <i class="fa fa-fw fa-user icon icon--hideo"></i>
+                                    <span class="input__label-content input__label-content--hideo"></span>
+                            </label>
+                            </span>
+                            <span class="input input--hideo">
+                                <input class="input__field input__field--hideo" type="text" id="register-invitecode"
+                                    autocomplete="off" placeholder="Please input invite code" />
+                                <label class="input__label input__label--hideo" for="register-invitecode">
                                     <i class="fa fa-fw fa-user icon icon--hideo"></i>
                                     <span class="input__label-content input__label-content--hideo"></span>
                             </label>

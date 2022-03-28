@@ -47,7 +47,6 @@
                     <th>Phone</th>
                     <th>Password</th>
                     <th>Role</th>
-                    <th>Status</th>
                     <th>Edit</th>
                 </tr>
             </thead>
@@ -85,7 +84,6 @@
                             $trTemp.append("<td>" + mydata[i].user_phone + "</td>");
                             $trTemp.append("<td>" + mydata[i].user_password + "</td>");
                             $trTemp.append("<td>" + mydata[i].user_role + "</td>");
-                            $trTemp.append("<td>" + mydata[i].user_status + "</td>");
                             $trTemp.append(
                                 "<td> <button type='button' class = 'btn btn-success' onclick='doEdit(this)'> Edit </button> " +
                                 "<button type = 'button' class = 'btn btn-danger' onclick='doDelete(this)'> Delete </button>  </td>"
