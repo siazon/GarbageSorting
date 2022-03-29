@@ -19,6 +19,22 @@ method: post
 body: {"user_email":"","user_name":""}
 return: string msg
 ```
+## allScores
+
+```
+url: http://127.0.0.1:8081/allScores
+method: get
+
+return: json list
+```
+## insertScore
+
+```
+url: http://127.0.0.1:8081/allScores
+method: post
+body: json User
+return: json list
+```
 
 # Mysql
 
