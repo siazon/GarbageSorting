@@ -57,7 +57,7 @@
                         <li id="btnAccount" class="dropdown"><a class="button" data-toggle="dropdown" href="#">Account
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="onProfile()">Your Profile</a></li>
+                                <li><a id="btnProfile" href="#" onclick="onProfile()">Your Profile</a></li>
                                 <li><a href="#" onclick="onLogout()">Logout</a></li>
                             </ul>
                         </li>
@@ -126,12 +126,17 @@
             // $("#aLogin").text("acount")
             // console.log('after:', $("#aLogin").text())
             if (flag) {
-
                 $("#btnLogin").hide();
                 $("#btnAccount").show();
             } else {
                 $("#btnLogin").show();
                 $("#btnAccount").hide();
+            }
+            var userType = localStorage.getItem("userType");
+            if (userType != undefined && userType.length > 0 && userType == "user") {
+                $('#btnProfile').text("Ranking");
+            } else {
+                $('#btnProfile').text("User List");
             }
         }
 
